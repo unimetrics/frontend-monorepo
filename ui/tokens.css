@@ -1,0 +1,52 @@
+:root {
+  --ui-font-sans: 'Inter Variable';
+  --ui-font-serif: 'Inter Variable';
+  --ui-font-heading: 'Inter Variable';
+
+  --ui-color-primary: 1 97 239;
+  --ui-color-secondary: 1 84 207;
+  --ui-color-accent: 109 40 217;
+
+  --ui-color-text-heading: 0 0 0;
+  --ui-color-text-default: 16 16 16;
+  --ui-color-text-muted: 16 16 16 / 66%;
+  --ui-color-bg-page: 255 255 255;
+  --ui-color-bg-page-dark: 3 6 32;
+
+  --ui-radius-sm: 0.375rem;
+  --ui-radius-md: 0.5rem;
+  --ui-radius-lg: 0.75rem;
+  --ui-radius-xl: 1rem;
+  --ui-radius-pill: 9999px;
+
+  --ui-space-18: 4.5rem;
+
+  --aw-font-sans: var(--ui-font-sans);
+  --aw-font-serif: var(--ui-font-serif);
+  --aw-font-heading: var(--ui-font-heading);
+
+  --aw-color-primary: rgb(var(--ui-color-primary));
+  --aw-color-secondary: rgb(var(--ui-color-secondary));
+  --aw-color-accent: rgb(var(--ui-color-accent));
+  --aw-color-text-heading: rgb(var(--ui-color-text-heading));
+  --aw-color-text-default: rgb(var(--ui-color-text-default));
+  --aw-color-text-muted: rgb(var(--ui-color-text-muted));
+  --aw-color-bg-page: rgb(var(--ui-color-bg-page));
+  --aw-color-bg-page-dark: rgb(var(--ui-color-bg-page-dark));
+}
+
+.dark {
+  --ui-color-text-heading: 247 248 248;
+  --ui-color-text-default: 229 236 246;
+  --ui-color-text-muted: 229 236 246 / 66%;
+  --ui-color-bg-page: 3 6 32;
+}
+
+::selection {
+  background-color: rgb(230 230 250);
+}
+
+.dark ::selection {
+  background-color: rgb(0 0 0);
+  color: rgb(255 250 250);
+}

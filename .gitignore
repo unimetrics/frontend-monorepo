@@ -43,3 +43,11 @@ next-env.d.ts
 
 # eslint
 .eslintcache
+
+# vscode
+.vscode/*
+!.vscode/extensions.json
+!.vscode/settings.json
+!.vscode/launch.json
+!.vscode/snippets
+!.vscode/astrowind
