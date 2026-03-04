@@ -1,7 +1,5 @@
-# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
-
 # dependencies
-node_modules
+node_modules/
 .pnp
 .pnp.*
 .yarn/*
@@ -10,43 +8,48 @@ node_modules
 !.yarn/releases
 !.yarn/versions
 
-# testing
-coverage
-
-# next.js
-.next
-out
-
-# production
-build
-dist
-!.github/**/build
-build-ladle
-
-# misc
-.DS_Store
-*.pem
-mobile/.expo
-mobile/.expo-shared
-mobile/android
-mobile/ios
-
 # debug
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 .pnpm-debug.log*
+pnpm-debug.log*
 
-# env files (can opt-in for committing if needed)
+# tests and coverage
+coverage/
+
+# build outputs
+build/
+dist/
+.output/
+.next/
+out/
+build-ladle/
+!.github/**/build
+
+# framework caches
+.astro/
+
+# env files
+.env
+.env.*
+!.env.example
+!.env.*.example
+
+# local-only env overrides
 .env.*.local
 .env.local
 
-# typescript
+# TypeScript
 *.tsbuildinfo
 next-env.d.ts
 
 # eslint
 .eslintcache
+
+# misc
+.DS_Store
+*.pem
 
 # vscode
 .vscode/*

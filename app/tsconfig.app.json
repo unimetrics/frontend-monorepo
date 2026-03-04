@@ -8,14 +8,11 @@
     "moduleDetection": "force",
     "moduleResolution": "Bundler",
     "noEmit": true,
-    "noFallthroughCasesInSwitch": true,
-    "noUncheckedIndexedAccess": true,
     "resolveJsonModule": true,
-    "skipLibCheck": true,
-    "strict": true,
     "target": "ES2022",
     "types": ["vite/client"],
     "useDefineForClassFields": true
   },
+  "extends": "../tsconfig.json",
   "include": ["src"]
 }

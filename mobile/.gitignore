@@ -1,0 +1,5 @@
+# Expo and native generated folders for the mobile workspace.
+.expo/
+.expo-shared/
+android/
+ios/

@@ -4,13 +4,11 @@
     "moduleResolution": "NodeNext",
     "outDir": "dist",
     "rootDir": ".",
-    "skipLibCheck": true,
-    "strict": true,
-    "target": "ES2022",
     "types": [
       "node"
     ]
   },
+  "extends": "../tsconfig.json",
   "include": [
     "bin/**/*.ts",
     "src/**/*.ts"
