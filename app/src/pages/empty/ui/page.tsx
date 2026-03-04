@@ -1,7 +1,7 @@
 import { Helmet } from "react-helmet-async";
 import { useTranslation } from "react-i18next";
 
-import { ThemeToggle } from "../components/theme-toggle";
+import { ThemeToggle } from "../../../shared/ui/theme-toggle";
 
 export const EmptyPage = () => {
   const { t, i18n } = useTranslation();

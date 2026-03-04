@@ -2,6 +2,8 @@
 
 Thanks for contributing to the Unimetrics frontend monorepo.
 
+Architecture guidelines: [FSD.md](./FSD.md)
+
 ## Setup
 
 ```sh

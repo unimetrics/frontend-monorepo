@@ -8,5 +8,11 @@
     "target": "ES2022"
   },
   "files": [],
+  "references": [
+    { "path": "./api/tsconfig.json" },
+    { "path": "./app/tsconfig.json" },
+    { "path": "./cli/tsconfig.json" },
+    { "path": "./landing/tsconfig.json" },
+    { "path": "./mobile/tsconfig.json" }],
   "$schema": "https://json.schemastore.org/tsconfig"
 }

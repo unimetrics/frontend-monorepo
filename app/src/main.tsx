@@ -4,11 +4,10 @@ import { HelmetProvider } from "react-helmet-async";
 import { I18nextProvider } from "react-i18next";
 import { ThemeProvider } from "next-themes";
 
-import "./index.css";
-import "./lib/i18n";
-import { initAnalytics } from "./lib/analytics";
-import i18n from "./lib/i18n";
-import { App } from "./app";
+import "./app/styles/index.css";
+import { App } from "./app/App";
+import { initAnalytics } from "./shared/lib/analytics";
+import i18n from "./shared/lib/i18n";
 
 import { registerSW } from "virtual:pwa-register";
 

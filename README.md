@@ -46,5 +46,6 @@ See [RELEASING.md](./RELEASING.md) for details.
 ## Collaboration Docs
 
 - [CONTRIBUTING.md](./CONTRIBUTING.md)
+- [FSD.md](./FSD.md)
 - [SECURITY.md](./SECURITY.md)
 - [CODE_OF_CONDUCT.md](./CODE_OF_CONDUCT.md)
