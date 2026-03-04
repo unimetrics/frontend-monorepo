@@ -8,6 +8,8 @@
     "changeset": "changeset",
     "changeset:status": "changeset status --verbose",
     "changeset:version": "changeset version",
+    "cli": "pnpm --filter @unimetrics/cli start",
+    "cli:help": "pnpm --filter @unimetrics/cli start --no-banner --help",
     "commitlint": "commitlint --from HEAD~1 --to HEAD",
     "commitlint:all": "commitlint --from $(git rev-list --max-parents=0 HEAD) --to HEAD",
     "dev": "pnpm -r --parallel dev",

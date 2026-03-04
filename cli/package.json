@@ -1,0 +1,26 @@
+{
+  "name": "@unimetrics/cli",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "bin": {
+    "lpdesk": "./dist/bin/lpdesk.js"
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "dev": "pnpm run start -- --help",
+    "lint": "tsc -p tsconfig.json --noEmit",
+    "start": "pnpm run build && node ./dist/bin/lpdesk.js",
+    "test": "echo \"No tests configured\""
+  },
+  "dependencies": {
+    "commander": "catalog:"
+  },
+  "devDependencies": {
+    "@types/node": "catalog:",
+    "typescript": "catalog:"
+  },
+  "engines": {
+    "node": ">=24 <25"
+  }
+}
