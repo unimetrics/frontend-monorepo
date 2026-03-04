@@ -8,15 +8,20 @@
     "commitlint:all": "commitlint --from $(git rev-list --max-parents=0 HEAD) --to HEAD",
     "dev": "pnpm -r --parallel dev",
     "lint": "pnpm -r lint",
+    "lint-staged": "lint-staged",
     "prepare": "husky",
     "prettier:check": "prettier --check .",
     "prettier:fix": "prettier --write .",
     "test": "pnpm -r test"
   },
+  "lint-staged": {
+    "*": "prettier --write --ignore-unknown"
+  },
   "devDependencies": {
     "@commitlint/cli": "20.4.3",
     "@commitlint/config-conventional": "20.4.3",
     "husky": "9.1.7",
+    "lint-staged": "16.2.4",
     "prettier": "3.8.1",
     "prettier-plugin-astro": "0.14.1",
     "prettier-plugin-multiline-arrays": "4.1.4",
