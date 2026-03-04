@@ -33,6 +33,9 @@ catalogs:
     typescript:
       specifier: 5.9.3
       version: 5.9.3
+    zod:
+      specifier: 3.25.76
+      version: 3.25.76
 
 importers:
 
@@ -80,6 +83,16 @@ importers:
       syncpack:
         specifier: 13.0.4
         version: 13.0.4(typescript@5.9.3)
+
+  api:
+    dependencies:
+      zod:
+        specifier: "catalog:"
+        version: 3.25.76
+    devDependencies:
+      typescript:
+        specifier: "catalog:"
+        version: 5.9.3
 
   app:
     dependencies:
@@ -141,6 +154,9 @@ importers:
 
   cli:
     dependencies:
+      "@unimetrics/api":
+        specifier: workspace:*
+        version: link:../api
       commander:
         specifier: "catalog:"
         version: 14.0.3

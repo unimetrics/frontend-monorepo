@@ -1,3 +1,4 @@
+import { createCaller, createLpDeskContext, lpDeskRouter } from "@unimetrics/api";
 import { Command } from "commander";
 
 import { colorizeBanner } from "./ansi.js";
@@ -11,16 +12,16 @@ type SharedOptions = {
 };
 
 type PositionsOptions = SharedOptions & {
-  chain: string;
+  chain?: string;
 };
 
 type ReportOptions = SharedOptions & {
-  format: "json" | "table";
-  period: string;
+  format?: "json" | "table";
+  period?: "7d" | "30d" | "90d";
 };
 
 type AlertsOptions = SharedOptions & {
-  active: boolean;
+  active?: boolean;
 };
 
 type DoctorOptions = {
@@ -45,14 +46,6 @@ function printBanner(): void {
   console.log("\nLP Desk CLI — type --help\n");
 }
 
-function buildBackendContext(options: SharedOptions | DoctorOptions) {
-  return {
-    apiUrl: options.apiUrl ?? process.env.LPDESK_API_URL ?? "http://localhost:8080",
-    tokenConfigured: Boolean(options.token ?? process.env.LPDESK_API_TOKEN),
-    wallet: "wallet" in options ? (options.wallet ?? null) : null,
-  };
-}
-
 function printResult(data: unknown[] | Record<string, unknown>, asJson = false): void {
   if (asJson) {
     console.log(JSON.stringify(data, null, 2));
@@ -75,6 +68,19 @@ function addSharedOptions(command: Command): Command {
     .option("--json", "Print JSON output");
 }
 
+function createLpDeskCaller(options: SharedOptions | DoctorOptions) {
+  const context = createLpDeskContext({
+    apiUrl: options.apiUrl ?? process.env.LPDESK_API_URL,
+    nodeVersion: process.versions.node,
+    token: options.token ?? process.env.LPDESK_API_TOKEN,
+  });
+
+  return createCaller({
+    getContext: () => context,
+    router: lpDeskRouter,
+  });
+}
+
 export async function runCli(): Promise<void> {
   printBanner();
 
@@ -91,79 +97,50 @@ export async function runCli(): Promise<void> {
   addSharedOptions(
     program.command("metrics").description("Show portfolio metrics")
   ).action(async (options: SharedOptions) => {
-    const backend = buildBackendContext(options);
+    const caller = createLpDeskCaller(options);
+    const result = await caller.metrics({
+      wallet: options.wallet,
+    });
 
-    printResult(
-      {
-        backend: {
-          apiUrl: backend.apiUrl,
-          tokenConfigured: backend.tokenConfigured,
-        },
-        command: "metrics",
-        fees24hUsd: 0,
-        pnl7dUsd: 0,
-        tvlUsd: 0,
-        wallet: backend.wallet ?? "default",
-      },
-      options.json
-    );
+    printResult(result, options.json);
   });
 
   addSharedOptions(program.command("positions").description("List LP positions"))
     .option("--chain <chain>", "Chain name", "ethereum")
     .action(async (options: PositionsOptions) => {
-      const backend = buildBackendContext(options);
+      const caller = createLpDeskCaller(options);
+      const result = await caller.positions({
+        chain: options.chain,
+        wallet: options.wallet,
+      });
 
-      printResult(
-        [
-          {
-            chain: options.chain,
-            command: "positions",
-            liquidityUsd: 0,
-            pool: "TODO",
-            unclaimedFeesUsd: 0,
-            wallet: backend.wallet ?? "default",
-          },
-        ],
-        options.json
-      );
+      printResult(result, options.json);
     });
 
   addSharedOptions(program.command("report").description("Generate a performance report"))
     .option("--period <period>", "Period: 7d|30d|90d", "30d")
     .option("--format <format>", "Output: table|json", "table")
     .action(async (options: ReportOptions) => {
-      const backend = buildBackendContext(options);
-      const report = {
-        command: "report",
-        feesUsd: 0,
-        netPnlUsd: 0,
+      const caller = createLpDeskCaller(options);
+      const result = await caller.report({
         period: options.period,
-        roiPct: 0,
-        wallet: backend.wallet ?? "default",
-      };
+        wallet: options.wallet,
+      });
 
       const asJson = options.format === "json" || options.json;
-      printResult(report, asJson);
+      printResult(result, asJson);
     });
 
   addSharedOptions(program.command("alerts").description("Show active alerts"))
-    .option("--active", "Only active alerts", true)
+    .option("--active", "Only active alerts")
     .action(async (options: AlertsOptions) => {
-      const backend = buildBackendContext(options);
+      const caller = createLpDeskCaller(options);
+      const result = await caller.alerts({
+        active: options.active ?? true,
+        wallet: options.wallet,
+      });
 
-      printResult(
-        [
-          {
-            active: Boolean(options.active),
-            command: "alerts",
-            severity: "info",
-            title: "No active alerts configured",
-            wallet: backend.wallet ?? "default",
-          },
-        ],
-        options.json
-      );
+      printResult(result, options.json);
     });
 
   program
@@ -173,25 +150,8 @@ export async function runCli(): Promise<void> {
     .option("--token <token>", "Backend auth token")
     .option("--json", "Print JSON output")
     .action(async (options: DoctorOptions) => {
-      const backend = buildBackendContext(options);
-
-      const result = [
-        {
-          check: "node_version",
-          details: `Detected Node.js ${process.versions.node}`,
-          status: process.versions.node.startsWith("24.") ? "ok" : "warn",
-        },
-        {
-          check: "api_url",
-          details: backend.apiUrl,
-          status: backend.apiUrl ? "ok" : "warn",
-        },
-        {
-          check: "api_token",
-          details: backend.tokenConfigured ? "configured" : "missing",
-          status: backend.tokenConfigured ? "ok" : "warn",
-        },
-      ];
+      const caller = createLpDeskCaller(options);
+      const result = await caller.doctor({});
 
       printResult(result, options.json);
     });

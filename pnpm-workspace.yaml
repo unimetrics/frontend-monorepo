@@ -1,4 +1,5 @@
 packages:
+  - api
   - app
   - cli
   - landing
@@ -15,3 +16,4 @@ catalog:
   react-native: 0.84.1
   tailwindcss: 4.2.1
   typescript: 5.9.3
+  zod: 3.25.76

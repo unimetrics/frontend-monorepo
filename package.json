@@ -4,6 +4,8 @@
   "private": true,
   "scripts": {
     "android": "pnpm --filter @unimetrics/mobile android",
+    "api:build": "pnpm --filter @unimetrics/api build",
+    "api:lint": "pnpm --filter @unimetrics/api lint",
     "build": "pnpm -r build",
     "changeset": "changeset",
     "changeset:status": "changeset status --verbose",
