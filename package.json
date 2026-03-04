@@ -1,19 +1,27 @@
 {
   "name": "frontend-monorepo",
-  "private": true,
   "version": "0.1.0",
+  "private": true,
   "scripts": {
-    "dev": "pnpm -r --parallel dev",
     "build": "pnpm -r build",
-    "test": "pnpm -r test",
-    "lint": "pnpm -r lint",
     "commitlint": "commitlint --from HEAD~1 --to HEAD",
     "commitlint:all": "commitlint --from $(git rev-list --max-parents=0 HEAD) --to HEAD",
-    "prepare": "husky"
+    "dev": "pnpm -r --parallel dev",
+    "lint": "pnpm -r lint",
+    "prepare": "husky",
+    "prettier:check": "prettier --check .",
+    "prettier:fix": "prettier --write .",
+    "test": "pnpm -r test"
   },
   "devDependencies": {
     "@commitlint/cli": "20.4.3",
     "@commitlint/config-conventional": "20.4.3",
-    "husky": "9.1.7"
+    "husky": "9.1.7",
+    "prettier": "3.8.1",
+    "prettier-plugin-astro": "0.14.1",
+    "prettier-plugin-multiline-arrays": "4.1.4",
+    "prettier-plugin-packagejson": "3.0.0",
+    "prettier-plugin-sort-json": "4.2.0",
+    "prettier-plugin-tailwindcss": "0.7.2"
   }
 }

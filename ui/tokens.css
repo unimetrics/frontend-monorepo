@@ -1,7 +1,7 @@
 :root {
-  --ui-font-sans: 'Inter Variable';
-  --ui-font-serif: 'Inter Variable';
-  --ui-font-heading: 'Inter Variable';
+  --ui-font-sans: "Inter Variable";
+  --ui-font-serif: "Inter Variable";
+  --ui-font-heading: "Inter Variable";
 
   --ui-color-primary: 1 97 239;
   --ui-color-secondary: 1 84 207;

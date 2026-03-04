@@ -1,16 +1,16 @@
 {
   "compilerOptions": {
-    "target": "ES2023",
+    "allowSyntheticDefaultImports": true,
+    "isolatedModules": true,
     "lib": ["ES2023"],
     "module": "ESNext",
-    "skipLibCheck": true,
-    "moduleResolution": "Bundler",
-    "allowSyntheticDefaultImports": true,
-    "resolveJsonModule": true,
-    "isolatedModules": true,
     "moduleDetection": "force",
+    "moduleResolution": "Bundler",
     "noEmit": true,
+    "resolveJsonModule": true,
+    "skipLibCheck": true,
     "strict": true,
+    "target": "ES2023",
     "types": ["node"]
   },
   "include": ["vite.config.ts"]

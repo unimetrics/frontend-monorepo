@@ -1,141 +1,89 @@
 {
-  "$schema": "http://json-schema.org/draft-07/schema#",
-  "type": "object",
   "properties": {
-    "site": {
-      "type": "object",
+    "analytics": {
       "properties": {
-        "name": {
-          "type": "string"
-        },
-        "site": {
-          "type": "string"
-        },
-        "base": {
-          "type": "string"
-        },
-        "trailingSlash": {
-          "type": "boolean"
-        },
-        "googleSiteVerificationId": {
-          "type": "string"
-        }
-      },
-      "required": ["name", "site", "base", "trailingSlash"],
-      "additionalProperties": false
-    },
-    "metadata": {
-      "type": "object",
-      "properties": {
-        "title": {
-          "type": "object",
+        "vendors": {
           "properties": {
-            "default": {
-              "type": "string"
-            },
-            "template": {
-              "type": "string"
-            }
-          },
-          "required": ["default", "template"]
-        },
-        "description": {
-          "type": "string"
-        },
-        "robots": {
-          "type": "object",
-          "properties": {
-            "index": {
-              "type": "boolean"
-            },
-            "follow": {
-              "type": "boolean"
-            }
-          },
-          "required": ["index", "follow"]
-        },
-        "openGraph": {
-          "type": "object",
-          "properties": {
-            "site_name": {
-              "type": "string"
-            },
-            "images": {
-              "type": "array",
-              "items": [
-                {
-                  "type": "object",
-                  "properties": {
-                    "url": {
-                      "type": "string"
-                    },
-                    "width": {
-                      "type": "integer"
-                    },
-                    "height": {
-                      "type": "integer"
-                    }
-                  },
-                  "required": ["url", "width", "height"]
+            "googleAnalytics": {
+              "properties": {
+                "id": {
+                  "type": ["string", "null"]
+                },
+                "partytown": {
+                  "default": true,
+                  "type": "boolean"
                 }
-              ]
-            },
-            "type": {
-              "type": "string"
+              },
+              "required": ["id"],
+              "type": "object"
             }
           },
-          "required": ["site_name", "images", "type"]
-        },
-        "twitter": {
-          "type": "object",
-          "properties": {
-            "handle": {
-              "type": "string"
-            },
-            "site": {
-              "type": "string"
-            },
-            "cardType": {
-              "type": "string"
-            }
-          },
-          "required": ["handle", "site", "cardType"]
+          "required": ["googleAnalytics"],
+          "type": "object"
         }
       },
-      "required": ["title", "description", "robots", "openGraph", "twitter"]
-    },
-    "i18n": {
-      "type": "object",
-      "properties": {
-        "language": {
-          "type": "string"
-        },
-        "textDirection": {
-          "type": "string"
-        }
-      },
-      "required": ["language", "textDirection"]
+      "required": ["vendors"],
+      "type": "object"
     },
     "apps": {
-      "type": "object",
       "properties": {
         "blog": {
-          "type": "object",
           "properties": {
+            "category": {
+              "properties": {
+                "isEnabled": {
+                  "type": "boolean"
+                },
+                "pathname": {
+                  "type": "string"
+                },
+                "robots": {
+                  "properties": {
+                    "follow": {
+                      "type": "boolean"
+                    },
+                    "index": {
+                      "type": "boolean"
+                    }
+                  },
+                  "required": ["index"],
+                  "type": "object"
+                }
+              },
+              "required": ["isEnabled", "pathname", "robots"],
+              "type": "object"
+            },
             "isEnabled": {
               "type": "boolean"
-            },
-            "postsPerPage": {
-              "type": "integer"
             },
             "isRelatedPostsEnabled": {
               "type": "boolean"
             },
-            "relatedPostsCount": {
-              "type": "integer"
+            "list": {
+              "properties": {
+                "isEnabled": {
+                  "type": "boolean"
+                },
+                "pathname": {
+                  "type": "string"
+                },
+                "robots": {
+                  "properties": {
+                    "follow": {
+                      "type": "boolean"
+                    },
+                    "index": {
+                      "type": "boolean"
+                    }
+                  },
+                  "required": ["index"],
+                  "type": "object"
+                }
+              },
+              "required": ["isEnabled", "pathname", "robots"],
+              "type": "object"
             },
             "post": {
-              "type": "object",
               "properties": {
                 "isEnabled": {
                   "type": "boolean"
@@ -144,70 +92,28 @@
                   "type": "string"
                 },
                 "robots": {
-                  "type": "object",
                   "properties": {
-                    "index": {
+                    "follow": {
                       "type": "boolean"
                     },
-                    "follow": {
+                    "index": {
                       "type": "boolean"
                     }
                   },
-                  "required": ["index"]
+                  "required": ["index"],
+                  "type": "object"
                 }
               },
-              "required": ["isEnabled", "permalink", "robots"]
+              "required": ["isEnabled", "permalink", "robots"],
+              "type": "object"
             },
-            "list": {
-              "type": "object",
-              "properties": {
-                "isEnabled": {
-                  "type": "boolean"
-                },
-                "pathname": {
-                  "type": "string"
-                },
-                "robots": {
-                  "type": "object",
-                  "properties": {
-                    "index": {
-                      "type": "boolean"
-                    },
-                    "follow": {
-                      "type": "boolean"
-                    }
-                  },
-                  "required": ["index"]
-                }
-              },
-              "required": ["isEnabled", "pathname", "robots"]
+            "postsPerPage": {
+              "type": "integer"
             },
-            "category": {
-              "type": "object",
-              "properties": {
-                "isEnabled": {
-                  "type": "boolean"
-                },
-                "pathname": {
-                  "type": "string"
-                },
-                "robots": {
-                  "type": "object",
-                  "properties": {
-                    "index": {
-                      "type": "boolean"
-                    },
-                    "follow": {
-                      "type": "boolean"
-                    }
-                  },
-                  "required": ["index"]
-                }
-              },
-              "required": ["isEnabled", "pathname", "robots"]
+            "relatedPostsCount": {
+              "type": "integer"
             },
             "tag": {
-              "type": "object",
               "properties": {
                 "isEnabled": {
                   "type": "boolean"
@@ -216,60 +122,168 @@
                   "type": "string"
                 },
                 "robots": {
-                  "type": "object",
                   "properties": {
-                    "index": {
+                    "follow": {
                       "type": "boolean"
                     },
-                    "follow": {
+                    "index": {
                       "type": "boolean"
                     }
                   },
-                  "required": ["index"]
+                  "required": ["index"],
+                  "type": "object"
                 }
               },
-              "required": ["isEnabled", "pathname", "robots"]
+              "required": ["isEnabled", "pathname", "robots"],
+              "type": "object"
             }
           },
-          "required": ["isEnabled", "postsPerPage", "post", "list", "category", "tag"]
+          "required": [
+            "isEnabled",
+            "postsPerPage",
+            "post",
+            "list",
+            "category",
+            "tag"
+          ],
+          "type": "object"
         }
       },
-      "required": ["blog"]
+      "required": ["blog"],
+      "type": "object"
     },
-    "analytics": {
-      "type": "object",
+    "i18n": {
       "properties": {
-        "vendors": {
-          "type": "object",
-          "properties": {
-            "googleAnalytics": {
-              "type": "object",
-              "properties": {
-                "id": {
-                  "type": ["string", "null"]
-                },
-                "partytown": {
-                  "type": "boolean",
-                  "default": true
-                }
-              },
-              "required": ["id"]
-            }
-          },
-          "required": ["googleAnalytics"]
+        "language": {
+          "type": "string"
+        },
+        "textDirection": {
+          "type": "string"
         }
       },
-      "required": ["vendors"]
+      "required": ["language", "textDirection"],
+      "type": "object"
+    },
+    "metadata": {
+      "properties": {
+        "description": {
+          "type": "string"
+        },
+        "openGraph": {
+          "properties": {
+            "images": {
+              "items": [
+                {
+                  "properties": {
+                    "height": {
+                      "type": "integer"
+                    },
+                    "url": {
+                      "type": "string"
+                    },
+                    "width": {
+                      "type": "integer"
+                    }
+                  },
+                  "required": ["url", "width", "height"],
+                  "type": "object"
+                }
+              ],
+              "type": "array"
+            },
+            "site_name": {
+              "type": "string"
+            },
+            "type": {
+              "type": "string"
+            }
+          },
+          "required": ["site_name", "images", "type"],
+          "type": "object"
+        },
+        "robots": {
+          "properties": {
+            "follow": {
+              "type": "boolean"
+            },
+            "index": {
+              "type": "boolean"
+            }
+          },
+          "required": ["index", "follow"],
+          "type": "object"
+        },
+        "title": {
+          "properties": {
+            "default": {
+              "type": "string"
+            },
+            "template": {
+              "type": "string"
+            }
+          },
+          "required": ["default", "template"],
+          "type": "object"
+        },
+        "twitter": {
+          "properties": {
+            "cardType": {
+              "type": "string"
+            },
+            "handle": {
+              "type": "string"
+            },
+            "site": {
+              "type": "string"
+            }
+          },
+          "required": ["handle", "site", "cardType"],
+          "type": "object"
+        }
+      },
+      "required": ["title", "description", "robots", "openGraph", "twitter"],
+      "type": "object"
+    },
+    "site": {
+      "additionalProperties": false,
+      "properties": {
+        "base": {
+          "type": "string"
+        },
+        "googleSiteVerificationId": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "site": {
+          "type": "string"
+        },
+        "trailingSlash": {
+          "type": "boolean"
+        }
+      },
+      "required": ["name", "site", "base", "trailingSlash"],
+      "type": "object"
     },
     "ui": {
-      "type": "object",
       "properties": {
         "theme": {
           "type": "string"
         }
       },
-      "required": ["theme"]
+      "required": ["theme"],
+      "type": "object"
     }
   },
-  "required": ["site", "metadata", "i18n", "apps", "analytics", "ui"]
+  "required": [
+    "site",
+    "metadata",
+    "i18n",
+    "apps",
+    "analytics",
+    "ui"
+  ],
+  "type": "object",
+  "$schema": "http://json-schema.org/draft-07/schema#"
 }

@@ -1,0 +1,14 @@
+#!/usr/bin/env sh
+set -e
+
+STAGED_FILES=$(git diff --cached --name-only --diff-filter=ACMR)
+
+if [ -z "$STAGED_FILES" ]; then
+  exit 0
+fi
+
+echo "$STAGED_FILES" | while IFS= read -r file; do
+  [ -z "$file" ] && continue
+  pnpm exec prettier --write --ignore-unknown "$file"
+  git add "$file"
+done

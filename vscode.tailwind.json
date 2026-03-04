@@ -1,0 +1,53 @@
+{
+  "atDirectives": [
+    {
+      "description": "CSS import. Tailwind v4 commonly uses @import \"tailwindcss\".",
+      "name": "@import"
+    },
+    {
+      "description": "@tailwind tailwindcss",
+      "name": "@tailwind"
+    },
+    {
+      "description": "@layer tailwindcss",
+      "name": "@layer"
+    },
+    {
+      "description": "@apply tailwindcss",
+      "name": "@apply"
+    },
+    {
+      "description": "Tailwind v4 theme tokens.",
+      "name": "@theme"
+    },
+    {
+      "description": "Tailwind v4 source/content declaration.",
+      "name": "@source"
+    },
+    {
+      "description": "Tailwind v4 custom utility declaration.",
+      "name": "@utility"
+    },
+    {
+      "description": "Tailwind v4 variant composition.",
+      "name": "@variant"
+    },
+    {
+      "description": "Tailwind v4 custom variant declaration.",
+      "name": "@custom-variant"
+    },
+    {
+      "description": "Tailwind v4 CSS reference import.",
+      "name": "@reference"
+    },
+    {
+      "description": "Tailwind config reference (compatibility mode).",
+      "name": "@config"
+    },
+    {
+      "description": "Tailwind plugin declaration (compatibility mode).",
+      "name": "@plugin"
+    }
+  ],
+  "version": 1.1
+}

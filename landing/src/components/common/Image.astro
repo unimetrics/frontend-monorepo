@@ -1,17 +1,17 @@
 ---
-import type { HTMLAttributes } from 'astro/types';
-import { findImage } from '~/utils/images';
+import type { HTMLAttributes } from "astro/types";
+import { findImage } from "~/utils/images";
 import {
   getImagesOptimized,
   astroAssetsOptimizer,
   unpicOptimizer,
   type ImageProps,
-} from '~/utils/images-optimization';
+} from "~/utils/images-optimization";
 
 type Props = ImageProps;
 type ImageType = {
   src: string;
-  attributes: HTMLAttributes<'img'>;
+  attributes: HTMLAttributes<"img">;
 };
 
 const props = Astro.props;
@@ -20,27 +20,30 @@ if (props.alt === undefined || props.alt === null) {
   throw new Error();
 }
 
-if (typeof props.width === 'string') {
+if (typeof props.width === "string") {
   props.width = parseInt(props.width);
 }
 
-if (typeof props.height === 'string') {
+if (typeof props.height === "string") {
   props.height = parseInt(props.height);
 }
 
 if (!props.loading) {
-  props.loading = 'lazy';
+  props.loading = "lazy";
 }
 
 if (!props.decoding) {
-  props.decoding = 'async';
+  props.decoding = "async";
 }
 
 const _image = await findImage(props.src);
 
 let image: ImageType | undefined = undefined;
 
-if (typeof _image === 'string' && (_image.startsWith('http://') || _image.startsWith('https://'))) {
+if (
+  typeof _image === "string" &&
+  (_image.startsWith("http://") || _image.startsWith("https://"))
+) {
   image = await getImagesOptimized(_image, props, unpicOptimizer);
 } else if (_image) {
   image = await getImagesOptimized(_image, props, astroAssetsOptimizer);
@@ -51,6 +54,11 @@ if (typeof _image === 'string' && (_image.startsWith('http://') || _image.starts
   !image ? (
     <Fragment />
   ) : (
-    <img src={image.src} crossorigin="anonymous" referrerpolicy="no-referrer" {...image.attributes} />
+    <img
+      src={image.src}
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+      {...image.attributes}
+    />
   )
 }

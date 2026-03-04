@@ -2,3 +2,6 @@ dist
 node_modules
 .github
 .changeset
+landing/.astro
+.agents
+landing/src/data/post/markdown-elements-demo-post.mdx

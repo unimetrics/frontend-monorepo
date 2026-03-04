@@ -1,0 +1,31 @@
+{
+  "arrowParens": "avoid",
+  "bracketSpacing": true,
+  "jsonRecursiveSort": true,
+  "jsonSortOrder": "{ \"placeThisFirst\": null, \"/^[a-zA-Z0-9]/\": \"caseInsensitiveNumeric\"  }",
+  "jsxSingleQuote": false,
+  "multilineArraysWrapThreshold": 5,
+  "overrides": [
+    {
+      "files": "*.astro",
+      "options": {
+        "parser": "astro"
+      }
+    }
+  ],
+  "plugins": [
+    "prettier-plugin-sort-json",
+    "prettier-plugin-packagejson",
+    "prettier-plugin-multiline-arrays",
+    "prettier-plugin-tailwindcss",
+    "prettier-plugin-astro"
+  ],
+  "printWidth": 90,
+  "semi": true,
+  "singleQuote": false,
+  "tailwindFunctions": [
+    "cn"
+  ],
+  "trailingComma": "es5",
+  "$schema": "http://json.schemastore.org/prettierrc"
+}

@@ -1,33 +1,30 @@
 {
   "name": "@unimetrics/landing",
   "version": "0.1.0",
+  "private": true,
   "description": "Unimetrics landing app based on AstroWind.",
   "type": "module",
-  "private": true,
-  "engines": {
-    "node": "^18.17.1 || ^20.3.0 || >= 21.0.0"
-  },
   "scripts": {
-    "dev": "astro dev",
-    "start": "astro dev",
-    "build": "astro build",
-    "preview": "astro preview",
     "astro": "astro",
+    "build": "astro build",
     "check": "pnpm run check:astro && pnpm run check:eslint && pnpm run check:prettier",
     "check:astro": "astro check",
     "check:eslint": "eslint .",
     "check:prettier": "prettier --check .",
+    "dev": "astro dev",
     "fix": "pnpm run fix:eslint && pnpm run fix:prettier",
     "fix:eslint": "eslint --fix .",
-    "fix:prettier": "prettier -w ."
+    "fix:prettier": "prettier -w .",
+    "preview": "astro preview",
+    "start": "astro dev"
   },
   "dependencies": {
-    "@unimetrics/ui": "workspace:*",
     "@astrojs/rss": "^4.0.12",
     "@astrojs/sitemap": "^3.4.2",
     "@astrolib/analytics": "^0.6.1",
     "@astrolib/seo": "^1.0.0-beta.8",
     "@fontsource-variable/inter": "^5.2.6",
+    "@unimetrics/ui": "workspace:*",
     "astro": "^5.12.9",
     "astro-embed": "^0.9.0",
     "astro-icon": "^1.1.5",
@@ -65,5 +62,8 @@
     "typescript": "^5.8.3",
     "typescript-eslint": "^8.39.0",
     "unist-util-visit": "^5.0.0"
+  },
+  "engines": {
+    "node": "^18.17.1 || ^20.3.0 || >= 21.0.0"
   }
 }

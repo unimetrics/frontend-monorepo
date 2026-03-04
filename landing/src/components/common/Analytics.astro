@@ -1,13 +1,53 @@
 ---
-import { GoogleAnalytics } from '@astrolib/analytics';
-import { ANALYTICS } from 'astrowind:config';
+import { ANALYTICS } from "astrowind:config";
+
+const measurementId = String(
+  ANALYTICS?.vendors?.googleAnalytics?.id ??
+    import.meta.env.PUBLIC_GA_MEASUREMENT_ID ??
+    ""
+).trim();
+const isAnalyticsEnabled = import.meta.env.PROD && measurementId.length > 0;
+const ga4InlineScript = `
+if (!window.__awGaInitialized) {
+  window.__awGaInitialized = true;
+  window.dataLayer = window.dataLayer || [];
+  window.gtag =
+    window.gtag ||
+    function gtag() {
+      window.dataLayer.push(arguments);
+    };
+
+  window.gtag('js', new Date());
+  window.gtag('config', ${JSON.stringify(measurementId)}, { send_page_view: false });
+
+  let lastTrackedPath = '';
+  const trackPageView = () => {
+    const path = \`\${window.location.pathname}\${window.location.search}\${window.location.hash}\`;
+    if (path === lastTrackedPath) return;
+
+    lastTrackedPath = path;
+    window.gtag('event', 'page_view', {
+      page_title: document.title,
+      page_location: window.location.href,
+      page_path: path
+    });
+  };
+
+  trackPageView();
+  document.addEventListener('astro:page-load', trackPageView);
+}
+`;
 ---
 
 {
-  ANALYTICS?.vendors?.googleAnalytics?.id ? (
-    <GoogleAnalytics
-      id={String(ANALYTICS.vendors.googleAnalytics.id)}
-      partytown={ANALYTICS?.vendors?.googleAnalytics?.partytown}
-    />
+  isAnalyticsEnabled ? (
+    <>
+      <script
+        is:inline
+        async
+        src={`https://www.googletagmanager.com/gtag/js?id=${measurementId}`}
+      />
+      <script is:inline set:html={ga4InlineScript} />
+    </>
   ) : null
 }
