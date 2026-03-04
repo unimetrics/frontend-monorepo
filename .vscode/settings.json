@@ -1,5 +1,5 @@
 {
-  "css.customData": ["./vscode.tailwind.json"],
+  "css.customData": ["./.vscode/tailwind/vscode.tailwind.json"],
   "editor.codeActionsOnSave": {
     "source.fixAll.eslint": "always"
   },
