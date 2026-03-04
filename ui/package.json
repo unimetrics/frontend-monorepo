@@ -8,6 +8,9 @@
     "./tailwind-preset": "./tailwind-preset.js"
   },
   "peerDependencies": {
-    "tailwindcss": "4.2.1"
+    "tailwindcss": "catalog:"
+  },
+  "engines": {
+    "node": ">=24 <25"
   }
 }

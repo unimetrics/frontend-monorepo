@@ -5,6 +5,9 @@
   "scripts": {
     "android": "pnpm --filter @unimetrics/mobile android",
     "build": "pnpm -r build",
+    "changeset": "changeset",
+    "changeset:status": "changeset status --verbose",
+    "changeset:version": "changeset version",
     "commitlint": "commitlint --from HEAD~1 --to HEAD",
     "commitlint:all": "commitlint --from $(git rev-list --max-parents=0 HEAD) --to HEAD",
     "dev": "pnpm -r --parallel dev",
@@ -12,9 +15,9 @@
     "lint": "pnpm -r lint",
     "lint-staged": "lint-staged",
     "mobile": "pnpm --filter @unimetrics/mobile dev",
-    "prepare": "husky",
     "prettier:check": "prettier --check .",
     "prettier:fix": "prettier --write .",
+    "setup": "pnpm install && husky && pnpm allow-scripts",
     "syncpack:check": "syncpack list-mismatches && syncpack lint-semver-ranges",
     "syncpack:fix": "syncpack fix-mismatches && syncpack set-semver-ranges",
     "syncpack:list": "syncpack list",
@@ -25,8 +28,11 @@
     "*": "prettier --write --ignore-unknown"
   },
   "devDependencies": {
+    "@changesets/cli": "2.29.7",
     "@commitlint/cli": "20.4.3",
     "@commitlint/config-conventional": "20.4.3",
+    "@lavamoat/allow-scripts": "3.4.3",
+    "@lavamoat/preinstall-always-fail": "2.1.1",
     "husky": "9.1.7",
     "lint-staged": "16.2.4",
     "prettier": "3.8.1",
@@ -36,5 +42,14 @@
     "prettier-plugin-sort-json": "4.2.0",
     "prettier-plugin-tailwindcss": "0.7.2",
     "syncpack": "13.0.4"
+  },
+  "packageManager": "pnpm@10.11.0",
+  "engines": {
+    "node": ">=24 <25"
+  },
+  "lavamoat": {
+    "allowScripts": {
+      "@lavamoat/preinstall-always-fail": false
+    }
   }
 }

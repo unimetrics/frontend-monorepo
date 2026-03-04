@@ -3,3 +3,13 @@ packages:
   - landing
   - mobile
   - ui
+
+catalog:
+  "@types/node": 25.3.3
+  "@types/react": 19.2.14
+  "@types/react-dom": 19.2.3
+  react: 19.2.4
+  react-dom: 19.2.4
+  react-native: 0.79.6
+  tailwindcss: 4.2.1
+  typescript: 5.9.3

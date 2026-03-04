@@ -8,6 +8,17 @@
   "indent": "  ",
   "semverGroups": [
     {
+      "isIgnored": true,
+      "label": "Ignore non-semver specifiers (catalog:, workspace:, etc.)",
+      "packages": [
+        "**"
+      ],
+      "specifierTypes": [
+        "unsupported",
+        "workspace-protocol"
+      ]
+    },
+    {
       "dependencies": [
         "**"
       ],
@@ -85,6 +96,17 @@
     "engines"
   ],
   "versionGroups": [
+    {
+      "isIgnored": true,
+      "label": "Ignore non-semver specifiers (catalog:, workspace:, etc.)",
+      "packages": [
+        "**"
+      ],
+      "specifierTypes": [
+        "unsupported",
+        "workspace-protocol"
+      ]
+    },
     {
       "dependencies": [
         "**"
