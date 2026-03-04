@@ -1,0 +1,102 @@
+{
+  "dependencyTypes": [
+    "peer",
+    "prod",
+    "dev"
+  ],
+  "filter": ".",
+  "indent": "  ",
+  "semverGroups": [
+    {
+      "dependencies": [
+        "**"
+      ],
+      "dependencyTypes": [
+        "prod"
+      ],
+      "label": "Prod dependencies",
+      "packages": [
+        "**"
+      ],
+      "range": ""
+    },
+    {
+      "dependencies": [
+        "**"
+      ],
+      "dependencyTypes": [
+        "peer"
+      ],
+      "label": "All peer dependencies",
+      "packages": [
+        "**"
+      ],
+      "range": ""
+    },
+    {
+      "dependencies": [
+        "**"
+      ],
+      "dependencyTypes": [
+        "dev"
+      ],
+      "label": "Dev dependencies",
+      "packages": [
+        "**"
+      ],
+      "range": ""
+    }
+  ],
+  "sortAz": [
+    "contributors",
+    "dependencies",
+    "devDependencies",
+    "keywords",
+    "peerDependencies",
+    "resolutions",
+    "scripts"
+  ],
+  "sortFirst": [
+    "name",
+    "description",
+    "version",
+    "author",
+    "private",
+    "license",
+    "keywords",
+    "repository",
+    "homepage",
+    "bugs",
+    "main",
+    "module",
+    "browser",
+    "types",
+    "typings",
+    "exports",
+    "files",
+    "bin",
+    "scripts",
+    "dependencies",
+    "devDependencies",
+    "peerDependencies",
+    "optionalDependencies",
+    "bundledDependencies",
+    "resolutions",
+    "engines"
+  ],
+  "versionGroups": [
+    {
+      "dependencies": [
+        "**"
+      ],
+      "dependencyTypes": [
+        "peer",
+        "prod"
+      ],
+      "packages": [
+        "**"
+      ]
+    }
+  ],
+  "$schema": "https://unpkg.com/syncpack@13.0.4/dist/schema.json"
+}

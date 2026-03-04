@@ -12,6 +12,9 @@
     "prepare": "husky",
     "prettier:check": "prettier --check .",
     "prettier:fix": "prettier --write .",
+    "syncpack:check": "syncpack list-mismatches && syncpack lint-semver-ranges",
+    "syncpack:fix": "syncpack fix-mismatches && syncpack set-semver-ranges",
+    "syncpack:list": "syncpack list",
     "test": "pnpm -r test"
   },
   "lint-staged": {
@@ -27,6 +30,7 @@
     "prettier-plugin-multiline-arrays": "4.1.4",
     "prettier-plugin-packagejson": "3.0.0",
     "prettier-plugin-sort-json": "4.2.0",
-    "prettier-plugin-tailwindcss": "0.7.2"
+    "prettier-plugin-tailwindcss": "0.7.2",
+    "syncpack": "13.0.4"
   }
 }

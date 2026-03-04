@@ -1,5 +1,11 @@
 {
   "css.customData": ["./vscode.tailwind.json"],
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": "always"
+  },
+  "editor.formatOnPaste": true,
+  "editor.formatOnSave": true,
+  "editor.formatOnType": true,
   "eslint.useFlatConfig": true,
   "eslint.validate": [
     "javascript",
@@ -9,6 +15,7 @@
     "typescriptreact"
   ],
   "files.associations": {
+    "*.css": "tailwindcss",
     "*.mdx": "markdown"
   },
   "prettier.documentSelectors": ["**/*.astro"],
@@ -17,5 +24,17 @@
   },
   "[astro]": {
     "editor.defaultFormatter": "astro-build.astro-vscode"
+  },
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[json]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[typescript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[typescriptreact]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
   }
 }

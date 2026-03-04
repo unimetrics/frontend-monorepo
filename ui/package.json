@@ -8,6 +8,6 @@
     "./tailwind-preset": "./tailwind-preset.js"
   },
   "peerDependencies": {
-    "tailwindcss": "^3.4.0"
+    "tailwindcss": "4.2.1"
   }
 }
