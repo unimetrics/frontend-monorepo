@@ -1,0 +1,21 @@
+{
+  "expo": {
+    "android": {
+      "package": "com.unimetrics.mobile"
+    },
+    "ios": {
+      "bundleIdentifier": "com.unimetrics.mobile",
+      "supportsTablet": true
+    },
+    "name": "Unimetrics Mobile",
+    "newArchEnabled": true,
+    "orientation": "portrait",
+    "scheme": "unimetrics",
+    "slug": "unimetrics-mobile",
+    "userInterfaceStyle": "automatic",
+    "version": "1.0.0",
+    "web": {
+      "bundler": "metro"
+    }
+  }
+}

@@ -26,6 +26,10 @@ build-ladle
 # misc
 .DS_Store
 *.pem
+mobile/.expo
+mobile/.expo-shared
+mobile/android
+mobile/ios
 
 # debug
 npm-debug.log*

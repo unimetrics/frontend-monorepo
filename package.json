@@ -3,19 +3,23 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
+    "android": "pnpm --filter @unimetrics/mobile android",
     "build": "pnpm -r build",
     "commitlint": "commitlint --from HEAD~1 --to HEAD",
     "commitlint:all": "commitlint --from $(git rev-list --max-parents=0 HEAD) --to HEAD",
     "dev": "pnpm -r --parallel dev",
+    "ios": "pnpm --filter @unimetrics/mobile ios",
     "lint": "pnpm -r lint",
     "lint-staged": "lint-staged",
+    "mobile": "pnpm --filter @unimetrics/mobile dev",
     "prepare": "husky",
     "prettier:check": "prettier --check .",
     "prettier:fix": "prettier --write .",
     "syncpack:check": "syncpack list-mismatches && syncpack lint-semver-ranges",
     "syncpack:fix": "syncpack fix-mismatches && syncpack set-semver-ranges",
     "syncpack:list": "syncpack list",
-    "test": "pnpm -r test"
+    "test": "pnpm -r test",
+    "web:mobile": "pnpm --filter @unimetrics/mobile web"
   },
   "lint-staged": {
     "*": "prettier --write --ignore-unknown"

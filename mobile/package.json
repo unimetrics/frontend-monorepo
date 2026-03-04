@@ -1,0 +1,25 @@
+{
+  "name": "@unimetrics/mobile",
+  "version": "0.1.0",
+  "private": true,
+  "main": "index.ts",
+  "scripts": {
+    "android": "expo start --android",
+    "build": "echo \"Use EAS Build for production artifacts\"",
+    "dev": "expo start --clear",
+    "ios": "expo start --ios",
+    "lint": "tsc --noEmit",
+    "test": "echo \"No tests configured\"",
+    "web": "expo start --web"
+  },
+  "dependencies": {
+    "expo": "53.0.20",
+    "react": "19.2.4",
+    "react-native": "0.79.6"
+  },
+  "devDependencies": {
+    "@babel/core": "7.28.4",
+    "@types/react": "19.2.14",
+    "typescript": "5.9.3"
+  }
+}
