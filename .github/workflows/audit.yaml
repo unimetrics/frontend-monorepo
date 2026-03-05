@@ -1,4 +1,4 @@
-name: Npm dependencies audit
+name: Dependencies audit
 
 on:
   pull_request:
