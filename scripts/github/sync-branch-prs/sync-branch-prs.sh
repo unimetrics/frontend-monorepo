@@ -87,14 +87,26 @@ This PR was created automatically by the branch sync workflow.
 EOF
   )
 
+  set +e
   created_url="$(
     gh pr create \
       --repo "${repository}" \
       --base "${target_branch}" \
       --head "${owner}:${source_branch}" \
       --title "${title}" \
-      --body "${body}"
+      --body "${body}" 2>&1
   )"
+  create_status=$?
+  set -e
+
+  if [[ "${create_status}" -ne 0 ]]; then
+    printf "%s\n" "${created_url}" >&2
+    if grep -Fq "GitHub Actions is not permitted to create or approve pull requests" <<<"${created_url}"; then
+      echo "Branch sync requires a token that can create pull requests." >&2
+      echo "Set GITHUB_TOKEN with 'repo' scope in your workflow to enable this." >&2
+    fi
+    exit "${create_status}"
+  fi
 
   echo "Created sync PR for ${source_branch} -> ${target_branch}: ${created_url}"
 done

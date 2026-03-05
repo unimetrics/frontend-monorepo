@@ -23,7 +23,7 @@ jobs:
 
       - name: Create or update sync PRs
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.CHANGESETS_TOKEN || secrets.GITHUB_TOKEN }}
           GITHUB_REPOSITORY: ${{ github.repository }}
           SOURCE_BRANCH: main
           TARGET_BRANCHES: test dev
