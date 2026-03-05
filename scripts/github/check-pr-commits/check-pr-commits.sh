@@ -2,7 +2,7 @@
 
 set -euo pipefail
 
-cd "$(dirname "$0")/../.."
+cd "$(dirname "$0")/../../.."
 
 base_sha="${PR_BASE_SHA:-}"
 base_ref="${PR_BASE_REF:-${GITHUB_BASE_REF:-}}"

@@ -44,6 +44,8 @@ Identify correctness, security, and regression risk before merge. Prioritize beh
 
 - verify code changes are consistent with `.ai/style-guide.md`
 - verify commit messages in scope are consistent with `commit-message-policy.md`
+- when scripts are added/changed/moved, verify per-script folder structure and companion `README.md` are present
+- verify all script callsites are updated (`package.json`, workflows/actions, and workflow path filters)
 
 6. Validate meta/documentation changes:
 

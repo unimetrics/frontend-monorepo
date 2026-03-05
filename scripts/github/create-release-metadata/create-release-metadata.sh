@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 
 set -euo pipefail
+cd "$(dirname "$0")/../../.."
 
 merge_sha="${MERGE_SHA:-}"
 pr_number="${PR_NUMBER:-}"
