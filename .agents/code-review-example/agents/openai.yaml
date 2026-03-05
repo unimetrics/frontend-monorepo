@@ -1,4 +1,0 @@
-interface:
-  display_name: "Code Review Example"
-  short_description: "Run a quick bug and risk review on changed files."
-  default_prompt: "Review the current code changes and report bugs, regressions, and missing tests with severity."

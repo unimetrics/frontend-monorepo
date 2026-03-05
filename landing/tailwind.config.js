@@ -1,10 +1,17 @@
+import typographyPlugin from "@tailwindcss/typography";
 import uiTailwindPreset from "@unimetrics/ui/tailwind-preset";
 import plugin from "tailwindcss/plugin";
-import typographyPlugin from "@tailwindcss/typography";
 
 export default {
-  presets: [uiTailwindPreset],
   content: ["./src/**/*.{astro,html,js,jsx,json,md,mdx,svelte,ts,tsx,vue}"],
+  darkMode: "class",
+  plugins: [
+    typographyPlugin,
+    plugin(({ addVariant }) => {
+      addVariant("intersect", "&:not([no-intersect])");
+    }),
+  ],
+  presets: [uiTailwindPreset],
   theme: {
     extend: {
       animation: {
@@ -19,11 +26,4 @@ export default {
       },
     },
   },
-  plugins: [
-    typographyPlugin,
-    plugin(({ addVariant }) => {
-      addVariant("intersect", "&:not([no-intersect])");
-    }),
-  ],
-  darkMode: "class",
 };

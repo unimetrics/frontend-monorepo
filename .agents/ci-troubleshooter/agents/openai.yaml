@@ -1,0 +1,4 @@
+interface:
+  display_name: "CI Troubleshooter"
+  short_description: "Find and fix failing CI checks fast."
+  default_prompt: "Use $ci-troubleshooter to diagnose this failing GitHub Actions workflow and apply the minimal safe fix."
