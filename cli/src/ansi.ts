@@ -31,7 +31,7 @@ export function colorizeBanner(input: string): string {
     const paletteIndex = Math.min(PALETTE.length - 1, Math.floor(ratio * PALETTE.length));
     const color = PALETTE[paletteIndex];
 
-    output += `\x1b[38;5;${color}m${char}\x1b[0m`;
+    output += `\u001B[38;5;${color}m${char}\u001B[0m`;
   }
 
   return output;

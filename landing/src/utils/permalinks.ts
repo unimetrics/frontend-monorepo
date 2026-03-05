@@ -1,6 +1,5 @@
+import { APP_BLOG, SITE } from "astrowind:config";
 import slugify from "limax";
-
-import { SITE, APP_BLOG } from "astrowind:config";
 
 import { trim } from "~/utils/utils";
 
@@ -55,34 +54,41 @@ export const getPermalink = (slug = "", type = "page"): string => {
   }
 
   switch (type) {
-    case "home":
-      permalink = getHomePermalink();
-      break;
-
-    case "blog":
-      permalink = getBlogPermalink();
-      break;
-
-    case "asset":
+    case "asset": {
       permalink = getAsset(slug);
       break;
+    }
 
-    case "category":
+    case "blog": {
+      permalink = getBlogPermalink();
+      break;
+    }
+
+    case "category": {
       permalink = createPath(CATEGORY_BASE, trimSlash(slug));
       break;
+    }
 
-    case "tag":
-      permalink = createPath(TAG_BASE, trimSlash(slug));
+    case "home": {
+      permalink = getHomePermalink();
       break;
+    }
 
-    case "post":
+    case "post": {
       permalink = createPath(trimSlash(slug));
       break;
+    }
+
+    case "tag": {
+      permalink = createPath(TAG_BASE, trimSlash(slug));
+      break;
+    }
 
     case "page":
-    default:
+    default: {
       permalink = createPath(slug);
       break;
+    }
   }
 
   return definitivePermalink(permalink);
@@ -117,14 +123,27 @@ export const applyGetPermalinks = (menu: object = {}) => {
         if (typeof menu[key] === "string") {
           obj[key] = getPermalink(menu[key]);
         } else if (typeof menu[key] === "object") {
-          if (menu[key].type === "home") {
-            obj[key] = getHomePermalink();
-          } else if (menu[key].type === "blog") {
-            obj[key] = getBlogPermalink();
-          } else if (menu[key].type === "asset") {
-            obj[key] = getAsset(menu[key].url);
-          } else if (menu[key].url) {
-            obj[key] = getPermalink(menu[key].url, menu[key].type);
+          switch (menu[key].type) {
+            case "asset": {
+              obj[key] = getAsset(menu[key].url);
+
+              break;
+            }
+            case "blog": {
+              obj[key] = getBlogPermalink();
+
+              break;
+            }
+            case "home": {
+              obj[key] = getHomePermalink();
+
+              break;
+            }
+            default: {
+              if (menu[key].url) {
+                obj[key] = getPermalink(menu[key].url, menu[key].type);
+              }
+            }
           }
         }
       } else {

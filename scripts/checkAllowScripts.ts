@@ -3,7 +3,7 @@
  *
  * This script checks that the lavamoat allow-scripts configuration
  * in package.json is up-to-date with all installed dependencies.
- * It runs `allow-scripts auto` and verifies no changes are needed.
+ * It runs `pnpm exec allow-scripts auto` and verifies no changes are needed.
  */
 /// <reference types="node" />
 
@@ -18,7 +18,7 @@ export function main() {
 
   console.info("Running allow-scripts auto to check configuration...");
 
-  const result = spawnSync("npx", ["allow-scripts", "auto"], {
+  const result = spawnSync("pnpm", ["exec", "allow-scripts", "auto"], {
     cwd: rootDir,
     encoding: "utf8",
     stdio: ["ignore", "pipe", "pipe"],
@@ -50,7 +50,7 @@ export function main() {
 
     throw new Error(
       "allow-scripts configuration is outdated!\n" +
-        "Run 'npx allow-scripts auto' to update the configuration,\n" +
+        "Run 'pnpm exec allow-scripts auto' to update the configuration,\n" +
         "then commit the changes to package.json." +
         outputSection
     );

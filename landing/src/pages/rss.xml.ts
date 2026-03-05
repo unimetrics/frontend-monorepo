@@ -1,6 +1,6 @@
 import { getRssString } from "@astrojs/rss";
+import { APP_BLOG, METADATA, SITE } from "astrowind:config";
 
-import { SITE, METADATA, APP_BLOG } from "astrowind:config";
 import { fetchPosts } from "~/utils/blog";
 import { getPermalink } from "~/utils/permalinks";
 
@@ -15,16 +15,16 @@ export const GET = async () => {
   const posts = await fetchPosts();
 
   const rss = await getRssString({
-    title: `${SITE.name}’s Blog`,
     description: METADATA?.description || "",
+    items: posts.map(post => ({
+      description: post.excerpt,
+      link: getPermalink(post.permalink, "post"),
+      pubDate: post.publishDate,
+      title: post.title,
+    })),
     site: import.meta.env.SITE,
 
-    items: posts.map(post => ({
-      link: getPermalink(post.permalink, "post"),
-      title: post.title,
-      description: post.excerpt,
-      pubDate: post.publishDate,
-    })),
+    title: `${SITE.name}’s Blog`,
 
     trailingSlash: SITE.trailingSlash,
   });

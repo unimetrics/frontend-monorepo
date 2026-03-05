@@ -1,6 +1,6 @@
-import { defineConfig } from "vite";
-import react from "@vitejs/plugin-react-swc";
 import tailwindcss from "@tailwindcss/vite";
+import react from "@vitejs/plugin-react-swc";
+import { defineConfig } from "vite";
 import { VitePWA } from "vite-plugin-pwa";
 
 export default defineConfig({
@@ -8,28 +8,28 @@ export default defineConfig({
     react(),
     tailwindcss(),
     VitePWA({
-      registerType: "autoUpdate",
-      includeAssets: ["pwa.svg"],
-      manifest: {
-        name: "Unimetrics App",
-        short_name: "Unimetrics",
-        description: "Unimetrics web app",
-        theme_color: "#0a0a0a",
-        background_color: "#ffffff",
-        display: "standalone",
-        start_url: "/",
-        icons: [
-          {
-            src: "/pwa.svg",
-            sizes: "any",
-            type: "image/svg+xml",
-            purpose: "any",
-          },
-        ],
-      },
       devOptions: {
         enabled: true,
       },
+      includeAssets: ["pwa.svg"],
+      manifest: {
+        background_color: "#ffffff",
+        description: "Unimetrics web app",
+        display: "standalone",
+        icons: [
+          {
+            purpose: "any",
+            sizes: "any",
+            src: "/pwa.svg",
+            type: "image/svg+xml",
+          },
+        ],
+        name: "Unimetrics App",
+        short_name: "Unimetrics",
+        start_url: "/",
+        theme_color: "#0a0a0a",
+      },
+      registerType: "autoUpdate",
     }),
   ],
 });

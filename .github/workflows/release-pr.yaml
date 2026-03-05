@@ -19,7 +19,7 @@ jobs:
         uses: actions/checkout@v5
 
       - name: Install dependencies
-        uses: ./.github/actions/install-dependencies
+        uses: ./.github/actions/install-deps
         with:
           setup-node: true
           audit: false

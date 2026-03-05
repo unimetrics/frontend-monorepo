@@ -1,14 +1,15 @@
-import getReadingTime from "reading-time";
-import { toString } from "mdast-util-to-string";
-import { visit } from "unist-util-visit";
 import type { RehypePlugin, RemarkPlugin } from "@astrojs/markdown-remark";
+
+import { toString } from "mdast-util-to-string";
+import getReadingTime from "reading-time";
+import { visit } from "unist-util-visit";
 
 export const readingTimeRemarkPlugin: RemarkPlugin = () => {
   return function (tree, file) {
     const textOnPage = toString(tree);
     const readingTime = Math.ceil(getReadingTime(textOnPage).minutes);
 
-    if (typeof file?.data?.astro?.frontmatter !== "undefined") {
+    if (file?.data?.astro?.frontmatter !== undefined) {
       file.data.astro.frontmatter.readingTime = readingTime;
     }
   };
@@ -23,12 +24,12 @@ export const responsiveTablesRehypePlugin: RehypePlugin = () => {
 
       if (child.type === "element" && child.tagName === "table") {
         tree.children[i] = {
-          type: "element",
-          tagName: "div",
+          children: [child],
           properties: {
             style: "overflow:auto",
           },
-          children: [child],
+          tagName: "div",
+          type: "element",
         };
 
         i++;

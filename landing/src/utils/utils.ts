@@ -1,21 +1,21 @@
 import { I18N } from "astrowind:config";
 
 export const formatter: Intl.DateTimeFormat = new Intl.DateTimeFormat(I18N?.language, {
-  year: "numeric",
-  month: "short",
   day: "numeric",
+  month: "short",
   timeZone: "UTC",
+  year: "numeric",
 });
 
 export const getFormattedDate = (date: Date): string =>
   date ? formatter.format(date) : "";
 
 export const trim = (str = "", ch?: string) => {
-  let start = 0,
-    end = str.length || 0;
+  let end = str.length || 0,
+    start = 0;
   while (start < end && str[start] === ch) ++start;
   while (end > start && str[end - 1] === ch) --end;
-  return start > 0 || end < str.length ? str.substring(start, end) : str;
+  return start > 0 || end < str.length ? str.slice(start, end) : str;
 };
 
 // Function to format a number in thousands (K) or millions (M) format depending on its value
@@ -24,27 +24,24 @@ export const toUiAmount = (amount: number) => {
 
   let value: string;
 
-  if (amount >= 1000000000) {
-    const formattedNumber = (amount / 1000000000).toFixed(1);
-    if (Number(formattedNumber) === parseInt(formattedNumber)) {
-      value = parseInt(formattedNumber) + "B";
-    } else {
-      value = formattedNumber + "B";
-    }
-  } else if (amount >= 1000000) {
-    const formattedNumber = (amount / 1000000).toFixed(1);
-    if (Number(formattedNumber) === parseInt(formattedNumber)) {
-      value = parseInt(formattedNumber) + "M";
-    } else {
-      value = formattedNumber + "M";
-    }
+  if (amount >= 1_000_000_000) {
+    const formattedNumber = (amount / 1_000_000_000).toFixed(1);
+    value =
+      Number(formattedNumber) === Number.parseInt(formattedNumber)
+        ? Number.parseInt(formattedNumber) + "B"
+        : formattedNumber + "B";
+  } else if (amount >= 1_000_000) {
+    const formattedNumber = (amount / 1_000_000).toFixed(1);
+    value =
+      Number(formattedNumber) === Number.parseInt(formattedNumber)
+        ? Number.parseInt(formattedNumber) + "M"
+        : formattedNumber + "M";
   } else if (amount >= 1000) {
     const formattedNumber = (amount / 1000).toFixed(1);
-    if (Number(formattedNumber) === parseInt(formattedNumber)) {
-      value = parseInt(formattedNumber) + "K";
-    } else {
-      value = formattedNumber + "K";
-    }
+    value =
+      Number(formattedNumber) === Number.parseInt(formattedNumber)
+        ? Number.parseInt(formattedNumber) + "K"
+        : formattedNumber + "K";
   } else {
     value = Number(amount).toFixed(0);
   }
