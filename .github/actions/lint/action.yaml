@@ -12,6 +12,10 @@ runs:
       run: pnpm run lint:eslint
       shell: bash
 
+    - name: Check circular dependencies with Madge
+      run: pnpm run lint:circular
+      shell: bash
+
     - name: Check formatting
       run: pnpm run prettier:check
       shell: bash
@@ -22,4 +26,8 @@ runs:
 
     - name: Check unused files and dependencies with Knip
       run: pnpm run lint:knip
+      shell: bash
+
+    - name: Check if allow-scripts is up-to-date
+      run: pnpm run lint:allow-scripts
       shell: bash

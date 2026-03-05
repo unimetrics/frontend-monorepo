@@ -198,13 +198,6 @@ export default [
     },
   },
   {
-    files: ["landing/**/*.astro/*.js"],
-    rules: {
-      "unicorn/consistent-function-scoping": "off",
-      "unicorn/prefer-module": "off",
-    },
-  },
-  {
     files: ["landing/src/components/common/BasicScripts.astro"],
     rules: {
       "unicorn/consistent-function-scoping": "off",
