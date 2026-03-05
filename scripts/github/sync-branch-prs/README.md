@@ -24,7 +24,7 @@ bash scripts/github/sync-branch-prs/sync-branch-prs.sh
 
 - Required env:
   - `GITHUB_REPOSITORY` (`owner/repo`)
-  - `GITHUB_TOKEN` (used by `gh` auth)
+  - `GITHUB_TOKEN` (used by `gh` auth, must have permission to create pull requests)
 - Optional env:
   - `SOURCE_BRANCH` (default: `main`)
   - `TARGET_BRANCHES` space-separated list (default: `test dev`)
@@ -37,3 +37,4 @@ bash scripts/github/sync-branch-prs/sync-branch-prs.sh
   - skips if an open sync PR already exists
   - otherwise creates a PR and prints its URL
 - Exits non-zero on unexpected CLI/git failures.
+- If PR creation is blocked by repository policy, prints a clear message with the required token/settings fix.

@@ -1,7 +1,9 @@
 {
   "conditions": {
     "ref_name": {
-      "exclude": [],
+      "exclude": [
+        "refs/heads/changeset-release/*"
+      ],
       "include": [
         "refs/heads/dev"
       ]
