@@ -1,28 +1,29 @@
+import type { OpenGraph } from "@astrolib/seo";
+import type { ImageMetadata } from "astro";
+
+import type { ImagesOptimizer } from "./images-optimization";
+
 import {
+  astroAssetsOptimizer,
   isUnpicCompatible,
   unpicOptimizer,
-  astroAssetsOptimizer,
 } from "./images-optimization";
-import type { ImageMetadata } from "astro";
-import type { OpenGraph } from "@astrolib/seo";
-import type { ImagesOptimizer } from "./images-optimization";
 /** The optimized image shape returned by our ImagesOptimizer */
 type OptimizedImage = Awaited<ReturnType<ImagesOptimizer>>[0];
 
 const load = async function () {
-  let images: Record<string, () => Promise<unknown>> | undefined = undefined;
+  let images: Record<string, () => Promise<unknown>> | undefined;
   try {
     images = import.meta.glob(
       "~/assets/images/**/*.{jpeg,jpg,png,tiff,webp,gif,svg,JPEG,JPG,PNG,TIFF,WEBP,GIF,SVG}"
     );
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  } catch (error) {
+  } catch {
     // continue regardless of error
   }
   return images;
 };
 
-let _images: Record<string, () => Promise<unknown>> | undefined = undefined;
+let _images: Record<string, () => Promise<unknown>> | undefined;
 
 /** */
 export const fetchLocalImages = async () => {
@@ -32,8 +33,8 @@ export const fetchLocalImages = async () => {
 
 /** */
 export const findImage = async (
-  imagePath?: string | ImageMetadata | null
-): Promise<string | ImageMetadata | undefined | null> => {
+  imagePath?: ImageMetadata | null | string
+): Promise<ImageMetadata | null | string | undefined> => {
   // Not string
   if (typeof imagePath !== "string") {
     return imagePath;
@@ -64,7 +65,7 @@ export const findImage = async (
 /** */
 export const adaptOpenGraphImages = async (
   openGraph: OpenGraph = {},
-  astroSite: URL | undefined = new URL("")
+  astroSite: undefined | URL = new URL("")
 ): Promise<OpenGraph> => {
   if (!openGraph?.images?.length) {
     return openGraph;
@@ -121,6 +122,10 @@ export const adaptOpenGraphImages = async (
 
         if (typeof _image === "object") {
           return {
+            height:
+              "height" in _image && typeof _image.height === "number"
+                ? _image.height
+                : undefined,
             url:
               "src" in _image && typeof _image.src === "string"
                 ? String(new URL(_image.src, astroSite))
@@ -128,10 +133,6 @@ export const adaptOpenGraphImages = async (
             width:
               "width" in _image && typeof _image.width === "number"
                 ? _image.width
-                : undefined,
-            height:
-              "height" in _image && typeof _image.height === "number"
-                ? _image.height
                 : undefined,
           };
         }

@@ -1,17 +1,17 @@
+import * as Sentry from "@sentry/react";
+import { ThemeProvider } from "next-themes";
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
-import * as Sentry from "@sentry/react";
 import { HelmetProvider } from "react-helmet-async";
 import { I18nextProvider } from "react-i18next";
-import { ThemeProvider } from "next-themes";
 
 import "./app/styles/index.css";
+import { registerSW } from "virtual:pwa-register";
+
 import { App } from "./app/App";
 import { initAnalytics } from "./shared/lib/analytics";
 import i18n from "./shared/lib/i18n";
 import { initSentry } from "./shared/lib/sentry";
-
-import { registerSW } from "virtual:pwa-register";
 
 initSentry();
 
@@ -21,7 +21,7 @@ registerSW({
 
 initAnalytics();
 
-createRoot(document.getElementById("root")!).render(
+createRoot(document.querySelector("#root")!).render(
   <Sentry.ErrorBoundary fallback={<p>Something went wrong.</p>}>
     <StrictMode>
       <HelmetProvider>

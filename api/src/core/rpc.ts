@@ -1,21 +1,9 @@
 import { toApiError } from "./errors.js";
 
-export interface RpcRequest {
-  id: string;
-  input: unknown;
-  procedure: string;
-}
-
 export interface RpcErrorPayload {
   code: string;
   details?: unknown;
   message: string;
-}
-
-export interface RpcSuccessResponse {
-  id: string;
-  ok: true;
-  result: unknown;
 }
 
 export interface RpcFailureResponse {
@@ -24,14 +12,29 @@ export interface RpcFailureResponse {
   ok: false;
 }
 
+export interface RpcRequest {
+  id: string;
+  input: unknown;
+  procedure: string;
+}
+
 export type RpcResponse = RpcFailureResponse | RpcSuccessResponse;
 
+export interface RpcSuccessResponse {
+  id: string;
+  ok: true;
+  result: unknown;
+}
+
+let rpcIdCounter = 0;
+
 export function createRpcId(): string {
-  if (typeof globalThis.crypto !== "undefined" && "randomUUID" in globalThis.crypto) {
+  if (globalThis.crypto !== undefined && "randomUUID" in globalThis.crypto) {
     return globalThis.crypto.randomUUID();
   }
 
-  return `rpc_${Date.now().toString(36)}_${Math.random().toString(36).slice(2, 10)}`;
+  rpcIdCounter += 1;
+  return `rpc_${Date.now().toString(36)}_${rpcIdCounter.toString(36)}`;
 }
 
 export function toRpcFailure(id: string, error: unknown): RpcFailureResponse {

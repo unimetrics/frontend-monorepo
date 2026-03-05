@@ -1,0 +1,22 @@
+{
+  "ignoreDependencies": [
+    "@iconify-json/flat-color-icons",
+    "@iconify-json/tabler",
+    "@types/mdx",
+    "prettier-plugin-astro",
+    "sharp",
+    "@babel/core",
+    "@feature-sliced/steiger-plugin",
+    "@lavamoat/preinstall-always-fail",
+    "madge"
+  ],
+  "ignoreFiles": [
+    "cli/bin/lpdesk.ts",
+    "landing/src/layouts/MarkdownLayout.astro",
+    "landing/src/data/post/astrowind-template-in-depth.mdx",
+    "landing/src/data/post/markdown-elements-demo-post.mdx",
+    "mobile/metro.config.js",
+    "steiger.config.ts"
+  ],
+  "$schema": "https://unpkg.com/knip@5/schema.json"
+}

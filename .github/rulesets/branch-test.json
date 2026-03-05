@@ -11,16 +11,11 @@
   "name": "Branch policy: test",
   "rules": [
     {
-      "type": "deletion"
-    },
-    {
-      "type": "non_fast_forward"
-    },
-    {
       "parameters": {
         "allowed_merge_methods": [
           "squash",
-          "rebase"
+          "rebase",
+          "merge"
         ],
         "dismiss_stale_reviews_on_push": true,
         "require_code_owner_review": true,
@@ -29,6 +24,27 @@
         "required_review_thread_resolution": true
       },
       "type": "pull_request"
+    },
+    {
+      "type": "required_signatures"
+    },
+    {
+      "parameters": {
+        "code_scanning_tools": [
+          {
+            "alerts_threshold": "errors",
+            "security_alerts_threshold": "medium_or_higher",
+            "tool": "CodeQL"
+          }
+        ]
+      },
+      "type": "code_scanning"
+    },
+    {
+      "parameters": {
+        "severity": "errors"
+      },
+      "type": "code_quality"
     }
   ],
   "target": "branch"

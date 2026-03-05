@@ -4,13 +4,13 @@ import { useTranslation } from "react-i18next";
 import { ThemeToggle } from "../../../shared/ui/theme-toggle";
 
 export const EmptyPage = () => {
-  const { t, i18n } = useTranslation();
+  const { i18n, t } = useTranslation();
 
   return (
     <>
       <Helmet>
         <title>{t("emptyPageTitle")}</title>
-        <meta name="description" content={t("emptyPageDescription")} />
+        <meta content={t("emptyPageDescription")} name="description" />
       </Helmet>
 
       <main className="min-h-screen bg-white px-6 py-12 text-slate-900 dark:bg-slate-950 dark:text-slate-100">
@@ -20,11 +20,11 @@ export const EmptyPage = () => {
 
             <div className="flex items-center gap-2">
               <button
-                type="button"
                 className="rounded border border-slate-300 px-3 py-1 text-sm dark:border-slate-700"
-                onClick={() =>
-                  void i18n.changeLanguage(i18n.language === "en" ? "ru" : "en")
-                }
+                onClick={async () => {
+                  await i18n.changeLanguage(i18n.language === "en" ? "ru" : "en");
+                }}
+                type="button"
               >
                 {i18n.language.toUpperCase()}
               </button>

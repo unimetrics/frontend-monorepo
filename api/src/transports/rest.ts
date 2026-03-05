@@ -1,10 +1,11 @@
+import type { ApiRouter, ProcedureDictionary } from "../core/types.js";
+
 import {
   ApiMethodNotAllowedError,
   ApiProcedureNotFoundError,
   toApiError,
 } from "../core/errors.js";
 import { executeProcedure } from "../core/router.js";
-import type { ApiRouter, ProcedureDictionary } from "../core/types.js";
 
 export interface RestHandlerRequest {
   body?: unknown;
@@ -28,28 +29,6 @@ interface RestHandlerOptions<Ctx, Procedures extends ProcedureDictionary<Ctx>> {
 const DEFAULT_HEADERS = {
   "content-type": "application/json",
 };
-
-function normalizeProcedurePath(pathname: string, basePath: string): string {
-  if (!pathname.startsWith(basePath)) {
-    return "";
-  }
-
-  return decodeURIComponent(pathname.slice(basePath.length).replace(/^\/+/, ""));
-}
-
-function getInputForMethod(request: RestHandlerRequest): unknown {
-  if (request.method === "GET") {
-    const encoded = request.query?.input;
-
-    if (!encoded) {
-      return request.query ?? {};
-    }
-
-    return JSON.parse(encoded);
-  }
-
-  return request.body ?? {};
-}
 
 export function createRestHandler<Ctx, Procedures extends ProcedureDictionary<Ctx>>(
   options: RestHandlerOptions<Ctx, Procedures>
@@ -107,4 +86,26 @@ export function createRestHandler<Ctx, Procedures extends ProcedureDictionary<Ct
       };
     }
   };
+}
+
+function getInputForMethod(request: RestHandlerRequest): unknown {
+  if (request.method === "GET") {
+    const encoded = request.query?.input;
+
+    if (!encoded) {
+      return request.query ?? {};
+    }
+
+    return JSON.parse(encoded);
+  }
+
+  return request.body ?? {};
+}
+
+function normalizeProcedurePath(pathname: string, basePath: string): string {
+  if (!pathname.startsWith(basePath)) {
+    return "";
+  }
+
+  return decodeURIComponent(pathname.slice(basePath.length).replace(/^\/+/, ""));
 }

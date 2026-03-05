@@ -1,6 +1,7 @@
-import { createRpcId, type RpcResponse } from "../core/rpc.js";
-import { handleRpcRequest } from "../core/router.js";
 import type { ApiRouter, ProcedureDictionary } from "../core/types.js";
+
+import { handleRpcRequest } from "../core/router.js";
+import { createRpcId, type RpcResponse } from "../core/rpc.js";
 
 export interface GraphqlRpcArgs {
   input?: unknown;

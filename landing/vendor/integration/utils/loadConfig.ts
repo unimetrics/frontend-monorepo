@@ -1,7 +1,7 @@
-import fs from "node:fs";
 import yaml from "js-yaml";
+import fs from "node:fs";
 
-const loadConfig = async (configPathOrData: string | object) => {
+const loadConfig = async (configPathOrData: object | string) => {
   if (typeof configPathOrData === "string") {
     const content = fs.readFileSync(configPathOrData, "utf8");
     if (configPathOrData.endsWith(".yaml") || configPathOrData.endsWith(".yml")) {

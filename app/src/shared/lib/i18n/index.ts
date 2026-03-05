@@ -2,33 +2,37 @@ import i18n from "i18next";
 import LanguageDetector from "i18next-browser-languagedetector";
 import { initReactI18next } from "react-i18next";
 
-void i18n
-  .use(LanguageDetector)
-  .use(initReactI18next)
-  .init({
-    fallbackLng: "en",
-    supportedLngs: ["en", "ru"],
-    interpolation: {
-      escapeValue: false,
-    },
-    resources: {
-      en: {
-        translation: {
-          pageTitle: "Unimetrics App",
-          emptyPageTitle: "Empty Page",
-          emptyPageDescription: "Initial app route is ready.",
-          emptyPageBody: "This page is intentionally empty.",
+try {
+  await i18n
+    .use(LanguageDetector)
+    .use(initReactI18next)
+    .init({
+      fallbackLng: "en",
+      interpolation: {
+        escapeValue: false,
+      },
+      resources: {
+        en: {
+          translation: {
+            emptyPageBody: "This page is intentionally empty.",
+            emptyPageDescription: "Initial app route is ready.",
+            emptyPageTitle: "Empty Page",
+            pageTitle: "Unimetrics App",
+          },
+        },
+        ru: {
+          translation: {
+            emptyPageBody: "Эта страница намеренно пустая.",
+            emptyPageDescription: "Начальный маршрут приложения готов.",
+            emptyPageTitle: "Пустая страница",
+            pageTitle: "Приложение Unimetrics",
+          },
         },
       },
-      ru: {
-        translation: {
-          pageTitle: "Приложение Unimetrics",
-          emptyPageTitle: "Пустая страница",
-          emptyPageDescription: "Начальный маршрут приложения готов.",
-          emptyPageBody: "Эта страница намеренно пустая.",
-        },
-      },
-    },
-  });
+      supportedLngs: ["en", "ru"],
+    });
+} catch (error) {
+  console.error("Failed to initialize i18n", error);
+}
 
-export default i18n;
+export { default } from "i18next";

@@ -99,3 +99,9 @@ documentation:
           - "RELEASING*"
           - "CODE_OF_CONDUCT*"
           - "**/*.md"
+
+agents:
+  - changed-files:
+      - any-glob-to-any-file:
+          - ".agents/**"
+          - ".ai/**"
