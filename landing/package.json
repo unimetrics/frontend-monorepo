@@ -7,14 +7,14 @@
   "scripts": {
     "astro": "astro",
     "build": "astro build",
-    "check": "pnpm run check:astro && pnpm run check:eslint && pnpm run check:prettier",
+    "check": "pnpm run check:astro && pnpm run check:eslint && pnpm run format",
     "check:astro": "astro check",
     "check:eslint": "pnpm -w exec eslint . --cache",
-    "check:prettier": "prettier --check .",
     "dev": "astro dev",
-    "fix": "pnpm run fix:eslint && pnpm run fix:prettier",
+    "fix": "pnpm run fix:eslint && pnpm run format:fix",
     "fix:eslint": "pnpm -w exec eslint --cache --fix .",
-    "fix:prettier": "prettier -w .",
+    "format": "prettier --check .",
+    "format:fix": "prettier -w .",
     "preview": "astro preview",
     "start": "astro dev"
   },

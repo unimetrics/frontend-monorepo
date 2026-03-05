@@ -17,7 +17,7 @@ runs:
       shell: bash
 
     - name: Check formatting
-      run: pnpm run prettier:check
+      run: pnpm run format
       shell: bash
 
     - name: Check dependency versions with Syncpack
