@@ -28,8 +28,8 @@ jobs:
           setup-node: "true"
           frozen-lockfile: "true"
 
-      - name: Check npm licenses
-        uses: ukorvl/custom-github-actions/check-npm-licenses@main
+      - name: Check dependency licenses
+        uses: ukorvl/custom-github-actions/check-npm-licenses@3c31000
         with:
           ROOT_DIR: .
           PACKAGE_PATHS: |

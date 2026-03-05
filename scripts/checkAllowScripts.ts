@@ -5,14 +5,12 @@
  * in package.json is up-to-date with all installed dependencies.
  * It runs `pnpm exec allow-scripts auto` and verifies no changes are needed.
  */
-/// <reference types="node" />
-
-import { spawnSync } from "child_process";
-import fs from "fs";
-import path from "path";
+import { spawnSync } from "node:child_process";
+import fs from "node:fs";
+import path from "node:path";
 
 export function main() {
-  const rootDir = path.resolve(__dirname, "..");
+  const rootDir = path.resolve(process.cwd());
   const packageJsonPath = path.join(rootDir, "package.json");
   const originalContent = fs.readFileSync(packageJsonPath, "utf8");
 

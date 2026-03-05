@@ -68,7 +68,7 @@ jobs:
         continue-on-error: true
         run: |
           set +e
-          npm run check:changesets -- --since=${{ github.event.pull_request.base.sha }}
+          pnpm changeset status --since=${{ github.event.pull_request.base.sha }}
           code=$?
           echo "exit_code=$code" >> "$GITHUB_OUTPUT"
           exit 0
@@ -81,7 +81,7 @@ jobs:
           echo "This PR changes one or more packages but does not include a Changeset."
           echo ""
           echo "What you need to do:"
-          echo "1) Run: npx changeset add"
+          echo "1) Run: pnpm changeset add"
           echo "2) Pick the package(s) you changed"
           echo "3) Choose bump type:"
           echo "   - patch: bugfix/internal change, no API change"
@@ -91,7 +91,7 @@ jobs:
           echo "5) Commit the generated file under .changeset/*.md"
           echo ""
           echo "If this PR should not trigger a release:"
-          echo "Run: npx changeset add --empty"
+          echo "Run: pnpm changeset add --empty"
           echo "Then commit the generated empty changeset."
           echo "::endgroup::"
           {
@@ -100,9 +100,9 @@ jobs:
             echo "This PR changes one or more packages but does not include a Changeset."
             echo ""
             echo "### Fix"
-            echo "Run \`npx changeset add\` and commit the generated \`.changeset/*.md\` file."
+            echo "Run \`pnpm changeset add\` and commit the generated \`.changeset/*.md\` file."
             echo ""
             echo "### No release needed?"
-            echo "Run \`npx changeset add --empty\` and commit it."
+            echo "Run \`pnpm changeset add --empty\` and commit it."
           } >> "$GITHUB_STEP_SUMMARY"
           exit 1

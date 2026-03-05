@@ -67,7 +67,7 @@ We're embarking on an exciting journey with **AstroWind 2.0**, and we want you t
 ## TL;DR
 
 ```shell
-npm create astro@latest -- --template arthelokyo/astrowind
+pnpm create astro@latest --template arthelokyo/astrowind
 ```
 
 ## Getting started
@@ -147,15 +147,15 @@ Any static assets, like images, can be placed in the `public/` directory if they
 
 All commands are run from the root of the project, from a terminal:
 
-| Command             | Action                                             |
-| :------------------ | :------------------------------------------------- |
-| `npm install`       | Installs dependencies                              |
-| `npm run dev`       | Starts local dev server at `localhost:4321`        |
-| `npm run build`     | Build your production site to `./dist/`            |
-| `npm run preview`   | Preview your build locally, before deploying       |
-| `npm run check`     | Check your project for errors                      |
-| `npm run fix`       | Run Eslint and format codes with Prettier          |
-| `npm run astro ...` | Run CLI commands like `astro add`, `astro preview` |
+| Command          | Action                                             |
+| :--------------- | :------------------------------------------------- |
+| `pnpm install`   | Installs dependencies                              |
+| `pnpm dev`       | Starts local dev server at `localhost:4321`        |
+| `pnpm build`     | Build your production site to `./dist/`            |
+| `pnpm preview`   | Preview your build locally, before deploying       |
+| `pnpm check`     | Check your project for errors                      |
+| `pnpm fix`       | Run Eslint and format codes with Prettier          |
+| `pnpm astro ...` | Run CLI commands like `astro add`, `astro preview` |
 
 <br>
 
@@ -254,7 +254,7 @@ To customize Font families, Colors or more Elements refer to the following files
 You can create an optimized production build with:
 
 ```shell
-npm run build
+pnpm build
 ```
 
 Now, your website is ready to be deployed. All generated files are located at
