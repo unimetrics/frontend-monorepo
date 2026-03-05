@@ -1,0 +1,101 @@
+# This file is used by actions/labeler to automatically label pull requests.
+
+ci:
+  - changed-files:
+      - any-glob-to-any-file:
+          - ".github/workflows/**"
+          - ".github/actions/**"
+          - ".github/labeler.yaml"
+          - ".github/labels.yaml"
+          - ".github/dependabot.yml"
+          - ".github/CODEOWNERS"
+
+tests:
+  - changed-files:
+      - any-glob-to-any-file:
+          - "**/*.test.ts"
+          - "**/*.spec.ts"
+          - "**/*.test.tsx"
+          - "**/*.spec.tsx"
+          - "**/*.test.js"
+          - "**/*.spec.js"
+          - "**/*.test.jsx"
+          - "**/*.spec.jsx"
+          - "**/vitest.config.ts"
+          - "**/playwright.config.ts"
+
+dependencies:
+  - changed-files:
+      - any-glob-to-any-file:
+          - "**/package.json"
+          - "pnpm-lock.yaml"
+          - "pnpm-workspace.yaml"
+          - ".npmrc"
+
+api:
+  - changed-files:
+      - any-glob-to-any-file:
+          - "api/**"
+
+app:
+  - changed-files:
+      - any-glob-to-any-file:
+          - "app/**"
+
+cli:
+  - changed-files:
+      - any-glob-to-any-file:
+          - "cli/**"
+
+landing:
+  - changed-files:
+      - any-glob-to-any-file:
+          - "landing/**"
+
+mobile:
+  - changed-files:
+      - any-glob-to-any-file:
+          - "mobile/**"
+
+ui:
+  - changed-files:
+      - any-glob-to-any-file:
+          - "ui/**"
+
+eslint:
+  - changed-files:
+      - any-glob-to-any-file:
+          - "eslint.config.*"
+          - "**/.eslintrc*"
+
+tooling:
+  - changed-files:
+      - any-glob-to-any-file:
+          - "tsconfig.json"
+          - "**/tsconfig*.json"
+          - "commitlint.config.cjs"
+          - ".prettier*"
+          - ".syncpackrc.json"
+          - ".editorconfig"
+          - "husky/**"
+          - ".husky/**"
+          - "scripts/**"
+          - "steiger.config.ts"
+
+changesets:
+  - changed-files:
+      - any-glob-to-any-file:
+          - ".changeset/**"
+
+documentation:
+  - changed-files:
+      - any-glob-to-any-file:
+          - "README*"
+          - "CONTRIBUTING*"
+          - "CHANGELOG*"
+          - "LICENSE*"
+          - "NOTICE*"
+          - "SECURITY*"
+          - "RELEASING*"
+          - "CODE_OF_CONDUCT*"
+          - "**/*.md"

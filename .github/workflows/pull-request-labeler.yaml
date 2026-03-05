@@ -1,0 +1,26 @@
+name: Label Pull Requests
+
+on:
+  - pull_request_target
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.head_ref || github.run_id }}
+  cancel-in-progress: true
+
+jobs:
+  label-pr:
+    runs-on: ubuntu-slim
+    permissions:
+      contents: read
+      pull-requests: write
+    steps:
+      - name: Clone repository
+        uses: actions/checkout@v5
+        with:
+          fetch-depth: 1
+      - name: Add Labels for PR
+        uses: actions/labeler@v6
+        with:
+          repo-token: "${{ secrets.GITHUB_TOKEN }}"
+          sync-labels: true
+          configuration-path: ".github/labeler.yaml"

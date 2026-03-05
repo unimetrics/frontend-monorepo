@@ -1,0 +1,107 @@
+- name: ci
+  description: "Changes to CI configuration files"
+  color: "e30fd9"
+
+- name: tests
+  description: "Changes to test files"
+  color: "ffd300"
+
+- name: dependencies
+  description: "Changes to dependencies"
+  color: "bf6971"
+
+- name: api
+  description: "Changes related to the API package"
+  color: "0a66c2"
+
+- name: app
+  description: "Changes related to the web app package"
+  color: "0052cc"
+
+- name: cli
+  description: "Changes related to the CLI package"
+  color: "6f42c1"
+
+- name: landing
+  description: "Changes related to the landing package"
+  color: "1d76db"
+
+- name: mobile
+  description: "Changes related to the mobile app package"
+  color: "0e8a16"
+
+- name: ui
+  description: "Changes related to the UI package"
+  color: "1fb6ff"
+
+- name: stale
+  description: "Stale issues and pull requests"
+  color: "697150"
+
+- name: breaking change
+  description: "Changes are not compatible with previous versions"
+  color: "E99695"
+
+- name: enhancement
+  description: "Improvements or new features"
+  color: "a2eeef"
+
+- name: bug
+  description: "Issues or pull requests that fix a bug"
+  color: "b60205"
+
+- name: question
+  description: "Questions or requests for clarification"
+  color: "d876e3"
+
+- name: discussion
+  description: "General discussions or proposals"
+  color: "19003c"
+
+- name: duplicate
+  description: "This issue or pull request already exists"
+  color: "cfd3d7"
+
+- name: invalid
+  description: "This issue or pull request is not valid"
+  color: "ba0413"
+
+- name: wontfix
+  description: "This issue or pull request will not be fixed"
+  color: "ffffff"
+
+- name: help wanted
+  description: "This issue or pull request needs help from the community"
+  color: "008672"
+
+- name: security
+  description: "Security-related issues or pull requests"
+  color: "ff0000"
+
+- name: out of scope
+  description: "This issue or pull request is out of scope for the project"
+  color: "fef2c0"
+
+- name: need more feedback
+  description: "This issue or pull request needs more feedback from the community"
+  color: "ea4e94"
+
+- name: eslint
+  description: "Changes related to ESLint configuration or rules"
+  color: "f0feff"
+
+- name: tooling
+  description: "Changes related to repository tooling/config"
+  color: "ffab70"
+
+- name: documentation
+  description: "Changes related to documentation"
+  color: "007d9c"
+
+- name: changesets
+  description: "Changes related to release changesets"
+  color: "5319e7"
+
+- name: technical debt
+  description: "Changes that address technical debt"
+  color: "8b4513"
