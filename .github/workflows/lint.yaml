@@ -1,0 +1,35 @@
+name: Lint
+
+on:
+  pull_request:
+  push:
+    branches:
+      - dev
+      - test
+      - main
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  lint:
+    runs-on: ubuntu-slim
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v5
+
+      - name: Install dependencies
+        uses: ./.github/actions/install-deps
+        with:
+          setup-node: "true"
+          frozen-lockfile: "true"
+
+      - name: Run lint checks
+        uses: ./.github/actions/lint
+        with:
+          include-syncpack: "true"
+          include-knip: "false"

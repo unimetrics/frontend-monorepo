@@ -1,6 +1,5 @@
 dist
 node_modules
-.github
 .changeset
 landing/.astro
 .agents

@@ -1,0 +1,41 @@
+name: Sync branches rulesets
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+    paths:
+      - ".github/rulesets/**"
+      - "scripts/github/apply-rulesets.sh"
+      - ".github/workflows/sync-rulesets.yaml"
+
+permissions:
+  contents: read
+
+jobs:
+  sync-rulesets:
+    runs-on: ubuntu-slim
+    env:
+      RULESETS_ADMIN_TOKEN: ${{ secrets.RULESETS_ADMIN_TOKEN }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v5
+
+      - name: Validate ruleset payloads
+        run: |
+          set -euo pipefail
+          for file in .github/rulesets/*.json; do
+            jq empty "$file"
+          done
+
+      - name: Apply rulesets
+        if: ${{ env.RULESETS_ADMIN_TOKEN != '' }}
+        env:
+          GH_TOKEN: ${{ env.RULESETS_ADMIN_TOKEN }}
+          GITHUB_REPOSITORY: ${{ github.repository }}
+        run: bash scripts/github/apply-rulesets.sh
+
+      - name: Skip ruleset sync (token not configured)
+        if: ${{ env.RULESETS_ADMIN_TOKEN == '' }}
+        run: echo "RULESETS_ADMIN_TOKEN is not configured, skipping ruleset sync."
