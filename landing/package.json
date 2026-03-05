@@ -21,7 +21,6 @@
   "dependencies": {
     "@astrojs/rss": "4.0.15",
     "@astrojs/sitemap": "3.7.0",
-    "@astrolib/analytics": "0.6.1",
     "@unimetrics/ui": "workspace:*",
     "astro": "5.18.0",
     "astro-embed": "0.12.0",
