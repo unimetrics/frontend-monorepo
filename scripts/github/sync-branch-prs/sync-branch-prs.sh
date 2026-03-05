@@ -24,10 +24,23 @@ if [[ -z "${target_branches}" ]]; then
   exit 1
 fi
 
+read -r -a target_branch_list <<<"${target_branches}"
+if [[ "${#target_branch_list[@]}" -eq 0 ]]; then
+  echo "TARGET_BRANCHES did not contain any valid branch names." >&2
+  exit 1
+fi
+
 echo "Sync source branch: ${source_branch}"
 echo "Target branches: ${target_branches}"
 
-for target_branch in ${target_branches}; do
+if ! git ls-remote --exit-code --heads origin "${source_branch}" >/dev/null 2>&1; then
+  echo "SOURCE_BRANCH '${source_branch}' does not exist on origin." >&2
+  exit 1
+fi
+
+git fetch origin "${source_branch}" --depth=200
+
+for target_branch in "${target_branch_list[@]}"; do
   if [[ "${target_branch}" == "${source_branch}" ]]; then
     echo "Skipping ${target_branch}: same as source."
     continue
@@ -38,7 +51,7 @@ for target_branch in ${target_branches}; do
     continue
   fi
 
-  git fetch origin "${source_branch}" "${target_branch}" --depth=200
+  git fetch origin "${target_branch}" --depth=200
 
   behind_count="$(git rev-list --count "origin/${target_branch}..origin/${source_branch}")"
   if [[ "${behind_count}" -eq 0 ]]; then
