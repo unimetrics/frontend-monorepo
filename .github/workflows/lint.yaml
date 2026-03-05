@@ -28,6 +28,19 @@ jobs:
           setup-node: "true"
           frozen-lockfile: "true"
 
+      - name: Check npm licenses
+        uses: ukorvl/custom-github-actions/check-npm-licenses@main
+        with:
+          ROOT_DIR: .
+          PACKAGE_PATHS: |
+            .
+            api
+            app
+            cli
+            landing
+            mobile
+            ui
+
       - name: Run lint checks
         uses: ./.github/actions/lint
         with:

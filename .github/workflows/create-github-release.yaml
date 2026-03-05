@@ -1,0 +1,53 @@
+name: Create GitHub Release
+
+on:
+  pull_request:
+    types:
+      - closed
+    branches:
+      - main
+
+permissions:
+  contents: write
+  pull-requests: read
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number }}
+  cancel-in-progress: false
+
+jobs:
+  create-release:
+    if: >-
+      github.event.pull_request.merged == true &&
+      startsWith(github.event.pull_request.head.ref, 'changeset-release/')
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v5
+
+      - name: Prepare release metadata
+        id: metadata
+        shell: bash
+        env:
+          MERGE_SHA: ${{ github.event.pull_request.merge_commit_sha }}
+          PR_NUMBER: ${{ github.event.pull_request.number }}
+          PR_TITLE: ${{ github.event.pull_request.title }}
+          PR_BODY: ${{ github.event.pull_request.body }}
+          PR_URL: ${{ github.event.pull_request.html_url }}
+        run: |
+          set -euo pipefail
+          while IFS= read -r line; do
+            echo "${line}" >> "${GITHUB_OUTPUT}"
+          done < <(bash scripts/github/create-release-metadata.sh)
+
+      - name: Create GitHub release
+        uses: softprops/action-gh-release@v2
+        with:
+          allow_updates: true
+          tag_name: ${{ steps.metadata.outputs.tag_name }}
+          target_commitish: ${{ github.event.pull_request.merge_commit_sha }}
+          name: ${{ steps.metadata.outputs.release_name }}
+          body_path: ${{ steps.metadata.outputs.body_file }}
+          draft: false
+          prerelease: false
+          generate_release_notes: false
