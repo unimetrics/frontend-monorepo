@@ -11,12 +11,6 @@
   "name": "Branch policy: dev",
   "rules": [
     {
-      "type": "deletion"
-    },
-    {
-      "type": "non_fast_forward"
-    },
-    {
       "parameters": {
         "allowed_merge_methods": [
           "merge",

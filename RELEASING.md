@@ -68,20 +68,10 @@ Recommended policy:
 
 ## Branch Rulesets as Code
 
-Branch protection policies are managed as code and stored in:
-
-- `.github/rulesets/branch-dev.json`
-- `.github/rulesets/branch-test.json`
-- `.github/rulesets/branch-main.json`
-
-They are applied automatically by `.github/workflows/sync-rulesets.yaml`, which runs:
-
-```sh
-bash scripts/github/apply-rulesets.sh
-```
+Branch protection policies are managed as code and stored in `.github/rulesets/*.json`.
+They are applied automatically by `.github/workflows/sync-rulesets.yaml`.
 
 For automatic updates from CI, configure `RULESETS_ADMIN_TOKEN` in repository secrets with permission to manage repository rulesets.
-The default `GITHUB_TOKEN` usually cannot update rulesets.
 If `RULESETS_ADMIN_TOKEN` is not configured, the sync workflow will skip applying rulesets.
 
 ## Notes
