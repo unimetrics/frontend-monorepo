@@ -1,4 +1,4 @@
-declare module "astrowind:config" {
+declare module "unimetrics:config" {
   import type {
     AnalyticsConfig,
     AppBlogConfig,

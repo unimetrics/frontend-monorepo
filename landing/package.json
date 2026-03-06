@@ -2,7 +2,7 @@
   "name": "@unimetrics/landing",
   "version": "0.1.0",
   "private": true,
-  "description": "Unimetrics landing app based on AstroWind.",
+  "description": "Unimetrics landing app based on Unimetrics.",
   "type": "module",
   "scripts": {
     "astro": "astro",
@@ -21,6 +21,7 @@
   "dependencies": {
     "@astrojs/rss": "4.0.15",
     "@astrojs/sitemap": "3.7.0",
+    "@astrolib/seo": "1.0.0-beta.8",
     "@unimetrics/ui": "workspace:*",
     "astro": "5.18.0",
     "astro-embed": "0.12.0",

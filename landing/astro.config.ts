@@ -16,7 +16,7 @@ import {
   readingTimeRemarkPlugin,
   responsiveTablesRehypePlugin,
 } from "./src/utils/frontmatter";
-import astrowind from "./vendor/integration";
+import unimetrics from "./vendor/integration";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
@@ -75,7 +75,7 @@ export default defineConfig({
       SVG: false,
     }),
 
-    astrowind({
+    unimetrics({
       config: "./src/config.yaml",
     }),
   ],

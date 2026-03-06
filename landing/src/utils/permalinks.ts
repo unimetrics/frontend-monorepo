@@ -1,4 +1,4 @@
-import { APP_BLOG, SITE } from "astrowind:config";
+import { APP_BLOG, SITE } from "unimetrics:config";
 import slugify from "limax";
 
 import { trim } from "~/utils/utils";

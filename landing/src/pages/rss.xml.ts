@@ -1,5 +1,5 @@
 import { getRssString } from "@astrojs/rss";
-import { APP_BLOG, METADATA, SITE } from "astrowind:config";
+import { APP_BLOG, METADATA, SITE } from "unimetrics:config";
 
 import { fetchPosts } from "~/utils/blog";
 import { getPermalink } from "~/utils/permalinks";
