@@ -1,5 +1,5 @@
-import { APP_BLOG, SITE } from "unimetrics:config";
 import slugify from "limax";
+import { APP_BLOG, SITE } from "unimetrics:config";
 
 import { trim } from "~/utils/utils";
 
