@@ -1,0 +1,70 @@
+name: "Install dependencies"
+description: "Setup Node.js + pnpm and install workspace dependencies"
+
+inputs:
+  node-version:
+    description: "Node.js version to use"
+    default: ""
+    required: false
+  pnpm-version:
+    description: "pnpm version to use"
+    default: "10.11.0"
+    required: false
+  setup-node:
+    description: "Setup Node.js environment"
+    default: "true"
+    required: false
+  frozen-lockfile:
+    description: "Use frozen lockfile during installation"
+    default: "true"
+    required: false
+  audit:
+    description: "Run pnpm audit after installation"
+    default: "false"
+    required: false
+  setup-repo:
+    description: "Run setup script after installation"
+    default: "false"
+    required: false
+
+runs:
+  using: "composite"
+  steps:
+    - name: Get nodejs version from .nvmrc
+      id: nvmrc
+      if: ${{ inputs.setup-node == 'true' }}
+      run: echo "NODE_VERSION=$(cat .nvmrc)" >> $GITHUB_ENV
+      shell: bash
+
+    - name: Setup pnpm
+      uses: pnpm/action-setup@v4
+      with:
+        version: ${{ inputs.pnpm-version }}
+        run_install: false
+
+    - name: Setup nodejs
+      if: ${{ inputs.setup-node == 'true' }}
+      uses: actions/setup-node@v5
+      with:
+        node-version: ${{ inputs.node-version != '' && inputs.node-version || env.NODE_VERSION || '24' }}
+        cache: "pnpm"
+
+    - name: Install dependencies (frozen lockfile)
+      if: ${{ inputs.frozen-lockfile == 'true' }}
+      run: pnpm install --frozen-lockfile
+      shell: bash
+
+    - name: Install dependencies
+      if: ${{ inputs.frozen-lockfile != 'true' }}
+      run: pnpm install
+      shell: bash
+
+    - name: Run pnpm audit
+      if: ${{ inputs.audit == 'true' }}
+      run: pnpm audit --audit-level=high --prod
+      shell: bash
+
+    - name: Run setup script
+      if: ${{ inputs.setup-repo == 'true' }}
+      run: pnpm run setup
+      shell: bash

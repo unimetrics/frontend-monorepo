@@ -1,29 +1,28 @@
-import path from "path";
-import { fileURLToPath } from "url";
-
-import { defineConfig } from "astro/config";
-
-import sitemap from "@astrojs/sitemap";
-import tailwind from "@astrojs/tailwind";
-import mdx from "@astrojs/mdx";
-import partytown from "@astrojs/partytown";
-import icon from "astro-icon";
-import compress from "astro-compress";
 import type { AstroIntegration } from "astro";
 
-import astrowind from "./vendor/integration";
+import mdx from "@astrojs/mdx";
+import partytown from "@astrojs/partytown";
+import react from "@astrojs/react";
+import sitemap from "@astrojs/sitemap";
+import tailwindcss from "@tailwindcss/vite";
+import compress from "astro-compress";
+import icon from "astro-icon";
+import { defineConfig } from "astro/config";
+import path from "node:path";
+import { fileURLToPath } from "node:url";
 
 import {
+  lazyImagesRehypePlugin,
   readingTimeRemarkPlugin,
   responsiveTablesRehypePlugin,
-  lazyImagesRehypePlugin,
 } from "./src/utils/frontmatter";
+import unimetrics from "./vendor/integration";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 const hasExternalScripts = false;
 const whenExternalScripts = (
-  items: (() => AstroIntegration) | (() => AstroIntegration)[] = []
+  items: (() => AstroIntegration)[] | (() => AstroIntegration) = []
 ) =>
   hasExternalScripts
     ? Array.isArray(items)
@@ -32,17 +31,16 @@ const whenExternalScripts = (
     : [];
 
 export default defineConfig({
-  output: "static",
+  image: {
+    domains: ["cdn.pixabay.com", "images.unsplash.com", "plus.unsplash.com"],
+  },
 
   integrations: [
-    tailwind({
-      applyBaseStyles: false,
-    }),
     sitemap(),
     mdx(),
+    react(),
     icon({
       include: {
-        tabler: ["*"],
         "flat-color-icons": [
           "template",
           "gallery",
@@ -54,6 +52,7 @@ export default defineConfig({
           "business-contact",
           "database",
         ],
+        tabler: ["*"],
       },
     }),
 
@@ -72,25 +71,24 @@ export default defineConfig({
       },
       Image: false,
       JavaScript: true,
-      SVG: false,
       Logger: 1,
+      SVG: false,
     }),
 
-    astrowind({
+    unimetrics({
       config: "./src/config.yaml",
     }),
   ],
 
-  image: {
-    domains: ["cdn.pixabay.com", "images.unsplash.com", "plus.unsplash.com"],
+  markdown: {
+    rehypePlugins: [responsiveTablesRehypePlugin, lazyImagesRehypePlugin],
+    remarkPlugins: [readingTimeRemarkPlugin],
   },
 
-  markdown: {
-    remarkPlugins: [readingTimeRemarkPlugin],
-    rehypePlugins: [responsiveTablesRehypePlugin, lazyImagesRehypePlugin],
-  },
+  output: "static",
 
   vite: {
+    plugins: [tailwindcss()],
     resolve: {
       alias: {
         "~": path.resolve(__dirname, "./src"),

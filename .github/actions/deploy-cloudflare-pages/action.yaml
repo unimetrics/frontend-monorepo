@@ -1,0 +1,46 @@
+name: "Deploy Cloudflare Pages"
+description: "Deploy static assets to a Cloudflare Pages project using Wrangler"
+
+inputs:
+  api-token:
+    description: "Cloudflare API token with Pages edit permission"
+    required: true
+  account-id:
+    description: "Cloudflare account ID"
+    required: true
+  project-name:
+    description: "Cloudflare Pages project name"
+    required: true
+  directory:
+    description: "Build output directory to deploy"
+    required: true
+  branch:
+    description: "Branch name used by Pages for production/preview routing"
+    required: true
+  working-directory:
+    description: "Directory where Wrangler command should run"
+    default: "."
+    required: false
+  wrangler-version:
+    description: "Wrangler version to use"
+    default: "4"
+    required: false
+  github-token:
+    description: "GitHub token for deployment status reporting"
+    required: false
+
+runs:
+  using: "composite"
+  steps:
+    - name: Publish to Cloudflare Pages
+      uses: cloudflare/wrangler-action@v3
+      with:
+        apiToken: ${{ inputs.api-token }}
+        accountId: ${{ inputs.account-id }}
+        gitHubToken: ${{ inputs.github-token }}
+        wranglerVersion: ${{ inputs.wrangler-version }}
+        workingDirectory: ${{ inputs.working-directory }}
+        command: >-
+          pages deploy ${{ inputs.directory }}
+          --project-name=${{ inputs.project-name }}
+          --branch=${{ inputs.branch }}

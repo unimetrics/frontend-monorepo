@@ -1,0 +1,4 @@
+interface:
+  display_name: "Code Review"
+  short_description: "Production-focused review for merge safety."
+  default_prompt: "Use $code-review to review these changes for bugs, security risks, regressions, and missing tests before merge."

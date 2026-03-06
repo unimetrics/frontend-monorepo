@@ -1,6 +1,7 @@
-import { handleRpcRequest } from "../core/router.js";
 import type { RpcRequest } from "../core/rpc.js";
 import type { ApiRouter, ProcedureDictionary } from "../core/types.js";
+
+import { handleRpcRequest } from "../core/router.js";
 
 export interface WebSocketMessageEvent {
   data: string;

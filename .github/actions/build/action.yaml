@@ -1,0 +1,9 @@
+name: "Build"
+description: "Builds the code in the repo"
+
+runs:
+  using: "composite"
+  steps:
+    - name: Build
+      run: pnpm run build
+      shell: bash

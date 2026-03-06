@@ -192,6 +192,46 @@ export default [
     },
   },
   {
+    files: ["landing/src/pages/**/*.astro"],
+    rules: {
+      "no-secrets/no-secrets": "off",
+    },
+  },
+  {
+    files: ["landing/src/components/common/BasicScripts.astro"],
+    rules: {
+      "unicorn/consistent-function-scoping": "off",
+      "unicorn/prefer-module": "off",
+    },
+  },
+  {
+    files: ["landing/src/utils/images-optimization.ts"],
+    rules: {
+      "sonarjs/cognitive-complexity": "off",
+      "sonarjs/fixme-tag": "off",
+      "sonarjs/slow-regex": "off",
+      "sonarjs/use-type-alias": "off",
+      "unicorn/no-await-expression-member": "off",
+      "unicorn/prefer-number-properties": "off",
+      "unicorn/prefer-single-call": "off",
+    },
+  },
+  {
+    files: ["landing/src/utils/images.ts"],
+    rules: {
+      "sonarjs/cognitive-complexity": "off",
+      "unicorn/no-await-expression-member": "off",
+    },
+  },
+  {
+    files: ["landing/src/utils/permalinks.ts"],
+    rules: {
+      "sonarjs/cognitive-complexity": "off",
+      "sonarjs/no-redundant-boolean": "off",
+      "unicorn/no-useless-switch-case": "off",
+    },
+  },
+  {
     ...jsdoc.configs["flat/recommended-typescript"],
     files: scriptsSrc,
     ignores: ["scripts/utils/**"],

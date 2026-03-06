@@ -1,10 +1,7 @@
-import { ApiTransportError, toApiError } from "../core/errors.js";
-import { createRpcId, type RpcResponse } from "../core/rpc.js";
 import type { ApiCaller, ApiRouter, ProcedureDictionary } from "../core/types.js";
 
-interface MessageEventLike {
-  data: string;
-}
+import { ApiTransportError, toApiError } from "../core/errors.js";
+import { createRpcId, type RpcResponse } from "../core/rpc.js";
 
 export interface WebSocketLike {
   addEventListener: (
@@ -16,6 +13,10 @@ export interface WebSocketLike {
     listener: (event: MessageEventLike) => void
   ) => void;
   send: (payload: string) => void;
+}
+
+interface MessageEventLike {
+  data: string;
 }
 
 interface WebSocketClientOptions {
@@ -36,7 +37,7 @@ export function createWebSocketClient<Ctx, Procedures extends ProcedureDictionar
     }
   >();
 
-  const timeoutMs = options.timeoutMs ?? 15000;
+  const timeoutMs = options.timeoutMs ?? 15_000;
 
   const onMessage = (event: MessageEventLike) => {
     const payload = JSON.parse(event.data) as RpcResponse;
@@ -64,7 +65,7 @@ export function createWebSocketClient<Ctx, Procedures extends ProcedureDictionar
   return new Proxy({} as ApiCaller<Procedures>, {
     get: (_target, property) => {
       if (typeof property !== "string") {
-        return undefined;
+        return;
       }
 
       return async (input: unknown) => {

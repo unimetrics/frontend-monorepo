@@ -1,0 +1,33 @@
+name: "Lint"
+description: "Lints the code in the repo"
+
+runs:
+  using: "composite"
+  steps:
+    - name: Run repository lint checks
+      run: pnpm run lint
+      shell: bash
+
+    - name: Run ESLint
+      run: pnpm run lint:eslint
+      shell: bash
+
+    - name: Check circular dependencies with Madge
+      run: pnpm run lint:circular
+      shell: bash
+
+    - name: Check formatting
+      run: pnpm run format
+      shell: bash
+
+    - name: Check dependency versions with Syncpack
+      run: pnpm run syncpack:check
+      shell: bash
+
+    - name: Check unused files and dependencies with Knip
+      run: pnpm run lint:knip
+      shell: bash
+
+    - name: Check if allow-scripts is up-to-date
+      run: pnpm run lint:allow-scripts
+      shell: bash

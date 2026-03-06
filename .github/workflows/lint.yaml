@@ -1,0 +1,58 @@
+name: Lint
+
+on:
+  pull_request:
+  push:
+    branches:
+      - dev
+      - test
+      - main
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  lint:
+    runs-on: ubuntu-slim
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v5
+        with:
+          fetch-depth: 0
+
+      - name: Install dependencies
+        uses: ./.github/actions/install-deps
+        with:
+          setup-node: "true"
+          frozen-lockfile: "true"
+
+      - name: Lint commit messages in PR branch
+        if: ${{ github.event_name == 'pull_request' }}
+        env:
+          PR_BASE_REF: ${{ github.base_ref }}
+          PR_BASE_SHA: ${{ github.event.pull_request.base.sha }}
+          PR_HEAD_SHA: ${{ github.event.pull_request.head.sha }}
+        run: pnpm run commitlint:pr
+
+      - name: Check dependency licenses
+        uses: ukorvl/custom-github-actions/check-npm-licenses@3c31000846c9d3457f3ef8707fd2ec652a1e79db
+        with:
+          ROOT_DIR: .
+          PACKAGE_PATHS: |
+            .
+            api
+            app
+            cli
+            landing
+            mobile
+            ui
+
+      - name: Run lint checks
+        uses: ./.github/actions/lint
+        with:
+          include-syncpack: "true"
+          include-knip: "false"

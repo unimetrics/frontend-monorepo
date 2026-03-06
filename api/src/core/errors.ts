@@ -25,17 +25,6 @@ export class ApiError extends Error {
   }
 }
 
-export class ApiProcedureNotFoundError extends ApiError {
-  constructor(procedureName: string) {
-    super({
-      code: "NOT_FOUND",
-      details: { procedureName },
-      message: `Procedure not found: ${procedureName}`,
-      status: 404,
-    });
-  }
-}
-
 export class ApiMethodNotAllowedError extends ApiError {
   constructor(method: string) {
     super({
@@ -43,6 +32,17 @@ export class ApiMethodNotAllowedError extends ApiError {
       details: { method },
       message: `Method not allowed: ${method}`,
       status: 405,
+    });
+  }
+}
+
+export class ApiProcedureNotFoundError extends ApiError {
+  constructor(procedureName: string) {
+    super({
+      code: "NOT_FOUND",
+      details: { procedureName },
+      message: `Procedure not found: ${procedureName}`,
+      status: 404,
     });
   }
 }
