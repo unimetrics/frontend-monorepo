@@ -2,7 +2,9 @@
 
 set -euo pipefail
 
-cd "$(dirname "$0")/../../.."
+script_dir="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd -P)"
+source "${script_dir}/../../lib/repo-root.sh"
+cd_repo_root
 
 base_sha="${PR_BASE_SHA:-}"
 base_ref="${PR_BASE_REF:-${GITHUB_BASE_REF:-}}"

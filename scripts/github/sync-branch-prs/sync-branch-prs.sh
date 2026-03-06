@@ -2,7 +2,9 @@
 
 set -euo pipefail
 
-cd "$(dirname "$0")/../../.."
+script_dir="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd -P)"
+source "${script_dir}/../../lib/repo-root.sh"
+cd_repo_root
 
 if ! command -v gh >/dev/null 2>&1; then
   echo "gh CLI is required." >&2
@@ -53,12 +55,15 @@ for target_branch in "${target_branch_list[@]}"; do
 
   git fetch origin "${target_branch}" --depth=200
 
-  behind_count="$(git rev-list --count "origin/${target_branch}..origin/${source_branch}")"
-  if [[ "${behind_count}" -eq 0 ]]; then
-    echo "Skipping ${target_branch}: already up to date."
-    continue
-  fi
-
+  existing_pr_number="$(
+    gh pr list \
+      --repo "${repository}" \
+      --state open \
+      --base "${target_branch}" \
+      --head "${owner}:${source_branch}" \
+      --json number \
+      --jq '.[0].number // ""'
+  )"
   existing_pr_url="$(
     gh pr list \
       --repo "${repository}" \
@@ -68,6 +73,19 @@ for target_branch in "${target_branch_list[@]}"; do
       --json url \
       --jq '.[0].url // ""'
   )"
+
+  behind_count="$(git rev-list --count "origin/${target_branch}..origin/${source_branch}")"
+  if [[ "${behind_count}" -eq 0 ]]; then
+    if [[ -n "${existing_pr_number}" ]]; then
+      echo "Closing sync PR for ${source_branch} -> ${target_branch}: ${existing_pr_url}"
+      gh pr close \
+        "${existing_pr_number}" \
+        --repo "${repository}" \
+        --comment "Closing automatically because \`${target_branch}\` already contains all commits from \`${source_branch}\`."
+    fi
+    echo "Skipping ${target_branch}: already up to date."
+    continue
+  fi
 
   if [[ -n "${existing_pr_url}" ]]; then
     echo "Open sync PR already exists for ${source_branch} -> ${target_branch}: ${existing_pr_url}"

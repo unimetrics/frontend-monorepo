@@ -18,6 +18,13 @@ jobs:
       - name: Clone repository
         uses: actions/checkout@v5
 
+      - name: Create helper bot token
+        id: helper-bot-token
+        uses: ./.github/actions/create-helper-bot-token
+        with:
+          app-id: ${{ secrets.HELPER_BOT_ID }}
+          private-key: ${{ secrets.HELPER_BOT_KEY }}
+
       - name: Install dependencies
         uses: ./.github/actions/install-deps
         with:
@@ -30,4 +37,4 @@ jobs:
           commit: "chore: version packages"
           title: "chore: version packages"
         env:
-          GITHUB_TOKEN: ${{ secrets.CHANGESETS_TOKEN }} # Token with write access to this repo
+          GITHUB_TOKEN: ${{ steps.helper-bot-token.outputs.token }}
