@@ -2,7 +2,7 @@ import type { PaginateFunction } from "astro";
 import type { CollectionEntry } from "astro:content";
 
 import { getCollection, render } from "astro:content";
-import { APP_BLOG } from "astrowind:config";
+import { APP_BLOG } from "unimetrics:config";
 
 import type { Post } from "~/types";
 

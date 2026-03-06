@@ -19,6 +19,14 @@ jobs:
         with:
           fetch-depth: 1
       - name: Add Labels for PR
+        if: >-
+          ${{
+            !((github.event.pull_request.head.ref == 'main' &&
+            (github.event.pull_request.base.ref == 'test' ||
+            github.event.pull_request.base.ref == 'dev')) ||
+            (github.event.pull_request.head.ref == 'test' &&
+            github.event.pull_request.base.ref == 'dev'))
+          }}
         uses: actions/labeler@v6
         with:
           repo-token: "${{ secrets.GITHUB_TOKEN }}"

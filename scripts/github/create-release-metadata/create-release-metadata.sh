@@ -1,7 +1,10 @@
 #!/usr/bin/env bash
 
 set -euo pipefail
-cd "$(dirname "$0")/../../.."
+
+script_dir="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd -P)"
+source "${script_dir}/../../lib/repo-root.sh"
+cd_repo_root
 
 merge_sha="${MERGE_SHA:-}"
 pr_number="${PR_NUMBER:-}"

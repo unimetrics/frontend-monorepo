@@ -8,6 +8,12 @@ Use this guide for code changes in this repository.
 - Respect workspace boundaries (`api`, `app`, `cli`, `landing`, `mobile`, `ui`).
 - Use TypeScript/ESM conventions already used in each package.
 
+## Framework-Specific Guides
+
+- React (`app`): `./style-guide/react.md`
+- Astro (`landing`): `./style-guide/astro.md`
+- Expo React Native (`mobile`): `./style-guide/expo-react-native.md`
+
 ## Scripts Organization
 
 - Place repository scripts under `scripts/` in per-script folders, not as loose files.

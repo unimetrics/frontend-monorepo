@@ -6,14 +6,14 @@ import os from "node:os";
 import configBuilder, { type Config } from "./utils/configBuilder";
 import loadConfig from "./utils/loadConfig";
 
-const astrowindIntegration = ({
+const unimetricsIntegration = ({
   config: _themeConfig = "src/config.yaml",
 } = {}): AstroIntegration => {
   let cfg: AstroConfig;
   return {
     hooks: {
       "astro:build:done": async ({ logger }) => {
-        const buildLogger = logger.fork("astrowind");
+        const buildLogger = logger.fork("unimetrics");
         buildLogger.info("Updating `robots.txt` with `sitemap-index.xml` ...");
 
         try {
@@ -74,9 +74,9 @@ const astrowindIntegration = ({
         logger,
         updateConfig,
       }) => {
-        const buildLogger = logger.fork("astrowind");
+        const buildLogger = logger.fork("unimetrics");
 
-        const virtualModuleId = "astrowind:config";
+        const virtualModuleId = "unimetrics:config";
         const resolvedVirtualModuleId = "\0" + virtualModuleId;
 
         const rawJsonConfig = (await loadConfig(_themeConfig)) as Config;
@@ -104,7 +104,7 @@ const astrowindIntegration = ({
                     `;
                   }
                 },
-                name: "vite-plugin-astrowind-config",
+                name: "vite-plugin-unimetrics-config",
                 resolveId(id) {
                   if (id === virtualModuleId) {
                     return resolvedVirtualModuleId;
@@ -118,15 +118,15 @@ const astrowindIntegration = ({
         if (typeof _themeConfig === "string") {
           addWatchFile(new URL(_themeConfig, config.root));
 
-          buildLogger.info(`Astrowind \`${_themeConfig}\` has been loaded.`);
+          buildLogger.info(`Unimetrics \`${_themeConfig}\` has been loaded.`);
         } else {
-          buildLogger.info(`Astrowind config has been loaded.`);
+          buildLogger.info(`Unimetrics config has been loaded.`);
         }
       },
     },
 
-    name: "astrowind-integration",
+    name: "unimetrics-integration",
   };
 };
 
-export default astrowindIntegration;
+export default unimetricsIntegration;

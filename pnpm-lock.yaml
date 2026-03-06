@@ -238,6 +238,9 @@ importers:
       "@astrojs/sitemap":
         specifier: 3.7.0
         version: 3.7.0
+      "@astrolib/seo":
+        specifier: 1.0.0-beta.8
+        version: 1.0.0-beta.8(astro@5.18.0(@types/node@25.3.3)(jiti@2.6.1)(lightningcss@1.30.2)(rollup@4.59.0)(terser@5.44.1)(typescript@5.9.3)(yaml@2.8.2))
       "@unimetrics/ui":
         specifier: workspace:*
         version: link:../ui
@@ -562,6 +565,14 @@ packages:
       {
         integrity: sha512-GOfvSr5Nqy2z5XiwqTouBBpy5FyI6DEe+/g/Mk5am9SjILN1S5fOEvYK0GuWHg98yS/dobP4m8qyqw/URW35fQ==,
       }
+
+  "@astrolib/seo@1.0.0-beta.8":
+    resolution:
+      {
+        integrity: sha512-SpNycspjcjnz6um4Vph0k+SAKgUib7/8qJRCaaahJD1UfLuXKK7E+bmKbnv8QPBTRPZkQW6zFVaZRl5VvnyDfg==,
+      }
+    peerDependencies:
+      astro: ^1.2.1 || ^2.0.0 || ^3.0.0-beta.0 || ^3.0.0 || ^4.0.0 || ^5.0.0-beta.0 || ^5.0.0
 
   "@atproto/api@0.13.35":
     resolution:
@@ -14218,6 +14229,10 @@ snapshots:
   "@astrojs/yaml2ts@0.2.2":
     dependencies:
       yaml: 2.8.2
+
+  "@astrolib/seo@1.0.0-beta.8(astro@5.18.0(@types/node@25.3.3)(jiti@2.6.1)(lightningcss@1.30.2)(rollup@4.59.0)(terser@5.44.1)(typescript@5.9.3)(yaml@2.8.2))":
+    dependencies:
+      astro: 5.18.0(@types/node@25.3.3)(jiti@2.6.1)(lightningcss@1.30.2)(rollup@4.59.0)(terser@5.44.1)(typescript@5.9.3)(yaml@2.8.2)
 
   "@atproto/api@0.13.35":
     dependencies:

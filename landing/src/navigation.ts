@@ -3,7 +3,7 @@ import { getAsset, getBlogPermalink, getPermalink } from "./utils/permalinks";
 export const headerData = {
   actions: [
     {
-      href: "https://github.com/arthelokyo/astrowind",
+      href: "https://github.com/unimetrics/frontend-monorepo",
       target: "_blank",
       text: "Download",
     },
@@ -126,7 +126,7 @@ export const headerData = {
 
 export const footerData = {
   footNote: `
-    Made by <a class="text-blue-600 underline dark:text-muted" href="https://github.com/arthelokyo"> Arthelokyo</a> · All rights reserved.
+    Made by <a class="text-blue-600 underline dark:text-muted" href="https://github.com/unimetrics"> Arthelokyo</a> · All rights reserved.
   `,
   links: [
     {
@@ -147,7 +147,7 @@ export const footerData = {
         { href: "#", text: "Partners" },
         { href: "#", text: "Atom" },
         { href: "#", text: "Electron" },
-        { href: "#", text: "AstroWind Desktop" },
+        { href: "#", text: "Unimetrics Desktop" },
       ],
       title: "Platform",
     },
@@ -185,7 +185,7 @@ export const footerData = {
     { ariaLabel: "RSS", href: getAsset("/rss.xml"), icon: "tabler:rss" },
     {
       ariaLabel: "Github",
-      href: "https://github.com/arthelokyo/astrowind",
+      href: "https://github.com/unimetrics/frontend-monorepo",
       icon: "tabler:brand-github",
     },
   ],

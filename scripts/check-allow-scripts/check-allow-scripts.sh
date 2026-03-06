@@ -2,7 +2,9 @@
 
 set -euo pipefail
 
-cd "$(dirname "$0")/../.."
+script_dir="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd -P)"
+source "${script_dir}/../lib/repo-root.sh"
+cd_repo_root
 
 package_json_path="package.json"
 original_package_json="$(mktemp)"

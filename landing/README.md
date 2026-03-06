@@ -1,11 +1,11 @@
-# 🚀 AstroWind
+# 🚀 Unimetrics
 
-<img src="https://raw.githubusercontent.com/arthelokyo/.github/main/resources/astrowind/lighthouse-score.png" align="right"
-     alt="AstroWind Lighthouse Score" width="100" height="358">
+<img src="https://raw.githubusercontent.com/unimetrics/.github/main/resources/unimetrics/lighthouse-score.png" align="right"
+     alt="Unimetrics Lighthouse Score" width="100" height="358">
 
 🌟 _Most *starred* & *forked* Astro theme in 2022, 2023 & 2024_. 🌟
 
-**AstroWind** is a free and open-source template to make your website using **[Astro 5.0](https://astro.build/) + [Tailwind CSS](https://tailwindcss.com/)**. Ready to start a new project and designed taking into account web best practices.
+**Unimetrics** is a free and open-source template to make your website using **[Astro 5.0](https://astro.build/) + [Tailwind CSS](https://tailwindcss.com/)**. Ready to start a new project and designed taking into account web best practices.
 
 - ✅ **Production-ready** scores in **PageSpeed Insights** reports.
 - ✅ Integration with **Tailwind CSS** supporting **Dark mode** and **_RTL_**.
@@ -17,15 +17,15 @@
 
 <br>
 
-![AstroWind Theme Screenshot](https://raw.githubusercontent.com/arthelokyo/.github/main/resources/astrowind/screenshot-astrowind-1.0.png)
+![Unimetrics Theme Screenshot](https://raw.githubusercontent.com/unimetrics/.github/main/resources/unimetrics/screenshot-unimetrics-1.0.png)
 
-[![arthelokyo](https://custom-icon-badges.demolab.com/badge/made%20by%20-arthelokyo-556bf2?style=flat-square&logo=arthelokyo&logoColor=white&labelColor=101827)](https://github.com/arthelokyo)
-[![License](https://img.shields.io/github/license/arthelokyo/astrowind?style=flat-square&color=dddddd&labelColor=000000)](https://github.com/arthelokyo/astrowind/blob/main/LICENSE.md)
-[![Maintained](https://img.shields.io/badge/maintained%3F-yes-brightgreen.svg?style=flat-square)](https://github.com/arthelokyo)
-[![Contributions Welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat-square)](https://github.com/arthelokyo/astrowind#contributing)
-[![Known Vulnerabilities](https://snyk.io/test/github/arthelokyo/astrowind/badge.svg?style=flat-square)](https://snyk.io/test/github/arthelokyo/astrowind)
-[![Stars](https://img.shields.io/github/stars/arthelokyo/astrowind.svg?style=social&label=stars&maxAge=86400&color=ff69b4)](https://github.com/arthelokyo/astrowind)
-[![Forks](https://img.shields.io/github/forks/arthelokyo/astrowind.svg?style=social&label=forks&maxAge=86400&color=ff69b4)](https://github.com/arthelokyo/astrowind)
+[![unimetrics](https://custom-icon-badges.demolab.com/badge/made%20by%20-unimetrics-556bf2?style=flat-square&logo=github&logoColor=white&labelColor=101827)](https://github.com/unimetrics)
+[![License](https://img.shields.io/github/license/unimetrics/frontend-monorepo?style=flat-square&color=dddddd&labelColor=000000)](https://github.com/unimetrics/frontend-monorepo/blob/main/LICENSE.md)
+[![Maintained](https://img.shields.io/badge/maintained%3F-yes-brightgreen.svg?style=flat-square)](https://github.com/unimetrics)
+[![Contributions Welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat-square)](https://github.com/unimetrics/frontend-monorepo#contributing)
+[![Known Vulnerabilities](https://snyk.io/test/github/unimetrics/frontend-monorepo/badge.svg?style=flat-square)](https://snyk.io/test/github/unimetrics/frontend-monorepo)
+[![Stars](https://img.shields.io/github/stars/unimetrics/frontend-monorepo.svg?style=social&label=stars&maxAge=86400&color=ff69b4)](https://github.com/unimetrics/frontend-monorepo)
+[![Forks](https://img.shields.io/github/forks/unimetrics/frontend-monorepo.svg?style=social&label=forks&maxAge=86400&color=ff69b4)](https://github.com/unimetrics/frontend-monorepo)
 
 <br>
 
@@ -33,7 +33,7 @@
 <summary>Table of Contents</summary>
 
 - [Demo](#demo)
-- [Upcoming: AstroWind 2.0 – We Need Your Vision!](#-upcoming-astrowind-20--we-need-your-vision)
+- [Upcoming: Unimetrics 2.0 – We Need Your Vision!](#-upcoming-unimetrics-20--we-need-your-vision)
 - [TL;DR](#tldr)
 - [Getting started](#getting-started)
   - [Project structure](#project-structure)
@@ -52,27 +52,27 @@
 
 ## Demo
 
-📌 [https://astrowind.vercel.app/](https://astrowind.vercel.app/)
+📌 [https://unimetrics.com/](https://unimetrics.com/)
 
 <br>
 
-## 🔔 Upcoming: AstroWind 2.0 – We Need Your Vision!
+## 🔔 Upcoming: Unimetrics 2.0 – We Need Your Vision!
 
-We're embarking on an exciting journey with **AstroWind 2.0**, and we want you to be a part of it! We're currently taking the first steps in developing this new version and your insights are invaluable. Join the discussion and share your feedback, ideas, and suggestions to help shape the future of **AstroWind**. Let's make **AstroWind 2.0** even better, together!
+We're embarking on an exciting journey with **Unimetrics 2.0**, and we want you to be a part of it! We're currently taking the first steps in developing this new version and your insights are invaluable. Join the discussion and share your feedback, ideas, and suggestions to help shape the future of **Unimetrics**. Let's make **Unimetrics 2.0** even better, together!
 
-[Share Your Feedback in Our Discussion!](https://github.com/arthelokyo/astrowind/discussions/392)
+[Share Your Feedback in Our Discussion!](https://github.com/unimetrics/frontend-monorepo/discussions/392)
 
 <br>
 
 ## TL;DR
 
 ```shell
-pnpm create astro@latest --template arthelokyo/astrowind
+pnpm create astro@latest --template unimetrics/frontend-monorepo
 ```
 
 ## Getting started
 
-**AstroWind** tries to give you quick access to creating a website using [Astro 5.0](https://astro.build/) + [Tailwind CSS](https://tailwindcss.com/). It's a free theme which focuses on simplicity, good practices and high performance.
+**Unimetrics** tries to give you quick access to creating a website using [Astro 5.0](https://astro.build/) + [Tailwind CSS](https://tailwindcss.com/). It's a free theme which focuses on simplicity, good practices and high performance.
 
 Very little vanilla javascript is used only to provide basic functionality so that each developer decides which framework (React, Vue, Svelte, Solid JS...) to use and how to approach their goals.
 
@@ -80,7 +80,7 @@ In this version the template supports all the options in the `output` configurat
 
 ### Project structure
 
-Inside **AstroWind** template, you'll see the following folders and files:
+Inside **Unimetrics** template, you'll see the following folders and files:
 
 ```
 /
@@ -137,7 +137,7 @@ There's nothing special about `src/components/`, but that's where we like to put
 
 Any static assets, like images, can be placed in the `public/` directory if they do not require any transformation or in the `assets/` directory if they are imported directly.
 
-[![Edit AstroWind on CodeSandbox](https://codesandbox.io/static/img/play-codesandbox.svg)](https://githubbox.com/arthelokyo/astrowind/tree/main) [![Open in Gitpod](https://svgshare.com/i/xdi.svg)](https://gitpod.io/?on=gitpod#https://github.com/arthelokyo/astrowind) [![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/arthelokyo/astrowind)
+[![Edit Unimetrics on CodeSandbox](https://codesandbox.io/static/img/play-codesandbox.svg)](https://githubbox.com/unimetrics/frontend-monorepo/tree/main) [![Open in Gitpod](https://svgshare.com/i/xdi.svg)](https://gitpod.io/?on=gitpod#https://github.com/unimetrics/frontend-monorepo) [![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/unimetrics/frontend-monorepo)
 
 > 🧑‍🚀 **Seasoned astronaut?** Delete this file `README.md`. Update `src/config.yaml` and contents. Have fun!
 
@@ -265,13 +265,13 @@ prefer.
 
 Clone this repository on your own GitHub account and deploy it to Netlify:
 
-[![Netlify Deploy button](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/arthelokyo/astrowind)
+[![Netlify Deploy button](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/unimetrics/frontend-monorepo)
 
 #### Deploy to Vercel
 
 Clone this repository on your own GitHub account and deploy to Vercel:
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Farthelokyo%2Fastrowind)
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Funimetrics%2Ffrontend-monorepo)
 
 <br>
 
@@ -295,8 +295,8 @@ That would be very useful for all of us and we would be happy to listen and take
 
 ## Acknowledgements
 
-Initially created by **Arthelokyo** and maintained by a community of [contributors](https://github.com/arthelokyo/astrowind/graphs/contributors).
+Maintained by the Unimetrics team and a community of [contributors](https://github.com/unimetrics/frontend-monorepo/graphs/contributors).
 
 ## License
 
-**AstroWind** is licensed under the MIT license — see the [LICENSE](./LICENSE.md) file for details.
+**Unimetrics** is licensed under the MIT license — see the [LICENSE](./LICENSE.md) file for details.
