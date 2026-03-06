@@ -1,0 +1,4 @@
+interface:
+  display_name: "Docs Structure Guard"
+  short_description: "Keep docs aligned with repo structure."
+  default_prompt: "Use $docs-structure-guard to verify changed docs against actual repository structure and fix inconsistencies."

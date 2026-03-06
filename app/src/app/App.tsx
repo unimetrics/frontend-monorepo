@@ -8,7 +8,7 @@ export const App = () => {
     <>
       <Helmet>
         <html lang="en" />
-        <meta name="application-name" content="Unimetrics App" />
+        <meta content="Unimetrics App" name="application-name" />
       </Helmet>
       <RouterProvider router={router} />
     </>

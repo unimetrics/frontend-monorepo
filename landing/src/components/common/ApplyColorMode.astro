@@ -1,22 +1,18 @@
 ---
-import { UI } from "astrowind:config";
+import { UI } from "unimetrics:config";
 
 // TODO: This code is temporary
 ---
 
 <script is:inline define:vars={{ defaultTheme: UI.theme || "system" }}>
   function applyTheme(theme) {
-    if (theme === "dark") {
-      document.documentElement.classList.add("dark");
-    } else {
-      document.documentElement.classList.remove("dark");
-    }
+    document.documentElement.classList.toggle("dark", theme === "dark");
     const matches = document.querySelectorAll("[data-aw-toggle-color-scheme] > input");
 
-    if (matches && matches.length) {
-      matches.forEach(elem => {
+    if (matches && matches.length > 0) {
+      for (const elem of matches) {
         elem.checked = theme !== "dark";
-      });
+      }
     }
   }
 
@@ -28,7 +24,7 @@ import { UI } from "astrowind:config";
   } else if (
     localStorage.theme === "dark" ||
     (!("theme" in localStorage) &&
-      window.matchMedia("(prefers-color-scheme: dark)").matches)
+      globalThis.matchMedia("(prefers-color-scheme: dark)").matches)
   ) {
     applyTheme("dark");
   } else {

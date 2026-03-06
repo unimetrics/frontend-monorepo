@@ -1,12 +1,6 @@
-import { ApiTransportError, toApiError } from "../core/errors.js";
 import type { ApiCaller, ApiRouter, ProcedureDictionary } from "../core/types.js";
 
-interface FetchLikeResponse {
-  json: () => Promise<unknown>;
-  ok: boolean;
-  status: number;
-  text: () => Promise<string>;
-}
+import { ApiTransportError, toApiError } from "../core/errors.js";
 
 type FetchLike = (
   input: string,
@@ -16,6 +10,13 @@ type FetchLike = (
     method?: string;
   }
 ) => Promise<FetchLikeResponse>;
+
+interface FetchLikeResponse {
+  json: () => Promise<unknown>;
+  ok: boolean;
+  status: number;
+  text: () => Promise<string>;
+}
 
 interface RestClientOptions {
   baseUrl: string;
@@ -36,7 +37,7 @@ export function createRestClient<Ctx, Procedures extends ProcedureDictionary<Ctx
   return new Proxy({} as ApiCaller<Procedures>, {
     get: (_target, property) => {
       if (typeof property !== "string") {
-        return undefined;
+        return;
       }
 
       return async (input: unknown) => {
@@ -70,7 +71,7 @@ export function createRestClient<Ctx, Procedures extends ProcedureDictionary<Ctx
           ok: boolean;
         };
 
-        if (!payload.ok || typeof payload === "undefined") {
+        if (!payload.ok || payload === undefined) {
           throw toApiError(
             new ApiTransportError(
               payload.error?.message ?? "REST request failed",

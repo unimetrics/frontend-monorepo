@@ -1,0 +1,25 @@
+{
+  "bypass_actors": [
+    {
+      "actor_id": 1,
+      "actor_type": "OrganizationAdmin",
+      "bypass_mode": "always"
+    }
+  ],
+  "conditions": {
+    "ref_name": {
+      "exclude": [],
+      "include": [
+        "refs/heads/main"
+      ]
+    }
+  },
+  "enforcement": "active",
+  "name": "Branch force-push policy: main (prod)",
+  "rules": [
+    {
+      "type": "non_fast_forward"
+    }
+  ],
+  "target": "branch"
+}

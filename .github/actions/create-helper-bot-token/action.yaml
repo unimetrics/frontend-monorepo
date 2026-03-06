@@ -1,0 +1,36 @@
+name: "Create helper bot token"
+description: "Validate helper bot secrets and create a GitHub App installation token"
+
+inputs:
+  app-id:
+    description: "GitHub App ID"
+    required: true
+  private-key:
+    description: "GitHub App private key (PEM)"
+    required: true
+
+outputs:
+  token:
+    description: "GitHub App installation token"
+    value: ${{ steps.app-token.outputs.token }}
+
+runs:
+  using: "composite"
+  steps:
+    - name: Validate GitHub App configuration
+      env:
+        APP_ID: ${{ inputs.app-id }}
+        APP_PRIVATE_KEY: ${{ inputs.private-key }}
+      run: |
+        if [[ -z "${APP_ID}" || -z "${APP_PRIVATE_KEY}" ]]; then
+          echo "Missing app-id or private-key input." >&2
+          exit 1
+        fi
+      shell: bash
+
+    - name: Create GitHub App token
+      id: app-token
+      uses: actions/create-github-app-token@v2
+      with:
+        app-id: ${{ inputs.app-id }}
+        private-key: ${{ inputs.private-key }}

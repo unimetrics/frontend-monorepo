@@ -1,12 +1,6 @@
-import { ApiTransportError, toApiError } from "../core/errors.js";
 import type { ApiCaller, ApiRouter, ProcedureDictionary } from "../core/types.js";
 
-interface FetchLikeResponse {
-  json: () => Promise<unknown>;
-  ok: boolean;
-  status: number;
-  text: () => Promise<string>;
-}
+import { ApiTransportError, toApiError } from "../core/errors.js";
 
 type FetchLike = (
   input: string,
@@ -16,6 +10,13 @@ type FetchLike = (
     method?: string;
   }
 ) => Promise<FetchLikeResponse>;
+
+interface FetchLikeResponse {
+  json: () => Promise<unknown>;
+  ok: boolean;
+  status: number;
+  text: () => Promise<string>;
+}
 
 interface GraphqlClientOptions {
   endpoint: string;
@@ -39,7 +40,7 @@ export function createGraphqlClient<Ctx, Procedures extends ProcedureDictionary<
   return new Proxy({} as ApiCaller<Procedures>, {
     get: (_target, property) => {
       if (typeof property !== "string") {
-        return undefined;
+        return;
       }
 
       return async (input: unknown) => {
@@ -90,6 +91,7 @@ export function createGraphqlClient<Ctx, Procedures extends ProcedureDictionary<
         }
 
         const rpcResponse = payload.data?.[fieldName] as
+          | undefined
           | {
               error?: {
                 code: string;
@@ -98,8 +100,7 @@ export function createGraphqlClient<Ctx, Procedures extends ProcedureDictionary<
               };
               ok: boolean;
               result?: unknown;
-            }
-          | undefined;
+            };
 
         if (!rpcResponse?.ok) {
           throw toApiError(

@@ -1,0 +1,4 @@
+interface:
+  display_name: "Release Manager"
+  short_description: "Plan and validate safe release promotions."
+  default_prompt: "Use $release-manager to prepare and validate the next release from dev to test to main (prod)."
