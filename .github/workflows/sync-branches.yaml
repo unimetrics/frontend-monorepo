@@ -6,6 +6,9 @@ on:
     branches:
       - main
       - test
+  pull_request:
+    types:
+      - closed
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
@@ -17,7 +20,7 @@ permissions:
 
 jobs:
   sync-main-to-test-and-dev:
-    if: github.ref_name == 'main'
+    if: ${{ github.event_name != 'pull_request' && github.ref_name == 'main' }}
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -39,7 +42,14 @@ jobs:
         run: bash scripts/github/sync-branch-prs/sync-branch-prs.sh
 
   sync-test-to-dev:
-    if: github.ref_name == 'test'
+    if: >-
+      ${{
+        (github.event_name != 'pull_request' && github.ref_name == 'test') ||
+        (github.event_name == 'pull_request' &&
+        github.event.pull_request.head.ref == 'main' &&
+        github.event.pull_request.base.ref == 'dev' &&
+        startsWith(github.event.pull_request.title, 'chore(sync): merge '))
+      }}
     runs-on: ubuntu-latest
     steps:
       - name: Checkout

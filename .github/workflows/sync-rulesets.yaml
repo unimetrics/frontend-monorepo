@@ -16,11 +16,16 @@ permissions:
 jobs:
   sync-rulesets:
     runs-on: ubuntu-slim
-    env:
-      RULESETS_ADMIN_TOKEN: ${{ secrets.RULESETS_ADMIN_TOKEN }}
     steps:
       - name: Checkout
         uses: actions/checkout@v5
+
+      - name: Create helper bot token
+        id: helper-bot-token
+        uses: ./.github/actions/create-helper-bot-token
+        with:
+          app-id: ${{ secrets.HELPER_BOT_ID }}
+          private-key: ${{ secrets.HELPER_BOT_KEY }}
 
       - name: Validate ruleset payloads
         run: |
@@ -30,12 +35,7 @@ jobs:
           done
 
       - name: Apply rulesets
-        if: ${{ env.RULESETS_ADMIN_TOKEN != '' }}
         env:
-          GH_TOKEN: ${{ env.RULESETS_ADMIN_TOKEN }}
+          GH_TOKEN: ${{ steps.helper-bot-token.outputs.token }}
           GITHUB_REPOSITORY: ${{ github.repository }}
         run: bash scripts/github/apply-rulesets/apply-rulesets.sh
-
-      - name: Skip ruleset sync (token not configured)
-        if: ${{ env.RULESETS_ADMIN_TOKEN == '' }}
-        run: echo "RULESETS_ADMIN_TOKEN is not configured, skipping ruleset sync."
