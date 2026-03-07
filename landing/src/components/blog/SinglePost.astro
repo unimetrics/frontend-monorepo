@@ -74,12 +74,12 @@ const { post, url } = Astro.props;
       </div>
 
       <h1
-        class="leading-tighter mx-auto max-w-3xl px-4 font-heading text-4xl font-bold tracking-tighter sm:px-6 md:text-5xl"
+        class="leading-tighter mx-auto max-w-3xl px-4 font-ui-heading text-4xl font-bold tracking-tighter sm:px-6 md:text-5xl"
       >
         {post.title}
       </h1>
       <p
-        class="mx-auto mb-8 mt-4 max-w-3xl px-4 text-justify text-xl text-muted dark:text-slate-400 sm:px-6 md:text-2xl"
+        class="mx-auto mb-8 mt-4 max-w-3xl px-4 text-justify text-xl text-ui-text-muted dark:text-slate-400 sm:px-6 md:text-2xl"
       >
         {post.excerpt}
       </p>
@@ -105,7 +105,7 @@ const { post, url } = Astro.props;
       }
     </header>
     <div
-      class="prose-md prose-headings:leading-tighter prose mx-auto mt-8 max-w-3xl px-6 dark:prose-invert lg:prose-xl prose-headings:scroll-mt-[80px] prose-headings:font-heading prose-headings:font-bold prose-headings:tracking-tighter prose-a:text-primary prose-li:my-0 prose-img:rounded-md prose-img:shadow-lg dark:prose-headings:text-slate-300 dark:prose-a:text-blue-400 sm:px-6"
+      class="prose-md prose-headings:leading-tighter prose mx-auto mt-8 max-w-3xl px-6 dark:prose-invert lg:prose-xl prose-headings:scroll-mt-[80px] prose-headings:font-ui-heading prose-headings:font-bold prose-headings:tracking-tighter prose-a:text-ui-primary prose-li:my-0 prose-img:rounded-md prose-img:shadow-lg dark:prose-headings:text-slate-300 dark:prose-a:text-blue-400 sm:px-6"
     >
       <slot />
     </div>

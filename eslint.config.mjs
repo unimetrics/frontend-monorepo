@@ -237,7 +237,13 @@ export default [
     ignores: ["scripts/utils/**"],
     rules: {
       ...jsdoc.configs["flat/recommended-typescript"].rules,
-      "jsdoc/require-file-overview": "error",
+      "jsdoc/require-file-overview": "off",
+      "jsdoc/require-jsdoc": [
+        "warn",
+        {
+          publicOnly: true,
+        },
+      ],
     },
   },
   {

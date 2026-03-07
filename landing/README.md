@@ -100,7 +100,6 @@ Inside **Unimetrics** template, you'll see the following folders and files:
 │   │   ├── widgets/
 │   │   │   ├── Header.astro
 │   │   │   └── ...
-│   │   ├── CustomStyles.astro
 │   │   ├── Favicons.astro
 │   │   └── Logo.astro
 │   ├── content/
@@ -244,7 +243,6 @@ ui:
 
 To customize Font families, Colors or more Elements refer to the following files:
 
-- `src/components/CustomStyles.astro`
 - `src/assets/styles/tailwind.css`
 
 ### Deploy

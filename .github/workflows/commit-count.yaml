@@ -1,0 +1,62 @@
+name: Max Commits
+
+on:
+  pull_request:
+    branches:
+      - dev
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+  pull-requests: read
+
+jobs:
+  max-commits:
+    name: Max Commit Count
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v5
+
+      - name: Enforce commit limit
+        id: max-commit-check
+        continue-on-error: true
+        uses: nikwotton/Max-Commit-Count@v1.0.0
+        with:
+          maxCommits: 1
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: HOW TO FIX TOO MANY COMMITS
+        if: ${{ steps.max-commit-check.outcome == 'failure' }}
+        shell: bash
+        run: |
+          echo "::group::Commit policy failed"
+          echo "This repository requires exactly one commit per PR."
+          echo "Detected ${{ github.event.pull_request.commits }} commits (limit: 1)."
+          echo ""
+          echo "What you need to do:"
+          echo "1) git fetch origin"
+          echo "2) git rebase -i origin/${{ github.base_ref }}"
+          echo "3) squash into one commit"
+          echo "4) git push --force-with-lease"
+          echo ""
+          echo "Note: this check is not mandatory. If you need multiple commits for a valid reason, you can ignore it."
+          echo "::endgroup::"
+          {
+            echo "## Commit policy failed"
+            echo ""
+            echo "This repository requires exactly **1 commit per PR**."
+            echo "Detected **${{ github.event.pull_request.commits }} commits** (limit: **1**)."
+            echo ""
+            echo "### Fix"
+            echo "1. \`git fetch origin\`"
+            echo "2. \`git rebase -i origin/${{ github.base_ref }}\`"
+            echo "3. Squash into one commit"
+            echo "4. \`git push --force-with-lease\`"
+            echo ""
+            echo "> Note: this check is not mandatory. If multiple commits are needed for a valid reason, you can ignore it."
+          } >> "$GITHUB_STEP_SUMMARY"
+          exit 1

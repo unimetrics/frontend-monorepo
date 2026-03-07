@@ -10,8 +10,9 @@ Use the shared policy in `.ai/code-review-policy.md` as the source of truth.
 ## Execution
 
 1. Read `.ai/code-review-policy.md`.
-2. Analyze changed files and surrounding context according to that policy.
-3. Return results using the exact output format from the policy.
+2. If the review is for a pull request, also read `.ai/pr-instructions.md`.
+3. Analyze changed files and surrounding context according to that policy.
+4. Return results using the exact output format from the policy.
 
 ## Notes
 

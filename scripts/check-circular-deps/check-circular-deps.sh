@@ -46,5 +46,5 @@ run_madge "mobile" \
   mobile/index.ts
 
 run_madge "ui" \
-  --extensions js,mjs,cjs \
-  ui/tailwind-preset.js
+  --extensions ts,js,mjs,cjs \
+  ui/scripts/build-tokens/build-tokens.ts
