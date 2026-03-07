@@ -16,6 +16,10 @@ runs:
       run: pnpm run lint:circular
       shell: bash
 
+    - name: Check FSD rules with Steiger
+      run: pnpm run lint:fsd
+      shell: bash
+
     - name: Check formatting
       run: pnpm run format
       shell: bash
@@ -30,4 +34,8 @@ runs:
 
     - name: Check if allow-scripts is up-to-date
       run: pnpm run lint:allow-scripts
+      shell: bash
+
+    - name: Lint github branches rulesets
+      run: pnpm run lint:rulesets
       shell: bash

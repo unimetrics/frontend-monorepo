@@ -17,7 +17,7 @@ permissions:
 
 jobs:
   lint:
-    runs-on: ubuntu-slim
+    runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v5
@@ -50,6 +50,15 @@ jobs:
             landing
             mobile
             ui
+          APPROVED_LICENSES: |
+            Apache-2.0
+            BSD-2-Clause
+            BSD-3-Clause
+            CC0-1.0
+            ISC
+            MIT
+            MPL-2.0
+            Unlicense
 
       - name: Run lint checks
         uses: ./.github/actions/lint

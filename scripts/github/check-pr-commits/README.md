@@ -13,7 +13,7 @@ Validates commit messages across the whole PR, not just the last commit.
 From repo root:
 
 ```bash
-PR_BASE_REF=main PR_HEAD_SHA=$(git rev-parse HEAD) \
+PR_BASE_REF=dev PR_HEAD_SHA=$(git rev-parse HEAD) \
   bash scripts/github/check-pr-commits/check-pr-commits.sh
 ```
 

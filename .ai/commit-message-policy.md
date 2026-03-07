@@ -27,3 +27,4 @@ Examples:
 - Additional conventional commit validations come from `@commitlint/config-conventional`.
 - Keep commit messages imperative and specific to the actual change.
 - For Web3-impacting changes, mention the affected chain/protocol context in the subject when relevant.
+- For PR-level requirements beyond commit message format, follow `.ai/pr-instructions.md`.

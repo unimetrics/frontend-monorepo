@@ -30,12 +30,12 @@ const {
         stats.map(({ amount, title, icon }) => (
           <div class="intersect-once intersect-quarter w-full min-w-[220px] p-4 text-center sm:w-1/2 md:w-1/4 md:border-r md:last:border-none motion-safe:md:opacity-0 motion-safe:md:intersect:animate-fade dark:md:border-slate-500">
             {icon && (
-              <div class="mx-auto mb-4 flex items-center justify-center text-primary">
+              <div class="mx-auto mb-4 flex items-center justify-center text-ui-primary">
                 <Icon name={icon} class="h-10 w-10" />
               </div>
             )}
             {amount && (
-              <div class="font-heading text-[2.6rem] font-bold text-primary dark:text-white lg:text-5xl xl:text-6xl">
+              <div class="font-ui-heading text-[2.6rem] font-bold text-ui-primary dark:text-white lg:text-5xl xl:text-6xl">
                 {amount}
               </div>
             )}

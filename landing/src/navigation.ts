@@ -126,7 +126,7 @@ export const headerData = {
 
 export const footerData = {
   footNote: `
-    Made by <a class="text-blue-600 underline dark:text-muted" href="https://github.com/unimetrics"> Arthelokyo</a> · All rights reserved.
+    Made by <a class="text-blue-600 underline dark:text-ui-text-muted" href="https://github.com/unimetrics"> Arthelokyo</a> · All rights reserved.
   `,
   links: [
     {

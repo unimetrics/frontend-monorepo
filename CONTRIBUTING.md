@@ -11,9 +11,15 @@ nvm use
 pnpm install
 ```
 
+## Script Development
+
+- Follow [scripts/SCRIPT_STANDARDS.md](./scripts/SCRIPT_STANDARDS.md).
+- Use Bash (`.sh`) or TypeScript (`.ts`) only for automation scripts.
+- Run TypeScript scripts with `tsx`.
+
 ## Branch and Commits
 
-- Create feature branches from `main`
+- Create feature branches from `dev`
 - Use Conventional Commits (commitlint enforced)
 - Keep PRs focused and small when possible
 

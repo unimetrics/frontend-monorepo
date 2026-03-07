@@ -43,9 +43,9 @@ Identify correctness, security, and regression risk before merge. Prioritize beh
 5. Enforce repository policies:
 
 - verify code changes are consistent with `.ai/style-guide.md`
-- verify commit messages in scope are consistent with `commit-message-policy.md`
-- when scripts are added/changed/moved, verify per-script folder structure and companion `README.md` are present
-- verify all script callsites are updated (`package.json`, workflows/actions, and workflow path filters)
+- verify PR expectations are consistent with `.ai/pr-instructions.md` when PR metadata/description/checklist is present
+- verify commit messages in scope are consistent with `.ai/commit-message-policy.md`
+- for script changes, verify compliance with `scripts/SCRIPT_STANDARDS.md` and ensure required callsites are updated
 
 6. Validate meta/documentation changes:
 
@@ -57,8 +57,6 @@ Identify correctness, security, and regression risk before merge. Prioritize beh
 7. Ensure no secrets or sensitive data are exposed in code, tests, or documentation.
 
 8. Ensure proper test (unit, e2e, integration, fuzz) coverage for any new or changed logic, especially for critical paths and edge cases. If new files or directories are added, verify they are visible by eslint, prettier, test runners and other relevant tools.
-
-9. Ensure all docs, readme files and instructions (like RELEASING.md) are updated for any new or changed scripts, workflows, branch flow, or repository policies and are relevant to the current state of the repository.
 
 ## Severity
 

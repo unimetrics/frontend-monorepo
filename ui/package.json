@@ -5,7 +5,16 @@
   "type": "module",
   "exports": {
     "./tokens.css": "./tokens.css",
-    "./tailwind-preset": "./tailwind-preset.js"
+    "./theme.css": "./theme.css"
+  },
+  "scripts": {
+    "build": "tsx ./scripts/build-tokens/build-tokens.ts",
+    "dev": "tsx watch --clear-screen=false --include './tokens/**/*.json' --exclude './tokens/generated/**' --exclude './tokens.css' --exclude './theme.css' ./scripts/build-tokens/build-tokens.ts"
+  },
+  "devDependencies": {
+    "@tokens-studio/sd-transforms": "2.0.3",
+    "change-case": "5.4.4",
+    "style-dictionary": "5.3.3"
   },
   "peerDependencies": {
     "tailwindcss": "catalog:"
