@@ -8,7 +8,7 @@ assignees:
 
 > [!WARNING]
 > Security vulnerabilities must not be reported in public issues.
-> Please use the process in [`SECURITY.md`](../../SECURITY.md) and email
+> Please use the process in [`SECURITY.md`](https://github.com/unimetrics/frontend-monorepo/blob/main/SECURITY.md) and email
 > `ukorotovskiy@gmail.com`.
 
 ## Summary

@@ -2,6 +2,8 @@
 
 Use this guide for code changes in this repository.
 
+For pull request preparation and PR-specific rules, also follow `.ai/pr-instructions.md`.
+
 ## Stack and Tooling
 
 - Use `pnpm` (not npm/yarn) for dependency and script commands.
@@ -16,11 +18,7 @@ Use this guide for code changes in this repository.
 
 ## Scripts Organization
 
-- Place repository scripts under `scripts/` in per-script folders, not as loose files.
-- Use one executable entrypoint per folder, named after the folder (for example `scripts/check-circular-deps/check-circular-deps.sh`).
-- Add a `README.md` next to each script with short sections: what it does, why it exists, how to run it, supported args/env inputs, and produced outputs/exit behavior.
-- Keep script execution deterministic and repo-local (`pnpm exec ...` over `npx` when invoking local tools).
-- If a script path changes, update all callsites (`package.json`, workflows, composite actions, path filters) in the same change.
+- Follow `scripts/SCRIPT_STANDARDS.md` for new scripts and updates to existing scripts.
 
 ## Quality Gates
 

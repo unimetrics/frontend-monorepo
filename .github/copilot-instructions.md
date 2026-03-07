@@ -1,15 +1,17 @@
 # Copilot Instructions
 
-For all coding tasks in this repository:
+Use canonical repository AI policies instead of duplicating rules here.
 
-1. Follow the project style guide: `.ai/style-guide.md`.
-2. Respect existing architecture and workspace boundaries.
-3. Keep changes minimal, safe, and production-oriented.
-4. Follow the commit message guidelines in `.ai/commit-message-policy.md`.
-5. If the change should be tracked in release notes (and mostly it is true), create a changeset with `pnpm changeset` and follow the prompts.
+## Primary References
 
-For code reviews / PR reviews / merge-risk checks:
+1. `AGENTS.md`
+2. `.ai/style-guide.md`
+3. `.ai/pr-instructions.md` (for PR creation/update/review tasks)
+4. `.ai/commit-message-policy.md`
+5. `.ai/code-review-policy.md` (for review/merge-risk tasks)
 
-1. Follow `.ai/code-review-policy.md` exactly.
-2. Use severity levels `P0`-`P3`.
-3. Use the required output structure from the review policy.
+## Practical Notes
+
+1. Use the PR template and include validation evidence per `.ai/pr-instructions.md`.
+2. If release notes are required, create a changeset with `pnpm changeset`.
+3. For script changes, follow `scripts/SCRIPT_STANDARDS.md` (referenced by `.ai/style-guide.md`).

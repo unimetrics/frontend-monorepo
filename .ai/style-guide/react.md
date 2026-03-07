@@ -1,6 +1,7 @@
 # React Style Guide (`app`)
 
 Use this guide for changes inside `app/` (React + Vite + TypeScript + Tailwind + PWA).
+For PR process and merge rules, also follow `../pr-instructions.md`.
 
 ## Core Principles
 

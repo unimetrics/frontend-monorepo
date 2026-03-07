@@ -1,0 +1,16 @@
+[
+  {
+    "name": "light",
+    "selectedTokenSets": {
+      "core": "source",
+      "semantic.light": "enabled"
+    }
+  },
+  {
+    "name": "dark",
+    "selectedTokenSets": {
+      "core": "source",
+      "semantic.dark": "enabled"
+    }
+  }
+]

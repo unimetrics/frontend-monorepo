@@ -1,6 +1,7 @@
 # Expo React Native Style Guide (`mobile`)
 
 Use this guide for changes inside `mobile/` (Expo + React Native + TypeScript).
+For PR process and merge rules, also follow `../pr-instructions.md`.
 
 ## Core Principles
 

@@ -1,5 +1,4 @@
 import typographyPlugin from "@tailwindcss/typography";
-import uiTailwindPreset from "@unimetrics/ui/tailwind-preset";
 import plugin from "tailwindcss/plugin";
 
 export default {
@@ -11,7 +10,6 @@ export default {
       addVariant("intersect", "&:not([no-intersect])");
     }),
   ],
-  presets: [uiTailwindPreset],
   theme: {
     extend: {
       animation: {

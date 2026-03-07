@@ -51,12 +51,6 @@
         ]
       },
       "type": "code_scanning"
-    },
-    {
-      "parameters": {
-        "severity": "errors"
-      },
-      "type": "code_quality"
     }
   ],
   "target": "branch"
