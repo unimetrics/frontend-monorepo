@@ -12,15 +12,16 @@ Use this file when preparing, updating, or reviewing pull requests.
 ## PR Content Requirements
 
 1. Keep PR scope focused and minimal.
-2. Include a clear summary of what changed and why.
-3. Include validation evidence:
+2. Agents must keep each PR to exactly one commit to avoid polluting `dev`, `test`, `main`, and downstream sync branches with noisy commit history.
+3. Include a clear summary of what changed and why.
+4. Include validation evidence:
 
 - exact commands run
 - pass/fail status
 - known non-blocking warnings (if any)
 
-4. For UI changes, include screenshots or recordings.
-5. For risk-sensitive changes, include rollback notes.
+5. For UI changes, include screenshots or recordings.
+6. For risk-sensitive changes, include rollback notes.
 
 ## Required Local Validation
 
