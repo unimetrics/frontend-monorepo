@@ -21,14 +21,14 @@ const {
     <div class={twMerge("mb-8 text-center md:mx-auto md:mb-12", containerClass)}>
       {tagline && (
         <p
-          class="text-base font-bold uppercase tracking-wide text-secondary dark:text-blue-200"
+          class="text-base font-bold uppercase tracking-wide text-ui-secondary dark:text-blue-200"
           set:html={tagline}
         />
       )}
       {title && (
         <h2
           class={twMerge(
-            "leading-tighter font-heading text-3xl font-bold tracking-tighter text-heading",
+            "leading-tighter font-ui-heading text-3xl font-bold tracking-tighter text-ui-text-heading",
             titleClass
           )}
           set:html={title}
@@ -36,7 +36,10 @@ const {
       )}
 
       {subtitle && (
-        <p class={twMerge("mt-4 text-muted", subtitleClass)} set:html={subtitle} />
+        <p
+          class={twMerge("mt-4 text-ui-text-muted", subtitleClass)}
+          set:html={subtitle}
+        />
       )}
     </div>
   )

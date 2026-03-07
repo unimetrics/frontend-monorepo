@@ -13,6 +13,7 @@ Builds token outputs using Style Dictionary + `@tokens-studio/sd-transforms`:
 - runtime variables in `ui/tokens.css`
 - Tailwind mapping in `ui/theme.css`
 - resolved theme snapshots in `ui/tokens/generated/*.json`
+- Tokens Studio import bundle in `ui/tokens/generated/tokens.studio.json`
 
 #### How to use
 
@@ -29,7 +30,7 @@ pnpm --filter @unimetrics/ui dev
 #### Inputs
 
 - `ui/tokens/sets/*.json`
-- `ui/tokens/$themes.json`
+- `ui/tokens/sets/$themes.json`
 
 #### Output
 
@@ -37,6 +38,7 @@ pnpm --filter @unimetrics/ui dev
 - `ui/theme.css`
 - `ui/tokens/generated/light.json`
 - `ui/tokens/generated/dark.json`
+- `ui/tokens/generated/tokens.studio.json` (single-file upload/import for Tokens Studio in Figma)
 
 Failure behavior:
 

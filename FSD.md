@@ -30,11 +30,4 @@ From highest to lowest responsibility:
 
 ## Check Commands
 
-- `pnpm fsd:check`
-- `pnpm fsd:watch`
-
-`pnpm fsd:check` runs Steiger separately for:
-
-- `app/src`
-- `landing/src`
-- `mobile/src`
+- `pnpm lint:fsd` runs Steiger checks on all UI packages.

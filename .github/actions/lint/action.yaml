@@ -16,6 +16,10 @@ runs:
       run: pnpm run lint:circular
       shell: bash
 
+    - name: Check FSD rules with Steiger
+      run: pnpm run lint:fsd
+      shell: bash
+
     - name: Check formatting
       run: pnpm run format
       shell: bash

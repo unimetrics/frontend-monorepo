@@ -1,5 +1,6 @@
 @config "../../../tailwind.config.js";
 @import "tailwindcss";
+@import "@unimetrics/ui/tokens.css";
 @import "@unimetrics/ui/theme.css";
 
 @layer utilities {
@@ -15,7 +16,7 @@
   .text-page {
     color: var(--ui-color-text-default);
   }
-  .text-muted {
+  .text-ui-text-muted {
     color: var(--ui-color-text-muted);
   }
 }
@@ -30,7 +31,7 @@
   }
 
   .btn-primary {
-    @apply border-primary bg-primary hover:border-secondary hover:bg-secondary dark:border-primary dark:bg-primary dark:hover:border-secondary dark:hover:bg-secondary font-semibold text-white hover:text-white dark:text-white;
+    @apply border-ui-primary bg-ui-primary hover:border-ui-secondary hover:bg-ui-secondary dark:border-ui-primary dark:bg-ui-primary dark:hover:border-ui-secondary dark:hover:bg-ui-secondary font-semibold text-white hover:text-white dark:text-white;
   }
 
   .btn-tertiary {

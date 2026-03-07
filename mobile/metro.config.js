@@ -1,9 +1,8 @@
-// eslint-disable-next-line unicorn/prefer-module
-const { getDefaultConfig } = require("expo/metro-config");
-// eslint-disable-next-line unicorn/prefer-module
+/* eslint-disable unicorn/prefer-module */
+const { getDefaultConfig } = require("@expo/metro-config");
+const { withNativewind } = require("nativewind/metro");
 const path = require("node:path");
 
-// eslint-disable-next-line unicorn/prefer-module
 const projectRoot = __dirname;
 const workspaceRoot = path.resolve(projectRoot, "..");
 
@@ -16,5 +15,4 @@ config.resolver.nodeModulesPaths = [
 ];
 config.resolver.unstable_enableSymlinks = true;
 
-// eslint-disable-next-line unicorn/prefer-module
-module.exports = config;
+module.exports = withNativewind(config);
