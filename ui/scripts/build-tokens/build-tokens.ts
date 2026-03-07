@@ -25,8 +25,9 @@ const scriptDir = path.dirname(scriptPath);
 const uiRoot = path.resolve(scriptDir, "../..");
 const tokensRoot = path.join(uiRoot, "tokens");
 const setsDir = path.join(tokensRoot, "sets");
-const themesPath = path.join(tokensRoot, "$themes.json");
+const themesPath = path.join(setsDir, "$themes.json");
 const generatedDir = path.join(tokensRoot, "generated");
+const tokensStudioBundlePath = path.join(generatedDir, "tokens.studio.json");
 const themeCssPath = path.join(uiRoot, "theme.css");
 const tokensCssPath = path.join(uiRoot, "tokens.css");
 
@@ -47,23 +48,18 @@ StyleDictionary.registerFormat({
   name: "unimetrics/json-dot",
 });
 
-const themeMappings: Array<[string, string]> = [
-  ["--font-sans", "var(--ui-font-family-sans)"],
-  ["--font-serif", "var(--ui-font-family-serif)"],
-  ["--font-heading", "var(--ui-font-family-heading)"],
-  ["--color-primary", "var(--ui-color-primary)"],
-  ["--color-secondary", "var(--ui-color-secondary)"],
-  ["--color-accent", "var(--ui-color-accent)"],
-  ["--color-heading", "var(--ui-color-text-heading)"],
-  ["--color-default", "var(--ui-color-text-default)"],
-  ["--color-muted", "var(--ui-color-text-muted)"],
-  ["--radius-sm", "var(--ui-radius-sm)"],
-  ["--radius-md", "var(--ui-radius-md)"],
-  ["--radius-lg", "var(--ui-radius-lg)"],
-  ["--radius-xl", "var(--ui-radius-xl)"],
-  ["--radius-full", "var(--ui-radius-pill)"],
-  ["--spacing-18", "var(--ui-spacing-18)"],
-  ["--shadow-focus", "var(--ui-shadow-focus)"],
+const uiToTailwindThemePrefixRules: Array<[string, string]> = [
+  ["--ui-primitive-color-", "--color-ui-primitive-"],
+  ["--ui-color-", "--color-ui-"],
+  ["--ui-spacing-", "--spacing-ui-"],
+  ["--ui-radius-", "--radius-ui-"],
+  ["--ui-shadow-", "--shadow-ui-"],
+  ["--ui-border-width-", "--border-width-ui-"],
+  ["--ui-font-family-", "--font-ui-"],
+  ["--ui-font-size-", "--text-ui-"],
+  ["--ui-font-line-height-", "--leading-ui-"],
+  ["--ui-font-weight-", "--font-weight-ui-"],
+  ["--ui-motion-duration-", "--duration-ui-"],
 ];
 
 async function build(): Promise<void> {
@@ -84,10 +80,28 @@ async function build(): Promise<void> {
     await buildThemeSnapshot(theme);
   }
 
+  await writeTokensStudioBundle(themes);
+
   const lightTheme = await readThemeSnapshot("light");
   const darkTheme = await readThemeSnapshot("dark");
+  await writeThemeCss(lightTheme);
   await writeTokensCss(lightTheme, darkTheme);
-  await writeThemeCss();
+}
+
+function buildThemeMappings(lightTheme: Map<string, string>): Array<[string, string]> {
+  const entries = new Map<string, string>();
+
+  for (const tokenPath of lightTheme.keys()) {
+    const sourceVarName = toCssVarName(tokenPath);
+    const themeVarName = toTailwindThemeVarName(sourceVarName);
+    if (!themeVarName) {
+      continue;
+    }
+
+    entries.set(themeVarName, `var(${sourceVarName})`);
+  }
+
+  return [...entries.entries()].sort(([a], [b]) => a.localeCompare(b));
 }
 
 async function buildThemeSnapshot(theme: ThemeConfig): Promise<void> {
@@ -201,7 +215,24 @@ function toCssVarName(tokenPath: string): string {
     .join("-")}`;
 }
 
-async function writeThemeCss(): Promise<void> {
+function toTailwindThemeVarName(sourceVarName: string): null | string {
+  for (const [sourcePrefix, themePrefix] of uiToTailwindThemePrefixRules) {
+    if (sourceVarName.startsWith(sourcePrefix)) {
+      return `${themePrefix}${sourceVarName.slice(sourcePrefix.length)}`;
+    }
+  }
+
+  const genericMatch = sourceVarName.match(/^--ui-([a-z0-9]+)-(.+)$/);
+  if (!genericMatch) {
+    return null;
+  }
+
+  const [, namespace, suffix] = genericMatch;
+  return `--${namespace}-ui-${suffix}`;
+}
+
+async function writeThemeCss(lightTheme: Map<string, string>): Promise<void> {
+  const themeMappings = buildThemeMappings(lightTheme);
   const css = [
     "/*",
     " * Auto-generated from ui/scripts/build-tokens/build-tokens.ts.",
@@ -255,6 +286,27 @@ async function writeTokensCss(
   ].join("\n");
 
   await fs.writeFile(tokensCssPath, css, "utf8");
+}
+
+async function writeTokensStudioBundle(themes: ThemeConfig[]): Promise<void> {
+  const setDirEntries = await fs.readdir(setsDir);
+  const setFiles = setDirEntries
+    .filter(fileName => fileName.endsWith(".json") && fileName !== "$themes.json")
+    .sort((a, b) => a.localeCompare(b));
+
+  const bundle: Record<string, unknown> = { $themes: themes };
+
+  for (const setFile of setFiles) {
+    const setName = path.basename(setFile, ".json");
+    const setPath = path.join(setsDir, setFile);
+    bundle[setName] = await readJson<unknown>(setPath);
+  }
+
+  await fs.writeFile(
+    tokensStudioBundlePath,
+    `${JSON.stringify(bundle, null, 2)}\n`,
+    "utf8"
+  );
 }
 
 try {
