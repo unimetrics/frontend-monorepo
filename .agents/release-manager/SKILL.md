@@ -26,6 +26,7 @@ Use `RELEASING.md` as source of truth for flow and branch policy.
 - missing changesets
 - failed checks
 - inconsistent branch history
+6. For release-related PRs, ensure branch/merge expectations match `.ai/pr-instructions.md`.
 
 ## Output
 

@@ -1,15 +1,17 @@
 # Unimetrics Frontend Monorepo
 
-Monorepo for Unimetrics frontend surfaces:
+Monorepo for Unimetrics client-facing products and shared packages:
 
 - `landing`: Astro marketing site
 - `app`: React + Vite web app
 - `mobile`: Expo React Native app
-- `ui`: shared tokens and UI-kit foundations
+- `api`: shared TypeScript API client/core package
+- `cli`: operations CLI (`lpdesk`)
+- `ui`: shared tokens and Tailwind preset
 
 ## Requirements
 
-- Node `24.x`
+- Node `>=24 <25`
 - pnpm `10.11.0`
 
 ## Quick Start
@@ -20,20 +22,30 @@ pnpm install
 pnpm dev
 ```
 
-## Common Commands
+`pnpm dev` starts the landing site (`@unimetrics/landing`).
+
+## Run Specific Targets
 
 ```sh
-pnpm dev            # run all app dev servers
-pnpm build          # build all workspaces
-pnpm lint           # run workspace lint/typecheck
-pnpm test           # run workspace tests
-pnpm mobile         # run Expo mobile dev
-pnpm syncpack:check # verify dependency consistency
+pnpm dev                              # landing (Astro)
+pnpm --filter @unimetrics/app dev     # web app (Vite)
+pnpm mobile                           # mobile (Expo)
+pnpm ios                              # Expo iOS
+pnpm android                          # Expo Android
+pnpm web:mobile                       # Expo web target
+pnpm cli:help                         # CLI usage
+```
+
+## Quality And Build
+
+```sh
+pnpm lint
+pnpm test
+pnpm build
+pnpm syncpack:check
 ```
 
 ## Releases
-
-This repo uses Changesets:
 
 ```sh
 pnpm changeset
@@ -41,7 +53,7 @@ pnpm changeset:status
 pnpm changeset:version
 ```
 
-See [RELEASING.md](./RELEASING.md) for details.
+See [RELEASING.md](./RELEASING.md) for branch flow and release process.
 
 ## Collaboration Docs
 

@@ -75,15 +75,28 @@ for target_branch in "${target_branch_list[@]}"; do
   )"
 
   behind_count="$(git rev-list --count "origin/${target_branch}..origin/${source_branch}")"
-  if [[ "${behind_count}" -eq 0 ]]; then
+  source_tree="$(git rev-parse "origin/${source_branch}^{tree}")"
+  target_tree="$(git rev-parse "origin/${target_branch}^{tree}")"
+
+  # Merge-only updates can produce unique commits with no effective file changes.
+  # Skip (and close) sync PRs when branch trees are already identical.
+  if [[ "${behind_count}" -eq 0 || "${source_tree}" == "${target_tree}" ]]; then
     if [[ -n "${existing_pr_number}" ]]; then
       echo "Closing sync PR for ${source_branch} -> ${target_branch}: ${existing_pr_url}"
+      close_comment="Closing automatically because \`${target_branch}\` already contains all commits from \`${source_branch}\`."
+      if [[ "${behind_count}" -ne 0 && "${source_tree}" == "${target_tree}" ]]; then
+        close_comment="Closing automatically because \`${source_branch}\` and \`${target_branch}\` have no effective file changes to merge."
+      fi
       gh pr close \
         "${existing_pr_number}" \
         --repo "${repository}" \
-        --comment "Closing automatically because \`${target_branch}\` already contains all commits from \`${source_branch}\`."
+        --comment "${close_comment}"
     fi
-    echo "Skipping ${target_branch}: already up to date."
+    if [[ "${behind_count}" -eq 0 ]]; then
+      echo "Skipping ${target_branch}: already up to date."
+    else
+      echo "Skipping ${target_branch}: no effective file changes to merge."
+    fi
     continue
   fi
 

@@ -25,6 +25,7 @@ Prioritize root cause and smallest safe fix.
 6. Re-validate:
 - run relevant local checks
 - list expected CI checks to pass after patch
+7. If the fix updates PR-facing automation or merge behavior, verify `.ai/pr-instructions.md` stays consistent.
 
 ## Output
 

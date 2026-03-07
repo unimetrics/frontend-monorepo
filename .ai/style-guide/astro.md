@@ -1,6 +1,7 @@
 # Astro Style Guide (`landing`)
 
 Use this guide for changes inside `landing/` (Astro + static output + selective React islands).
+For PR process and merge rules, also follow `../pr-instructions.md`.
 
 ## Core Principles
 

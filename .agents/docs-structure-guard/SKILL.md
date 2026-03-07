@@ -20,7 +20,8 @@ Treat documentation drift as a correctness issue.
 5. Re-check consistency with:
 - `.ai/style-guide.md`
 - `.ai/code-review-policy.md` (for review expectations)
-- `commit-message-policy.md` (when commit policy is described)
+- `.ai/commit-message-policy.md` (when commit policy is described)
+- `.ai/pr-instructions.md` (when PR docs/process/checklists are described)
 
 ## Output
 
