@@ -31,3 +31,7 @@ runs:
     - name: Check if allow-scripts is up-to-date
       run: pnpm run lint:allow-scripts
       shell: bash
+
+    - name: Lint github branches rulesets
+      run: pnpm run lint:rulesets
+      shell: bash

@@ -3,7 +3,6 @@ site:
   site: "https://unimetrics.ai"
   base: "/"
   trailingSlash: false
-
   googleSiteVerificationId: null
 
 # Default SEO metadata

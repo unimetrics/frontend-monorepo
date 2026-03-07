@@ -1,11 +1,7 @@
 ---
 import { ANALYTICS } from "unimetrics:config";
 
-const measurementId = String(
-  ANALYTICS?.vendors?.googleAnalytics?.id ??
-    import.meta.env.PUBLIC_GA_MEASUREMENT_ID ??
-    ""
-).trim();
+const measurementId = String(ANALYTICS?.vendors?.googleAnalytics?.id ?? "").trim();
 const isAnalyticsEnabled = import.meta.env.PROD && measurementId.length > 0;
 const ga4InlineScript = `
 if (!window.__awGaInitialized) {
