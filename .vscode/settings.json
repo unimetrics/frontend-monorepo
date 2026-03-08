@@ -20,7 +20,7 @@
   },
   "prettier.documentSelectors": ["**/*.astro"],
   "yaml.schemas": {
-    "./.vscode/astrowind/config-schema.json": "**/astrowind.config.{js,json}"
+    "./.vscode/astrowind/config-schema.json": "landing/src/config.yaml"
   },
   "[astro]": {
     "editor.defaultFormatter": "astro-build.astro-vscode"

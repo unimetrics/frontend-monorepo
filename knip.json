@@ -3,7 +3,6 @@
     "@iconify-json/flat-color-icons",
     "@iconify-json/tabler",
     "@types/mdx",
-    "prettier-plugin-astro",
     "sharp",
     "@babel/core",
     "@feature-sliced/steiger-plugin",

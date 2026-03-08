@@ -26,14 +26,16 @@ if [[ -z "${target_branches}" ]]; then
   exit 1
 fi
 
-read -r -a target_branch_list <<<"${target_branches}"
+normalized_target_branches="${target_branches//$'\n'/ }"
+normalized_target_branches="${normalized_target_branches//,/ }"
+read -r -a target_branch_list <<<"${normalized_target_branches}"
 if [[ "${#target_branch_list[@]}" -eq 0 ]]; then
   echo "TARGET_BRANCHES did not contain any valid branch names." >&2
   exit 1
 fi
 
 echo "Sync source branch: ${source_branch}"
-echo "Target branches: ${target_branches}"
+echo "Target branches: ${normalized_target_branches}"
 
 if ! git ls-remote --exit-code --heads origin "${source_branch}" >/dev/null 2>&1; then
   echo "SOURCE_BRANCH '${source_branch}' does not exist on origin." >&2

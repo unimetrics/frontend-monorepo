@@ -1,0 +1,222 @@
+{
+  "blog": {
+    "backToBlog": "Back to Blog"
+  },
+  "footer": {
+    "footnote": {
+      "madeBy": "Made by",
+      "rightsReserved": "All rights reserved."
+    },
+    "group": {
+      "company": "Company",
+      "platform": "Platform",
+      "product": "Product",
+      "support": "Support"
+    },
+    "link": {
+      "atom": "Atom",
+      "blog": "Blog",
+      "careers": "Careers",
+      "communityForum": "Community Forum",
+      "customerStories": "Customer stories",
+      "developerApi": "Developer API",
+      "docs": "Docs",
+      "electron": "Electron",
+      "enterprise": "Enterprise",
+      "features": "Features",
+      "inclusion": "Inclusion",
+      "partners": "Partners",
+      "press": "Press",
+      "privacyPolicy": "Privacy Policy",
+      "professionalServices": "Professional Services",
+      "resources": "Resources",
+      "security": "Security",
+      "shop": "Shop",
+      "skills": "Skills",
+      "socialImpact": "Social Impact",
+      "status": "Status",
+      "team": "Team",
+      "unimetricsDesktop": "Unimetrics Desktop"
+    }
+  },
+  "header": {
+    "action": {
+      "download": "Download"
+    },
+    "aria": {
+      "languageSwitcher": "Language switcher",
+      "mainNavigation": "Main navigation",
+      "rssFeed": "RSS feed"
+    }
+  },
+  "landing": {
+    "audience": {
+      "body": "The initial wedge is clear: serious LPs who actively manage concentrated liquidity. The larger business opportunity comes later, when the same monitoring and intelligence layer supports professional liquidity operations.",
+      "eyebrow": "Who it's for",
+      "segment": {
+        "1": {
+          "body": "Operators who manage concentrated liquidity manually and want better timing, clarity, and discipline.",
+          "title": "Active retail LPs"
+        },
+        "2": {
+          "body": "Managers running multiple positions across pools and chains who need fast scanning and prioritization.",
+          "title": "Power users"
+        },
+        "3": {
+          "body": "Professional liquidity desks that need monitoring, controls, reporting, and eventually execution support.",
+          "title": "Funds and treasuries"
+        }
+      },
+      "title": "Start with active retail. Expand into funds and treasuries."
+    },
+    "core": {
+      "body": "The product story is simple: stop missing range events, measure real LP performance, and reduce operational drag. The first version is read-only and low-trust. The long-term version becomes a serious operating layer for liquidity managers.",
+      "eyebrow": "Core value",
+      "feature": {
+        "1": {
+          "body": "See edge proximity, breach status, and time spent out of range before lost fees accumulate.",
+          "title": "Range risk visibility"
+        },
+        "2": {
+          "body": "Measure fees, gas drag, inactive time, and net P&L versus simply holding the assets.",
+          "title": "True net performance"
+        },
+        "3": {
+          "body": "Scan many pools, wallets, and chains from one operating layer built for active managers.",
+          "title": "Multi-position operations"
+        },
+        "4": {
+          "body": "Know when action is economically justified instead of reacting to noise or headline APR.",
+          "title": "Decision-ready signals"
+        }
+      },
+      "title": "Do not promise magic yield. Promise better decisions."
+    },
+    "finalCta": {
+      "body": "Join the waitlist to get early access, share your workflows, and help shape the monitoring layer serious LPs, liquidity desks, and treasury operators actually need.",
+      "button": {
+        "discoveryCall": "Book a discovery call",
+        "joinWaitlist": "Join waitlist"
+      },
+      "eyebrow": "Early access",
+      "title": "Build your LP operating edge before you automate it."
+    },
+    "footer": {
+      "tagline": "Unimetrics — concentrated liquidity monitoring for serious operators."
+    },
+    "header": {
+      "brand": "Unimetrics",
+      "cta": {
+        "requestAccess": "Request access"
+      },
+      "tagline": "Institutional-grade liquidity monitoring"
+    },
+    "hero": {
+      "cta": {
+        "primary": "Join early access",
+        "secondary": "View product roadmap"
+      },
+      "eyebrow": "Retail-first. Desk-ready by design.",
+      "panel": {
+        "decisionSignal": "Price is approaching the upper bound, but expected fee decay still does not justify a rebalance. Recheck if gas drops or price moves another 0.6%.",
+        "label": "Position cockpit",
+        "metric": {
+          "actionSignal": {
+            "label": "Action signal",
+            "note": "not worth gas yet",
+            "value": "Wait"
+          },
+          "feeVelocity": {
+            "label": "Fee velocity",
+            "note": "slowing near edge",
+            "value": "$126/day"
+          },
+          "netPnl": {
+            "label": "Net P&L",
+            "note": "vs hold: +1.1%",
+            "value": "+4.2%"
+          },
+          "outOfRange": {
+            "label": "Out of range",
+            "note": "last 7 days",
+            "value": "3h 18m"
+          }
+        },
+        "pool": "ETH / USDC 0.05%",
+        "status": "1.8% from upper edge"
+      },
+      "pill": {
+        "institutional": "Institutional roadmap",
+        "intelligence": "Concentrated liquidity intelligence",
+        "retail": "Retail-first wedge"
+      },
+      "subtitle": "Monitor positions across wallets, pools, and chains. Understand real net performance, detect range risk early, and know when action is actually justified. Built first for serious retail LPs, with a roadmap toward funds, treasuries, and professional desks.",
+      "title": "The operating layer for concentrated liquidity."
+    },
+    "nav": {
+      "access": "Access",
+      "features": "Features",
+      "roadmap": "Roadmap",
+      "who": "Who it's for"
+    },
+    "roadmap": {
+      "phase": {
+        "1": {
+          "body": "Start with read-only monitoring and decision support. Lower trust barrier, faster time to value, and a clear reason for serious LPs to adopt the product early.",
+          "bullet": {
+            "1": "Read-only portfolio and position monitoring",
+            "2": "Range-edge proximity and breach alerts",
+            "3": "Fee velocity and time out of range",
+            "4": "Net P&L breakdown versus hold",
+            "5": "Saved views, filters, and exports"
+          },
+          "title": "Retail wedge"
+        },
+        "2": {
+          "body": "Add controls, reporting, data access, and eventually execution tooling for liquidity desks, funds, treasuries, and protocol operators who treat liquidity as an operating function.",
+          "bullet": {
+            "1": "Desk-level monitoring across many wallets",
+            "2": "Policy-based alerts and operating thresholds",
+            "3": "Internal reporting and audit trail",
+            "4": "API access for analysts and quants",
+            "5": "Execution and automation layer later"
+          },
+          "title": "Institutional direction"
+        }
+      }
+    }
+  },
+  "nav": {
+    "group": {
+      "blog": "Blog",
+      "homes": "Homes",
+      "landing": "Landing",
+      "pages": "Pages"
+    },
+    "link": {
+      "about": "About us",
+      "article": "Article",
+      "articleMdx": "Article (with MDX)",
+      "blogList": "Blog List",
+      "categoryPage": "Category Page",
+      "clickThrough": "Click-Through",
+      "contact": "Contact",
+      "featuresAnchor": "Features (Anchor Link)",
+      "leadGeneration": "Lead Generation",
+      "longFormSales": "Long-form Sales",
+      "mobileApp": "Mobile App",
+      "personal": "Personal",
+      "preLaunch": "Coming Soon or Pre-Launch",
+      "pricing": "Pricing",
+      "privacyPolicy": "Privacy policy",
+      "productDetails": "Product Details (or Services)",
+      "saas": "SaaS",
+      "services": "Services",
+      "startup": "Startup",
+      "subscription": "Subscription",
+      "tagPage": "Tag Page",
+      "terms": "Terms",
+      "widgets": "Widgets"
+    }
+  }
+}

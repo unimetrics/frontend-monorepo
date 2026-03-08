@@ -7,16 +7,9 @@
   "scripts": {
     "astro": "astro",
     "build": "astro build",
-    "check": "pnpm run check:astro && pnpm run check:eslint && pnpm run format",
-    "check:astro": "astro check",
-    "check:eslint": "pnpm -w exec eslint . --cache",
     "dev": "astro dev",
-    "fix": "pnpm run fix:eslint && pnpm run format:fix",
-    "fix:eslint": "pnpm -w exec eslint --cache --fix .",
-    "format": "prettier --check .",
-    "format:fix": "prettier -w .",
-    "preview": "astro preview",
-    "start": "astro dev"
+    "lint": "astro check",
+    "preview": "astro preview"
   },
   "dependencies": {
     "@astrojs/rss": "4.0.15",
@@ -49,8 +42,6 @@
     "astro-compress": "2.3.9",
     "js-yaml": "4.1.1",
     "mdast-util-to-string": "4.0.0",
-    "prettier": "3.8.1",
-    "prettier-plugin-astro": "0.14.1",
     "reading-time": "1.5.0",
     "sharp": "0.34.5",
     "tailwind-merge": "2.6.1",

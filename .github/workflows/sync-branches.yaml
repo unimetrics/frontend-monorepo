@@ -1,14 +1,9 @@
 name: Sync Branches
 
 on:
-  workflow_dispatch:
   push:
     branches:
       - main
-      - test
-  pull_request:
-    types:
-      - closed
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
@@ -19,8 +14,7 @@ permissions:
   pull-requests: write
 
 jobs:
-  sync-main-to-test-and-dev:
-    if: ${{ github.event_name != 'pull_request' && github.ref_name == 'main' }}
+  sync-branch-prs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -39,33 +33,4 @@ jobs:
           GITHUB_REPOSITORY: ${{ github.repository }}
           SOURCE_BRANCH: main
           TARGET_BRANCHES: test dev
-        run: bash scripts/github/sync-branch-prs/sync-branch-prs.sh
-
-  sync-test-to-dev:
-    if: >-
-      ${{
-        (github.event_name != 'pull_request' && github.ref_name == 'test') ||
-        (github.event_name == 'pull_request' &&
-        github.event.pull_request.head.ref == 'main' &&
-        github.event.pull_request.base.ref == 'dev' &&
-        startsWith(github.event.pull_request.title, 'chore(sync): merge '))
-      }}
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v5
-
-      - name: Create helper bot token
-        id: helper-bot-token
-        uses: ./.github/actions/create-helper-bot-token
-        with:
-          app-id: ${{ secrets.HELPER_BOT_ID }}
-          private-key: ${{ secrets.HELPER_BOT_KEY }}
-
-      - name: Create or update sync PR
-        env:
-          GITHUB_TOKEN: ${{ steps.helper-bot-token.outputs.token }}
-          GITHUB_REPOSITORY: ${{ github.repository }}
-          SOURCE_BRANCH: test
-          TARGET_BRANCHES: dev
         run: bash scripts/github/sync-branch-prs/sync-branch-prs.sh

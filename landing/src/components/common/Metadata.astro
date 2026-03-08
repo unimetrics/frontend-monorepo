@@ -6,6 +6,7 @@ import type { Props as AstroSeoProps } from "@astrolib/seo";
 
 import { SITE, METADATA, I18N } from "unimetrics:config";
 import type { MetaData } from "~/types";
+import { defaultLocale } from "~/i18n/routing";
 import { getCanonical } from "~/utils/permalinks";
 
 import { adaptOpenGraphImages } from "~/utils/images";
@@ -23,6 +24,7 @@ const {
   openGraph = {},
   twitter = {},
 } = Astro.props;
+const currentLocale = Astro.currentLocale ?? I18N?.language ?? defaultLocale;
 
 const seoProps: AstroSeoProps = merge(
   {
@@ -36,7 +38,7 @@ const seoProps: AstroSeoProps = merge(
       url: canonical,
       site_name: SITE?.name,
       images: [],
-      locale: I18N?.language || "en",
+      locale: currentLocale,
       type: "website",
     },
     twitter: {

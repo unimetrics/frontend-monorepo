@@ -2,14 +2,26 @@ import type { z } from "zod";
 
 export type AnyApiRouter = ApiRouter<unknown, ProcedureDictionary<unknown>>;
 
-export interface AnyProcedureDefinition<Ctx = unknown> {
+export interface AnyProcedureDefinition<
+  Ctx = unknown,
+  Input = unknown,
+  Output = unknown,
+> {
   readonly description?: string;
   readonly input: z.ZodTypeAny;
   readonly output: z.ZodTypeAny;
-  readonly resolve: ProcedureResolver<Ctx, unknown, unknown>;
+  readonly resolve: ProcedureResolver<Ctx, Input, Output>;
 }
 
-export type ApiCaller<Procedures extends ProcedureDictionary<unknown>> = {
+export type ApiCaller<
+  Procedures extends Record<
+    string,
+    {
+      readonly input: z.ZodTypeAny;
+      readonly output: z.ZodTypeAny;
+    }
+  >,
+> = {
   [Name in keyof Procedures]: (
     input: InferProcedureInput<Procedures[Name]>
   ) => Promise<InferProcedureOutput<Procedures[Name]>>;
@@ -19,11 +31,17 @@ export interface ApiRouter<Ctx, Procedures extends ProcedureDictionary<Ctx>> {
   procedures: Procedures;
 }
 
-export type InferProcedureInput<TProcedure extends AnyProcedureDefinition<unknown>> =
-  z.input<TProcedure["input"]>;
+export type InferProcedureInput<
+  TProcedure extends {
+    readonly input: z.ZodTypeAny;
+  },
+> = z.input<TProcedure["input"]>;
 
-export type InferProcedureOutput<TProcedure extends AnyProcedureDefinition<unknown>> =
-  z.output<TProcedure["output"]>;
+export type InferProcedureOutput<
+  TProcedure extends {
+    readonly output: z.ZodTypeAny;
+  },
+> = z.output<TProcedure["output"]>;
 
 export interface ProcedureDefinition<
   Ctx,
@@ -38,9 +56,9 @@ export interface ProcedureDefinition<
 
 export type ProcedureDictionary<Ctx = unknown> = Record<
   string,
-  AnyProcedureDefinition<Ctx>
+  AnyProcedureDefinition<Ctx, unknown, unknown>
 >;
 
 export type ProcedureResolver<Ctx, Input, Output> = {
-  bivarianceHack: (args: { ctx: Ctx; input: Input }) => Output | Promise<Output>;
+  bivarianceHack(args: { ctx: Ctx; input: Input }): Output | Promise<Output>;
 }["bivarianceHack"];

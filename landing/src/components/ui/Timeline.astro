@@ -16,7 +16,7 @@ const {
   panel: panelClass = "",
   title: titleClass = "",
   description: descriptionClass = "",
-  icon: defaultIconClass = "text-ui-primary dark:text-slate-200 border-ui-primary dark:border-blue-700",
+  icon: defaultIconClass = "text-primary dark:text-slate-200 border-primary dark:border-blue-700",
 } = classes;
 ---
 
@@ -60,7 +60,7 @@ const {
             {description && (
               <p
                 class={twMerge(
-                  "mt-2 text-ui-text-muted",
+                  "mt-2 text-text-muted",
                   descriptionClass,
                   itemClasses?.description
                 )}

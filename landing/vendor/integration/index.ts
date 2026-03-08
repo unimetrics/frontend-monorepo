@@ -6,7 +6,7 @@ import os from "node:os";
 import configBuilder, { type Config } from "./utils/configBuilder";
 import loadConfig from "./utils/loadConfig";
 
-const unimetricsIntegration = ({
+const astroWindIntegration = ({
   config: _themeConfig = "src/config.yaml",
 } = {}): AstroIntegration => {
   let cfg: AstroConfig;
@@ -125,8 +125,8 @@ const unimetricsIntegration = ({
       },
     },
 
-    name: "unimetrics-integration",
+    name: "astrowind-integration",
   };
 };
 
-export default unimetricsIntegration;
+export default astroWindIntegration;

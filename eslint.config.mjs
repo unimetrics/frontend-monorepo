@@ -20,6 +20,10 @@ const cliTsFiles = ["cli/**/*.{ts,mts,cts,tsx}"];
 const landingTsFiles = ["landing/**/*.{ts,mts,cts,tsx}"];
 const mobileTsFiles = ["mobile/**/*.{ts,mts,cts,tsx}"];
 const uiTsFiles = ["ui/**/*.{ts,mts,cts,tsx}"];
+const scriptsTsFiles = [
+  "scripts/**/*.{ts,mts,cts}",
+  "*/scripts/**/*.{ts,mts,cts}",
+];
 const allTsFiles = [
   ...rootTsFiles,
   ...apiTsFiles,
@@ -28,6 +32,7 @@ const allTsFiles = [
   ...landingTsFiles,
   ...mobileTsFiles,
   ...uiTsFiles,
+  ...scriptsTsFiles,
 ];
 
 const rootJsFiles = ["*.{js,mjs,cjs}"];
@@ -36,7 +41,7 @@ const allJsFiles = [...rootJsFiles, ...workspaceJsFiles];
 
 const astroFiles = ["landing/**/*.astro"];
 const allCodeFiles = [...allTsFiles, ...allJsFiles, ...astroFiles];
-const scriptsSrc = ["scripts/**/*.ts", "*/scripts/**/*.ts", "cli/bin/**/*.ts"];
+const scriptsSrc = scriptsTsFiles;
 
 const tsConfigs = tseslint.configs.recommended.map(config => ({
   ...config,
@@ -149,7 +154,7 @@ export default [
       "unicorn/import-style": "off",
       "unicorn/no-array-reduce": "off",
       "unicorn/no-array-sort": "off",
-      "unicorn/no-nested-ternary": "warn",
+      "unicorn/no-nested-ternary": "off",
       "unicorn/no-null": "off",
       "unicorn/prevent-abbreviations": "off",
     },

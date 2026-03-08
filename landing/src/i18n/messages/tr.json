@@ -1,0 +1,222 @@
+{
+  "blog": {
+    "backToBlog": "Blog'a Dön"
+  },
+  "footer": {
+    "footnote": {
+      "madeBy": "Yapan",
+      "rightsReserved": "Tüm hakları saklıdır."
+    },
+    "group": {
+      "company": "Şirket",
+      "platform": "Platform",
+      "product": "Ürün",
+      "support": "Destek"
+    },
+    "link": {
+      "atom": "Atom",
+      "blog": "Blog",
+      "careers": "Kariyer",
+      "communityForum": "Topluluk Forumu",
+      "customerStories": "Müşteri hikayeleri",
+      "developerApi": "Geliştirici API",
+      "docs": "Dokümanlar",
+      "electron": "Electron",
+      "enterprise": "Kurumsal",
+      "features": "Özellikler",
+      "inclusion": "Kapsayıcılık",
+      "partners": "İş ortakları",
+      "press": "Basın",
+      "privacyPolicy": "Gizlilik Politikası",
+      "professionalServices": "Profesyonel Hizmetler",
+      "resources": "Kaynaklar",
+      "security": "Güvenlik",
+      "shop": "Mağaza",
+      "skills": "Yetenekler",
+      "socialImpact": "Sosyal Etki",
+      "status": "Durum",
+      "team": "Ekip",
+      "unimetricsDesktop": "Unimetrics Desktop"
+    }
+  },
+  "header": {
+    "action": {
+      "download": "İndir"
+    },
+    "aria": {
+      "languageSwitcher": "Dil değiştirici",
+      "mainNavigation": "Ana gezinme",
+      "rssFeed": "RSS akışı"
+    }
+  },
+  "landing": {
+    "audience": {
+      "body": "İlk kama net: yoğunlaştırılmış likiditeyi aktif olarak yöneten ciddi LP'ler. Daha büyük iş fırsatı daha sonra gelir; aynı izleme ve zekâ katmanı profesyonel likidite operasyonlarını da destekler.",
+      "eyebrow": "Kimler için",
+      "segment": {
+        "1": {
+          "body": "Yoğunlaştırılmış likiditeyi manuel yöneten ve daha iyi zamanlama, netlik ve disiplin isteyen operatörler.",
+          "title": "Aktif bireysel LP'ler"
+        },
+        "2": {
+          "body": "Birden fazla havuz ve zincirde çoklu pozisyon yöneten, hızlı tarama ve önceliklendirmeye ihtiyaç duyan yöneticiler.",
+          "title": "Güç kullanıcıları"
+        },
+        "3": {
+          "body": "İzleme, kontroller, raporlama ve zamanla yürütme desteğine ihtiyaç duyan profesyonel likidite masaları.",
+          "title": "Fonlar ve hazineler"
+        }
+      },
+      "title": "Aktif bireysel kullanıcılarla başlayın. Fonlara ve hazinelere genişleyin."
+    },
+    "core": {
+      "body": "Ürün hikayesi basit: aralık olaylarını kaçırmayı durdurun, gerçek LP performansını ölçün ve operasyonel sürtünmeyi azaltın. İlk sürüm salt-okunur ve düşük güven gerektirir. Uzun vadeli sürüm, likidite yöneticileri için ciddi bir operasyon katmanına dönüşür.",
+      "eyebrow": "Temel değer",
+      "feature": {
+        "1": {
+          "body": "Kayıp ücretler birikmeden önce kenara yakınlığı, ihlal durumunu ve aralık dışında geçirilen süreyi görün.",
+          "title": "Aralık riski görünürlüğü"
+        },
+        "2": {
+          "body": "Ücretleri, gas maliyeti sürtünmesini, pasif zamanı ve net K/Z'yi varlıkları sadece tutmayla karşılaştırarak ölçün.",
+          "title": "Gerçek net performans"
+        },
+        "3": {
+          "body": "Aktif yöneticiler için oluşturulmuş tek bir operasyon katmanından birçok havuzu, cüzdanı ve zinciri tarayın.",
+          "title": "Çoklu pozisyon operasyonları"
+        },
+        "4": {
+          "body": "Gürültüye veya manşet APR'ye tepki vermek yerine aksiyonun ekonomik olarak ne zaman haklı olduğunu bilin.",
+          "title": "Karara hazır sinyaller"
+        }
+      },
+      "title": "Sihirli getiri vaat etmeyin. Daha iyi kararlar vaat edin."
+    },
+    "finalCta": {
+      "body": "Erken erişim almak, iş akışlarınızı paylaşmak ve ciddi LP'lerin, likidite masalarının ve hazine operatörlerinin gerçekten ihtiyaç duyduğu izleme katmanını birlikte şekillendirmek için bekleme listesine katılın.",
+      "button": {
+        "discoveryCall": "Keşif görüşmesi ayarla",
+        "joinWaitlist": "Bekleme listesine katıl"
+      },
+      "eyebrow": "Erken erişim",
+      "title": "Otomasyondan önce LP operasyon avantajınızı oluşturun."
+    },
+    "footer": {
+      "tagline": "Unimetrics — ciddi operatörler için yoğunlaştırılmış likidite izleme."
+    },
+    "header": {
+      "brand": "Unimetrics",
+      "cta": {
+        "requestAccess": "Erişim iste"
+      },
+      "tagline": "Kurumsal düzeyde likidite izleme"
+    },
+    "hero": {
+      "cta": {
+        "primary": "Erken erişime katıl",
+        "secondary": "Ürün yol haritasını görüntüle"
+      },
+      "eyebrow": "Önce bireysel. Tasarım gereği masa hazır.",
+      "panel": {
+        "decisionSignal": "Fiyat üst sınıra yaklaşıyor, ancak beklenen ücret düşüşü hâlâ yeniden dengelemeyi haklı çıkarmıyor. Gas düşerse veya fiyat %0,6 daha hareket ederse tekrar kontrol et.",
+        "label": "Pozisyon kokpiti",
+        "metric": {
+          "actionSignal": {
+            "label": "Aksiyon sinyali",
+            "note": "henüz gas'a değmez",
+            "value": "Bekle"
+          },
+          "feeVelocity": {
+            "label": "Ücret hızı",
+            "note": "kenara yakın yavaşlıyor",
+            "value": "$126/gün"
+          },
+          "netPnl": {
+            "label": "Net K/Z",
+            "note": "tutmaya göre: +%1,1",
+            "value": "+%4,2"
+          },
+          "outOfRange": {
+            "label": "Aralık dışında",
+            "note": "son 7 gün",
+            "value": "3sa 18dk"
+          }
+        },
+        "pool": "ETH / USDC %0,05",
+        "status": "Üst kenardan %1,8 uzakta"
+      },
+      "pill": {
+        "institutional": "Kurumsal yol haritası",
+        "intelligence": "Yoğunlaştırılmış likidite zekâsı",
+        "retail": "Bireysel odaklı başlangıç"
+      },
+      "subtitle": "Cüzdanlar, havuzlar ve zincirler genelinde pozisyonları izleyin. Gerçek net performansı anlayın, aralık riskini erken tespit edin ve aksiyonun ne zaman gerçekten gerekli olduğunu bilin. Önce ciddi bireysel LP'ler için, fonlar, hazineler ve profesyonel masalara uzanan bir yol haritasıyla geliştirildi.",
+      "title": "Yoğunlaştırılmış likidite için operasyon katmanı."
+    },
+    "nav": {
+      "access": "Erişim",
+      "features": "Özellikler",
+      "roadmap": "Yol haritası",
+      "who": "Kimler için"
+    },
+    "roadmap": {
+      "phase": {
+        "1": {
+          "body": "Salt-okunur izleme ve karar desteğiyle başlayın. Daha düşük güven bariyeri, daha hızlı değer elde etme ve ciddi LP'lerin ürünü erken benimsemesi için net bir neden.",
+          "bullet": {
+            "1": "Salt-okunur portföy ve pozisyon izleme",
+            "2": "Aralık kenarı yakınlığı ve ihlal uyarıları",
+            "3": "Ücret hızı ve aralık dışında geçen süre",
+            "4": "Tutmaya karşı net K/Z dökümü",
+            "5": "Kaydedilmiş görünümler, filtreler ve dışa aktarımlar"
+          },
+          "title": "Bireysel başlangıç"
+        },
+        "2": {
+          "body": "Likiditeyi bir operasyon fonksiyonu olarak ele alan likidite masaları, fonlar, hazineler ve protokol operatörleri için kontroller, raporlama, veri erişimi ve zamanla yürütme araçları ekleyin.",
+          "bullet": {
+            "1": "Birçok cüzdanda masa düzeyinde izleme",
+            "2": "Politika tabanlı uyarılar ve operasyon eşikleri",
+            "3": "İç raporlama ve denetim izi",
+            "4": "Analistler ve quant ekipleri için API erişimi",
+            "5": "Daha sonra yürütme ve otomasyon katmanı"
+          },
+          "title": "Kurumsal yön"
+        }
+      }
+    }
+  },
+  "nav": {
+    "group": {
+      "blog": "Blog",
+      "homes": "Ana sayfalar",
+      "landing": "Açılış",
+      "pages": "Sayfalar"
+    },
+    "link": {
+      "about": "Hakkımızda",
+      "article": "Makale",
+      "articleMdx": "Makale (MDX ile)",
+      "blogList": "Blog Listesi",
+      "categoryPage": "Kategori Sayfası",
+      "clickThrough": "Tıklama Sayfası",
+      "contact": "İletişim",
+      "featuresAnchor": "Özellikler (Bağlantı)",
+      "leadGeneration": "Potansiyel Müşteri Toplama",
+      "longFormSales": "Uzun Form Satış",
+      "mobileApp": "Mobil Uygulama",
+      "personal": "Kişisel",
+      "preLaunch": "Çok Yakında veya Ön Lansman",
+      "pricing": "Fiyatlandırma",
+      "privacyPolicy": "Gizlilik politikası",
+      "productDetails": "Ürün Detayları (veya Hizmetler)",
+      "saas": "SaaS",
+      "services": "Hizmetler",
+      "startup": "Startup",
+      "subscription": "Abonelik",
+      "tagPage": "Etiket Sayfası",
+      "terms": "Koşullar",
+      "widgets": "Widget'lar"
+    }
+  }
+}

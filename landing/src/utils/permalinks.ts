@@ -1,4 +1,6 @@
 import slugify from "limax";
+import isPlainObject from "lodash/isPlainObject";
+import mapValues from "lodash/mapValues";
 import { APP_BLOG, SITE } from "unimetrics:config";
 
 import { trim } from "~/utils/utils";
@@ -113,44 +115,50 @@ const definitivePermalink = (permalink: string): string =>
   createPath(BASE_PATHNAME, permalink);
 
 /** */
-export const applyGetPermalinks = (menu: object = {}) => {
+export const applyGetPermalinks = (menu: unknown = {}) => {
   if (Array.isArray(menu)) {
     return menu.map(item => applyGetPermalinks(item));
-  } else if (typeof menu === "object" && menu !== null) {
-    const obj = {};
-    for (const key in menu) {
-      if (key === "href") {
-        if (typeof menu[key] === "string") {
-          obj[key] = getPermalink(menu[key]);
-        } else if (typeof menu[key] === "object") {
-          switch (menu[key].type) {
-            case "asset": {
-              obj[key] = getAsset(menu[key].url);
-
-              break;
-            }
-            case "blog": {
-              obj[key] = getBlogPermalink();
-
-              break;
-            }
-            case "home": {
-              obj[key] = getHomePermalink();
-
-              break;
-            }
-            default: {
-              if (menu[key].url) {
-                obj[key] = getPermalink(menu[key].url, menu[key].type);
-              }
-            }
-          }
-        }
-      } else {
-        obj[key] = applyGetPermalinks(menu[key]);
-      }
-    }
-    return obj;
   }
+
+  if (isPlainObject(menu)) {
+    const dictionary = menu as Record<string, unknown>;
+    return mapValues(dictionary, (value, key) => {
+      if (key !== "href") {
+        return applyGetPermalinks(value);
+      }
+
+      if (typeof value === "string") {
+        return getPermalink(value);
+      }
+
+      if (!isPlainObject(value)) {
+        return value;
+      }
+
+      const href = value as {
+        type?: string;
+        url?: string;
+      };
+
+      switch (href.type) {
+        case "asset": {
+          return href.url ? getAsset(href.url) : value;
+        }
+        case "blog": {
+          return getBlogPermalink();
+        }
+        case "home": {
+          return getHomePermalink();
+        }
+        default: {
+          if (href.url) {
+            return getPermalink(href.url, href.type);
+          }
+          return value;
+        }
+      }
+    });
+  }
+
   return menu;
 };

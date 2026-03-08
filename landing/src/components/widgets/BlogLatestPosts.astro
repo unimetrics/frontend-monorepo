@@ -3,6 +3,8 @@ import { APP_BLOG } from "unimetrics:config";
 
 import Grid from "~/components/blog/Grid.astro";
 
+import { localizeHref } from "~/i18n/links";
+import { defaultLocale } from "~/i18n/routing";
 import { getBlogPermalink } from "~/utils/permalinks";
 import { findLatestPosts } from "~/utils/blog";
 import WidgetWrapper from "~/components/ui/WidgetWrapper.astro";
@@ -17,10 +19,12 @@ export interface Props extends Widget {
   count?: number;
 }
 
+const locale = Astro.currentLocale ?? defaultLocale;
+
 const {
   title = await Astro.slots.render("title"),
   linkText = "View all posts",
-  linkUrl = getBlogPermalink(),
+  linkUrl = localizeHref(locale, getBlogPermalink()),
   information = await Astro.slots.render("information"),
   count = 4,
 
@@ -45,7 +49,7 @@ const posts = APP_BLOG.isEnabled ? await findLatestPosts({ count }) : [];
         {title && (
           <div class="md:max-w-sm">
             <h2
-              class="group mb-2 font-ui-heading text-3xl font-bold tracking-tight sm:text-4xl sm:leading-none"
+              class="group mb-2 font-heading text-3xl font-bold tracking-tight sm:text-4xl sm:leading-none"
               set:html={title}
             />
             {APP_BLOG.list.isEnabled && linkText && linkUrl && (
@@ -59,7 +63,7 @@ const posts = APP_BLOG.isEnabled ? await findLatestPosts({ count }) : [];
 
         {information && (
           <p
-            class="text-ui-text-muted dark:text-slate-400 lg:max-w-md lg:text-sm"
+            class="text-text-muted dark:text-slate-400 lg:max-w-md lg:text-sm"
             set:html={information}
           />
         )}

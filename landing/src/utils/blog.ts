@@ -2,6 +2,13 @@ import type { PaginateFunction } from "astro";
 import type { CollectionEntry } from "astro:content";
 
 import { getCollection, render } from "astro:content";
+import compact from "lodash/compact";
+import find from "lodash/find";
+import flatMap from "lodash/flatMap";
+import intersection from "lodash/intersection";
+import keyBy from "lodash/keyBy";
+import orderBy from "lodash/orderBy";
+import take from "lodash/take";
 import { APP_BLOG } from "unimetrics:config";
 
 import type { Post } from "~/types";
@@ -159,12 +166,7 @@ export const findPostsBySlugs = async (slugs: Array<string>): Promise<Array<Post
 
   const posts = await fetchPosts();
 
-  return slugs.reduce(function (r: Array<Post>, slug: string) {
-    posts.some(function (post: Post) {
-      return slug === post.slug && r.push(post);
-    });
-    return r;
-  }, []);
+  return compact(slugs.map(slug => find(posts, post => slug === post.slug)));
 };
 
 /** */
@@ -173,12 +175,7 @@ export const findPostsByIds = async (ids: Array<string>): Promise<Array<Post>> =
 
   const posts = await fetchPosts();
 
-  return ids.reduce(function (r: Array<Post>, id: string) {
-    posts.some(function (post: Post) {
-      return id === post.id && r.push(post);
-    });
-    return r;
-  }, []);
+  return compact(ids.map(id => find(posts, post => id === post.id)));
 };
 
 /** */
@@ -190,7 +187,7 @@ export const findLatestPosts = async ({
   const _count = count || 4;
   const posts = await fetchPosts();
 
-  return posts ? posts.slice(0, _count) : [];
+  return take(posts, _count);
 };
 
 /** */
@@ -210,7 +207,7 @@ export const getStaticPathsBlogList = async ({
 export const getStaticPathsBlogPost = async () => {
   if (!isBlogEnabled || !isBlogPostRouteEnabled) return [];
   const posts = await fetchPosts();
-  return posts.flatMap(post => ({
+  return flatMap(posts, post => ({
     params: {
       blog: post.permalink,
     },
@@ -227,14 +224,9 @@ export const getStaticPathsBlogCategory = async ({
   if (!isBlogEnabled || !isBlogCategoryRouteEnabled) return [];
 
   const posts = await fetchPosts();
-  const categories = {};
-  posts.map(post => {
-    if (post.category?.slug) {
-      categories[post.category?.slug] = post.category;
-    }
-  });
+  const categories = keyBy(compact(posts.map(post => post.category)), "slug");
 
-  return Object.keys(categories).flatMap(categorySlug =>
+  return flatMap(Object.keys(categories), categorySlug =>
     paginate(
       posts.filter(post => post.category?.slug && categorySlug === post.category?.slug),
       {
@@ -255,16 +247,12 @@ export const getStaticPathsBlogTag = async ({
   if (!isBlogEnabled || !isBlogTagRouteEnabled) return [];
 
   const posts = await fetchPosts();
-  const tags = {};
-  posts.map(post => {
-    if (Array.isArray(post.tags)) {
-      post.tags.map(tag => {
-        tags[tag?.slug] = tag;
-      });
-    }
-  });
+  const tags = keyBy(
+    flatMap(posts, post => (Array.isArray(post.tags) ? post.tags : [])),
+    "slug"
+  );
 
-  return Object.keys(tags).flatMap(tagSlug =>
+  return flatMap(Object.keys(tags), tagSlug =>
     paginate(
       posts.filter(
         post => Array.isArray(post.tags) && post.tags.find(elem => elem.slug === tagSlug)
@@ -284,14 +272,13 @@ export async function getRelatedPosts(
   maxResults: number = 4
 ): Promise<Post[]> {
   const allPosts = await fetchPosts();
-  const originalTagsSet = new Set(
-    originalPost.tags ? originalPost.tags.map(tag => tag.slug) : []
-  );
+  const originalTagSlugs = originalPost.tags
+    ? originalPost.tags.map(tag => tag.slug)
+    : [];
 
-  const postsWithScores = allPosts.reduce(
-    (acc: { post: Post; score: number }[], iteratedPost: Post) => {
-      if (iteratedPost.slug === originalPost.slug) return acc;
-
+  const postsWithScores = allPosts
+    .filter(iteratedPost => iteratedPost.slug !== originalPost.slug)
+    .map(iteratedPost => {
       let score = 0;
       if (
         iteratedPost.category &&
@@ -301,28 +288,16 @@ export async function getRelatedPosts(
         score += 5;
       }
 
-      if (iteratedPost.tags) {
-        for (const tag of iteratedPost.tags) {
-          if (originalTagsSet.has(tag.slug)) {
-            score += 1;
-          }
-        }
-      }
+      const iteratedTagSlugs = iteratedPost.tags
+        ? iteratedPost.tags.map(tag => tag.slug)
+        : [];
+      score += intersection(iteratedTagSlugs, originalTagSlugs).length;
 
-      acc.push({ post: iteratedPost, score });
-      return acc;
-    },
-    []
+      return { post: iteratedPost, score };
+    });
+
+  return take(
+    orderBy(postsWithScores, ["score"], ["desc"]).map(item => item.post),
+    maxResults
   );
-
-  postsWithScores.sort((a, b) => b.score - a.score);
-
-  const selectedPosts: Post[] = [];
-  let i = 0;
-  while (selectedPosts.length < maxResults && i < postsWithScores.length) {
-    selectedPosts.push(postsWithScores[i].post);
-    i++;
-  }
-
-  return selectedPosts;
 }

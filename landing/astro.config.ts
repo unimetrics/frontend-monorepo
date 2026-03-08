@@ -11,12 +11,13 @@ import { defineConfig } from "astro/config";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 
+import { defaultLocale, locales } from "./src/i18n/routing";
 import {
   lazyImagesRehypePlugin,
   readingTimeRemarkPlugin,
   responsiveTablesRehypePlugin,
 } from "./src/utils/frontmatter";
-import unimetrics from "./vendor/integration";
+import astroWindIntegration from "./vendor/integration";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
@@ -31,6 +32,21 @@ const whenExternalScripts = (
     : [];
 
 export default defineConfig({
+  i18n: {
+    defaultLocale,
+    fallback: locales
+      .filter(l => l !== defaultLocale)
+      .reduce((acc, locale) => {
+        acc[locale] = defaultLocale;
+        return acc;
+      }, {}),
+    locales: [...locales],
+    routing: {
+      fallbackType: "rewrite",
+      prefixDefaultLocale: false,
+    },
+  },
+
   image: {
     domains: ["cdn.pixabay.com", "images.unsplash.com", "plus.unsplash.com"],
   },
@@ -75,7 +91,7 @@ export default defineConfig({
       SVG: false,
     }),
 
-    unimetrics({
+    astroWindIntegration({
       config: "./src/config.yaml",
     }),
   ],

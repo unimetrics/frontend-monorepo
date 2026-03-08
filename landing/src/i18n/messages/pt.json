@@ -1,0 +1,222 @@
+{
+  "blog": {
+    "backToBlog": "Voltar ao Blog"
+  },
+  "footer": {
+    "footnote": {
+      "madeBy": "Feito por",
+      "rightsReserved": "Todos os direitos reservados."
+    },
+    "group": {
+      "company": "Empresa",
+      "platform": "Plataforma",
+      "product": "Produto",
+      "support": "Suporte"
+    },
+    "link": {
+      "atom": "Atom",
+      "blog": "Blog",
+      "careers": "Carreiras",
+      "communityForum": "Fórum da comunidade",
+      "customerStories": "Histórias de clientes",
+      "developerApi": "API para desenvolvedores",
+      "docs": "Documentação",
+      "electron": "Electron",
+      "enterprise": "Empresarial",
+      "features": "Recursos",
+      "inclusion": "Inclusão",
+      "partners": "Parceiros",
+      "press": "Imprensa",
+      "privacyPolicy": "Política de privacidade",
+      "professionalServices": "Serviços profissionais",
+      "resources": "Recursos",
+      "security": "Segurança",
+      "shop": "Loja",
+      "skills": "Habilidades",
+      "socialImpact": "Impacto social",
+      "status": "Status",
+      "team": "Equipe",
+      "unimetricsDesktop": "Unimetrics Desktop"
+    }
+  },
+  "header": {
+    "action": {
+      "download": "Baixar"
+    },
+    "aria": {
+      "languageSwitcher": "Seletor de idioma",
+      "mainNavigation": "Navegação principal",
+      "rssFeed": "Feed RSS"
+    }
+  },
+  "landing": {
+    "audience": {
+      "body": "A cunha inicial é clara: LPs sérios que gerenciam liquidez concentrada ativamente. A oportunidade de negócio maior vem depois, quando a mesma camada de monitoramento e inteligência sustenta operações profissionais de liquidez.",
+      "eyebrow": "Para quem é",
+      "segment": {
+        "1": {
+          "body": "Operadores que gerenciam liquidez concentrada manualmente e querem melhor timing, clareza e disciplina.",
+          "title": "LPs de varejo ativos"
+        },
+        "2": {
+          "body": "Gestores que executam múltiplas posições em vários pools e chains e precisam de varredura e priorização rápidas.",
+          "title": "Usuários avançados"
+        },
+        "3": {
+          "body": "Mesas profissionais de liquidez que precisam de monitoramento, controles, relatórios e, no futuro, suporte de execução.",
+          "title": "Fundos e tesourarias"
+        }
+      },
+      "title": "Comece com varejo ativo. Expanda para fundos e tesourarias."
+    },
+    "core": {
+      "body": "A história do produto é simples: pare de perder eventos de faixa, meça o desempenho real de LP e reduza o atrito operacional. A primeira versão é somente leitura e de baixa exigência de confiança. A versão de longo prazo se torna uma camada operacional séria para gestores de liquidez.",
+      "eyebrow": "Valor central",
+      "feature": {
+        "1": {
+          "body": "Veja a proximidade da borda, o status de rompimento e o tempo fora da faixa antes que taxas perdidas se acumulem.",
+          "title": "Visibilidade de risco de faixa"
+        },
+        "2": {
+          "body": "Meça taxas, atrito de gas, tempo inativo e P&L líquido versus simplesmente manter os ativos.",
+          "title": "Desempenho líquido real"
+        },
+        "3": {
+          "body": "Varra muitos pools, wallets e chains a partir de uma única camada operacional criada para gestores ativos.",
+          "title": "Operações multi-posição"
+        },
+        "4": {
+          "body": "Saiba quando agir é economicamente justificável em vez de reagir a ruído ou APR de manchete.",
+          "title": "Sinais prontos para decisão"
+        }
+      },
+      "title": "Não prometa rendimento mágico. Prometa decisões melhores."
+    },
+    "finalCta": {
+      "body": "Entre na lista de espera para obter acesso antecipado, compartilhar seus fluxos de trabalho e ajudar a moldar a camada de monitoramento que LPs sérios, mesas de liquidez e operadores de tesouraria realmente precisam.",
+      "button": {
+        "discoveryCall": "Agendar uma call de discovery",
+        "joinWaitlist": "Entrar na lista de espera"
+      },
+      "eyebrow": "Acesso antecipado",
+      "title": "Construa sua vantagem operacional de LP antes de automatizá-la."
+    },
+    "footer": {
+      "tagline": "Unimetrics — monitoramento de liquidez concentrada para operadores sérios."
+    },
+    "header": {
+      "brand": "Unimetrics",
+      "cta": {
+        "requestAccess": "Solicitar acesso"
+      },
+      "tagline": "Monitoramento de liquidez em nível institucional"
+    },
+    "hero": {
+      "cta": {
+        "primary": "Entrar no acesso antecipado",
+        "secondary": "Ver roadmap do produto"
+      },
+      "eyebrow": "Varejo primeiro. Pronto para desks por design.",
+      "panel": {
+        "decisionSignal": "O preço está se aproximando do limite superior, mas a queda esperada de taxas ainda não justifica um rebalanceamento. Reavalie se o gas cair ou se o preço mover mais 0,6%.",
+        "label": "Cockpit da posição",
+        "metric": {
+          "actionSignal": {
+            "label": "Sinal de ação",
+            "note": "ainda não compensa o gas",
+            "value": "Esperar"
+          },
+          "feeVelocity": {
+            "label": "Velocidade de taxas",
+            "note": "desacelerando perto da borda",
+            "value": "$126/dia"
+          },
+          "netPnl": {
+            "label": "P&L líquido",
+            "note": "vs hold: +1,1%",
+            "value": "+4,2%"
+          },
+          "outOfRange": {
+            "label": "Fora da faixa",
+            "note": "últimos 7 dias",
+            "value": "3h 18m"
+          }
+        },
+        "pool": "ETH / USDC 0,05%",
+        "status": "1,8% da borda superior"
+      },
+      "pill": {
+        "institutional": "Roadmap institucional",
+        "intelligence": "Inteligência de liquidez concentrada",
+        "retail": "Cunha de varejo"
+      },
+      "subtitle": "Monitore posições em wallets, pools e chains. Entenda o desempenho líquido real, detecte risco de faixa cedo e saiba quando a ação é realmente justificável. Construído primeiro para LPs de varejo sérios, com roadmap rumo a fundos, tesourarias e desks profissionais.",
+      "title": "A camada operacional para liquidez concentrada."
+    },
+    "nav": {
+      "access": "Acesso",
+      "features": "Recursos",
+      "roadmap": "Roadmap",
+      "who": "Para quem é"
+    },
+    "roadmap": {
+      "phase": {
+        "1": {
+          "body": "Comece com monitoramento somente leitura e suporte à decisão. Menor barreira de confiança, tempo para valor mais rápido e um motivo claro para LPs sérios adotarem cedo.",
+          "bullet": {
+            "1": "Monitoramento de portfólio e posições em somente leitura",
+            "2": "Alertas de proximidade da borda da faixa e de rompimento",
+            "3": "Velocidade de taxas e tempo fora da faixa",
+            "4": "Detalhamento do P&L líquido versus hold",
+            "5": "Visualizações salvas, filtros e exportações"
+          },
+          "title": "Cunha de varejo"
+        },
+        "2": {
+          "body": "Adicione controles, relatórios, acesso a dados e, eventualmente, ferramentas de execução para desks de liquidez, fundos, tesourarias e operadores de protocolo que tratam liquidez como função operacional.",
+          "bullet": {
+            "1": "Monitoramento em nível de desk em muitas wallets",
+            "2": "Alertas baseados em política e limites operacionais",
+            "3": "Relatórios internos e trilha de auditoria",
+            "4": "Acesso API para analistas e quants",
+            "5": "Camada de execução e automação depois"
+          },
+          "title": "Direção institucional"
+        }
+      }
+    }
+  },
+  "nav": {
+    "group": {
+      "blog": "Blog",
+      "homes": "Homes",
+      "landing": "Landing",
+      "pages": "Páginas"
+    },
+    "link": {
+      "about": "Sobre nós",
+      "article": "Artigo",
+      "articleMdx": "Artigo (com MDX)",
+      "blogList": "Lista de Blog",
+      "categoryPage": "Página de categoria",
+      "clickThrough": "Click-Through",
+      "contact": "Contato",
+      "featuresAnchor": "Recursos (link âncora)",
+      "leadGeneration": "Geração de leads",
+      "longFormSales": "Vendas em formato longo",
+      "mobileApp": "App mobile",
+      "personal": "Pessoal",
+      "preLaunch": "Em breve ou pré-lançamento",
+      "pricing": "Preços",
+      "privacyPolicy": "Política de privacidade",
+      "productDetails": "Detalhes do produto (ou serviços)",
+      "saas": "SaaS",
+      "services": "Serviços",
+      "startup": "Startup",
+      "subscription": "Assinatura",
+      "tagPage": "Página de tag",
+      "terms": "Termos",
+      "widgets": "Widgets"
+    }
+  }
+}

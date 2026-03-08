@@ -1,45 +1,36 @@
-# UI Scripts
+# build-tokens.ts
 
-### `build-tokens.ts`
+## Why
 
-#### Why
+Keep token generation simple and deterministic while preserving runtime theme switching.
 
-Generate deterministic token artifacts from Tokens Studio JSON sources so app/runtime styles do not depend on manual edits.
+## What
 
-#### What
+Builds token outputs from Tokens Studio JSON sources:
 
-Builds token outputs using Style Dictionary + `@tokens-studio/sd-transforms`:
+- runtime CSS variables in `ui/tokens.css`
+- Tailwind `@theme` mapping in `ui/theme.css`
 
-- runtime variables in `ui/tokens.css`
-- Tailwind mapping in `ui/theme.css`
-- resolved theme snapshots in `ui/tokens/generated/*.json`
-- Tokens Studio import bundle in `ui/tokens/generated/tokens.studio.json`
+## How to use
 
-#### How to use
+Direct script run:
 
 ```bash
 tsx ui/scripts/build-tokens/build-tokens.ts
 ```
 
-Watch mode:
+## Inputs
 
-```bash
-pnpm --filter @unimetrics/ui dev
-```
+- `ui/tokens/core.json`
+- `ui/tokens/semantic.json`
+- `ui/tokens/themes/light.json`
+- `ui/tokens/themes/dark.json`
 
-#### Inputs
-
-- `ui/tokens/sets/*.json`
-- `ui/tokens/sets/$themes.json`
-
-#### Output
+## Output
 
 - `ui/tokens.css`
 - `ui/theme.css`
-- `ui/tokens/generated/light.json`
-- `ui/tokens/generated/dark.json`
-- `ui/tokens/generated/tokens.studio.json` (single-file upload/import for Tokens Studio in Figma)
 
 Failure behavior:
 
-- Exits non-zero with clear error message for invalid/missing token sets, invalid theme selection, unknown references, or circular references.
+- Exits non-zero with a clear error message for invalid token references, invalid JSON, or build-time transform failures.

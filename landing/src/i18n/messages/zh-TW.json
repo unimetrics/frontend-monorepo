@@ -1,0 +1,222 @@
+{
+  "blog": {
+    "backToBlog": "返回部落格"
+  },
+  "footer": {
+    "footnote": {
+      "madeBy": "製作方",
+      "rightsReserved": "版權所有。"
+    },
+    "group": {
+      "company": "公司",
+      "platform": "平台",
+      "product": "產品",
+      "support": "支援"
+    },
+    "link": {
+      "atom": "Atom",
+      "blog": "部落格",
+      "careers": "徵才",
+      "communityForum": "社群論壇",
+      "customerStories": "客戶案例",
+      "developerApi": "開發者 API",
+      "docs": "文件",
+      "electron": "Electron",
+      "enterprise": "企業版",
+      "features": "功能",
+      "inclusion": "共融",
+      "partners": "合作夥伴",
+      "press": "媒體",
+      "privacyPolicy": "隱私政策",
+      "professionalServices": "專業服務",
+      "resources": "資源",
+      "security": "安全",
+      "shop": "商店",
+      "skills": "技能",
+      "socialImpact": "社會影響",
+      "status": "狀態",
+      "team": "團隊",
+      "unimetricsDesktop": "Unimetrics Desktop"
+    }
+  },
+  "header": {
+    "action": {
+      "download": "下載"
+    },
+    "aria": {
+      "languageSwitcher": "語言切換器",
+      "mainNavigation": "主要導覽",
+      "rssFeed": "RSS 訂閱"
+    }
+  },
+  "landing": {
+    "audience": {
+      "body": "初始切入點很明確：主動管理集中流動性的專業 LP。更大的商業機會在後續出現，當同一層監控與智慧能力可支援專業流動性營運。",
+      "eyebrow": "適用對象",
+      "segment": {
+        "1": {
+          "body": "手動管理集中流動性，並希望有更好時機判斷、更高可見性與紀律的操作者。",
+          "title": "活躍零售 LP"
+        },
+        "2": {
+          "body": "在多個池子與鏈上管理多部位，且需要快速掃描與優先排序的管理者。",
+          "title": "進階使用者"
+        },
+        "3": {
+          "body": "需要監控、控制、報表，以及最終執行支援的專業流動性交易台。",
+          "title": "基金與金庫"
+        }
+      },
+      "title": "先從活躍零售開始，再擴展到基金與金庫。"
+    },
+    "core": {
+      "body": "產品故事很簡單：不要再錯過區間事件、衡量真實 LP 表現，並降低營運摩擦。第一版是唯讀、低信任門檻。長期版本將成為流動性管理者的關鍵營運層。",
+      "eyebrow": "核心價值",
+      "feature": {
+        "1": {
+          "body": "在手續費損失累積前，看見邊界接近度、突破狀態與離開區間的時間。",
+          "title": "區間風險可視化"
+        },
+        "2": {
+          "body": "衡量手續費、Gas 成本拖累、閒置時間，以及相對持有策略的淨 P&L。",
+          "title": "真實淨績效"
+        },
+        "3": {
+          "body": "透過為活躍管理者打造的單一營運層，掃描多個池子、錢包與鏈。",
+          "title": "多部位營運"
+        },
+        "4": {
+          "body": "知道何時採取行動在經濟上合理，而不是對雜訊或標題 APR 做反應。",
+          "title": "可直接決策的訊號"
+        }
+      },
+      "title": "不要承諾魔法收益，要承諾更好的決策。"
+    },
+    "finalCta": {
+      "body": "加入候補名單以取得早期存取、分享你的工作流程，並一起打造專業 LP、流動性交易台與金庫營運者真正需要的監控層。",
+      "button": {
+        "discoveryCall": "預約探索會議",
+        "joinWaitlist": "加入候補名單"
+      },
+      "eyebrow": "早期存取",
+      "title": "在自動化之前，先建立你的 LP 營運優勢。"
+    },
+    "footer": {
+      "tagline": "Unimetrics — 為專業操作者打造的集中流動性監控。"
+    },
+    "header": {
+      "brand": "Unimetrics",
+      "cta": {
+        "requestAccess": "申請存取"
+      },
+      "tagline": "機構級流動性監控"
+    },
+    "hero": {
+      "cta": {
+        "primary": "加入早期存取",
+        "secondary": "查看產品路線圖"
+      },
+      "eyebrow": "先做零售，設計上可延伸至交易台。",
+      "panel": {
+        "decisionSignal": "價格正在接近上邊界，但預期手續費衰減仍不足以支持再平衡。若 Gas 下滑或價格再移動 0.6%，請重新檢查。",
+        "label": "部位駕駛艙",
+        "metric": {
+          "actionSignal": {
+            "label": "行動訊號",
+            "note": "目前不值得付 Gas",
+            "value": "等待"
+          },
+          "feeVelocity": {
+            "label": "手續費速度",
+            "note": "接近邊界時放緩",
+            "value": "$126/天"
+          },
+          "netPnl": {
+            "label": "淨 P&L",
+            "note": "相對持有：+1.1%",
+            "value": "+4.2%"
+          },
+          "outOfRange": {
+            "label": "離開區間",
+            "note": "最近 7 天",
+            "value": "3小時18分"
+          }
+        },
+        "pool": "ETH / USDC 0.05%",
+        "status": "距上邊界 1.8%"
+      },
+      "pill": {
+        "institutional": "機構路線圖",
+        "intelligence": "集中流動性智慧",
+        "retail": "零售切入"
+      },
+      "subtitle": "跨錢包、池子與鏈監控部位。理解真實淨績效、提早發現區間風險，並知道何時採取行動才真正合理。先為嚴肅零售 LP 打造，並規劃延伸至基金、金庫與專業交易台。",
+      "title": "集中流動性的營運層。"
+    },
+    "nav": {
+      "access": "存取",
+      "features": "功能",
+      "roadmap": "路線圖",
+      "who": "適用對象"
+    },
+    "roadmap": {
+      "phase": {
+        "1": {
+          "body": "先從唯讀監控與決策支援開始。信任門檻更低、價值到達更快，也讓專業 LP 更早採用有明確理由。",
+          "bullet": {
+            "1": "唯讀投資組合與部位監控",
+            "2": "區間邊緣接近與突破警示",
+            "3": "手續費速度與離開區間時間",
+            "4": "相對持有的淨 P&L 拆解",
+            "5": "儲存檢視、篩選與匯出"
+          },
+          "title": "零售切入"
+        },
+        "2": {
+          "body": "為把流動性視為營運職能的流動性交易台、基金、金庫與協議營運者，加入控制能力、報表、資料存取，以及後續執行工具。",
+          "bullet": {
+            "1": "跨多錢包的交易台級監控",
+            "2": "策略導向警示與營運門檻",
+            "3": "內部報表與稽核軌跡",
+            "4": "提供分析師與量化團隊的 API 存取",
+            "5": "後續提供執行與自動化層"
+          },
+          "title": "機構方向"
+        }
+      }
+    }
+  },
+  "nav": {
+    "group": {
+      "blog": "部落格",
+      "homes": "首頁",
+      "landing": "著陸頁",
+      "pages": "頁面"
+    },
+    "link": {
+      "about": "關於我們",
+      "article": "文章",
+      "articleMdx": "文章（含 MDX）",
+      "blogList": "部落格列表",
+      "categoryPage": "分類頁",
+      "clickThrough": "點擊導流頁",
+      "contact": "聯絡",
+      "featuresAnchor": "功能（錨點連結）",
+      "leadGeneration": "名單蒐集",
+      "longFormSales": "長文銷售頁",
+      "mobileApp": "行動應用",
+      "personal": "個人",
+      "preLaunch": "即將上線或預發布",
+      "pricing": "定價",
+      "privacyPolicy": "隱私政策",
+      "productDetails": "產品詳情（或服務）",
+      "saas": "SaaS",
+      "services": "服務",
+      "startup": "新創",
+      "subscription": "訂閱",
+      "tagPage": "標籤頁",
+      "terms": "條款",
+      "widgets": "元件"
+    }
+  }
+}

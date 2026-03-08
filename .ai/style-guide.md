@@ -31,6 +31,8 @@ For pull request preparation and PR-specific rules, also follow `.ai/pr-instruct
 - Prioritize correctness and explicit behavior over clever shortcuts.
 - Preserve existing project structure and naming patterns.
 - Add comments only when logic is non-obvious.
+- Prefer existing abstractions first: use platform APIs, shared internal utilities, and already-installed package helpers before writing custom duplicate logic.
+- Do not re-implement behavior that already exists in a maintained abstraction unless there is a clear functional or performance reason.
 - Avoid introducing new dependencies unless clearly needed.
 - For Web3 values, use `bigint` and decimal-safe helpers. Never use JS floating-point math for on-chain amounts.
 - Keep chain-specific constants (chain IDs, addresses, explorers) centralized per network.

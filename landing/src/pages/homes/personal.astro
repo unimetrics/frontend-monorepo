@@ -9,11 +9,17 @@ import Features3 from "~/components/widgets/Features3.astro";
 import Testimonials from "~/components/widgets/Testimonials.astro";
 import Steps from "~/components/widgets/Steps.astro";
 import BlogLatestPosts from "~/components/widgets/BlogLatestPosts.astro";
+import { getMessages, t } from "~/i18n";
+import { getLocaleSwitchLinks, localizeHref } from "~/i18n/links";
+import { defaultLocale } from "~/i18n/routing";
 import { getPermalink } from "~/utils/permalinks";
 
 const metadata = {
   title: "Personal Homepage Demo",
 };
+const locale = Astro.currentLocale ?? defaultLocale;
+const messages = getMessages(locale);
+const localeLinks = getLocaleSwitchLinks(locale, Astro.url.pathname);
 ---
 
 <Layout metadata={metadata}>
@@ -26,7 +32,7 @@ const metadata = {
         { text: "Resume", href: "#resume" },
         { text: "Porfolio", href: "#porfolio" },
         { text: "Blog", href: "#blog" },
-        { text: "Github", href: "https://github.com/unimetrics" },
+        { text: "GitHub", href: "https://github.com/unimetrics" },
       ]}
       actions={[
         {
@@ -35,6 +41,9 @@ const metadata = {
         },
       ]}
       isSticky
+      localeLinks={localeLinks}
+      localeSwitcherAriaLabel={t(messages, "header.aria.languageSwitcher")}
+      mainNavigationAriaLabel={t(messages, "header.aria.mainNavigation")}
       showToggleTheme
     />
   </Fragment>
@@ -46,7 +55,11 @@ const metadata = {
     title="Sarah Johnson"
     tagline="Personal Web Demo"
     actions={[
-      { variant: "primary", text: "Hire me", href: getPermalink("/contact#form") },
+      {
+        variant: "primary",
+        text: "Hire me",
+        href: localizeHref(locale, getPermalink("/contact#form")),
+      },
     ]}
   >
     <Fragment slot="subtitle">

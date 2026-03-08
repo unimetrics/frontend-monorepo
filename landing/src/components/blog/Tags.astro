@@ -3,6 +3,8 @@ import { getPermalink } from "~/utils/permalinks";
 
 import { APP_BLOG } from "unimetrics:config";
 import type { Post } from "~/types";
+import { localizeHref } from "~/i18n/links";
+import { defaultLocale } from "~/i18n/routing";
 
 export interface Props {
   tags: Post["tags"];
@@ -17,6 +19,7 @@ const {
   title = undefined,
   isCategory = false,
 } = Astro.props;
+const locale = Astro.currentLocale ?? defaultLocale;
 ---
 
 {
@@ -34,8 +37,11 @@ const {
               tag.title
             ) : (
               <a
-                href={getPermalink(tag.slug, isCategory ? "category" : "tag")}
-                class="text-ui-text-muted hover:text-ui-primary dark:text-slate-300 dark:hover:text-gray-200"
+                href={localizeHref(
+                  locale,
+                  getPermalink(tag.slug, isCategory ? "category" : "tag")
+                )}
+                class="text-text-muted hover:text-primary dark:text-slate-300 dark:hover:text-gray-200"
               >
                 {tag.title}
               </a>
