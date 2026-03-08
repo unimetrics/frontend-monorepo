@@ -3,6 +3,8 @@ import { APP_BLOG } from "unimetrics:config";
 
 import Grid from "~/components/blog/Grid.astro";
 
+import { localizeHref } from "~/i18n/links";
+import { defaultLocale } from "~/i18n/routing";
 import { getBlogPermalink } from "~/utils/permalinks";
 import { findPostsByIds } from "~/utils/blog";
 import WidgetWrapper from "~/components/ui/WidgetWrapper.astro";
@@ -16,10 +18,12 @@ export interface Props extends Widget {
   postIds: string[];
 }
 
+const locale = Astro.currentLocale ?? defaultLocale;
+
 const {
   title = await Astro.slots.render("title"),
   linkText = "View all posts",
-  linkUrl = getBlogPermalink(),
+  linkUrl = localizeHref(locale, getBlogPermalink()),
   information = await Astro.slots.render("information"),
   postIds = [],
 
@@ -44,12 +48,12 @@ const posts = APP_BLOG.isEnabled ? await findPostsByIds(postIds) : [];
         {title && (
           <div class="md:max-w-sm">
             <h2
-              class="group mb-2 font-ui-heading text-3xl font-bold tracking-tight sm:text-4xl sm:leading-none"
+              class="group mb-2 font-heading text-3xl font-bold tracking-tight sm:text-4xl sm:leading-none"
               set:html={title}
             />
             {APP_BLOG.list.isEnabled && linkText && linkUrl && (
               <a
-                class="mb-6 block text-ui-text-muted transition duration-200 ease-in hover:text-ui-primary dark:text-slate-400 lg:mb-0"
+                class="mb-6 block text-text-muted transition duration-200 ease-in hover:text-primary dark:text-slate-400 lg:mb-0"
                 href={linkUrl}
               >
                 {linkText} »
@@ -60,7 +64,7 @@ const posts = APP_BLOG.isEnabled ? await findPostsByIds(postIds) : [];
 
         {information && (
           <p
-            class="text-ui-text-muted dark:text-slate-400 lg:max-w-md lg:text-sm"
+            class="text-text-muted dark:text-slate-400 lg:max-w-md lg:text-sm"
             set:html={information}
           />
         )}

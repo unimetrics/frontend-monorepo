@@ -1,180 +1,68 @@
-import type { FormatFnArguments, TransformedToken } from "style-dictionary/types";
+import type { FormatFnArguments } from "style-dictionary/types";
 
 import { register } from "@tokens-studio/sd-transforms";
-import { kebabCase } from "change-case";
+import compact from "lodash/compact";
+import find from "lodash/find";
 import { promises as fs } from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 import StyleDictionary from "style-dictionary";
 
-type ThemeConfig = {
-  name: string;
-  selectedTokenSets: ThemeSetArraySelection | ThemeSetObjectSelection;
-};
-
-type ThemeSetArraySelection = Array<{ id: string; status: ThemeSetStatus }>;
-
-type ThemeSetObjectSelection = Record<string, ThemeSetStatus>;
-
-type ThemeSetStatus = "disabled" | "enabled" | "source";
-
-type ThemeSnapshot = Record<string, string>;
-
 const scriptPath = fileURLToPath(import.meta.url);
 const scriptDir = path.dirname(scriptPath);
 const uiRoot = path.resolve(scriptDir, "../..");
+
 const tokensRoot = path.join(uiRoot, "tokens");
-const setsDir = path.join(tokensRoot, "sets");
-const themesPath = path.join(setsDir, "$themes.json");
-const generatedDir = path.join(tokensRoot, "generated");
-const tokensStudioBundlePath = path.join(generatedDir, "tokens.studio.json");
-const themeCssPath = path.join(uiRoot, "theme.css");
+const themesRoot = path.join(tokensRoot, "themes");
+const generatedRoot = path.join(tokensRoot, "generated");
+
+const corePath = path.join(tokensRoot, "core.json");
+const semanticPath = path.join(tokensRoot, "semantic.json");
+const lightThemePath = path.join(themesRoot, "light.json");
+const darkThemePath = path.join(themesRoot, "dark.json");
+
 const tokensCssPath = path.join(uiRoot, "tokens.css");
+const themeCssPath = path.join(uiRoot, "theme.css");
+
+const tempLightPath = path.join(generatedRoot, ".light.css");
+const tempDarkPath = path.join(generatedRoot, ".dark.css");
+
+type ThemeFormatOptions = {
+  selector?: string;
+};
 
 register(StyleDictionary);
 
-StyleDictionary.registerFormat({
-  format: ({ dictionary }: FormatFnArguments): string => {
-    const entries = [...dictionary.allTokens]
-      .map(
-        token =>
-          [token.path.join("."), normalizeSnapshotValue(getTokenValue(token))] as const
-      )
-      .sort(([a], [b]) => a.localeCompare(b))
-      .map(([tokenPath, value]) => `  "${tokenPath}": ${JSON.stringify(value)}`);
+const shouldEmit = (name: string): boolean =>
+  /^(?:border-width|color|font|motion|primitive|radius|shadow|spacing)\b/.test(name);
 
-    return entries.length === 0 ? "{}\n" : `{\n${entries.join(",\n")}\n}\n`;
-  },
-  name: "unimetrics/json-dot",
-});
-
-const uiToTailwindThemePrefixRules: Array<[string, string]> = [
-  ["--ui-primitive-color-", "--color-ui-primitive-"],
-  ["--ui-color-", "--color-ui-"],
-  ["--ui-spacing-", "--spacing-ui-"],
-  ["--ui-radius-", "--radius-ui-"],
-  ["--ui-shadow-", "--shadow-ui-"],
-  ["--ui-border-width-", "--border-width-ui-"],
-  ["--ui-font-family-", "--font-ui-"],
-  ["--ui-font-size-", "--text-ui-"],
-  ["--ui-font-line-height-", "--leading-ui-"],
-  ["--ui-font-weight-", "--font-weight-ui-"],
-  ["--ui-motion-duration-", "--duration-ui-"],
-];
-
-async function build(): Promise<void> {
-  const themes = await readJson<ThemeConfig[]>(themesPath);
-
-  if (!Array.isArray(themes) || themes.length === 0) {
-    throw new Error("$themes.json must be a non-empty array of themes.");
-  }
-
-  await fs.mkdir(generatedDir, { recursive: true });
-  await cleanGeneratedSnapshots();
-
-  for (const theme of themes) {
-    if (!theme.name || !theme.selectedTokenSets) {
-      throw new Error("Every theme must provide 'name' and 'selectedTokenSets'.");
-    }
-
-    await buildThemeSnapshot(theme);
-  }
-
-  await writeTokensStudioBundle(themes);
-
-  const lightTheme = await readThemeSnapshot("light");
-  const darkTheme = await readThemeSnapshot("dark");
-  await writeThemeCss(lightTheme);
-  await writeTokensCss(lightTheme, darkTheme);
-}
-
-function buildThemeMappings(lightTheme: Map<string, string>): Array<[string, string]> {
-  const entries = new Map<string, string>();
-
-  for (const tokenPath of lightTheme.keys()) {
-    const sourceVarName = toCssVarName(tokenPath);
-    const themeVarName = toTailwindThemeVarName(sourceVarName);
-    if (!themeVarName) {
-      continue;
-    }
-
-    entries.set(themeVarName, `var(${sourceVarName})`);
-  }
-
-  return [...entries.entries()].sort(([a], [b]) => a.localeCompare(b));
-}
-
-async function buildThemeSnapshot(theme: ThemeConfig): Promise<void> {
-  const selectedSetNames = getSelectedSetNames(theme);
-  if (selectedSetNames.length === 0) {
-    throw new Error(`Theme '${theme.name}' does not enable any token sets.`);
-  }
-
-  const sourceFiles = selectedSetNames.map(setName =>
-    path.join(setsDir, `${setName}.json`)
-  );
-  const dictionary = new StyleDictionary({
-    platforms: {
-      json: {
-        buildPath: `${generatedDir}/`,
-        files: [
-          {
-            destination: `${theme.name}.json`,
-            format: "unimetrics/json-dot",
-          },
-        ],
-        transforms: ["name/kebab"],
-      },
-    },
-    preprocessors: ["tokens-studio"],
-    source: sourceFiles,
-  });
-
-  await dictionary.buildAllPlatforms();
-}
-
-async function cleanGeneratedSnapshots(): Promise<void> {
-  const files = await fs.readdir(generatedDir);
-  const snapshotFiles = files.filter(fileName => fileName.endsWith(".json"));
-
-  await Promise.all(
-    snapshotFiles.map(fileName =>
-      fs.rm(path.join(generatedDir, fileName), { force: true })
-    )
-  );
-}
-
-function formatCssBlock(selector: string, entries: Array<[string, string]>): string {
-  const lines = [
-    `${selector} {`,
-    ...entries.map(([name, value]) => `  ${name}: ${value};`),
-    "}",
+const toThemeVar = (tokenName: string): null | string => {
+  const mappings: Array<[string, string]> = [
+    ["primitive-color-", "--color-primitive-"],
+    ["color-", "--color-"],
+    ["spacing-", "--spacing-"],
+    ["radius-", "--radius-"],
+    ["shadow-", "--shadow-"],
+    ["border-width-", "--border-width-"],
+    ["font-family-", "--font-"],
+    ["font-size-", "--text-"],
+    ["font-line-height-", "--leading-"],
+    ["font-weight-", "--font-weight-"],
+    ["motion-duration-", "--duration-"],
   ];
 
-  return lines.join("\n");
-}
-
-function getSelectedSetNames(theme: ThemeConfig): string[] {
-  const selected = theme.selectedTokenSets;
-
-  if (Array.isArray(selected)) {
-    return selected
-      .filter(entry => entry.status === "enabled" || entry.status === "source")
-      .map(entry => entry.id);
+  const match = find(mappings, ([prefix]) => tokenName.startsWith(prefix));
+  if (!match) {
+    return null;
   }
 
-  return Object.entries(selected)
-    .filter(([, status]) => status === "enabled" || status === "source")
-    .map(([setName]) => setName);
-}
+  const [prefix, varPrefix] = match;
+  return `${varPrefix}${tokenName.slice(prefix.length)}`;
+};
 
-function getTokenValue(token: TransformedToken): unknown {
-  return token.$value ?? token.value;
-}
-
-function normalizeSnapshotValue(value: unknown): string {
-  if (value === undefined || value === null) {
-    throw new Error("Style Dictionary produced an empty token value.");
+const normalizeValue = (value: unknown): string => {
+  if (value === null || value === undefined) {
+    throw new Error("Token value cannot be empty.");
   }
 
   if (typeof value === "string") {
@@ -186,131 +74,146 @@ function normalizeSnapshotValue(value: unknown): string {
   }
 
   return JSON.stringify(value);
-}
+};
 
-async function readJson<T>(filePath: string): Promise<T> {
-  const raw = await fs.readFile(filePath, "utf8");
-  return JSON.parse(raw) as T;
-}
+const getEntries = (
+  dictionary: FormatFnArguments["dictionary"],
+  mapName: (tokenName: string) => null | string
+): Array<[string, string]> =>
+  compact(
+    dictionary.allTokens
+      .filter(token => shouldEmit(token.name))
+      .map(token => {
+        const varName = mapName(token.name);
+        if (!varName) {
+          return null;
+        }
 
-async function readThemeSnapshot(themeName: string): Promise<Map<string, string>> {
-  const snapshotPath = path.join(generatedDir, `${themeName}.json`);
-  const snapshot = await readJson<ThemeSnapshot>(snapshotPath);
-  return new Map(Object.entries(snapshot));
-}
+        const rawValue = token.$value ?? token.value;
+        return [varName, normalizeValue(rawValue)] as [string, string];
+      })
+  ).sort(([a], [b]) => a.localeCompare(b));
 
-function sortEntries<TIn, TOut extends [string, string]>(
-  map: Map<string, TIn>,
-  mapper: (key: string, value: TIn) => TOut
-): TOut[] {
-  return [...map.entries()]
-    .map(([key, value]) => mapper(key, value))
-    .sort(([a], [b]) => a.localeCompare(b));
-}
+StyleDictionary.registerFormat({
+  format: ({ dictionary }: FormatFnArguments): string => {
+    const mappedEntries = getEntries(dictionary, tokenName => toThemeVar(tokenName)).map(
+      ([name, value]) => `  ${name}: ${value};`
+    );
 
-function toCssVarName(tokenPath: string): string {
-  return `--ui-${tokenPath
-    .split(".")
-    .map(pathSegment => kebabCase(pathSegment))
-    .join("-")}`;
-}
+    return [
+      "/* AUTO-GENERATED — do not edit by hand */",
+      "",
+      "@theme {",
+      ...mappedEntries,
+      "}",
+      "",
+    ].join("\n");
+  },
+  name: "unimetrics/theme-css",
+});
 
-function toTailwindThemeVarName(sourceVarName: string): null | string {
-  for (const [sourcePrefix, themePrefix] of uiToTailwindThemePrefixRules) {
-    if (sourceVarName.startsWith(sourcePrefix)) {
-      return `${themePrefix}${sourceVarName.slice(sourcePrefix.length)}`;
+StyleDictionary.registerFormat({
+  format: ({ dictionary, options }: FormatFnArguments): string => {
+    const selector = (options as ThemeFormatOptions | undefined)?.selector ?? ":root";
+
+    const lines = getEntries(dictionary, tokenName => toThemeVar(tokenName)).map(
+      ([name, value]) => `  ${name}: ${value};`
+    );
+
+    return [
+      "/* AUTO-GENERATED — do not edit by hand */",
+      "",
+      `${selector} {`,
+      ...lines,
+      "}",
+      "",
+    ].join("\n");
+  },
+  name: "unimetrics/runtime-vars",
+});
+
+const makeDictionary = (
+  source: string[],
+  destination: string,
+  format: string,
+  options?: ThemeFormatOptions
+): StyleDictionary =>
+  new StyleDictionary({
+    platforms: {
+      css: {
+        buildPath: `${uiRoot}/`,
+        files: [{ destination, format, options }],
+        transforms: ["name/kebab"],
+      },
+    },
+    preprocessors: ["tokens-studio"],
+    source,
+  });
+
+const buildCssArtifacts = async (): Promise<void> => {
+  await fs.mkdir(generatedRoot, { recursive: true });
+
+  const lightSource = [corePath, semanticPath, lightThemePath];
+  const darkSource = [corePath, darkThemePath];
+
+  await makeDictionary(
+    lightSource,
+    path.relative(uiRoot, tempLightPath),
+    "unimetrics/runtime-vars",
+    {
+      selector: ":root",
     }
-  }
+  ).buildAllPlatforms();
 
-  const genericMatch = sourceVarName.match(/^--ui-([a-z0-9]+)-(.+)$/);
-  if (!genericMatch) {
-    return null;
-  }
+  const lightCss = await fs.readFile(tempLightPath, "utf8");
 
-  const [, namespace, suffix] = genericMatch;
-  return `--${namespace}-ui-${suffix}`;
-}
-
-async function writeThemeCss(lightTheme: Map<string, string>): Promise<void> {
-  const themeMappings = buildThemeMappings(lightTheme);
-  const css = [
-    "/*",
-    " * Auto-generated from ui/scripts/build-tokens/build-tokens.ts.",
-    " * Do not edit this file by hand.",
-    " */",
-    "",
-    formatCssBlock("@theme", themeMappings),
-    "",
-  ].join("\n");
-
-  await fs.writeFile(themeCssPath, css, "utf8");
-}
-
-async function writeTokensCss(
-  lightTheme: Map<string, string>,
-  darkTheme: Map<string, string>
-): Promise<void> {
-  const rootEntries = sortEntries(lightTheme, (tokenPath, value) => [
-    toCssVarName(tokenPath),
-    value,
-  ]);
-
-  const darkDiff = new Map<string, string>();
-  for (const [tokenPath, darkValue] of darkTheme.entries()) {
-    const lightValue = lightTheme.get(tokenPath);
-    if (lightValue !== darkValue) {
-      darkDiff.set(tokenPath, darkValue);
+  await makeDictionary(
+    darkSource,
+    path.relative(uiRoot, tempDarkPath),
+    "unimetrics/runtime-vars",
+    {
+      selector: ".dark",
     }
-  }
+  ).buildAllPlatforms();
 
-  const darkEntries = sortEntries(darkDiff, (tokenPath, value) => [
-    toCssVarName(tokenPath),
-    value,
-  ]);
+  const darkCss = await fs.readFile(tempDarkPath, "utf8");
 
-  const css = [
-    "/*",
-    " * Auto-generated from ui/tokens/sets/*.json via Style Dictionary + sd-transforms.",
-    " * Do not edit this file by hand.",
-    " */",
+  await makeDictionary(
+    lightSource,
+    path.relative(uiRoot, themeCssPath),
+    "unimetrics/theme-css"
+  ).buildAllPlatforms();
+
+  const tokensCss = [
+    "/* AUTO-GENERATED — do not edit by hand */",
     "",
-    formatCssBlock(":root", rootEntries),
+    ...stripBanner(lightCss),
     "",
-    formatCssBlock(".dark", darkEntries),
+    ...stripBanner(darkCss),
     "",
     "::selection {",
-    "  background-color: var(--ui-color-selection-background);",
-    "  color: var(--ui-color-selection-text);",
+    "  background-color: var(--color-selection-background);",
+    "  color: var(--color-selection-text);",
     "}",
     "",
   ].join("\n");
 
-  await fs.writeFile(tokensCssPath, css, "utf8");
-}
+  await fs.writeFile(tokensCssPath, tokensCss, "utf8");
+  await fs.rm(generatedRoot, { force: true, recursive: true });
+};
 
-async function writeTokensStudioBundle(themes: ThemeConfig[]): Promise<void> {
-  const setDirEntries = await fs.readdir(setsDir);
-  const setFiles = setDirEntries
-    .filter(fileName => fileName.endsWith(".json") && fileName !== "$themes.json")
-    .sort((a, b) => a.localeCompare(b));
-
-  const bundle: Record<string, unknown> = { $themes: themes };
-
-  for (const setFile of setFiles) {
-    const setName = path.basename(setFile, ".json");
-    const setPath = path.join(setsDir, setFile);
-    bundle[setName] = await readJson<unknown>(setPath);
-  }
-
-  await fs.writeFile(
-    tokensStudioBundlePath,
-    `${JSON.stringify(bundle, null, 2)}\n`,
-    "utf8"
+const stripBanner = (css: string): string[] =>
+  compact(
+    css
+      .split("\n")
+      .map(line =>
+        line.startsWith("/*") || line.trim() === "*/" || line.trim() === "" ? null : line
+      )
   );
-}
 
 try {
-  await build();
+  await buildCssArtifacts();
+  console.info("Generated theme.css and tokens.css");
 } catch (error: unknown) {
   const message = error instanceof Error ? error.message : String(error);
   console.error(`[tokens] ${message}`);

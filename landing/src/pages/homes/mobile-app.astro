@@ -13,6 +13,9 @@ import Stats from "~/components/widgets/Stats.astro";
 
 import Button from "~/components/ui/Button.astro";
 import Image from "~/components/common/Image.astro";
+import { getMessages, t } from "~/i18n";
+import { getLocaleSwitchLinks } from "~/i18n/links";
+import { defaultLocale } from "~/i18n/routing";
 
 const appStoreImg = "~/assets/images/app-store.png";
 const appStoreDownloadLink = "https://github.com/unimetrics/frontend-monorepo";
@@ -23,6 +26,9 @@ const googlePlayDownloadLink = "https://github.com/unimetrics/frontend-monorepo"
 const metadata = {
   title: "Mobile App Homepage",
 };
+const locale = Astro.currentLocale ?? defaultLocale;
+const messages = getMessages(locale);
+const localeLinks = getLocaleSwitchLinks(locale, Astro.url.pathname);
 ---
 
 <Layout metadata={metadata}>
@@ -42,6 +48,9 @@ const metadata = {
         },
       ]}
       isSticky
+      localeLinks={localeLinks}
+      localeSwitcherAriaLabel={t(messages, "header.aria.languageSwitcher")}
+      mainNavigationAriaLabel={t(messages, "header.aria.mainNavigation")}
       showToggleTheme
     />
   </Fragment>
@@ -56,8 +65,7 @@ const metadata = {
     }}
   >
     <Fragment slot="title">
-      <span class="text-ui-accent dark:text-white">Unimetrics App</span>: <br /> professional
-      websites
+      <span class="text-accent dark:text-white">Unimetrics App</span>: <br /> professional websites
       <span class="hidden xl:inline">made easy</span>
     </Fragment>
 

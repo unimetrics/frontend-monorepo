@@ -30,7 +30,11 @@ const {
     class={`flex flex-col gap-8 md:gap-12 md:flex-row ${isReversed ? "md:flex-row-reverse" : ""}`}
   >
     <div
-      class={`w-full lg:w-1/2 gap-8 md:gap-12 ${isReversed ? "lg:ml-16 md:ml-8 ml-0" : "lg:mr-16 md:mr-8 mr-0"}`}
+      class={`w-full lg:w-1/2 gap-8 md:gap-12 ${
+        isReversed
+          ? "ml-0 md:ml-8 lg:ml-16 rtl:md:ml-0 rtl:lg:ml-0 rtl:md:mr-8 rtl:lg:mr-16"
+          : "mr-0 md:mr-8 lg:mr-16 rtl:md:mr-0 rtl:lg:mr-0 rtl:md:ml-8 rtl:lg:ml-16"
+      }`}
     >
       <Headline
         title={title}
@@ -38,8 +42,8 @@ const {
         tagline={tagline}
         classes={{
           container: "text-center md:text-left rtl:md:text-right mb-4 md:mb-8",
-          title: "mb-4 text-3xl lg:text-4xl font-bold font-ui-heading",
-          subtitle: "mb-8 text-xl text-ui-text-muted dark:text-slate-400",
+          title: "mb-4 text-3xl lg:text-4xl font-bold font-heading",
+          subtitle: "mb-8 text-xl text-text-muted dark:text-slate-400",
           // ...((classes?.headline as {}) ?? {}),
         }}
       />
@@ -65,17 +69,17 @@ const {
             ? items.map(({ title: title2, description, icon }, index) => (
                 <li class="flex md:-mx-4">
                   <div class="pr-4 sm:pl-4 rtl:pl-4 rtl:pr-0 rtl:sm:pl-0 rtl:sm:pr-4">
-                    <span class="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-blue-100 text-2xl font-bold text-ui-primary">
+                    <span class="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-blue-100 text-2xl font-bold text-primary">
                       {icon ? <Icon name={icon} class="icon-bold h-6 w-6" /> : index + 1}
                     </span>
                   </div>
                   <div class="pl-4 rtl:pl-0 rtl:pr-4">
                     <h3
-                      class="mb-4 font-ui-heading text-xl font-semibold"
+                      class="mb-4 font-heading text-xl font-semibold"
                       set:html={title2}
                     />
                     <p
-                      class="text-ui-text-muted dark:text-gray-400"
+                      class="text-text-muted dark:text-gray-400"
                       set:html={description}
                     />
                   </div>

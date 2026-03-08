@@ -1,7 +1,12 @@
 import { Helmet } from "react-helmet-async";
 import { useTranslation } from "react-i18next";
 
+import { type SupportedLanguage, supportedLanguages } from "../../../shared/lib/i18n";
 import { ThemeToggle } from "../../../shared/ui/theme-toggle";
+
+const isSupportedLanguage = (value: string): value is SupportedLanguage => {
+  return supportedLanguages.includes(value as SupportedLanguage);
+};
 
 export const EmptyPage = () => {
   const { i18n, t } = useTranslation();
@@ -22,11 +27,20 @@ export const EmptyPage = () => {
               <button
                 className="rounded border border-slate-300 px-3 py-1 text-sm dark:border-slate-700"
                 onClick={async () => {
-                  await i18n.changeLanguage(i18n.language === "en" ? "ru" : "en");
+                  const currentLanguage = i18n.resolvedLanguage ?? i18n.language;
+                  const normalizedLanguage = isSupportedLanguage(currentLanguage)
+                    ? currentLanguage
+                    : (supportedLanguages.find(language =>
+                        currentLanguage.startsWith(`${language}-`)
+                      ) ?? supportedLanguages[0]);
+                  const currentIndex = supportedLanguages.indexOf(normalizedLanguage);
+                  const nextLanguage =
+                    supportedLanguages[(currentIndex + 1) % supportedLanguages.length];
+                  await i18n.changeLanguage(nextLanguage);
                 }}
                 type="button"
               >
-                {i18n.language.toUpperCase()}
+                {(i18n.resolvedLanguage ?? i18n.language).toUpperCase()}
               </button>
               <ThemeToggle />
             </div>

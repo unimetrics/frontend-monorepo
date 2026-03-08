@@ -5,12 +5,15 @@ import { getRelatedPosts } from "~/utils/blog";
 import BlogHighlightedPosts from "../widgets/BlogHighlightedPosts.astro";
 import type { Post } from "~/types";
 import { getBlogPermalink } from "~/utils/permalinks";
+import { localizeHref } from "~/i18n/links";
+import { defaultLocale } from "~/i18n/routing";
 
 export interface Props {
   post: Post;
 }
 
 const { post } = Astro.props;
+const locale = Astro.currentLocale ?? defaultLocale;
 
 const relatedPosts = post.tags ? await getRelatedPosts(post, 4) : [];
 ---
@@ -24,7 +27,7 @@ const relatedPosts = post.tags ? await getRelatedPosts(post, 4) : [];
       }}
       title="Related Posts"
       linkText="View All Posts"
-      linkUrl={getBlogPermalink()}
+      linkUrl={localizeHref(locale, getBlogPermalink())}
       postIds={relatedPosts.map(post => post.id)}
     />
   ) : null

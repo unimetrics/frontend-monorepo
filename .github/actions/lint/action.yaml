@@ -39,3 +39,7 @@ runs:
     - name: Lint github branches rulesets
       run: pnpm run lint:rulesets
       shell: bash
+
+    - name: Check markdown links
+      run: pnpm run lint:md-links
+      shell: bash

@@ -7,6 +7,8 @@ import Button from "~/components/ui/Button.astro";
 
 import { getHomePermalink } from "~/utils/permalinks";
 import { trimSlash, getAsset } from "~/utils/permalinks";
+import { localizeHref } from "~/i18n/links";
+import { defaultLocale } from "~/i18n/routing";
 import type { CallToAction } from "~/types";
 
 interface Link {
@@ -20,9 +22,20 @@ interface MenuLink extends Link {
   links?: Array<MenuLink>;
 }
 
+interface LocaleLink {
+  href: string;
+  isCurrent: boolean;
+  label: string;
+  locale: string;
+}
+
 export interface Props {
   id?: string;
   links?: Array<MenuLink>;
+  localeLinks?: Array<LocaleLink>;
+  localeSwitcherAriaLabel?: string;
+  mainNavigationAriaLabel?: string;
+  rssAriaLabel?: string;
   actions?: Array<CallToAction>;
   isSticky?: boolean;
   isDark?: boolean;
@@ -35,6 +48,10 @@ export interface Props {
 const {
   id = "header",
   links = [],
+  localeLinks = [],
+  localeSwitcherAriaLabel = "Language switcher",
+  mainNavigationAriaLabel = "Main navigation",
+  rssAriaLabel = "RSS feed",
   actions = [],
   isSticky = false,
   isDark = false,
@@ -44,7 +61,9 @@ const {
   position = "center",
 } = Astro.props;
 
+const currentLocale = Astro.currentLocale ?? defaultLocale;
 const currentPath = `/${trimSlash(new URL(Astro.url).pathname)}`;
+const homeHref = localizeHref(currentLocale, getHomePermalink());
 ---
 
 <header
@@ -58,7 +77,7 @@ const currentPath = `/${trimSlash(new URL(Astro.url).pathname)}`;
   <div class="absolute inset-0"></div>
   <div
     class:list={[
-      "relative mx-auto w-full px-3 py-3 text-ui-text-default md:px-6",
+      "relative mx-auto w-full px-3 py-3 text-text-default md:px-6",
       {
         "md:flex md:justify-between": position !== "center",
       },
@@ -76,7 +95,7 @@ const currentPath = `/${trimSlash(new URL(Astro.url).pathname)}`;
         "flex justify-between",
       ]}
     >
-      <a class="flex items-center" href={getHomePermalink()}>
+      <a class="flex items-center" href={homeHref}>
         <Logo />
       </a>
       <div class="flex items-center md:hidden">
@@ -84,8 +103,8 @@ const currentPath = `/${trimSlash(new URL(Astro.url).pathname)}`;
       </div>
     </div>
     <nav
-      class="hidden w-full items-center overflow-y-auto overflow-x-hidden text-ui-text-default md:mx-5 md:flex md:w-auto md:justify-self-center md:overflow-x-auto md:overflow-y-visible"
-      aria-label="Main navigation"
+      class="hidden w-full items-center overflow-y-auto overflow-x-hidden text-text-default md:mx-5 md:flex md:w-auto md:justify-self-center md:overflow-x-auto md:overflow-y-visible"
+      aria-label={mainNavigationAriaLabel}
     >
       <ul
         class="flex w-full flex-col text-xl font-medium tracking-[0.01rem] md:w-auto md:flex-row md:justify-center md:self-center md:text-[0.9375rem]"
@@ -105,7 +124,7 @@ const currentPath = `/${trimSlash(new URL(Astro.url).pathname)}`;
                       class="ml-0.5 hidden h-3.5 w-3.5 md:inline rtl:ml-0 rtl:mr-0.5"
                     />
                   </button>
-                  <ul class="dropdown-menu dark:md:bg-dark rounded pl-4 font-medium drop-shadow-xl md:absolute md:hidden md:min-w-[200px] md:bg-white/90 md:pl-0 md:backdrop-blur-md">
+                  <ul class="dropdown-menu dark:md:bg-dark rounded pl-4 font-medium drop-shadow-xl md:absolute md:hidden md:min-w-[200px] md:bg-white/90 md:pl-0 md:backdrop-blur-md rtl:pl-0 rtl:pr-4 md:rtl:pr-0">
                     {links.map(({ text: text2, href: href2 }) => (
                       <li>
                         <a
@@ -146,6 +165,34 @@ const currentPath = `/${trimSlash(new URL(Astro.url).pathname)}`;
       <div class="flex w-full items-center justify-between md:w-auto">
         <div class="flex">
           {
+            localeLinks.length > 0 && (
+              <nav
+                aria-label={localeSwitcherAriaLabel}
+                class="mr-1 hidden md:block rtl:mr-0 rtl:ml-1"
+              >
+                <ul class="flex items-center gap-1">
+                  {localeLinks.map(({ href, isCurrent, label, locale }) => (
+                    <li>
+                      <a
+                        href={href}
+                        hreflang={locale}
+                        aria-current={isCurrent ? "page" : undefined}
+                        class:list={[
+                          "inline-flex rounded-md px-2 py-1 text-xs font-semibold transition",
+                          isCurrent
+                            ? "bg-gray-200 text-text-default dark:bg-gray-700 dark:text-white"
+                            : "text-text-muted hover:bg-gray-100 hover:text-text-default dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white",
+                        ]}
+                      >
+                        {label}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </nav>
+            )
+          }
+          {
             showToggleTheme && (
               <ToggleTheme iconClass="w-6 h-6 md:w-5 md:h-5 md:inline-block" />
             )
@@ -153,8 +200,8 @@ const currentPath = `/${trimSlash(new URL(Astro.url).pathname)}`;
           {
             showRssFeed && (
               <a
-                class="inline-flex items-center rounded-lg p-2.5 text-sm text-ui-text-muted hover:bg-gray-100 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-700"
-                aria-label="RSS Feed"
+                class="inline-flex items-center rounded-lg p-2.5 text-sm text-text-muted hover:bg-gray-100 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-700"
+                aria-label={rssAriaLabel}
                 href={getAsset("/rss.xml")}
               >
                 <Icon name="tabler:rss" class="h-5 w-5" />
@@ -168,7 +215,7 @@ const currentPath = `/${trimSlash(new URL(Astro.url).pathname)}`;
               {actions.map(btnProps => (
                 <Button
                   {...btnProps}
-                  class="px-5.5 ml-2 w-auto py-2.5 text-sm font-semibold shadow-none md:px-6"
+                  class="px-5.5 ml-2 w-auto py-2.5 text-sm font-semibold shadow-none md:px-6 rtl:ml-0 rtl:mr-2"
                 />
               ))}
             </span>

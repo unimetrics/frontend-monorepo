@@ -100,9 +100,7 @@ export function createLpDeskContext(input: {
 }
 
 const createLpDeskProcedure = defineProcedure<LpDeskContext>();
-const createLpDeskRouter = createApiRouter<LpDeskContext>();
-
-export const lpDeskRouter = createLpDeskRouter({
+const lpDeskProcedures = {
   alerts: createLpDeskProcedure({
     description: "Show active alerts",
     input: AlertsInputSchema,
@@ -197,4 +195,8 @@ export const lpDeskRouter = createLpDeskRouter({
       };
     },
   }),
-});
+};
+
+export const lpDeskRouter = createApiRouter<LpDeskContext, typeof lpDeskProcedures>(
+  lpDeskProcedures
+);

@@ -2,7 +2,10 @@
 import PageLayout from "~/layouts/PageLayout.astro";
 import Header from "~/components/widgets/Header.astro";
 
-import { headerData } from "~/navigation";
+import { getMessages, t } from "~/i18n";
+import { getLocaleSwitchLinks } from "~/i18n/links";
+import { defaultLocale } from "~/i18n/routing";
+import { getHeaderData } from "~/navigation";
 import type { MetaData } from "~/types";
 
 export interface Props {
@@ -10,6 +13,10 @@ export interface Props {
 }
 
 const { metadata } = Astro.props;
+const locale = Astro.currentLocale ?? defaultLocale;
+const messages = getMessages(locale);
+const headerData = getHeaderData(locale);
+const localeLinks = getLocaleSwitchLinks(locale, Astro.url.pathname);
 ---
 
 <PageLayout metadata={metadata}>
@@ -22,10 +29,13 @@ const { metadata } = Astro.props;
         links={headerData?.links[2] ? [headerData.links[2]] : undefined}
         actions={[
           {
-            text: "Download",
+            text: t(messages, "header.action.download"),
             href: "https://github.com/unimetrics/frontend-monorepo",
           },
         ]}
+        localeLinks={localeLinks}
+        localeSwitcherAriaLabel={t(messages, "header.aria.languageSwitcher")}
+        mainNavigationAriaLabel={t(messages, "header.aria.mainNavigation")}
         showToggleTheme
         position="right"
       />

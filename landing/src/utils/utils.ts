@@ -1,21 +1,35 @@
+import trimChars from "lodash/trim";
 import { I18N } from "unimetrics:config";
 
-export const formatter: Intl.DateTimeFormat = new Intl.DateTimeFormat(I18N?.language, {
-  day: "numeric",
-  month: "short",
-  timeZone: "UTC",
-  year: "numeric",
-});
+const formatters = new Map<string, Intl.DateTimeFormat>();
 
-export const getFormattedDate = (date: Date): string =>
-  date ? formatter.format(date) : "";
+const getFormatter = (locale: string): Intl.DateTimeFormat => {
+  const formatter = formatters.get(locale);
+
+  if (formatter) {
+    return formatter;
+  }
+
+  const nextFormatter = new Intl.DateTimeFormat(locale, {
+    day: "numeric",
+    month: "short",
+    timeZone: "UTC",
+    year: "numeric",
+  });
+
+  formatters.set(locale, nextFormatter);
+  return nextFormatter;
+};
+
+export const getFormattedDate = (date: Date, locale = I18N?.language || "en"): string =>
+  date ? getFormatter(locale).format(date) : "";
 
 export const trim = (str = "", ch?: string) => {
-  let end = str.length || 0,
-    start = 0;
-  while (start < end && str[start] === ch) ++start;
-  while (end > start && str[end - 1] === ch) --end;
-  return start > 0 || end < str.length ? str.slice(start, end) : str;
+  if (typeof ch !== "string") {
+    return str;
+  }
+
+  return trimChars(str, ch);
 };
 
 // Function to format a number in thousands (K) or millions (M) format depending on its value

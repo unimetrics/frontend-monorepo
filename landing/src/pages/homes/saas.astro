@@ -8,13 +8,20 @@ import Steps2 from "~/components/widgets/Steps2.astro";
 import Content from "~/components/widgets/Content.astro";
 import Pricing from "~/components/widgets/Pricing.astro";
 
-import { headerData } from "~/navigation";
+import { getMessages, t } from "~/i18n";
+import { getLocaleSwitchLinks } from "~/i18n/links";
+import { defaultLocale } from "~/i18n/routing";
+import { getHeaderData } from "~/navigation";
 import FAQs from "~/components/widgets/FAQs.astro";
 import BlogLatestPosts from "~/components/widgets/BlogLatestPosts.astro";
 
 const metadata = {
   title: "SaaS Landing Page",
 };
+const locale = Astro.currentLocale ?? defaultLocale;
+const messages = getMessages(locale);
+const headerData = getHeaderData(locale);
+const localeLinks = getLocaleSwitchLinks(locale, Astro.url.pathname);
 ---
 
 <Layout metadata={metadata}>
@@ -34,6 +41,9 @@ const metadata = {
         },
       ]}
       isSticky
+      localeLinks={localeLinks}
+      localeSwitcherAriaLabel={t(messages, "header.aria.languageSwitcher")}
+      mainNavigationAriaLabel={t(messages, "header.aria.mainNavigation")}
     />
   </Fragment>
 
@@ -57,7 +67,7 @@ const metadata = {
   >
     <Fragment slot="title">
       Simplify web design with Astrowind: <br /> your ultimate <span
-        class="text-ui-accent dark:text-white">SaaS</span
+        class="text-accent dark:text-white">SaaS</span
       > companion<br />
     </Fragment>
 

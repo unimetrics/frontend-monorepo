@@ -1,0 +1,222 @@
+{
+  "blog": {
+    "backToBlog": "Zurück zum Blog"
+  },
+  "footer": {
+    "footnote": {
+      "madeBy": "Erstellt von",
+      "rightsReserved": "Alle Rechte vorbehalten."
+    },
+    "group": {
+      "company": "Unternehmen",
+      "platform": "Plattform",
+      "product": "Produkt",
+      "support": "Support"
+    },
+    "link": {
+      "atom": "Atom",
+      "blog": "Blog",
+      "careers": "Karriere",
+      "communityForum": "Community-Forum",
+      "customerStories": "Kundenstorys",
+      "developerApi": "Developer API",
+      "docs": "Docs",
+      "electron": "Electron",
+      "enterprise": "Enterprise",
+      "features": "Features",
+      "inclusion": "Inklusion",
+      "partners": "Partner",
+      "press": "Presse",
+      "privacyPolicy": "Datenschutz",
+      "professionalServices": "Professional Services",
+      "resources": "Ressourcen",
+      "security": "Sicherheit",
+      "shop": "Shop",
+      "skills": "Skills",
+      "socialImpact": "Soziale Wirkung",
+      "status": "Status",
+      "team": "Team",
+      "unimetricsDesktop": "Unimetrics Desktop"
+    }
+  },
+  "header": {
+    "action": {
+      "download": "Herunterladen"
+    },
+    "aria": {
+      "languageSwitcher": "Sprachauswahl",
+      "mainNavigation": "Hauptnavigation",
+      "rssFeed": "RSS-Feed"
+    }
+  },
+  "landing": {
+    "audience": {
+      "body": "Der erste Einstieg ist klar: ernsthafte LPs, die konzentrierte Liquidität aktiv managen. Die größere Geschäftschance kommt später, wenn dieselbe Monitoring- und Intelligence-Schicht professionelle Liquiditätsoperationen unterstützt.",
+      "eyebrow": "Für wen es ist",
+      "segment": {
+        "1": {
+          "body": "Operatoren, die konzentrierte Liquidität manuell verwalten und besseres Timing, mehr Klarheit und mehr Disziplin wollen.",
+          "title": "Aktive Retail-LPs"
+        },
+        "2": {
+          "body": "Manager mit vielen Positionen über verschiedene Pools und Chains hinweg, die schnelle Übersicht und Priorisierung brauchen.",
+          "title": "Power User"
+        },
+        "3": {
+          "body": "Professionelle Liquiditätsdesks, die Monitoring, Kontrollen, Reporting und später auch Ausführungsunterstützung benötigen.",
+          "title": "Fonds und Treasuries"
+        }
+      },
+      "title": "Beginne mit aktivem Retail. Wachse in Fonds und Treasuries hinein."
+    },
+    "core": {
+      "body": "Die Produktgeschichte ist einfach: keine wichtigen Range-Ereignisse mehr verpassen, echte LP-Performance messen und operativen Aufwand reduzieren. Die erste Version ist read-only und verlangt wenig Vertrauen. Langfristig entsteht daraus eine ernsthafte operative Schicht für Liquiditätsmanager.",
+      "eyebrow": "Kernnutzen",
+      "feature": {
+        "1": {
+          "body": "Erkenne die Nähe zur Grenze, einen Range-Bruch und die Zeit außerhalb der Range, bevor Gebühren verloren gehen.",
+          "title": "Transparenz bei Range-Risiken"
+        },
+        "2": {
+          "body": "Miss Gebühren, Gas-Kosten, inaktive Zeit und Netto-P&L im Vergleich zum einfachen Halten der Assets.",
+          "title": "Echte Nettoperformance"
+        },
+        "3": {
+          "body": "Überblicke viele Pools, Wallets und Chains aus einer operativen Oberfläche, die für aktive Manager gebaut wurde.",
+          "title": "Multi-Position-Operations"
+        },
+        "4": {
+          "body": "Verstehe, wann eine Aktion wirtschaftlich sinnvoll ist, statt auf Rauschen oder APR-Schlagzeilen zu reagieren.",
+          "title": "Entscheidungsreife Signale"
+        }
+      },
+      "title": "Versprich keine magische Rendite. Versprich bessere Entscheidungen."
+    },
+    "finalCta": {
+      "body": "Trage dich in die Warteliste ein, erhalte Frühzugang, teile deine Workflows und hilf dabei, die Monitoring-Schicht zu formen, die ernsthafte LPs, Liquiditätsdesks und Treasury-Teams wirklich brauchen.",
+      "button": {
+        "discoveryCall": "Discovery Call buchen",
+        "joinWaitlist": "Warteliste beitreten"
+      },
+      "eyebrow": "Frühzugang",
+      "title": "Baue deinen operativen LP-Vorteil auf, bevor du ihn automatisierst."
+    },
+    "footer": {
+      "tagline": "Unimetrics — Monitoring für konzentrierte Liquidität für ernsthafte Operatoren."
+    },
+    "header": {
+      "brand": "Unimetrics",
+      "cta": {
+        "requestAccess": "Zugang anfragen"
+      },
+      "tagline": "Liquiditätsüberwachung auf institutionellem Niveau"
+    },
+    "hero": {
+      "cta": {
+        "primary": "Frühzugang erhalten",
+        "secondary": "Produkt-Roadmap ansehen"
+      },
+      "eyebrow": "Zuerst für Retail. Von Anfang an desk-ready.",
+      "panel": {
+        "decisionSignal": "Der Preis nähert sich der oberen Grenze, aber der erwartete Rückgang der Gebühren rechtfertigt ein Rebalancing noch nicht. Prüfe erneut, wenn Gas günstiger wird oder sich der Preis weitere 0.6% bewegt.",
+        "label": "Positions-Cockpit",
+        "metric": {
+          "actionSignal": {
+            "label": "Handlungssignal",
+            "note": "Gas noch nicht gerechtfertigt",
+            "value": "Warten"
+          },
+          "feeVelocity": {
+            "label": "Gebührenrate",
+            "note": "nimmt nahe der Range-Grenze ab",
+            "value": "$126/Tag"
+          },
+          "netPnl": {
+            "label": "Netto-P&L",
+            "note": "gegenüber Hold: +1.1%",
+            "value": "+4.2%"
+          },
+          "outOfRange": {
+            "label": "Außerhalb der Range",
+            "note": "letzte 7 Tage",
+            "value": "3h 18m"
+          }
+        },
+        "pool": "ETH / USDC 0.05%",
+        "status": "1.8% bis zur oberen Grenze"
+      },
+      "pill": {
+        "institutional": "Institutionelle Roadmap",
+        "intelligence": "Intelligence für konzentrierte Liquidität",
+        "retail": "Retail-first-Einstieg"
+      },
+      "subtitle": "Überwache Positionen über Wallets, Pools und Chains hinweg. Verstehe die reale Nettoperformance, erkenne Range-Risiken frühzeitig und handle nur dann, wenn es wirtschaftlich wirklich sinnvoll ist. Zuerst gebaut für anspruchsvolle Retail-LPs, mit einer klaren Roadmap in Richtung Fonds, Treasuries und professionelle Desks.",
+      "title": "Die operative Schicht für konzentrierte Liquidität."
+    },
+    "nav": {
+      "access": "Zugang",
+      "features": "Funktionen",
+      "roadmap": "Roadmap",
+      "who": "Für wen"
+    },
+    "roadmap": {
+      "phase": {
+        "1": {
+          "body": "Start mit read-only Monitoring und Entscheidungsunterstützung. Geringere Vertrauenshürde, schnellerer Time-to-Value und ein klarer Grund für anspruchsvolle LPs, das Produkt früh zu nutzen.",
+          "bullet": {
+            "1": "Read-only Überwachung von Portfolio und Positionen",
+            "2": "Alerts bei Nähe zur Range-Grenze und bei Range-Bruch",
+            "3": "Gebührenrate und Zeit außerhalb der Range",
+            "4": "Netto-P&L-Aufschlüsselung im Vergleich zu Hold",
+            "5": "Gespeicherte Ansichten, Filter und Exporte"
+          },
+          "title": "Retail-Einstieg"
+        },
+        "2": {
+          "body": "Ergänze Kontrollen, Reporting, Datenzugang und später Ausführungswerkzeuge für Liquiditätsdesks, Fonds, Treasuries und Protokollbetreiber, die Liquidität als operative Funktion verstehen.",
+          "bullet": {
+            "1": "Desk-Level-Monitoring über viele Wallets hinweg",
+            "2": "Richtlinienbasierte Alerts und operative Schwellenwerte",
+            "3": "Internes Reporting und Audit Trail",
+            "4": "API-Zugang für Analysten und Quants",
+            "5": "Später eine Ausführungs- und Automatisierungsschicht"
+          },
+          "title": "Institutionelle Richtung"
+        }
+      }
+    }
+  },
+  "nav": {
+    "group": {
+      "blog": "Blog",
+      "homes": "Home-Varianten",
+      "landing": "Landingpages",
+      "pages": "Seiten"
+    },
+    "link": {
+      "about": "Über uns",
+      "article": "Artikel",
+      "articleMdx": "Artikel (mit MDX)",
+      "blogList": "Blogübersicht",
+      "categoryPage": "Kategorieseite",
+      "clickThrough": "Click-Through",
+      "contact": "Kontakt",
+      "featuresAnchor": "Features (Ankerlink)",
+      "leadGeneration": "Lead-Generierung",
+      "longFormSales": "Langformat-Verkauf",
+      "mobileApp": "Mobile App",
+      "personal": "Persönlich",
+      "preLaunch": "Bald verfügbar / Pre-Launch",
+      "pricing": "Preise",
+      "privacyPolicy": "Datenschutz",
+      "productDetails": "Produktdetails (oder Services)",
+      "saas": "SaaS",
+      "services": "Leistungen",
+      "startup": "Startup",
+      "subscription": "Abonnement",
+      "tagPage": "Tag-Seite",
+      "terms": "AGB",
+      "widgets": "Widgets"
+    }
+  }
+}
