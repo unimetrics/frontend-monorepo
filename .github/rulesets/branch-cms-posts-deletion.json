@@ -1,0 +1,18 @@
+{
+  "conditions": {
+    "ref_name": {
+      "exclude": [],
+      "include": [
+        "refs/heads/cms/posts"
+      ]
+    }
+  },
+  "enforcement": "active",
+  "name": "Branch deletion policy: cms/posts (content source)",
+  "rules": [
+    {
+      "type": "deletion"
+    }
+  ],
+  "target": "branch"
+}

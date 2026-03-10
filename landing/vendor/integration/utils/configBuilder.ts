@@ -83,6 +83,28 @@ export interface UIConfig {
 }
 
 const DEFAULT_SITE_NAME = "Website";
+const SITE_NAME_TOKEN = /\{\{\s*siteName\s*\}\}/g;
+
+const resolveSiteNameTokens = (value: unknown, siteName: string): unknown => {
+  if (typeof value === "string") {
+    return value.replaceAll(SITE_NAME_TOKEN, siteName);
+  }
+
+  if (Array.isArray(value)) {
+    return value.map(item => resolveSiteNameTokens(item, siteName));
+  }
+
+  if (value && typeof value === "object") {
+    return Object.fromEntries(
+      Object.entries(value).map(([key, nestedValue]) => [
+        key,
+        resolveSiteNameTokens(nestedValue, siteName),
+      ])
+    );
+  }
+
+  return value;
+};
 
 const getSite = (config: Config) => {
   const _default = {
@@ -115,7 +137,11 @@ const getMetadata = (config: Config) => {
     },
   };
 
-  return merge({}, _default, config?.metadata ?? {}) as MetaDataConfig;
+  const metadata = merge({}, _default, config?.metadata ?? {}) as MetaDataConfig;
+  return resolveSiteNameTokens(
+    metadata,
+    siteConfig?.name || DEFAULT_SITE_NAME
+  ) as MetaDataConfig;
 };
 
 const getI18N = (config: Config) => {

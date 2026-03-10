@@ -43,3 +43,7 @@ runs:
     - name: Check markdown links
       run: pnpm run lint:md-links
       shell: bash
+
+    - name: Check i18n keys
+      run: pnpm run lint:i18n
+      shell: bash

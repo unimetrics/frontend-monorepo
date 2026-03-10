@@ -1,12 +1,24 @@
 ---
 import Layout from "~/layouts/Layout.astro";
+import Header from "~/components/widgets/Header.astro";
 import Footer from "~/components/widgets/Footer.astro";
+
+import HeroSection from "~/components/landing/HeroSection.astro";
+import ProblemSection from "~/components/landing/ProblemSection.astro";
+import FeaturesSection from "~/components/landing/FeaturesSection.astro";
+import WorkflowSection from "~/components/landing/WorkflowSection.astro";
+import TrustSection from "~/components/landing/TrustSection.astro";
+import AudienceSection from "~/components/landing/AudienceSection.astro";
+import FaqSection from "~/components/landing/FaqSection.astro";
+import BlogSection from "~/components/landing/BlogSection.astro";
+import FinalCtaSection from "~/components/landing/FinalCtaSection.astro";
 
 import { getMessages, t } from "~/i18n";
 import { getLocaleSwitchLinks, localizeHref } from "~/i18n/links";
 import { defaultLocale } from "~/i18n/routing";
 import { getFooterData } from "~/navigation";
 import { getBlogPermalink } from "~/utils/permalinks";
+import { SITE } from "unimetrics:config";
 
 const locale = Astro.currentLocale ?? defaultLocale;
 const messages = getMessages(locale);
@@ -14,44 +26,57 @@ const localeLinks = getLocaleSwitchLinks(locale, Astro.url.pathname);
 const footerData = getFooterData(locale);
 
 const metadata = {
-  title: `Unimetrics - ${t(messages, "landing.hero.title")}`,
+  title: `${SITE.name} - ${t(messages, "landing.hero.title")}`,
   description: t(messages, "landing.hero.subtitle"),
   ignoreTitleTemplate: true,
 };
 
-const heroPills = [
-  t(messages, "landing.hero.pill.intelligence"),
-  t(messages, "landing.hero.pill.retail"),
-  t(messages, "landing.hero.pill.institutional"),
-];
+const heroPills = [1, 2, 3].map(index => t(messages, `landing.hero.pill.${index}`));
 
-const features = [1, 2, 3, 4].map(index => ({
-  text: t(messages, `landing.core.feature.${index}.body`),
-  title: t(messages, `landing.core.feature.${index}.title`),
+const painCards = [1, 2, 3, 4].map(index => ({
+  title: t(messages, `landing.problem.card.${index}.title`),
+  text: t(messages, `landing.problem.card.${index}.body`),
 }));
 
-const audiences = [1, 2, 3].map(index => ({
-  text: t(messages, `landing.audience.segment.${index}.body`),
-  title: t(messages, `landing.audience.segment.${index}.title`),
+const featureCards = [1, 2, 3, 4].map(index => ({
+  title: t(messages, `landing.features.card.${index}.title`),
+  text: t(messages, `landing.features.card.${index}.body`),
 }));
 
-const retailItems = [1, 2, 3, 4, 5].map(index =>
-  t(messages, `landing.roadmap.phase.1.bullet.${index}`)
-);
+const workflowSteps = [1, 2, 3].map(index => ({
+  title: t(messages, `landing.workflow.step.${index}.title`),
+  text: t(messages, `landing.workflow.step.${index}.body`),
+}));
 
-const deskItems = [1, 2, 3, 4, 5].map(index =>
-  t(messages, `landing.roadmap.phase.2.bullet.${index}`)
-);
+const trustPoints = [1, 2, 3].map(index => ({
+  title: t(messages, `landing.trust.point.${index}.title`),
+  text: t(messages, `landing.trust.point.${index}.body`),
+}));
+
+const audienceCards = [1, 2, 3].map(index => ({
+  title: t(messages, `landing.audience.card.${index}.title`),
+  text: t(messages, `landing.audience.card.${index}.body`),
+}));
+
+const faqItems = [1, 2, 3, 4].map(index => ({
+  question: t(messages, `landing.faq.item.${index}.question`),
+  answer: t(messages, `landing.faq.item.${index}.answer`),
+}));
 
 const navLinks = [
+  { href: "#problem", text: t(messages, "landing.nav.problem") },
   { href: "#features", text: t(messages, "landing.nav.features") },
-  { href: "#audience", text: t(messages, "landing.nav.who") },
-  { href: "#roadmap", text: t(messages, "landing.nav.roadmap") },
+  { href: "#workflow", text: t(messages, "landing.nav.workflow") },
+  { href: "#faq", text: t(messages, "landing.nav.faq") },
   {
     href: localizeHref(locale, getBlogPermalink()),
     text: t(messages, "footer.link.blog"),
   },
   { href: "#contact", text: t(messages, "landing.nav.access") },
+];
+
+const headerActions = [
+  { href: "#contact", text: t(messages, "landing.header.cta.requestAccess") },
 ];
 
 const contactHref = "mailto:founders@example.com";
@@ -76,401 +101,27 @@ const contactHref = "mailto:founders@example.com";
       </div>
     </div>
 
-    <header
-      class="sticky top-0 z-40 border-b border-white/10 bg-[#061018]/70 backdrop-blur-xl"
-    >
-      <div
-        class="mx-auto flex min-h-20 w-full max-w-7xl items-center justify-between gap-6 px-5 sm:px-8 lg:px-10"
-      >
-        <a href="#top" class="flex items-center gap-3">
-          <div
-            class="grid h-11 w-11 place-items-center rounded-2xl bg-gradient-to-b from-[#f3e2bd] to-[#d8b97a] text-sm font-bold tracking-[0.12em] text-slate-950 shadow-[inset_0_1px_1px_rgba(255,255,255,0.35)]"
-          >
-            LP
-          </div>
-          <div>
-            <div class="text-sm font-semibold tracking-[0.03em] text-white">
-              {t(messages, "landing.header.brand")}
-            </div>
-            <div class="text-xs text-white/50">
-              {t(messages, "landing.header.tagline")}
-            </div>
-          </div>
-        </a>
-
-        <nav
-          class="hidden items-center gap-7 text-sm text-white/65 lg:flex"
-          aria-label={t(messages, "header.aria.mainNavigation")}
-        >
-          {
-            navLinks.map(({ href, text }) => (
-              <a href={href} class="transition hover:text-white">
-                {text}
-              </a>
-            ))
-          }
-        </nav>
-
-        <div class="flex items-center gap-3">
-          <nav
-            aria-label={t(messages, "header.aria.languageSwitcher")}
-            class="hidden sm:block"
-          >
-            <ul class="flex items-center gap-1">
-              {
-                localeLinks.map(({ href, isCurrent, label, locale: localeCode }) => (
-                  <li>
-                    <a
-                      href={href}
-                      hreflang={localeCode}
-                      aria-current={isCurrent ? "page" : undefined}
-                      class:list={[
-                        "inline-flex rounded-md px-2 py-1 text-[0.7rem] font-semibold transition",
-                        isCurrent
-                          ? "bg-white/20 text-white"
-                          : "text-white/60 hover:bg-white/10 hover:text-white",
-                      ]}
-                    >
-                      {label}
-                    </a>
-                  </li>
-                ))
-              }
-            </ul>
-          </nav>
-
-          <a
-            href="#contact"
-            class="inline-flex min-h-12 items-center justify-center rounded-full border border-white/15 bg-white/5 px-5 text-sm font-semibold text-white transition duration-200 hover:-translate-y-0.5 hover:bg-white/10"
-          >
-            {t(messages, "landing.header.cta.requestAccess")}
-          </a>
-        </div>
-      </div>
-    </header>
+    <Header
+      links={navLinks}
+      actions={headerActions}
+      localeLinks={localeLinks}
+      localeSwitcherAriaLabel={t(messages, "header.aria.languageSwitcher")}
+      mainNavigationAriaLabel={t(messages, "header.aria.mainNavigation")}
+      isDark
+      position="right"
+      variant="landing"
+    />
 
     <main id="top">
-      <section
-        class="relative overflow-hidden pb-24 pt-16 sm:pb-28 sm:pt-20 lg:pb-32 lg:pt-24"
-      >
-        <div
-          class="mx-auto grid w-full max-w-7xl gap-12 px-5 sm:px-8 lg:grid-cols-[minmax(0,1.08fr)_minmax(320px,0.92fr)] lg:items-center lg:px-10"
-        >
-          <div>
-            <div
-              data-reveal
-              class="inline-flex items-center gap-2 rounded-full border border-amber-200/15 bg-amber-200/10 px-4 py-2 text-[0.72rem] font-bold uppercase tracking-[0.22em] text-[#f5e2b5]"
-            >
-              {t(messages, "landing.hero.eyebrow")}
-            </div>
-
-            <h1
-              data-reveal
-              class="mt-6 max-w-[10.5ch] text-5xl font-semibold leading-[0.94] tracking-[-0.05em] text-white sm:text-6xl lg:text-8xl"
-            >
-              {t(messages, "landing.hero.title")}
-            </h1>
-
-            <p
-              data-reveal
-              class="mt-6 max-w-3xl text-base leading-8 text-white/70 sm:text-lg lg:text-xl"
-            >
-              {t(messages, "landing.hero.subtitle")}
-            </p>
-
-            <div data-reveal class="mt-9 flex flex-col gap-3 sm:flex-row">
-              <a
-                href="#contact"
-                class="inline-flex min-h-[3.25rem] items-center justify-center rounded-full bg-gradient-to-b from-[#f2dfb5] to-[#d8b97a] px-6 text-sm font-semibold text-slate-950 shadow-[0_16px_40px_rgba(216,185,122,0.22)] transition duration-200 hover:-translate-y-0.5"
-              >
-                {t(messages, "landing.hero.cta.primary")}
-              </a>
-              <a
-                href="#roadmap"
-                class="inline-flex min-h-[3.25rem] items-center justify-center rounded-full border border-white/12 bg-white/[0.03] px-6 text-sm font-semibold text-white transition duration-200 hover:-translate-y-0.5 hover:bg-white/[0.06]"
-              >
-                {t(messages, "landing.hero.cta.secondary")}
-              </a>
-            </div>
-
-            <div data-reveal class="mt-7 flex flex-wrap gap-3">
-              {
-                heroPills.map(pill => (
-                  <span class="rounded-full border border-white/10 bg-white/[0.03] px-4 py-2 text-sm text-white/70">
-                    {pill}
-                  </span>
-                ))
-              }
-            </div>
-          </div>
-
-          <div data-reveal class="relative">
-            <div
-              class="rounded-[2rem] border border-white/10 bg-gradient-to-b from-white/8 to-white/[0.02] p-4 shadow-[0_24px_80px_rgba(0,0,0,0.35)]"
-            >
-              <div
-                class="rounded-[1.7rem] border border-white/10 bg-[linear-gradient(180deg,rgba(11,22,34,0.84),rgba(8,15,23,0.92))] p-5 sm:p-6"
-              >
-                <div
-                  class="flex items-start justify-between gap-4 border-b border-white/10 pb-5"
-                >
-                  <div>
-                    <div class="text-[0.7rem] uppercase tracking-[0.18em] text-white/45">
-                      {t(messages, "landing.hero.panel.label")}
-                    </div>
-                    <div class="mt-2 text-xl font-semibold text-white">
-                      {t(messages, "landing.hero.panel.pool")}
-                    </div>
-                  </div>
-                  <div
-                    class="rounded-full border border-amber-200/15 bg-amber-200/10 px-3 py-2 text-xs text-[#f4ddb0]"
-                  >
-                    {t(messages, "landing.hero.panel.status")}
-                  </div>
-                </div>
-
-                <div class="mt-5 grid gap-3 sm:grid-cols-2">
-                  <div class="rounded-3xl border border-white/10 bg-white/[0.03] p-4">
-                    <div class="text-[0.68rem] uppercase tracking-[0.18em] text-white/45">
-                      {t(messages, "landing.hero.panel.metric.netPnl.label")}
-                    </div>
-                    <div class="mt-2 text-3xl font-semibold text-white">
-                      {t(messages, "landing.hero.panel.metric.netPnl.value")}
-                    </div>
-                    <div class="mt-1 text-sm text-white/50">
-                      {t(messages, "landing.hero.panel.metric.netPnl.note")}
-                    </div>
-                  </div>
-                  <div class="rounded-3xl border border-white/10 bg-white/[0.03] p-4">
-                    <div class="text-[0.68rem] uppercase tracking-[0.18em] text-white/45">
-                      {t(messages, "landing.hero.panel.metric.outOfRange.label")}
-                    </div>
-                    <div class="mt-2 text-3xl font-semibold text-white">
-                      {t(messages, "landing.hero.panel.metric.outOfRange.value")}
-                    </div>
-                    <div class="mt-1 text-sm text-white/50">
-                      {t(messages, "landing.hero.panel.metric.outOfRange.note")}
-                    </div>
-                  </div>
-                  <div class="rounded-3xl border border-white/10 bg-white/[0.03] p-4">
-                    <div class="text-[0.68rem] uppercase tracking-[0.18em] text-white/45">
-                      {t(messages, "landing.hero.panel.metric.feeVelocity.label")}
-                    </div>
-                    <div class="mt-2 text-3xl font-semibold text-white">
-                      {t(messages, "landing.hero.panel.metric.feeVelocity.value")}
-                    </div>
-                    <div class="mt-1 text-sm text-white/50">
-                      {t(messages, "landing.hero.panel.metric.feeVelocity.note")}
-                    </div>
-                  </div>
-                  <div class="rounded-3xl border border-white/10 bg-white/[0.03] p-4">
-                    <div class="text-[0.68rem] uppercase tracking-[0.18em] text-white/45">
-                      {t(messages, "landing.hero.panel.metric.actionSignal.label")}
-                    </div>
-                    <div class="mt-2 text-3xl font-semibold text-white">
-                      {t(messages, "landing.hero.panel.metric.actionSignal.value")}
-                    </div>
-                    <div class="mt-1 text-sm text-white/50">
-                      {t(messages, "landing.hero.panel.metric.actionSignal.note")}
-                    </div>
-                  </div>
-                </div>
-
-                <div
-                  class="mt-5 rounded-3xl border border-emerald-200/15 bg-emerald-200/10 p-4"
-                >
-                  <div class="text-sm font-semibold text-emerald-50">
-                    {t(messages, "landing.hero.panel.label")}
-                  </div>
-                  <p class="mt-2 text-sm leading-7 text-emerald-50/80">
-                    {t(messages, "landing.hero.panel.decisionSignal")}
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section id="features" class="py-20 sm:py-24 lg:py-28">
-        <div class="mx-auto w-full max-w-7xl px-5 sm:px-8 lg:px-10">
-          <div class="max-w-3xl">
-            <div
-              data-reveal
-              class="inline-flex items-center gap-2 rounded-full border border-amber-200/15 bg-amber-200/10 px-4 py-2 text-[0.72rem] font-bold uppercase tracking-[0.22em] text-[#f5e2b5]"
-            >
-              {t(messages, "landing.core.eyebrow")}
-            </div>
-            <h2
-              data-reveal
-              class="mt-6 text-4xl font-semibold leading-tight tracking-[-0.04em] text-white sm:text-5xl"
-            >
-              {t(messages, "landing.core.title")}
-            </h2>
-            <p
-              data-reveal
-              class="mt-5 max-w-3xl text-base leading-8 text-white/68 sm:text-lg"
-            >
-              {t(messages, "landing.core.body")}
-            </p>
-          </div>
-
-          <div class="mt-10 grid gap-5 lg:grid-cols-2 xl:grid-cols-4">
-            {
-              features.map(item => (
-                <article
-                  data-reveal
-                  class="rounded-[1.75rem] border border-white/10 bg-[linear-gradient(180deg,rgba(255,255,255,0.03),rgba(255,255,255,0.015))] p-6 shadow-[inset_0_1px_0_rgba(255,255,255,0.03)]"
-                >
-                  <h3 class="text-lg font-semibold text-white">{item.title}</h3>
-                  <p class="mt-3 text-sm leading-7 text-white/65">{item.text}</p>
-                </article>
-              ))
-            }
-          </div>
-        </div>
-      </section>
-
-      <section id="audience" class="py-20 sm:py-24 lg:py-28">
-        <div class="mx-auto w-full max-w-7xl px-5 sm:px-8 lg:px-10">
-          <div class="max-w-3xl">
-            <div
-              data-reveal
-              class="inline-flex items-center gap-2 rounded-full border border-amber-200/15 bg-amber-200/10 px-4 py-2 text-[0.72rem] font-bold uppercase tracking-[0.22em] text-[#f5e2b5]"
-            >
-              {t(messages, "landing.audience.eyebrow")}
-            </div>
-            <h2
-              data-reveal
-              class="mt-6 text-4xl font-semibold leading-tight tracking-[-0.04em] text-white sm:text-5xl"
-            >
-              {t(messages, "landing.audience.title")}
-            </h2>
-            <p
-              data-reveal
-              class="mt-5 max-w-3xl text-base leading-8 text-white/68 sm:text-lg"
-            >
-              {t(messages, "landing.audience.body")}
-            </p>
-          </div>
-
-          <div class="mt-10 grid gap-5 lg:grid-cols-3">
-            {
-              audiences.map(item => (
-                <article
-                  data-reveal
-                  class="rounded-[1.75rem] border border-white/10 bg-[linear-gradient(180deg,rgba(255,255,255,0.03),rgba(255,255,255,0.015))] p-6 shadow-[inset_0_1px_0_rgba(255,255,255,0.03)]"
-                >
-                  <h3 class="text-lg font-semibold text-white">{item.title}</h3>
-                  <p class="mt-3 text-sm leading-7 text-white/65">{item.text}</p>
-                </article>
-              ))
-            }
-          </div>
-        </div>
-      </section>
-
-      <section id="roadmap" class="py-20 sm:py-24 lg:py-28">
-        <div
-          class="mx-auto grid w-full max-w-7xl gap-5 px-5 sm:px-8 lg:grid-cols-2 lg:px-10"
-        >
-          <article
-            data-reveal
-            class="rounded-[2rem] border border-white/10 bg-[linear-gradient(180deg,rgba(255,255,255,0.03),rgba(255,255,255,0.015))] p-7 sm:p-8"
-          >
-            <div
-              class="inline-flex items-center gap-2 rounded-full border border-amber-200/15 bg-amber-200/10 px-4 py-2 text-[0.72rem] font-bold uppercase tracking-[0.22em] text-[#f5e2b5]"
-            >
-              {t(messages, "landing.roadmap.phase.1.title")}
-            </div>
-            <h3 class="mt-6 text-3xl font-semibold tracking-[-0.03em] text-white">
-              {t(messages, "landing.roadmap.phase.1.title")}
-            </h3>
-            <p class="mt-4 text-base leading-8 text-white/68">
-              {t(messages, "landing.roadmap.phase.1.body")}
-            </p>
-            <ul class="mt-6 space-y-3">
-              {
-                retailItems.map(item => (
-                  <li class="flex items-start gap-3 text-sm leading-7 text-white/72">
-                    <span class="mt-2 h-2 w-2 rounded-full bg-[#d8b97a]" />
-                    <span>{item}</span>
-                  </li>
-                ))
-              }
-            </ul>
-          </article>
-
-          <article
-            data-reveal
-            class="rounded-[2rem] border border-amber-200/12 bg-[linear-gradient(180deg,rgba(216,185,122,0.08),rgba(255,255,255,0.02))] p-7 sm:p-8"
-          >
-            <div
-              class="inline-flex items-center gap-2 rounded-full border border-amber-200/15 bg-amber-200/10 px-4 py-2 text-[0.72rem] font-bold uppercase tracking-[0.22em] text-[#f5e2b5]"
-            >
-              {t(messages, "landing.roadmap.phase.2.title")}
-            </div>
-            <h3 class="mt-6 text-3xl font-semibold tracking-[-0.03em] text-white">
-              {t(messages, "landing.roadmap.phase.2.title")}
-            </h3>
-            <p class="mt-4 text-base leading-8 text-white/72">
-              {t(messages, "landing.roadmap.phase.2.body")}
-            </p>
-            <ul class="mt-6 space-y-3">
-              {
-                deskItems.map(item => (
-                  <li class="flex items-start gap-3 text-sm leading-7 text-white/78">
-                    <span class="mt-2 h-2 w-2 rounded-full bg-[#d8b97a]" />
-                    <span>{item}</span>
-                  </li>
-                ))
-              }
-            </ul>
-          </article>
-        </div>
-      </section>
-
-      <section id="contact" class="pb-24 pt-6 sm:pb-28">
-        <div class="mx-auto w-full max-w-7xl px-5 sm:px-8 lg:px-10">
-          <div
-            data-reveal
-            class="rounded-[2.25rem] border border-amber-200/12 bg-[linear-gradient(180deg,rgba(216,185,122,0.14),rgba(216,185,122,0.06))] p-7 shadow-[0_24px_80px_rgba(0,0,0,0.35)] sm:p-10 lg:p-12"
-          >
-            <div class="grid gap-8 lg:grid-cols-[minmax(0,1fr)_auto] lg:items-center">
-              <div>
-                <div
-                  class="inline-flex items-center gap-2 rounded-full border border-amber-200/15 bg-amber-200/10 px-4 py-2 text-[0.72rem] font-bold uppercase tracking-[0.22em] text-[#f5e2b5]"
-                >
-                  {t(messages, "landing.finalCta.eyebrow")}
-                </div>
-                <h2
-                  class="mt-6 max-w-[12ch] text-4xl font-semibold leading-tight tracking-[-0.04em] text-white sm:text-5xl"
-                >
-                  {t(messages, "landing.finalCta.title")}
-                </h2>
-                <p class="mt-5 max-w-3xl text-base leading-8 text-white/82 sm:text-lg">
-                  {t(messages, "landing.finalCta.body")}
-                </p>
-              </div>
-
-              <div class="flex flex-col gap-3 sm:flex-row lg:flex-col">
-                <a
-                  href={contactHref}
-                  class="inline-flex min-h-[3.25rem] items-center justify-center rounded-full bg-[#091019] px-6 text-sm font-semibold text-white transition duration-200 hover:-translate-y-0.5"
-                >
-                  {t(messages, "landing.finalCta.button.joinWaitlist")}
-                </a>
-                <a
-                  href={contactHref}
-                  class="inline-flex min-h-[3.25rem] items-center justify-center rounded-full border border-white/15 bg-white/5 px-6 text-sm font-semibold text-white transition duration-200 hover:-translate-y-0.5 hover:bg-white/10"
-                >
-                  {t(messages, "landing.finalCta.button.discoveryCall")}
-                </a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+      <HeroSection messages={messages} heroPills={heroPills} />
+      <ProblemSection messages={messages} painCards={painCards} />
+      <FeaturesSection messages={messages} featureCards={featureCards} />
+      <WorkflowSection messages={messages} workflowSteps={workflowSteps} />
+      <TrustSection messages={messages} trustPoints={trustPoints} />
+      <AudienceSection messages={messages} audienceCards={audienceCards} />
+      <FaqSection messages={messages} faqItems={faqItems} />
+      <BlogSection messages={messages} />
+      <FinalCtaSection messages={messages} contactHref={contactHref} />
     </main>
 
     <div id="landing-footer" class="relative mt-4">

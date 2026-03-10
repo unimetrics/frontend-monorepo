@@ -1,0 +1,49 @@
+---
+import type { Messages } from "~/i18n";
+import { t } from "~/i18n";
+
+import type { ContentCard } from "~/components/landing/types";
+
+interface Props {
+  featureCards: ContentCard[];
+  messages: Messages;
+}
+
+const { featureCards, messages } = Astro.props;
+---
+
+<section id="features" class="py-20 sm:py-24 lg:py-28">
+  <div class="mx-auto w-full max-w-7xl px-5 sm:px-8 lg:px-10">
+    <div class="max-w-3xl">
+      <div
+        data-reveal
+        class="inline-flex items-center gap-2 rounded-full border border-amber-200/15 bg-amber-200/10 px-4 py-2 text-[0.72rem] font-bold uppercase tracking-[0.22em] text-[#f5e2b5]"
+      >
+        {t(messages, "landing.features.eyebrow")}
+      </div>
+      <h2
+        data-reveal
+        class="mt-6 text-4xl font-semibold leading-tight tracking-[-0.04em] text-white sm:text-5xl"
+      >
+        {t(messages, "landing.features.title")}
+      </h2>
+      <p data-reveal class="mt-5 max-w-3xl text-base leading-8 text-white/68 sm:text-lg">
+        {t(messages, "landing.features.body")}
+      </p>
+    </div>
+
+    <div class="mt-10 grid gap-5 lg:grid-cols-2 xl:grid-cols-4">
+      {
+        featureCards.map(item => (
+          <article
+            data-reveal
+            class="rounded-[1.75rem] border border-white/10 bg-[linear-gradient(180deg,rgba(255,255,255,0.03),rgba(255,255,255,0.015))] p-6 shadow-[var(--shadow-inset)]"
+          >
+            <h3 class="text-lg font-semibold text-white">{item.title}</h3>
+            <p class="mt-3 text-sm leading-7 text-white/65">{item.text}</p>
+          </article>
+        ))
+      }
+    </div>
+  </div>
+</section>

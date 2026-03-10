@@ -1,3 +1,5 @@
+import { SITE } from "unimetrics:config";
+
 import { defaultLocale, isLocale, type Locale } from "~/i18n/routing";
 
 export interface Messages {
@@ -5,6 +7,7 @@ export interface Messages {
 }
 
 type MessageNode = Messages | string;
+type TranslationReplacements = Record<string, number | string>;
 
 const dictionaries = import.meta.glob("./messages/*.json", {
   eager: true,
@@ -27,10 +30,29 @@ const isMessagesObject = (value: MessageNode | undefined): value is Messages => 
   return typeof value === "object" && value !== null;
 };
 
-export const t = (messages: Messages, key: string): string => {
+const interpolateMessage = (
+  value: string,
+  replacements: TranslationReplacements = {}
+): string => {
+  const runtimeReplacements: TranslationReplacements = {
+    siteName: SITE?.name ?? "",
+    ...replacements,
+  };
+
+  return value.replaceAll(/\{\{\s*(\w+)\s*\}\}/g, (match, replacementKey: string) => {
+    const replacementValue = runtimeReplacements[replacementKey];
+    return replacementValue === undefined ? match : String(replacementValue);
+  });
+};
+
+export const t = (
+  messages: Messages,
+  key: string,
+  replacements: TranslationReplacements = {}
+): string => {
   const directValue = messages[key];
   if (typeof directValue === "string") {
-    return directValue;
+    return interpolateMessage(directValue, replacements);
   }
 
   const nestedValue = key.split(".").reduce<MessageNode | undefined>((node, segment) => {
@@ -41,5 +63,7 @@ export const t = (messages: Messages, key: string): string => {
     return node[segment];
   }, messages);
 
-  return typeof nestedValue === "string" ? nestedValue : key;
+  return typeof nestedValue === "string"
+    ? interpolateMessage(nestedValue, replacements)
+    : key;
 };

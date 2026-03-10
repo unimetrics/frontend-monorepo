@@ -27,27 +27,6 @@ export const getHeaderData = (locale: string = defaultLocale) => {
       {
         links: [
           {
-            href: localize(getPermalink("/homes/saas")),
-            text: translate("nav.link.saas"),
-          },
-          {
-            href: localize(getPermalink("/homes/startup")),
-            text: translate("nav.link.startup"),
-          },
-          {
-            href: localize(getPermalink("/homes/mobile-app")),
-            text: translate("nav.link.mobileApp"),
-          },
-          {
-            href: localize(getPermalink("/homes/personal")),
-            text: translate("nav.link.personal"),
-          },
-        ],
-        text: translate("nav.group.homes"),
-      },
-      {
-        links: [
-          {
             href: localize(getPermalink("/#features")),
             text: translate("nav.link.featuresAnchor"),
           },
@@ -77,35 +56,6 @@ export const getHeaderData = (locale: string = defaultLocale) => {
           },
         ],
         text: translate("nav.group.pages"),
-      },
-      {
-        links: [
-          {
-            href: localize(getPermalink("/landing/lead-generation")),
-            text: translate("nav.link.leadGeneration"),
-          },
-          {
-            href: localize(getPermalink("/landing/sales")),
-            text: translate("nav.link.longFormSales"),
-          },
-          {
-            href: localize(getPermalink("/landing/click-through")),
-            text: translate("nav.link.clickThrough"),
-          },
-          {
-            href: localize(getPermalink("/landing/product")),
-            text: translate("nav.link.productDetails"),
-          },
-          {
-            href: localize(getPermalink("/landing/pre-launch")),
-            text: translate("nav.link.preLaunch"),
-          },
-          {
-            href: localize(getPermalink("/landing/subscription")),
-            text: translate("nav.link.subscription"),
-          },
-        ],
-        text: translate("nav.group.landing"),
       },
       {
         links: [

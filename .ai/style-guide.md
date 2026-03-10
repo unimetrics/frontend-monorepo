@@ -34,6 +34,7 @@ For pull request preparation and PR-specific rules, also follow `.ai/pr-instruct
 - Prefer existing abstractions first: use platform APIs, shared internal utilities, and already-installed package helpers before writing custom duplicate logic.
 - Do not re-implement behavior that already exists in a maintained abstraction unless there is a clear functional or performance reason.
 - Avoid introducing new dependencies unless clearly needed.
+- For any styling work, use only design tokens defined in `ui/tokens` (via generated `@unimetrics/ui` token outputs). Do not invent new ad-hoc color tokens or hardcoded palette values unless explicitly requested and added to `ui/tokens` first.
 - For Web3 values, use `bigint` and decimal-safe helpers. Never use JS floating-point math for on-chain amounts.
 - Keep chain-specific constants (chain IDs, addresses, explorers) centralized per network.
 - Treat indexer/3rd-party API data as eventually consistent; on critical flows, prefer direct chain confirmation.

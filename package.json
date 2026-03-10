@@ -20,6 +20,7 @@
     "lint:eslint": "eslint . --cache",
     "lint:eslint:fix": "eslint . --cache --fix",
     "lint:fsd": "CHOKIDAR_USEPOLLING=1 steiger ./app/src && CHOKIDAR_USEPOLLING=1 steiger ./landing/src && CHOKIDAR_USEPOLLING=1 steiger ./mobile/src",
+    "lint:i18n": "pnpm -r --if-present lint:i18n",
     "lint:knip": "knip --cache --include dependencies,files",
     "lint:md-links": "remark \"**/*.md\" --frail --quiet && REMARK_MDX=1 remark \"**/*.mdx\" --frail --quiet",
     "lint:rulesets": "bash scripts/github/validate-rulesets/validate-rulesets.sh",

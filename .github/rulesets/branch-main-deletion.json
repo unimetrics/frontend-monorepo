@@ -1,11 +1,4 @@
 {
-  "bypass_actors": [
-    {
-      "actor_id": 1,
-      "actor_type": "OrganizationAdmin",
-      "bypass_mode": "always"
-    }
-  ],
   "conditions": {
     "ref_name": {
       "exclude": [],
