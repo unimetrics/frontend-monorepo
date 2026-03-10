@@ -36,7 +36,7 @@
       "socialImpact": "Social Impact",
       "status": "Status",
       "team": "Team",
-      "unimetricsDesktop": "Unimetrics Desktop"
+      "unimetricsDesktop": "{{siteName}} Desktop"
     }
   },
   "header": {
@@ -51,72 +51,102 @@
   },
   "landing": {
     "audience": {
-      "body": "The initial wedge is clear: serious LPs who actively manage concentrated liquidity. The larger business opportunity comes later, when the same monitoring and intelligence layer supports professional liquidity operations.",
-      "eyebrow": "Who it's for",
-      "segment": {
+      "body": "The first version is built for people who already feel the operational pain of managing concentrated liquidity. It starts with active LPs and power users, then grows naturally into a serious workflow for larger operators.",
+      "card": {
         "1": {
-          "body": "Operators who manage concentrated liquidity manually and want better timing, clarity, and discipline.",
+          "body": "You manage your own ranges, watch gas, and do not want to miss edge moves or dead capital.",
           "title": "Active retail LPs"
         },
         "2": {
-          "body": "Managers running multiple positions across pools and chains who need fast scanning and prioritization.",
+          "body": "You run multiple positions, wallets, or chains and need one place to scan, prioritize, and review.",
           "title": "Power users"
         },
         "3": {
-          "body": "Professional liquidity desks that need monitoring, controls, reporting, and eventually execution support.",
-          "title": "Funds and treasuries"
+          "body": "You need a monitoring layer that feels disciplined and extensible before you ever think about automation.",
+          "title": "Emerging desks and treasuries"
         }
       },
-      "title": "Start with active retail. Expand into funds and treasuries."
+      "eyebrow": "Who it is built for",
+      "title": "Made for serious LPs, not passive-yield fantasies."
     },
-    "core": {
-      "body": "The product story is simple: stop missing range events, measure real LP performance, and reduce operational drag. The first version is read-only and low-trust. The long-term version becomes a serious operating layer for liquidity managers.",
-      "eyebrow": "Core value",
-      "feature": {
+    "faq": {
+      "body": "The product is intentionally focused for stage 1: read-only monitoring, decision support, and faster reviews for concentrated liquidity operators.",
+      "eyebrow": "FAQ",
+      "item": {
         "1": {
-          "body": "See edge proximity, breach status, and time spent out of range before lost fees accumulate.",
+          "answer": "No. Stage 1 is read-only by design. You connect wallets to monitor positions, understand performance, and receive action signals without giving the product execution power.",
+          "question": "Does {{siteName}} move funds or rebalance positions?"
+        },
+        "2": {
+          "answer": "Explorers and generic dashboards show fragments. {{siteName}} is built to answer the actual operator questions: what needs attention, what is really making money, and whether action is worth the gas.",
+          "question": "Why not just use an explorer or a generic analytics dashboard?"
+        },
+        "3": {
+          "answer": "Anyone can sign up, but the strongest fit is active LPs with concentrated liquidity positions who want better monitoring, cleaner performance visibility, and less manual checking.",
+          "question": "Who gets the most value from the first version?"
+        },
+        "4": {
+          "answer": "Because trust matters. You should be able to understand your positions and workflows first. Execution and automation can come later, once monitoring, signals, and operator trust are solid.",
+          "question": "Why start read-only?"
+        }
+      },
+      "title": "The first version is focused on one job: making LP management less noisy."
+    },
+    "features": {
+      "body": "Everything in stage 1 is built around the same practical promise: know what needs attention, know whether you are actually winning, and act only when the economics make sense.",
+      "card": {
+        "1": {
+          "body": "Track edge proximity, breach status, and time spent out of range before dead capital quietly compounds.",
           "title": "Range risk visibility"
         },
         "2": {
-          "body": "Measure fees, gas drag, inactive time, and net P&L versus simply holding the assets.",
+          "body": "See fees, gas drag, inactive time, and net P&L versus simply holding the assets instead of guessing from half-truth metrics.",
           "title": "True net performance"
         },
         "3": {
-          "body": "Scan many pools, wallets, and chains from one operating layer built for active managers.",
-          "title": "Multi-position operations"
+          "body": "Monitor many positions across wallets, pools, and chains from one operating layer designed for real review workflows.",
+          "title": "Multi-position monitoring"
         },
         "4": {
-          "body": "Know when action is economically justified instead of reacting to noise or headline APR.",
+          "body": "Get gas-aware, action-ready signals so you stop reacting to noise and start acting when it is actually justified.",
           "title": "Decision-ready signals"
         }
       },
-      "title": "Do not promise magic yield. Promise better decisions."
+      "eyebrow": "What you actually get",
+      "title": "Built for the four questions every active LP asks."
     },
     "finalCta": {
-      "body": "Join the waitlist to get early access, share your workflows, and help shape the monitoring layer serious LPs, liquidity desks, and treasury operators actually need.",
+      "body": "Join early access if you actively manage concentrated liquidity and want a cleaner way to monitor positions, understand true net performance, and cut the constant manual checking.",
       "button": {
         "discoveryCall": "Book a discovery call",
-        "joinWaitlist": "Join waitlist"
+        "joinWaitlist": "Join early access"
       },
       "eyebrow": "Early access",
-      "title": "Build your LP operating edge before you automate it."
-    },
-    "footer": {
-      "tagline": "Unimetrics — concentrated liquidity monitoring for serious operators."
+      "title": "Get the monitoring layer serious LPs actually wanted."
     },
     "header": {
-      "brand": "Unimetrics",
+      "brand": "{{siteName}}",
       "cta": {
         "requestAccess": "Request access"
       },
-      "tagline": "Institutional-grade liquidity monitoring"
+      "tagline": "Concentrated liquidity monitoring"
     },
     "hero": {
       "cta": {
         "primary": "Join early access",
-        "secondary": "View product roadmap"
+        "secondary": "See what it solves"
       },
-      "eyebrow": "Retail-first. Desk-ready by design.",
+      "eyebrow": "Read-only first. Built for action, not noise.",
+      "highlight": {
+        "1": {
+          "label": "Why people sign up",
+          "value": "Find the positions that actually need attention."
+        },
+        "2": {
+          "label": "Why they stay",
+          "value": "Stop guessing whether fees, gas, and idle time still add up to a win."
+        }
+      },
       "panel": {
         "decisionSignal": "Price is approaching the upper bound, but expected fee decay still does not justify a rebalance. Recheck if gas drops or price moves another 0.6%.",
         "label": "Position cockpit",
@@ -143,47 +173,88 @@
           }
         },
         "pool": "ETH / USDC 0.05%",
+        "signalLabel": "Decision signal",
         "status": "1.8% from upper edge"
       },
       "pill": {
-        "institutional": "Institutional roadmap",
-        "intelligence": "Concentrated liquidity intelligence",
-        "retail": "Retail-first wedge"
+        "1": "Read-only by default",
+        "2": "Multi-wallet monitoring",
+        "3": "Gas-aware action signals"
       },
-      "subtitle": "Monitor positions across wallets, pools, and chains. Understand real net performance, detect range risk early, and know when action is actually justified. Built first for serious retail LPs, with a roadmap toward funds, treasuries, and professional desks.",
+      "subtitle": "Monitor concentrated liquidity across wallets, pools, and chains. Catch range risk earlier, understand true net performance, and know when action is actually worth the gas.",
       "title": "The operating layer for concentrated liquidity."
     },
     "nav": {
       "access": "Access",
+      "faq": "FAQ",
       "features": "Features",
-      "roadmap": "Roadmap",
-      "who": "Who it's for"
+      "problem": "Problem",
+      "workflow": "How it works"
     },
-    "roadmap": {
-      "phase": {
+    "problem": {
+      "body": "Being an LP is supposed to feel like capital at work. In practice it often feels like babysitting: missed range moves, unclear profitability, too many tabs, and constant second-guessing about whether action is even worth the gas.",
+      "card": {
         "1": {
-          "body": "Start with read-only monitoring and decision support. Lower trust barrier, faster time to value, and a clear reason for serious LPs to adopt the product early.",
-          "bullet": {
-            "1": "Read-only portfolio and position monitoring",
-            "2": "Range-edge proximity and breach alerts",
-            "3": "Fee velocity and time out of range",
-            "4": "Net P&L breakdown versus hold",
-            "5": "Saved views, filters, and exports"
-          },
-          "title": "Retail wedge"
+          "body": "Positions drift toward the edge, go out of range, and quietly stop doing useful work unless you keep checking them.",
+          "title": "Missed range moves"
         },
         "2": {
-          "body": "Add controls, reporting, data access, and eventually execution tooling for liquidity desks, funds, treasuries, and protocol operators who treat liquidity as an operating function.",
-          "bullet": {
-            "1": "Desk-level monitoring across many wallets",
-            "2": "Policy-based alerts and operating thresholds",
-            "3": "Internal reporting and audit trail",
-            "4": "API access for analysts and quants",
-            "5": "Execution and automation layer later"
-          },
-          "title": "Institutional direction"
+          "body": "Fees look good in isolation, but it is hard to tell whether you are actually ahead after gas, inactive time, and position management.",
+          "title": "Fake profitability"
+        },
+        "3": {
+          "body": "Wallets, explorers, dashboards, pool views, and spreadsheets all show fragments. None of them feel like one operating surface.",
+          "title": "Fragmented tracking"
+        },
+        "4": {
+          "body": "Even when a position looks unhealthy, the real question is whether touching it now makes economic sense or just burns more gas.",
+          "title": "Gas guesswork"
         }
-      }
+      },
+      "eyebrow": "Why this exists",
+      "title": "LPing should feel like yield. Too often it feels like ops."
+    },
+    "trust": {
+      "body": "Stage 1 is intentionally designed to be low-friction and easy to trust. No execution, no magic promises, no fake automation story. Just a clean monitoring layer built to help serious LPs make better calls.",
+      "eyebrow": "Why the product feels safe to adopt",
+      "point": {
+        "1": {
+          "body": "You connect wallets to observe positions, not to give the product permission to move funds.",
+          "title": "Read-only first"
+        },
+        "2": {
+          "body": "The product is built around operator questions and traceable metrics, not vanity dashboards or headline APR.",
+          "title": "Transparent by design"
+        },
+        "3": {
+          "body": "Saved views, digests, and action signals are made to reduce routine checking instead of creating another tab to babysit.",
+          "title": "Workflow over noise"
+        }
+      },
+      "title": "Serious enough for real LP workflows. Simple enough to start using fast."
+    },
+    "workflow": {
+      "body": "The first experience should feel simple: connect, scan, decide. No strategy theatre. No clutter. Just a better way to run the review loop that active LPs already live in.",
+      "callout": {
+        "body": "The goal is not to tell you to trade more. The goal is to help you notice the few moments when doing something actually matters.",
+        "label": "What makes this useful"
+      },
+      "eyebrow": "How it works",
+      "step": {
+        "1": {
+          "body": "Connect the wallets you use for concentrated liquidity and pull your positions into one clean monitoring view.",
+          "title": "See everything in one place"
+        },
+        "2": {
+          "body": "Spot edge proximity, time out of range, fee velocity changes, and true net performance without stitching together five tools.",
+          "title": "Know what changed"
+        },
+        "3": {
+          "body": "Use action signals and gas-aware context to decide whether to act now, wait, or ignore the noise.",
+          "title": "Act only when it is worth it"
+        }
+      },
+      "title": "A better review loop for active LPs."
     }
   },
   "nav": {

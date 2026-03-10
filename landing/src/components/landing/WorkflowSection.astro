@@ -1,0 +1,75 @@
+---
+import type { Messages } from "~/i18n";
+import { t } from "~/i18n";
+
+import type { ContentCard } from "~/components/landing/types";
+
+interface Props {
+  messages: Messages;
+  workflowSteps: ContentCard[];
+}
+
+const { messages, workflowSteps } = Astro.props;
+---
+
+<section id="workflow" class="py-20 sm:py-24 lg:py-28">
+  <div class="mx-auto w-full max-w-7xl px-5 sm:px-8 lg:px-10">
+    <div
+      class="grid gap-8 lg:grid-cols-[minmax(0,0.92fr)_minmax(0,1.08fr)] lg:items-start"
+    >
+      <div>
+        <div
+          data-reveal
+          class="inline-flex items-center gap-2 rounded-full border border-amber-200/15 bg-amber-200/10 px-4 py-2 text-[0.72rem] font-bold uppercase tracking-[0.22em] text-[#f5e2b5]"
+        >
+          {t(messages, "landing.workflow.eyebrow")}
+        </div>
+        <h2
+          data-reveal
+          class="mt-6 text-4xl font-semibold leading-tight tracking-[-0.04em] text-white sm:text-5xl"
+        >
+          {t(messages, "landing.workflow.title")}
+        </h2>
+        <p
+          data-reveal
+          class="mt-5 max-w-3xl text-base leading-8 text-white/68 sm:text-lg"
+        >
+          {t(messages, "landing.workflow.body")}
+        </p>
+
+        <div
+          data-reveal
+          class="mt-8 rounded-[1.9rem] border border-amber-200/12 bg-[linear-gradient(180deg,rgba(216,185,122,0.1),rgba(255,255,255,0.02))] p-6"
+        >
+          <div class="text-[0.72rem] font-bold uppercase tracking-[0.2em] text-[#f5e2b5]">
+            {t(messages, "landing.workflow.callout.label")}
+          </div>
+          <p class="mt-3 text-base leading-8 text-white/78 sm:text-lg">
+            {t(messages, "landing.workflow.callout.body")}
+          </p>
+        </div>
+      </div>
+
+      <div class="grid gap-5">
+        {
+          workflowSteps.map((item, index) => (
+            <article
+              data-reveal
+              class="rounded-[1.75rem] border border-white/10 bg-[linear-gradient(180deg,rgba(255,255,255,0.03),rgba(255,255,255,0.015))] p-6 shadow-[var(--shadow-inset)]"
+            >
+              <div class="flex items-start gap-4">
+                <div class="inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-amber-200/15 bg-amber-200/10 text-sm font-semibold text-[#f5e2b5]">
+                  0{index + 1}
+                </div>
+                <div>
+                  <h3 class="text-lg font-semibold text-white">{item.title}</h3>
+                  <p class="mt-3 text-sm leading-7 text-white/65">{item.text}</p>
+                </div>
+              </div>
+            </article>
+          ))
+        }
+      </div>
+    </div>
+  </div>
+</section>

@@ -67,81 +67,9 @@ Let's say you have a Landing Page for a new skincare product. Version A uses an 
 
 Landing Pages are versatile tools in your marketing toolkit. They play a role in various scenarios: promoting a product launch, capturing emails for a newsletter, or driving event registrations. They’re not just about capturing leads but nurturing and converting them.
 
-Presented below are several prevalent types of Landing Pages. Each link offers a prime example of its respective type. Additionally, we carefully craft each link in the form of a comprehensive guide.
+Our landing implementation is now consolidated into a single modular homepage, with each section focused on a specific conversion stage (problem framing, value articulation, workflow, trust, and CTA).
 
-This approach ensures that you observe the best practices in action. Also, it enables you to acquire a step-by-step understanding of how to skillfully create each type.
-
-### [Lead Generation Landing Page](landing/lead-generation)
-
-**Purpose**: Designed primarily to capture user data, such as email addresses or contact details.
-
-**Content**: Usually includes a form where users can input their details. It also highlights what they'll get in return, such as an eBook, a webinar, or a free trial.
-
-**Focus**: Enticing visitors to provide their personal details by offering something valuable in return.
-
-**Key Differentiator**: Unlike “Click-through Landing Pages,” which guide users to another step, these directly gather user data.
-
-**Example**: A digital marketing agency offering a free SEO audit in exchange for business contact details.
-
-### [Long-form Sales Landing Page](landing/sales)
-
-**Purpose**: Primarily designed to sell, aiming to persuade and convert visitors into customers.
-
-**Content**: Extensive, providing a wealth of information including product details, benefits, user stories, success stories, guarantees, and bonuses.
-
-**Focus**: Utilizes a narrative to present a problem and offer the product or service as the solution. The aim is to emotionally connect with the visitor.
-
-**Key Differentiator**: While 'Click-through Landing Pages' warm up the visitor for a bigger commitment. 'Long-form Sales Landing Pages' aim to close the sale directly on the page.
-
-**Example**: A weight loss program detailing a person's journey and the challenges they've faced. It also highlights how the program assisted them and why it's an ideal solution for others.
-
-### [Click-through Landing Page](landing/click-through)
-
-**Purpose**: Acts as a middle step, warming up visitors for a bigger commitment.
-
-**Content**: Provides essential details and benefits of an offer, urging visitors to click through to another page.
-
-**Focus**: To lead visitors to the final conversion point, be it a checkout page or a sign-up form.
-
-**Key Differentiator**: Unlike "Subscription Landing Pages" that aim for a recurring commitment, these lead to a one-time action.
-
-**Example**: An online store showcasing a new product's benefits, leading visitors to the purchase page.
-
-### [Product Details Landing Page](landing/product)
-
-**Purpose**: Designed to inform by providing specific details about a product or service.
-
-**Content**: Focuses on features, specifications, and benefits. May include high-quality images, detailed descriptions, demo videos, and user reviews.
-
-**Focus**: Presents the product or service transparently and attractively.
-
-**Key Differentiator**: While 'Long-form Sales Landing Pages' aim to persuade through narratives and overcoming objections. 'Product Details Landing Pages' focus on presenting the product or service in a clear and detailed manner.
-
-**Example**: A tech website detailing a new laptop's specifications, unique features, comparisons with previous models, and user reviews.
-
-### [Coming Soon or Pre-Launch Landing Page](landing/pre-launch)
-
-**Purpose**: Creates excitement for an upcoming product, service, or event.
-
-**Content**: Often includes a countdown timer, teaser content, and an option to sign up for notifications.
-
-**Focus**: To generate buzz and capture early interest.
-
-**Key Differentiator**: Unlike other landing pages that present available offers, these promote something not yet accessible.
-
-**Example**: A game developer teasing their upcoming game release with sneak peeks and an option for early access.
-
-### [Subscription Landing Page](landing/subscription)
-
-**Purpose**: Encourages visitors to subscribe to a service, newsletter, or recurring product.
-
-**Content**: Highlights the benefits of subscribing, often offering special deals or exclusive content for subscribers.
-
-**Focus**: To secure a long-term commitment from the visitor.
-
-**Key Differentiator**: Unlike "Click-through Landing Pages" that lead to a one-time action, these aim for a recurring commitment.
-
-**Example**: A magazine promoting its monthly subscription, detailing exclusive articles and special subscriber-only benefits.
+This keeps the user journey coherent while still preserving the practical guidance above on how to structure high-converting landing experiences.
 
 ## Conclusion
 

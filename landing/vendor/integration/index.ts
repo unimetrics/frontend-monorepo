@@ -118,9 +118,9 @@ const astroWindIntegration = ({
         if (typeof _themeConfig === "string") {
           addWatchFile(new URL(_themeConfig, config.root));
 
-          buildLogger.info(`Unimetrics \`${_themeConfig}\` has been loaded.`);
+          buildLogger.info(`${SITE.name} \`${_themeConfig}\` has been loaded.`);
         } else {
-          buildLogger.info(`Unimetrics config has been loaded.`);
+          buildLogger.info(`${SITE.name} config has been loaded.`);
         }
       },
     },

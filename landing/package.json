@@ -9,6 +9,7 @@
     "build": "astro build",
     "dev": "astro dev",
     "lint": "astro check",
+    "lint:i18n": "i18n-check --locales src/i18n/messages --source en --format i18next --reporter summary",
     "preview": "astro preview"
   },
   "dependencies": {
@@ -17,7 +18,6 @@
     "@astrolib/seo": "1.0.0-beta.8",
     "@unimetrics/ui": "workspace:*",
     "astro": "5.18.0",
-    "astro-embed": "0.12.0",
     "astro-icon": "1.1.5",
     "limax": "4.2.2",
     "lodash": "catalog:",
@@ -32,6 +32,7 @@
     "@astrojs/react": "4.4.2",
     "@iconify-json/flat-color-icons": "1.2.3",
     "@iconify-json/tabler": "1.2.30",
+    "@lingual/i18n-check": "catalog:",
     "@tailwindcss/typography": "0.5.19",
     "@tailwindcss/vite": "4.2.1",
     "@types/js-yaml": "4.0.9",

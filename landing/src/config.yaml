@@ -8,14 +8,14 @@ site:
 # Default SEO metadata
 metadata:
   title:
-    default: Unimetrics
-    template: "%s | Unimetrics"
-  description: "Unimetrics provides analytics and performance metrics for liquidity providers across DeFi protocols."
+    default: "{{siteName}}"
+    template: "%s | {{siteName}}"
+  description: "{{siteName}} provides analytics and performance metrics for liquidity providers across DeFi protocols."
   robots:
     index: true
     follow: true
   openGraph:
-    site_name: Unimetrics
+    site_name: "{{siteName}}"
     images:
       - url: "~/assets/images/default.png"
         width: 1200

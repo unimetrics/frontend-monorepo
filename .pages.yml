@@ -1,0 +1,87 @@
+media:
+  - name: landing-images
+    label: Landing Images
+    input: landing/src/assets/images
+    output: ~/assets/images
+    categories:
+      - image
+
+content:
+  - name: posts
+    label: Posts
+    type: collection
+    path: landing/src/data/post
+    filename: "{primary}.md"
+    format: yaml-frontmatter
+    subfolders: false
+    view:
+      primary: title
+      fields:
+        - title
+        - publishDate
+        - draft
+        - category
+        - author
+      sort:
+        - publishDate
+        - title
+      default:
+        sort: publishDate
+        order: desc
+    fields:
+      - name: publishDate
+        label: Publish Date
+        type: date
+      - name: updateDate
+        label: Update Date
+        type: date
+        required: false
+      - name: title
+        label: Title
+        type: string
+      - name: excerpt
+        label: Excerpt
+        type: text
+      - name: author
+        label: Author
+        type: string
+        required: false
+      - name: category
+        label: Category
+        type: string
+        required: false
+      - name: tags
+        label: Tags
+        type: string
+        list: true
+        required: false
+      - name: draft
+        label: Draft
+        type: boolean
+        default: false
+        required: false
+      - name: image
+        label: Cover Image
+        type: string
+        required: false
+      - name: metadata
+        label: Metadata
+        type: object
+        required: false
+        fields:
+          - name: canonical
+            label: Canonical URL
+            type: string
+            required: false
+          - name: description
+            label: Description
+            type: string
+            required: false
+      - name: body
+        label: Body
+        type: rich-text
+
+settings:
+  hide: true
+  content:
+    merge: true

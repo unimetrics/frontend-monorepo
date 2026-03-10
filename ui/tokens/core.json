@@ -123,24 +123,14 @@
   },
   "primitive": {
     "color": {
-      "black": {
-        "$type": "color",
-        "$value": "#000000"
-      },
-      "blue": {
-        "500": {
-          "$type": "color",
-          "$value": "#0161ef"
-        },
-        "600": {
-          "$type": "color",
-          "$value": "#0154cf"
-        }
-      },
-      "lavender": {
+      "gold": {
         "200": {
           "$type": "color",
-          "$value": "#e6e6fa"
+          "$value": "#f3e2bd"
+        },
+        "500": {
+          "$type": "color",
+          "$value": "#d8b97a"
         }
       },
       "neutral": {
@@ -148,29 +138,25 @@
           "$type": "color",
           "$value": "#e5ecf6"
         },
-        "300": {
-          "$type": "color",
-          "$value": "#f7f8f8"
-        },
         "900": {
           "$type": "color",
           "$value": "rgb(229 236 246 / 66%)"
+        }
+      },
+      "night": {
+        "900": {
+          "$type": "color",
+          "$value": "#050d15"
+        }
+      },
+      "steel": {
+        "500": {
+          "$type": "color",
+          "$value": "#5c769a"
         },
-        "950": {
+        "600": {
           "$type": "color",
-          "$value": "#101010"
-        }
-      },
-      "slate": {
-        "950": {
-          "$type": "color",
-          "$value": "#030620"
-        }
-      },
-      "violet": {
-        "700": {
-          "$type": "color",
-          "$value": "#702963"
+          "$value": "#355070"
         }
       },
       "white": {
@@ -206,13 +192,37 @@
       "$type": "boxShadow",
       "$value": "0 0 0 3px rgb(1 97 239 / 0.35)"
     },
+    "glass": {
+      "$type": "boxShadow",
+      "$value": "0 4px 30px rgba(0, 0, 0, 0.1)"
+    },
+    "glow": {
+      "$type": "boxShadow",
+      "$value": "0 16px 40px rgba(216, 185, 122, 0.22)"
+    },
+    "inset": {
+      "$type": "boxShadow",
+      "$value": "inset 0 1px 0 rgba(255, 255, 255, 0.03)"
+    },
+    "insetStrong": {
+      "$type": "boxShadow",
+      "$value": "inset 0 1px 1px rgba(255, 255, 255, 0.35)"
+    },
     "md": {
       "$type": "boxShadow",
       "$value": "0 8px 24px rgb(0 0 0 / 0.16)"
     },
+    "ribbon": {
+      "$type": "boxShadow",
+      "$value": "0 3px 10px -5px rgba(0, 0, 0, 0.3)"
+    },
     "sm": {
       "$type": "boxShadow",
       "$value": "0 1px 2px rgb(0 0 0 / 0.08)"
+    },
+    "xl": {
+      "$type": "boxShadow",
+      "$value": "0 24px 80px rgba(0, 0, 0, 0.35)"
     }
   },
   "spacing": {
