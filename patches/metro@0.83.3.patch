@@ -1,0 +1,14 @@
+diff --git a/package.json b/package.json
+index a5f72d3cc40d05d1f58e135f3b5f8a2c88a7cc4d..6e7481e2cf0f3db1bce0eff35612c2f30ca675d1 100644
+--- a/package.json
++++ b/package.json
+@@ -7,7 +7,8 @@
+   "exports": {
+     ".": "./src/index.js",
+     "./package.json": "./package.json",
+-    "./private/*": "./src/*.js"
++    "./private/*": "./src/*.js",
++    "./src/*": "./src/*.js"
+   },
+   "repository": {
+     "type": "git",

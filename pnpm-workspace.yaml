@@ -6,23 +6,26 @@ packages:
   - mobile
   - ui
 catalog:
-  "@types/node": 25.3.5
-  "@types/react": 19.2.14
-  "@types/react-dom": 19.2.3
+  '@types/node': 25.3.5
+  '@types/react': 19.2.14
+  '@types/react-dom': 19.2.3
   commander: 14.0.3
   react: 19.2.4
   react-dom: 19.2.4
-  react-native: 0.84.1
+  react-native: 0.83.4
   tailwindcss: 4.2.1
   typescript: 5.9.3
   zod: 3.25.76
   lodash: 4.17.23
-  "@types/lodash": 4.17.23
+  '@types/lodash': 4.17.23
 overrides:
-  cli@<1.0.0: ">=1.0.0"
-  lodash@>=4.0.0 <=4.17.22: ">=4.17.23"
-  minimatch@>=9.0.0 <9.0.6: ">=9.0.6"
-  minimatch@>=9.0.0 <9.0.7: ">=9.0.7"
-  serialize-javascript@<=7.0.2: ">=7.0.3"
-  tar@<=7.5.9: ">=7.5.10"
-  svgo@=4.0.0: ">=4.0.1"
+  cli@<1.0.0: '>=1.0.0'
+  lodash@>=4.0.0 <=4.17.22: '>=4.17.23'
+  minimatch@>=9.0.0 <9.0.6: '>=9.0.6'
+  minimatch@>=9.0.0 <9.0.7: '>=9.0.7'
+  serialize-javascript@<=7.0.2: '>=7.0.3'
+  tar@<=7.5.9: '>=7.5.10'
+  svgo@=4.0.0: '>=4.0.1'
+patchedDependencies:
+  metro@0.83.3: patches/metro@0.83.3.patch
+  metro-core@0.83.3: patches/metro-core@0.83.3.patch

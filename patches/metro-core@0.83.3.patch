@@ -1,0 +1,15 @@
+diff --git a/src/Terminal.js b/src/Terminal.js
+index 182768bb8811232be0d1d720f701bf9c83f5628b..d99bfaf0ee50fca5a8ccd8600b4db13cfd70a517 100644
+--- a/src/Terminal.js
++++ b/src/Terminal.js
+@@ -58,6 +58,10 @@ class Terminal {
+       3500,
+     );
+   }
++  // Public aliases for backward compatibility with Expo CLI
++  get _logLines() { return this.#logLines; }
++  set _logLines(val) { this.#logLines = val; }
++  _scheduleUpdate() { this.#scheduleUpdate(); }
+   #scheduleUpdate() {
+     if (this.#isUpdating) {
+       this.#isPendingUpdate = true;
