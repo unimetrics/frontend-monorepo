@@ -6,3 +6,4 @@ landing/src/data/post/markdown-elements-demo-post.mdx
 .astro
 .expo
 pnpm-lock.yaml
+.eslintcache

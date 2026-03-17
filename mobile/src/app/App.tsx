@@ -1,14 +1,15 @@
+import "../../global.css";
 import { Text, View } from "react-native";
-import { SafeAreaView } from "react-native-safe-area-context";
 
 export default function App() {
   return (
-    <SafeAreaView className="flex-1">
-      <View className="flex-1 items-center justify-center px-6">
-        <Text className="text-text-default text-2xl font-bold">
-          Welcome to Unimetrics Mobile!
-        </Text>
-      </View>
-    </SafeAreaView>
+    <View className="bg-bg-page flex-1 items-center justify-center px-6">
+      <Text className="text-text-heading text-center text-3xl font-semibold">
+        Unimetrics Mobile
+      </Text>
+      <Text className="text-text-default mt-3 text-center text-base">
+        Design tokens from @unimetrics/ui are active in this workspace.
+      </Text>
+    </View>
   );
 }

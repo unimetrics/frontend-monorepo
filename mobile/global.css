@@ -1,2 +1,6 @@
-@import "tailwindcss";
+@import "tailwindcss/theme" layer(theme);
+@import "@unimetrics/ui/theme.css" layer(theme);
+@import "tailwindcss/preflight" layer(base);
+@import "@unimetrics/ui/tokens.css" layer(base);
+@import "tailwindcss/utilities" layer(utilities);
 @import "nativewind/theme";

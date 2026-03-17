@@ -67,44 +67,7 @@
         }
       },
       "eyebrow": "適用對象",
-      "segment": {
-        "1": {
-          "body": "手動管理集中流動性，並希望有更好時機判斷、更高可見性與紀律的操作者。",
-          "title": "活躍零售 LP"
-        },
-        "2": {
-          "body": "在多個池子與鏈上管理多部位，且需要快速掃描與優先排序的管理者。",
-          "title": "進階使用者"
-        },
-        "3": {
-          "body": "需要監控、控制、報表，以及最終執行支援的專業流動性交易台。",
-          "title": "基金與金庫"
-        }
-      },
       "title": "先從活躍零售開始，再擴展到基金與金庫。"
-    },
-    "core": {
-      "body": "產品故事很簡單：不要再錯過區間事件、衡量真實 LP 表現，並降低營運摩擦。第一版是唯讀、低信任門檻。長期版本將成為流動性管理者的關鍵營運層。",
-      "eyebrow": "核心價值",
-      "feature": {
-        "1": {
-          "body": "在手續費損失累積前，看見邊界接近度、突破狀態與離開區間的時間。",
-          "title": "區間風險可視化"
-        },
-        "2": {
-          "body": "衡量手續費、Gas 成本拖累、閒置時間，以及相對持有策略的淨 P&L。",
-          "title": "真實淨績效"
-        },
-        "3": {
-          "body": "透過為活躍管理者打造的單一營運層，掃描多個池子、錢包與鏈。",
-          "title": "多部位營運"
-        },
-        "4": {
-          "body": "知道何時採取行動在經濟上合理，而不是對雜訊或標題 APR 做反應。",
-          "title": "可直接決策的訊號"
-        }
-      },
-      "title": "不要承諾魔法收益，要承諾更好的決策。"
     },
     "faq": {
       "body": "The product is intentionally focused for stage 1: read-only monitoring, decision support, and faster reviews for concentrated liquidity operators.",
@@ -161,9 +124,6 @@
       "eyebrow": "早期存取",
       "title": "在自動化之前，先建立你的 LP 營運優勢。"
     },
-    "footer": {
-      "tagline": "{{siteName}} — 為專業操作者打造的集中流動性監控。"
-    },
     "header": {
       "brand": "{{siteName}}",
       "cta": {
@@ -219,10 +179,7 @@
       "pill": {
         "1": "Read-only by default",
         "2": "Multi-wallet monitoring",
-        "3": "Gas-aware action signals",
-        "institutional": "機構路線圖",
-        "intelligence": "集中流動性智慧",
-        "retail": "零售切入"
+        "3": "Gas-aware action signals"
       },
       "subtitle": "跨錢包、池子與鏈監控部位。理解真實淨績效、提早發現區間風險，並知道何時採取行動才真正合理。先為嚴肅零售 LP 打造，並規劃延伸至基金、金庫與專業交易台。",
       "title": "集中流動性的營運層。"
@@ -232,8 +189,6 @@
       "faq": "FAQ",
       "features": "功能",
       "problem": "Problem",
-      "roadmap": "路線圖",
-      "who": "適用對象",
       "workflow": "How it works"
     },
     "problem": {
@@ -258,32 +213,6 @@
       },
       "eyebrow": "Why this exists",
       "title": "LPing should feel like yield. Too often it feels like ops."
-    },
-    "roadmap": {
-      "phase": {
-        "1": {
-          "body": "先從唯讀監控與決策支援開始。信任門檻更低、價值到達更快，也讓專業 LP 更早採用有明確理由。",
-          "bullet": {
-            "1": "唯讀投資組合與部位監控",
-            "2": "區間邊緣接近與突破警示",
-            "3": "手續費速度與離開區間時間",
-            "4": "相對持有的淨 P&L 拆解",
-            "5": "儲存檢視、篩選與匯出"
-          },
-          "title": "零售切入"
-        },
-        "2": {
-          "body": "為把流動性視為營運職能的流動性交易台、基金、金庫與協議營運者，加入控制能力、報表、資料存取，以及後續執行工具。",
-          "bullet": {
-            "1": "跨多錢包的交易台級監控",
-            "2": "策略導向警示與營運門檻",
-            "3": "內部報表與稽核軌跡",
-            "4": "提供分析師與量化團隊的 API 存取",
-            "5": "後續提供執行與自動化層"
-          },
-          "title": "機構方向"
-        }
-      }
     },
     "trust": {
       "body": "Stage 1 is intentionally designed to be low-friction and easy to trust. No execution, no magic promises, no fake automation story. Just a clean monitoring layer built to help serious LPs make better calls.",

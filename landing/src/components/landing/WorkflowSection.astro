@@ -19,26 +19,26 @@ const { messages, workflowSteps } = Astro.props;
     >
       <div>
         <div
-          data-reveal
+          data-reveal="badge"
           class="inline-flex items-center gap-2 rounded-full border border-amber-200/15 bg-amber-200/10 px-4 py-2 text-[0.72rem] font-bold uppercase tracking-[0.22em] text-[#f5e2b5]"
         >
           {t(messages, "landing.workflow.eyebrow")}
         </div>
         <h2
-          data-reveal
+          data-reveal="title"
           class="mt-6 text-4xl font-semibold leading-tight tracking-[-0.04em] text-white sm:text-5xl"
         >
           {t(messages, "landing.workflow.title")}
         </h2>
         <p
-          data-reveal
+          data-reveal="copy"
           class="mt-5 max-w-3xl text-base leading-8 text-white/68 sm:text-lg"
         >
           {t(messages, "landing.workflow.body")}
         </p>
 
         <div
-          data-reveal
+          data-reveal="callout"
           class="mt-8 rounded-[1.9rem] border border-amber-200/12 bg-[linear-gradient(180deg,rgba(216,185,122,0.1),rgba(255,255,255,0.02))] p-6"
         >
           <div class="text-[0.72rem] font-bold uppercase tracking-[0.2em] text-[#f5e2b5]">
@@ -54,7 +54,7 @@ const { messages, workflowSteps } = Astro.props;
         {
           workflowSteps.map((item, index) => (
             <article
-              data-reveal
+              data-reveal="step"
               class="rounded-[1.75rem] border border-white/10 bg-[linear-gradient(180deg,rgba(255,255,255,0.03),rgba(255,255,255,0.015))] p-6 shadow-[var(--shadow-inset)]"
             >
               <div class="flex items-start gap-4">

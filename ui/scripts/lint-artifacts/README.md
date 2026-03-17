@@ -1,12 +1,12 @@
-# check-generated-artifacts.ts
+# lint-artifacts.ts
 
 ## Why
 
-Ensure token linting validates only generated token artifacts and does not fail on unrelated changed files.
+The script basically checks if generated css files (exported by ui package) are in sync with design tokens json by building it and checking git state.
 
 ## What
 
-Checks git diff state only for generated token outputs:
+Checks git diff state for generated token outputs:
 
 - `ui/tokens.css`
 - `ui/theme.css`
@@ -18,7 +18,7 @@ Fails when any of these files are modified after token build.
 Direct script run:
 
 ```bash
-tsx ui/scripts/lint-tokens/check-generated-artifacts.ts
+tsx ui/scripts/lint-artifacts/lint-artifacts.ts
 ```
 
 ## Inputs

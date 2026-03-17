@@ -10,8 +10,8 @@
   "scripts": {
     "build": "tsx ./scripts/build-tokens/build-tokens.ts",
     "dev": "tsx watch --clear-screen=false --include './tokens/**/*.json' ./scripts/build-tokens/build-tokens.ts",
-    "lint": "pnpm lint:tokens",
-    "lint:tokens": "pnpm build && tsx ./scripts/lint-tokens/check-generated-artifacts.ts"
+    "lint": "pnpm lint:artifacts",
+    "lint:artifacts": "pnpm build && tsx ./scripts/lint-artifacts/lint-artifacts.ts"
   },
   "devDependencies": {
     "@tokens-studio/sd-transforms": "2.0.3",

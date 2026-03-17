@@ -7,8 +7,15 @@ For pull request preparation and PR-specific rules, also follow `.ai/pr-instruct
 ## Stack and Tooling
 
 - Use `pnpm` (not npm/yarn) for dependency and script commands.
-- Respect workspace boundaries (`api`, `app`, `cli`, `landing`, `mobile`, `ui`).
+- Respect workspace boundaries (`api`, `app`, `charts`, `cli`, `landing`, `mobile`, `docs`, `ui`).
 - Use TypeScript/ESM conventions already used in each package.
+- Follow existing patterns for imports, exports, and module structure in each package.
+
+## File names conventions
+
+- Use `kebab-case` for file and directory names.
+- Use `PascalCase` for React component files and their default exports.
+- Readme file always should be named `README.md` and located in the root of the package or subdirectory if it is a readme for that subdirectory.
 
 ## Framework-Specific Guides
 
@@ -52,3 +59,4 @@ For pull request preparation and PR-specific rules, also follow `.ai/pr-instruct
 - Do not weaken security or validation logic without explicit reason.
 - Avoid destructive operations in scripts and migrations.
 - Keep backward compatibility for public interfaces unless intentionally changed.
+- Avoid JS/TS bugs and common vulns

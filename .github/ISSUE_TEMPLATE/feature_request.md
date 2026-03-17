@@ -21,6 +21,7 @@ Which part is affected?
 - `app`
 - `landing`
 - `mobile`
+- `docs`
 - `api`
 - `cli`
 - `ui`

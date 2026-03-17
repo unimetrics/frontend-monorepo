@@ -67,44 +67,7 @@
         }
       },
       "eyebrow": "Para quién es",
-      "segment": {
-        "1": {
-          "body": "Operadores que gestionan liquidez concentrada manualmente y quieren mejor timing, claridad y disciplina.",
-          "title": "LPs minoristas activos"
-        },
-        "2": {
-          "body": "Gestores que manejan múltiples posiciones en pools y cadenas y necesitan escaneo y priorización rápidos.",
-          "title": "Usuarios avanzados"
-        },
-        "3": {
-          "body": "Mesas de liquidez profesionales que necesitan monitoreo, controles, reportes y, eventualmente, soporte de ejecución.",
-          "title": "Fondos y tesorerías"
-        }
-      },
       "title": "Empieza con minoristas activos. Expándete a fondos y tesorerías."
-    },
-    "core": {
-      "body": "La historia del producto es simple: deja de perder eventos de rango, mide el rendimiento real de LP y reduce la fricción operativa. La primera versión es de solo lectura y de baja confianza requerida. La versión a largo plazo se convierte en una capa operativa seria para gestores de liquidez.",
-      "eyebrow": "Valor principal",
-      "feature": {
-        "1": {
-          "body": "Ve la proximidad al borde, el estado de ruptura y el tiempo fuera de rango antes de que se acumulen comisiones perdidas.",
-          "title": "Visibilidad del riesgo de rango"
-        },
-        "2": {
-          "body": "Mide comisiones, fricción por gas, tiempo inactivo y P&L neto frente a simplemente mantener los activos.",
-          "title": "Rendimiento neto real"
-        },
-        "3": {
-          "body": "Escanea muchos pools, billeteras y cadenas desde una sola capa operativa construida para gestores activos.",
-          "title": "Operaciones multi-posición"
-        },
-        "4": {
-          "body": "Sabe cuándo una acción está económicamente justificada en lugar de reaccionar al ruido o al APR de titulares.",
-          "title": "Señales listas para decidir"
-        }
-      },
-      "title": "No prometas rendimiento mágico. Promete mejores decisiones."
     },
     "faq": {
       "body": "The product is intentionally focused for stage 1: read-only monitoring, decision support, and faster reviews for concentrated liquidity operators.",
@@ -161,9 +124,6 @@
       "eyebrow": "Acceso temprano",
       "title": "Construye tu ventaja operativa LP antes de automatizarla."
     },
-    "footer": {
-      "tagline": "{{siteName}} — monitoreo de liquidez concentrada para operadores serios."
-    },
     "header": {
       "brand": "{{siteName}}",
       "cta": {
@@ -219,10 +179,7 @@
       "pill": {
         "1": "Read-only by default",
         "2": "Multi-wallet monitoring",
-        "3": "Gas-aware action signals",
-        "institutional": "Hoja de ruta institucional",
-        "intelligence": "Inteligencia de liquidez concentrada",
-        "retail": "Cuña inicial minorista"
+        "3": "Gas-aware action signals"
       },
       "subtitle": "Monitorea posiciones en billeteras, pools y cadenas. Entiende el rendimiento neto real, detecta temprano el riesgo de rango y sabe cuándo una acción está realmente justificada. Construido primero para LPs minoristas serios, con una hoja de ruta hacia fondos, tesorerías y mesas profesionales.",
       "title": "La capa operativa para liquidez concentrada."
@@ -232,8 +189,6 @@
       "faq": "FAQ",
       "features": "Funciones",
       "problem": "Problem",
-      "roadmap": "Hoja de ruta",
-      "who": "Para quién es",
       "workflow": "How it works"
     },
     "problem": {
@@ -258,32 +213,6 @@
       },
       "eyebrow": "Why this exists",
       "title": "LPing should feel like yield. Too often it feels like ops."
-    },
-    "roadmap": {
-      "phase": {
-        "1": {
-          "body": "Empieza con monitoreo de solo lectura y soporte de decisión. Menor barrera de confianza, tiempo a valor más rápido y una razón clara para que LPs serios adopten el producto temprano.",
-          "bullet": {
-            "1": "Monitoreo de portafolio y posiciones de solo lectura",
-            "2": "Alertas de proximidad al borde de rango y de ruptura",
-            "3": "Velocidad de comisiones y tiempo fuera de rango",
-            "4": "Desglose de P&L neto frente a hold",
-            "5": "Vistas guardadas, filtros y exportaciones"
-          },
-          "title": "Cuña minorista"
-        },
-        "2": {
-          "body": "Añade controles, reportes, acceso a datos y eventualmente herramientas de ejecución para mesas de liquidez, fondos, tesorerías y operadores de protocolo que tratan la liquidez como una función operativa.",
-          "bullet": {
-            "1": "Monitoreo a nivel mesa en muchas billeteras",
-            "2": "Alertas basadas en políticas y umbrales operativos",
-            "3": "Reportes internos y trazabilidad de auditoría",
-            "4": "Acceso API para analistas y quants",
-            "5": "Capa de ejecución y automatización más adelante"
-          },
-          "title": "Dirección institucional"
-        }
-      }
     },
     "trust": {
       "body": "Stage 1 is intentionally designed to be low-friction and easy to trust. No execution, no magic promises, no fake automation story. Just a clean monitoring layer built to help serious LPs make better calls.",

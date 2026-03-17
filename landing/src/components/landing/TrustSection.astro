@@ -18,7 +18,7 @@ const { messages, trustPoints } = Astro.props;
       class="grid gap-5 lg:grid-cols-[minmax(0,0.92fr)_minmax(0,1.08fr)] lg:items-start"
     >
       <article
-        data-reveal
+        data-reveal="panel"
         class="rounded-[2rem] border border-amber-200/12 bg-[linear-gradient(180deg,rgba(216,185,122,0.08),rgba(255,255,255,0.02))] p-7 sm:p-8"
       >
         <div
@@ -38,7 +38,7 @@ const { messages, trustPoints } = Astro.props;
         {
           trustPoints.map(item => (
             <article
-              data-reveal
+              data-reveal="card"
               class="rounded-[1.75rem] border border-white/10 bg-[linear-gradient(180deg,rgba(255,255,255,0.03),rgba(255,255,255,0.015))] p-6 shadow-[var(--shadow-inset)]"
             >
               <h3 class="text-lg font-semibold text-white">{item.title}</h3>
