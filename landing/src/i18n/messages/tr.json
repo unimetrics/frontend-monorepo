@@ -67,44 +67,7 @@
         }
       },
       "eyebrow": "Kimler için",
-      "segment": {
-        "1": {
-          "body": "Yoğunlaştırılmış likiditeyi manuel yöneten ve daha iyi zamanlama, netlik ve disiplin isteyen operatörler.",
-          "title": "Aktif bireysel LP'ler"
-        },
-        "2": {
-          "body": "Birden fazla havuz ve zincirde çoklu pozisyon yöneten, hızlı tarama ve önceliklendirmeye ihtiyaç duyan yöneticiler.",
-          "title": "Güç kullanıcıları"
-        },
-        "3": {
-          "body": "İzleme, kontroller, raporlama ve zamanla yürütme desteğine ihtiyaç duyan profesyonel likidite masaları.",
-          "title": "Fonlar ve hazineler"
-        }
-      },
       "title": "Aktif bireysel kullanıcılarla başlayın. Fonlara ve hazinelere genişleyin."
-    },
-    "core": {
-      "body": "Ürün hikayesi basit: aralık olaylarını kaçırmayı durdurun, gerçek LP performansını ölçün ve operasyonel sürtünmeyi azaltın. İlk sürüm salt-okunur ve düşük güven gerektirir. Uzun vadeli sürüm, likidite yöneticileri için ciddi bir operasyon katmanına dönüşür.",
-      "eyebrow": "Temel değer",
-      "feature": {
-        "1": {
-          "body": "Kayıp ücretler birikmeden önce kenara yakınlığı, ihlal durumunu ve aralık dışında geçirilen süreyi görün.",
-          "title": "Aralık riski görünürlüğü"
-        },
-        "2": {
-          "body": "Ücretleri, gas maliyeti sürtünmesini, pasif zamanı ve net K/Z'yi varlıkları sadece tutmayla karşılaştırarak ölçün.",
-          "title": "Gerçek net performans"
-        },
-        "3": {
-          "body": "Aktif yöneticiler için oluşturulmuş tek bir operasyon katmanından birçok havuzu, cüzdanı ve zinciri tarayın.",
-          "title": "Çoklu pozisyon operasyonları"
-        },
-        "4": {
-          "body": "Gürültüye veya manşet APR'ye tepki vermek yerine aksiyonun ekonomik olarak ne zaman haklı olduğunu bilin.",
-          "title": "Karara hazır sinyaller"
-        }
-      },
-      "title": "Sihirli getiri vaat etmeyin. Daha iyi kararlar vaat edin."
     },
     "faq": {
       "body": "The product is intentionally focused for stage 1: read-only monitoring, decision support, and faster reviews for concentrated liquidity operators.",
@@ -161,9 +124,6 @@
       "eyebrow": "Erken erişim",
       "title": "Otomasyondan önce LP operasyon avantajınızı oluşturun."
     },
-    "footer": {
-      "tagline": "{{siteName}} — ciddi operatörler için yoğunlaştırılmış likidite izleme."
-    },
     "header": {
       "brand": "{{siteName}}",
       "cta": {
@@ -219,10 +179,7 @@
       "pill": {
         "1": "Read-only by default",
         "2": "Multi-wallet monitoring",
-        "3": "Gas-aware action signals",
-        "institutional": "Kurumsal yol haritası",
-        "intelligence": "Yoğunlaştırılmış likidite zekâsı",
-        "retail": "Bireysel odaklı başlangıç"
+        "3": "Gas-aware action signals"
       },
       "subtitle": "Cüzdanlar, havuzlar ve zincirler genelinde pozisyonları izleyin. Gerçek net performansı anlayın, aralık riskini erken tespit edin ve aksiyonun ne zaman gerçekten gerekli olduğunu bilin. Önce ciddi bireysel LP'ler için, fonlar, hazineler ve profesyonel masalara uzanan bir yol haritasıyla geliştirildi.",
       "title": "Yoğunlaştırılmış likidite için operasyon katmanı."
@@ -232,8 +189,6 @@
       "faq": "FAQ",
       "features": "Özellikler",
       "problem": "Problem",
-      "roadmap": "Yol haritası",
-      "who": "Kimler için",
       "workflow": "How it works"
     },
     "problem": {
@@ -258,32 +213,6 @@
       },
       "eyebrow": "Why this exists",
       "title": "LPing should feel like yield. Too often it feels like ops."
-    },
-    "roadmap": {
-      "phase": {
-        "1": {
-          "body": "Salt-okunur izleme ve karar desteğiyle başlayın. Daha düşük güven bariyeri, daha hızlı değer elde etme ve ciddi LP'lerin ürünü erken benimsemesi için net bir neden.",
-          "bullet": {
-            "1": "Salt-okunur portföy ve pozisyon izleme",
-            "2": "Aralık kenarı yakınlığı ve ihlal uyarıları",
-            "3": "Ücret hızı ve aralık dışında geçen süre",
-            "4": "Tutmaya karşı net K/Z dökümü",
-            "5": "Kaydedilmiş görünümler, filtreler ve dışa aktarımlar"
-          },
-          "title": "Bireysel başlangıç"
-        },
-        "2": {
-          "body": "Likiditeyi bir operasyon fonksiyonu olarak ele alan likidite masaları, fonlar, hazineler ve protokol operatörleri için kontroller, raporlama, veri erişimi ve zamanla yürütme araçları ekleyin.",
-          "bullet": {
-            "1": "Birçok cüzdanda masa düzeyinde izleme",
-            "2": "Politika tabanlı uyarılar ve operasyon eşikleri",
-            "3": "İç raporlama ve denetim izi",
-            "4": "Analistler ve quant ekipleri için API erişimi",
-            "5": "Daha sonra yürütme ve otomasyon katmanı"
-          },
-          "title": "Kurumsal yön"
-        }
-      }
     },
     "trust": {
       "body": "Stage 1 is intentionally designed to be low-friction and easy to trust. No execution, no magic promises, no fake automation story. Just a clean monitoring layer built to help serious LPs make better calls.",

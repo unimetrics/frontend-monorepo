@@ -88,14 +88,17 @@ const contactHref = "mailto:founders@example.com";
   >
     <div class="pointer-events-none fixed inset-0 -z-10 overflow-hidden">
       <div
+        data-parallax-speed="0.18"
         class="absolute left-[-8rem] top-24 h-72 w-72 rounded-full bg-amber-300/10 blur-3xl"
       >
       </div>
       <div
+        data-parallax-speed="-0.12"
         class="absolute right-[-4rem] top-16 h-80 w-80 rounded-full bg-slate-400/10 blur-3xl"
       >
       </div>
       <div
+        data-parallax-speed="0.24"
         class="absolute bottom-[-5rem] left-1/2 h-96 w-96 -translate-x-1/2 rounded-full bg-blue-400/10 blur-3xl"
       >
       </div>
@@ -130,54 +133,320 @@ const contactHref = "mailto:founders@example.com";
   </div>
 
   <script>
-    const prefersReducedMotion = globalThis.matchMedia(
-      "(prefers-reduced-motion: reduce)"
-    ).matches;
-    const revealItems = [...document.querySelectorAll("[data-reveal]")];
+    import { gsap, ScrollTrigger } from "~/utils/gsap";
 
-    if (prefersReducedMotion) {
-      for (const item of revealItems) {
-        item.classList.add("is-visible");
-      }
-    } else {
-      const observer = new IntersectionObserver(
-        entries => {
-          for (const entry of entries) {
-            if (!entry.isIntersecting) {
-              continue;
-            }
+    type RevealAnimation = {
+      from: gsap.TweenVars;
+      to: gsap.TweenVars;
+    };
 
-            entry.target.classList.add("is-visible");
-            observer.unobserve(entry.target);
-          }
-        },
-        {
-          rootMargin: "0px 0px -10% 0px",
-          threshold: 0.15,
+    type RevealVariant =
+      | "badge"
+      | "callout"
+      | "card"
+      | "chips"
+      | "copy"
+      | "cta"
+      | "cta-card"
+      | "default"
+      | "metrics"
+      | "panel"
+      | "step"
+      | "title";
+
+    const getRevealAnimation = (element: HTMLElement, index: number): RevealAnimation => {
+      const variant = (element.dataset.reveal || "default") as RevealVariant;
+      const direction = index % 2 === 0 ? -1 : 1;
+      const baseTo: gsap.TweenVars = {
+        autoAlpha: 1,
+        clearProps: "opacity,transform,visibility,filter,clipPath,willChange",
+      };
+
+      switch (variant) {
+        case "badge": {
+          return {
+            from: {
+              autoAlpha: 0,
+              filter: "blur(8px)",
+              scale: 0.92,
+              y: 18,
+            },
+            to: {
+              ...baseTo,
+              duration: 0.65,
+              ease: "back.out(1.75)",
+              filter: "blur(0px)",
+              scale: 1,
+              y: 0,
+            },
+          };
         }
-      );
-
-      for (const [index, item] of revealItems.entries()) {
-        item.setAttribute("style", `transition-delay:${Math.min(index * 40, 240)}ms`);
-        observer.observe(item);
+        case "callout": {
+          return {
+            from: { autoAlpha: 0, filter: "blur(10px)", scale: 0.94, y: 28 },
+            to: {
+              ...baseTo,
+              duration: 0.86,
+              ease: "expo.out",
+              filter: "blur(0px)",
+              scale: 1,
+              y: 0,
+            },
+          };
+        }
+        case "card": {
+          return {
+            from: {
+              autoAlpha: 0,
+              filter: "blur(9px)",
+              rotateX: -8,
+              scale: 0.96,
+              transformPerspective: 1000,
+              x: direction * 20,
+              y: 40,
+            },
+            to: {
+              ...baseTo,
+              duration: 0.88,
+              ease: "power3.out",
+              filter: "blur(0px)",
+              rotateX: 0,
+              scale: 1,
+              x: 0,
+              y: 0,
+            },
+          };
+        }
+        case "chips": {
+          return {
+            from: {
+              autoAlpha: 0,
+              filter: "blur(8px)",
+              rotateX: -14,
+              transformPerspective: 900,
+              y: 30,
+            },
+            to: {
+              ...baseTo,
+              duration: 0.78,
+              ease: "power3.out",
+              filter: "blur(0px)",
+              rotateX: 0,
+              y: 0,
+            },
+          };
+        }
+        case "copy": {
+          return {
+            from: { autoAlpha: 0, filter: "blur(8px)", y: 32 },
+            to: {
+              ...baseTo,
+              duration: 0.78,
+              ease: "power3.out",
+              filter: "blur(0px)",
+              y: 0,
+            },
+          };
+        }
+        case "cta": {
+          return {
+            from: { autoAlpha: 0, scale: 0.95, y: 26 },
+            to: {
+              ...baseTo,
+              duration: 0.74,
+              ease: "power3.out",
+              scale: 1,
+              y: 0,
+            },
+          };
+        }
+        case "cta-card": {
+          return {
+            from: { autoAlpha: 0, filter: "blur(14px)", scale: 0.94, y: 66 },
+            to: {
+              ...baseTo,
+              duration: 1.08,
+              ease: "power4.out",
+              filter: "blur(0px)",
+              scale: 1,
+              y: 0,
+            },
+          };
+        }
+        case "metrics": {
+          return {
+            from: { autoAlpha: 0, filter: "blur(9px)", scale: 0.96, y: 34 },
+            to: {
+              ...baseTo,
+              duration: 0.82,
+              ease: "power3.out",
+              filter: "blur(0px)",
+              scale: 1,
+              y: 0,
+            },
+          };
+        }
+        case "panel": {
+          return {
+            from: {
+              autoAlpha: 0,
+              filter: "blur(12px)",
+              rotateY: -10,
+              scale: 0.96,
+              transformPerspective: 1200,
+              x: 74,
+            },
+            to: {
+              ...baseTo,
+              duration: 1.05,
+              ease: "power4.out",
+              filter: "blur(0px)",
+              rotateY: 0,
+              scale: 1,
+              x: 0,
+            },
+          };
+        }
+        case "step": {
+          return {
+            from: {
+              autoAlpha: 0,
+              filter: "blur(9px)",
+              scale: 0.95,
+              x: direction * 38,
+              y: 24,
+            },
+            to: {
+              ...baseTo,
+              duration: 0.9,
+              ease: "power3.out",
+              filter: "blur(0px)",
+              scale: 1,
+              x: 0,
+              y: 0,
+            },
+          };
+        }
+        case "title": {
+          return {
+            from: {
+              autoAlpha: 0,
+              clipPath: "inset(0 0 100% 0)",
+              filter: "blur(10px)",
+              y: 64,
+            },
+            to: {
+              ...baseTo,
+              clipPath: "inset(0 0 0% 0)",
+              duration: 0.95,
+              ease: "power4.out",
+              filter: "blur(0px)",
+              y: 0,
+            },
+          };
+        }
+        default: {
+          return {
+            from: { autoAlpha: 0, filter: "blur(8px)", y: 26 },
+            to: {
+              ...baseTo,
+              duration: 0.76,
+              ease: "power2.out",
+              filter: "blur(0px)",
+              y: 0,
+            },
+          };
+        }
       }
+    };
+
+    const clearRevealStyles = (element: HTMLElement) => {
+      element.style.removeProperty("opacity");
+      element.style.removeProperty("transform");
+      element.style.removeProperty("visibility");
+      element.style.removeProperty("filter");
+      element.style.removeProperty("clip-path");
+      element.style.removeProperty("will-change");
+    };
+
+    let revealContext: gsap.Context | undefined;
+
+    const setupRevealAnimations = () => {
+      revealContext?.revert();
+      revealContext = undefined;
+
+      const revealItems = gsap.utils.toArray<HTMLElement>("[data-reveal]");
+      const parallaxItems = gsap.utils.toArray<HTMLElement>("[data-parallax-speed]");
+      if (revealItems.length === 0 && parallaxItems.length === 0) {
+        return;
+      }
+
+      const prefersReducedMotion = globalThis.matchMedia(
+        "(prefers-reduced-motion: reduce)"
+      ).matches;
+
+      if (prefersReducedMotion) {
+        for (const item of revealItems) {
+          clearRevealStyles(item);
+        }
+        return;
+      }
+
+      revealContext = gsap.context(() => {
+        for (const [index, item] of revealItems.entries()) {
+          const animation = getRevealAnimation(item, index);
+          gsap.set(item, {
+            ...animation.from,
+            willChange: "opacity, transform, filter",
+          });
+
+          ScrollTrigger.create({
+            once: true,
+            onEnter: () => {
+              gsap.to(item, animation.to);
+            },
+            start: "top 87%",
+            trigger: item,
+          });
+        }
+
+        for (const item of parallaxItems) {
+          const speed = Number.parseFloat(item.dataset.parallaxSpeed ?? "0");
+          if (!Number.isFinite(speed) || speed === 0) {
+            continue;
+          }
+
+          gsap.to(item, {
+            ease: "none",
+            scrollTrigger: {
+              end: "bottom bottom",
+              scrub: 0.8,
+              start: "top top",
+              trigger: document.body,
+            },
+            yPercent: speed * 100,
+          });
+        }
+      }, document.body);
+    };
+
+    const setupState = globalThis as typeof globalThis & {
+      __unimetricsLandingRevealInitialized__?: boolean;
+    };
+
+    if (!setupState.__unimetricsLandingRevealInitialized__) {
+      document.addEventListener("astro:after-swap", setupRevealAnimations);
+      document.addEventListener("astro:before-swap", () => {
+        revealContext?.revert();
+        revealContext = undefined;
+      });
+      setupState.__unimetricsLandingRevealInitialized__ = true;
     }
+
+    setupRevealAnimations();
   </script>
 
   <style>
-    [data-reveal] {
-      opacity: 0;
-      transform: translateY(20px);
-      transition:
-        opacity 0.7s ease,
-        transform 0.7s ease;
-    }
-
-    [data-reveal].is-visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
     #landing-footer footer {
       border-color: rgba(255, 255, 255, 0.1);
       background: rgba(4, 11, 18, 0.72);

@@ -67,44 +67,7 @@
         }
       },
       "eyebrow": "Untuk siapa",
-      "segment": {
-        "1": {
-          "body": "Operator yang mengelola likuiditas terkonsentrasi secara manual dan menginginkan timing, kejelasan, dan disiplin yang lebih baik.",
-          "title": "LP ritel aktif"
-        },
-        "2": {
-          "body": "Manajer yang menjalankan banyak posisi di berbagai pool dan chain serta butuh pemindaian dan prioritisasi cepat.",
-          "title": "Power user"
-        },
-        "3": {
-          "body": "Desk likuiditas profesional yang membutuhkan monitoring, kontrol, pelaporan, dan pada akhirnya dukungan eksekusi.",
-          "title": "Dana dan treasury"
-        }
-      },
       "title": "Mulai dari ritel aktif. Perluas ke dana dan treasury."
-    },
-    "core": {
-      "body": "Cerita produknya sederhana: berhenti melewatkan peristiwa range, ukur performa LP yang sebenarnya, dan kurangi hambatan operasional. Versi pertama bersifat read-only dan low-trust. Versi jangka panjang menjadi lapisan operasi yang serius bagi manajer likuiditas.",
-      "eyebrow": "Nilai inti",
-      "feature": {
-        "1": {
-          "body": "Lihat kedekatan ke batas, status pelanggaran, dan waktu di luar range sebelum fee yang hilang menumpuk.",
-          "title": "Visibilitas risiko range"
-        },
-        "2": {
-          "body": "Ukur fee, drag biaya gas, waktu tidak aktif, dan P&L bersih dibanding sekadar menahan aset.",
-          "title": "Performa bersih yang nyata"
-        },
-        "3": {
-          "body": "Pindai banyak pool, wallet, dan chain dari satu lapisan operasi yang dibuat untuk manajer aktif.",
-          "title": "Operasi multi-posisi"
-        },
-        "4": {
-          "body": "Ketahui kapan tindakan secara ekonomi layak dilakukan, bukan bereaksi pada noise atau APR headline.",
-          "title": "Sinyal siap keputusan"
-        }
-      },
-      "title": "Jangan janjikan hasil ajaib. Janjikan keputusan yang lebih baik."
     },
     "faq": {
       "body": "The product is intentionally focused for stage 1: read-only monitoring, decision support, and faster reviews for concentrated liquidity operators.",
@@ -161,9 +124,6 @@
       "eyebrow": "Akses awal",
       "title": "Bangun keunggulan operasi LP Anda sebelum mengotomatiskannya."
     },
-    "footer": {
-      "tagline": "{{siteName}} — monitoring likuiditas terkonsentrasi untuk operator serius."
-    },
     "header": {
       "brand": "{{siteName}}",
       "cta": {
@@ -219,10 +179,7 @@
       "pill": {
         "1": "Read-only by default",
         "2": "Multi-wallet monitoring",
-        "3": "Gas-aware action signals",
-        "institutional": "Roadmap institusional",
-        "intelligence": "Intelijen likuiditas terkonsentrasi",
-        "retail": "Wedge ritel"
+        "3": "Gas-aware action signals"
       },
       "subtitle": "Pantau posisi di berbagai wallet, pool, dan chain. Pahami performa bersih nyata, deteksi risiko range lebih awal, dan tahu kapan tindakan benar-benar layak. Dibangun pertama untuk LP ritel serius, dengan roadmap menuju dana, treasury, dan desk profesional.",
       "title": "Lapisan operasi untuk likuiditas terkonsentrasi."
@@ -232,8 +189,6 @@
       "faq": "FAQ",
       "features": "Fitur",
       "problem": "Problem",
-      "roadmap": "Roadmap",
-      "who": "Untuk siapa",
       "workflow": "How it works"
     },
     "problem": {
@@ -258,32 +213,6 @@
       },
       "eyebrow": "Why this exists",
       "title": "LPing should feel like yield. Too often it feels like ops."
-    },
-    "roadmap": {
-      "phase": {
-        "1": {
-          "body": "Mulai dengan monitoring read-only dan dukungan keputusan. Hambatan trust lebih rendah, time-to-value lebih cepat, dan alasan jelas bagi LP serius untuk mengadopsi produk lebih awal.",
-          "bullet": {
-            "1": "Monitoring portofolio dan posisi read-only",
-            "2": "Peringatan kedekatan tepi range dan pelanggaran",
-            "3": "Kecepatan fee dan waktu di luar range",
-            "4": "Rincian P&L bersih versus hold",
-            "5": "Tampilan tersimpan, filter, dan ekspor"
-          },
-          "title": "Wedge ritel"
-        },
-        "2": {
-          "body": "Tambahkan kontrol, pelaporan, akses data, dan akhirnya alat eksekusi untuk desk likuiditas, dana, treasury, dan operator protokol yang memperlakukan likuiditas sebagai fungsi operasi.",
-          "bullet": {
-            "1": "Monitoring tingkat desk di banyak wallet",
-            "2": "Peringatan berbasis kebijakan dan ambang operasional",
-            "3": "Pelaporan internal dan jejak audit",
-            "4": "Akses API untuk analis dan quant",
-            "5": "Lapisan eksekusi dan otomasi di tahap berikutnya"
-          },
-          "title": "Arah institusional"
-        }
-      }
     },
     "trust": {
       "body": "Stage 1 is intentionally designed to be low-friction and easy to trust. No execution, no magic promises, no fake automation story. Just a clean monitoring layer built to help serious LPs make better calls.",

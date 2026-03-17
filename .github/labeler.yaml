@@ -42,6 +42,11 @@ app:
       - any-glob-to-any-file:
           - "app/**"
 
+charts:
+  - changed-files:
+      - any-glob-to-any-file:
+          - "charts/**"
+
 cli:
   - changed-files:
       - any-glob-to-any-file:
@@ -56,6 +61,11 @@ mobile:
   - changed-files:
       - any-glob-to-any-file:
           - "mobile/**"
+
+docs:
+  - changed-files:
+      - any-glob-to-any-file:
+          - "docs/**"
 
 ui:
   - changed-files:

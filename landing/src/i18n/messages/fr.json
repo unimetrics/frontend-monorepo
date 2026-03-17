@@ -67,44 +67,7 @@
         }
       },
       "eyebrow": "Pour qui",
-      "segment": {
-        "1": {
-          "body": "Des opérateurs qui gèrent manuellement la liquidité concentrée et veulent un meilleur timing, plus de clarté et de discipline.",
-          "title": "LP retail actifs"
-        },
-        "2": {
-          "body": "Des gestionnaires qui pilotent plusieurs positions sur plusieurs pools et chaînes, avec besoin de scan rapide et de priorisation.",
-          "title": "Utilisateurs avancés"
-        },
-        "3": {
-          "body": "Des desks de liquidité professionnels qui ont besoin de monitoring, de contrôles, de reporting et, à terme, d'un support d'exécution.",
-          "title": "Fonds et trésoreries"
-        }
-      },
       "title": "Commencez avec le retail actif. Étendez vers les fonds et les trésoreries."
-    },
-    "core": {
-      "body": "La proposition produit est simple : ne plus manquer les événements de range, mesurer la performance LP réelle, et réduire la friction opérationnelle. La première version est en lecture seule et à faible exigence de confiance. La version long terme devient une véritable couche opérationnelle pour les gestionnaires de liquidité.",
-      "eyebrow": "Valeur clé",
-      "feature": {
-        "1": {
-          "body": "Visualisez la proximité des bornes, l'état de rupture et le temps hors range avant que les frais perdus ne s'accumulent.",
-          "title": "Visibilité du risque de range"
-        },
-        "2": {
-          "body": "Mesurez les frais, la friction liée au gas, le temps inactif et le P&L net par rapport à une simple stratégie buy-and-hold.",
-          "title": "Performance nette réelle"
-        },
-        "3": {
-          "body": "Scannez de nombreux pools, wallets et chaînes depuis une seule couche opérationnelle conçue pour les gestionnaires actifs.",
-          "title": "Opérations multi-positions"
-        },
-        "4": {
-          "body": "Sachez quand une action est économiquement justifiée au lieu de réagir au bruit ou à l'APR affiché.",
-          "title": "Signaux prêts pour décision"
-        }
-      },
-      "title": "Ne promettez pas un rendement magique. Promettez de meilleures décisions."
     },
     "faq": {
       "body": "The product is intentionally focused for stage 1: read-only monitoring, decision support, and faster reviews for concentrated liquidity operators.",
@@ -161,9 +124,6 @@
       "eyebrow": "Accès anticipé",
       "title": "Construisez votre avantage opérationnel LP avant de l'automatiser."
     },
-    "footer": {
-      "tagline": "{{siteName}} — monitoring de liquidité concentrée pour opérateurs exigeants."
-    },
     "header": {
       "brand": "{{siteName}}",
       "cta": {
@@ -219,10 +179,7 @@
       "pill": {
         "1": "Read-only by default",
         "2": "Multi-wallet monitoring",
-        "3": "Gas-aware action signals",
-        "institutional": "Roadmap institutionnelle",
-        "intelligence": "Intelligence de liquidité concentrée",
-        "retail": "Point d'entrée retail"
+        "3": "Gas-aware action signals"
       },
       "subtitle": "Surveillez les positions à travers wallets, pools et chaînes. Comprenez la performance nette réelle, détectez tôt le risque de range et sachez quand agir est vraiment justifié. Construit d'abord pour les LP retail sérieux, avec une roadmap vers les fonds, trésoreries et desks professionnels.",
       "title": "La couche opérationnelle pour la liquidité concentrée."
@@ -232,8 +189,6 @@
       "faq": "FAQ",
       "features": "Fonctionnalités",
       "problem": "Problem",
-      "roadmap": "Roadmap",
-      "who": "Pour qui",
       "workflow": "How it works"
     },
     "problem": {
@@ -258,32 +213,6 @@
       },
       "eyebrow": "Why this exists",
       "title": "LPing should feel like yield. Too often it feels like ops."
-    },
-    "roadmap": {
-      "phase": {
-        "1": {
-          "body": "Commencez avec du monitoring en lecture seule et de l'aide à la décision. Barrière de confiance plus faible, time-to-value plus rapide, et raison claire pour les LP sérieux d'adopter tôt.",
-          "bullet": {
-            "1": "Monitoring portfolio et positions en lecture seule",
-            "2": "Alertes de proximité des bornes et de rupture",
-            "3": "Vitesse des frais et temps hors range",
-            "4": "Décomposition du P&L net vs hold",
-            "5": "Vues enregistrées, filtres et exports"
-          },
-          "title": "Point d'entrée retail"
-        },
-        "2": {
-          "body": "Ajoutez des contrôles, du reporting, l'accès aux données et ensuite des outils d'exécution pour les desks de liquidité, fonds, trésoreries et opérateurs de protocoles qui traitent la liquidité comme une fonction opérationnelle.",
-          "bullet": {
-            "1": "Monitoring niveau desk sur de nombreux wallets",
-            "2": "Alertes basées sur des politiques et seuils opérationnels",
-            "3": "Reporting interne et piste d'audit",
-            "4": "Accès API pour analystes et quants",
-            "5": "Couche d'exécution et d'automatisation plus tard"
-          },
-          "title": "Orientation institutionnelle"
-        }
-      }
     },
     "trust": {
       "body": "Stage 1 is intentionally designed to be low-friction and easy to trust. No execution, no magic promises, no fake automation story. Just a clean monitoring layer built to help serious LPs make better calls.",

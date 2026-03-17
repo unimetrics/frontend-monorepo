@@ -16,6 +16,7 @@ import tseslint from "typescript-eslint";
 const rootTsFiles = ["*.{ts,mts,cts}"];
 const apiTsFiles = ["api/**/*.{ts,mts,cts,tsx}"];
 const appTsFiles = ["app/**/*.{ts,mts,cts,tsx}"];
+const chartsTsFiles = ["charts/**/*.{ts,mts,cts,tsx}"];
 const cliTsFiles = ["cli/**/*.{ts,mts,cts,tsx}"];
 const landingTsFiles = ["landing/**/*.{ts,mts,cts,tsx}"];
 const mobileTsFiles = ["mobile/**/*.{ts,mts,cts,tsx}"];
@@ -28,6 +29,7 @@ const allTsFiles = [
   ...rootTsFiles,
   ...apiTsFiles,
   ...appTsFiles,
+  ...chartsTsFiles,
   ...cliTsFiles,
   ...landingTsFiles,
   ...mobileTsFiles,
@@ -36,7 +38,7 @@ const allTsFiles = [
 ];
 
 const rootJsFiles = ["*.{js,mjs,cjs}"];
-const workspaceJsFiles = ["{api,app,cli,landing,mobile,ui}/**/*.{js,mjs,cjs,jsx}"];
+const workspaceJsFiles = ["{api,app,charts,cli,landing,mobile,ui}/**/*.{js,mjs,cjs,jsx}"];
 const allJsFiles = [...rootJsFiles, ...workspaceJsFiles];
 
 const astroFiles = ["landing/**/*.astro"];

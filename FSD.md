@@ -7,7 +7,7 @@ This repository uses Feature-Sliced Design (FSD) conventions with `steiger`.
 - `app`: strict FSD checks.
 - `landing`: transitional FSD checks while AstroWind structure is gradually migrated.
 - `mobile`: transitional FSD checks while Expo structure is gradually migrated.
-- `api`, `cli`, `ui`: intentionally excluded from FSD checks because they are not
+- `api`, `charts`, `cli`, `docs`, `ui`: intentionally excluded from FSD checks because they are not
   UI-sliced front-end applications.
 
 ## Target Layer Order

@@ -1,7 +1,9 @@
 packages:
   - api
   - app
+  - charts
   - cli
+  - docs
   - landing
   - mobile
   - ui

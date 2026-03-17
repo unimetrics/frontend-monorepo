@@ -49,7 +49,9 @@ jobs:
             .
             api
             app
+            charts
             cli
+            docs
             landing
             mobile
             ui
@@ -58,6 +60,7 @@ jobs:
             BSD-2-Clause
             BSD-3-Clause
             CC0-1.0
+            Custom: https://gsap.com/standard-license.
             ISC
             MIT
             MPL-2.0

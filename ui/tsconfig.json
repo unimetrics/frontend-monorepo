@@ -1,0 +1,18 @@
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "module": "ESNext",
+    "moduleResolution": "Bundler",
+    "paths": {
+      "~/*": ["./*"]
+    },
+    "types": [
+      "node"
+    ]
+  },
+  "extends": "../tsconfig.json",
+  "include": [
+    "adapters/**/*.ts",
+    "scripts/**/*.ts"
+  ]
+}
