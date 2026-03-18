@@ -6,7 +6,7 @@ export default function App() {
     <SafeAreaProvider>
       <SafeAreaView style={styles.container}>
         <View style={styles.content}>
-          <Text style={styles.title}>Welcome to Unimetrics Mobile with SSH!!!</Text>
+          <Text style={styles.title}>Welcome to Unimetrics Mobile with SSH Sign!!!</Text>
         </View>
       </SafeAreaView>
     </SafeAreaProvider>
