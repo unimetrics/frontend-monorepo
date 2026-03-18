@@ -1,0 +1,293 @@
+{
+  "blog": {
+    "backToBlog": "ब्लॉग पर वापस जाएं"
+  },
+  "footer": {
+    "footnote": {
+      "madeBy": "द्वारा बनाया गया",
+      "rightsReserved": "सभी अधिकार सुरक्षित।"
+    },
+    "group": {
+      "company": "कंपनी",
+      "platform": "प्लेटफ़ॉर्म",
+      "product": "प्रोडक्ट",
+      "support": "सपोर्ट"
+    },
+    "link": {
+      "atom": "Atom",
+      "blog": "Blog",
+      "careers": "करियर",
+      "communityForum": "कम्युनिटी फ़ोरम",
+      "customerStories": "कस्टमर स्टोरीज़",
+      "developerApi": "Developer API",
+      "docs": "Docs",
+      "electron": "Electron",
+      "enterprise": "Enterprise",
+      "features": "फ़ीचर्स",
+      "inclusion": "समावेशन",
+      "partners": "पार्टनर्स",
+      "press": "प्रेस",
+      "privacyPolicy": "गोपनीयता नीति",
+      "professionalServices": "प्रोफेशनल सर्विसेज",
+      "resources": "रिसोर्सेज",
+      "security": "सुरक्षा",
+      "shop": "Shop",
+      "skills": "Skills",
+      "socialImpact": "सामाजिक प्रभाव",
+      "status": "Status",
+      "team": "टीम",
+      "unimetricsDesktop": "{{siteName}} Desktop"
+    }
+  },
+  "header": {
+    "action": {
+      "download": "डाउनलोड"
+    },
+    "aria": {
+      "languageSwitcher": "भाषा स्विचर",
+      "mainNavigation": "मुख्य नेविगेशन",
+      "rssFeed": "RSS फ़ीड"
+    }
+  },
+  "landing": {
+    "audience": {
+      "body": "पहला वर्ज़न उन लोगों के लिए बनाया गया है जो concentrated liquidity मैनेज करने का ऑपरेशनल दर्द पहले से महसूस करते हैं। यह active LPs और power users से शुरू होता है, फिर बड़े ऑपरेटर्स के लिए गंभीर workflow में स्वाभाविक रूप से बढ़ता है।",
+      "card": {
+        "1": {
+          "body": "आप अपने ranges खुद मैनेज करते हैं, gas पर नज़र रखते हैं, और edge moves या dead capital मिस नहीं करना चाहते।",
+          "title": "सक्रिय रिटेल LPs"
+        },
+        "2": {
+          "body": "आप कई positions, wallets, या chains चलाते हैं और scan, prioritize, और review के लिए एक ही जगह चाहते हैं।",
+          "title": "पावर यूज़र्स"
+        },
+        "3": {
+          "body": "आपको ऐसा monitoring layer चाहिए जो automation के बारे में सोचने से पहले ही disciplined और extensible लगे।",
+          "title": "उभरती डेस्क्स और ट्रेज़रीज़"
+        }
+      },
+      "eyebrow": "यह किनके लिए बना है",
+      "title": "यह गंभीर LPs के लिए है, passive-yield fantasies के लिए नहीं।"
+    },
+    "faq": {
+      "body": "प्रोडक्ट को Stage 1 के लिए जानबूझकर फोकस्ड रखा गया है: read-only मॉनिटरिंग, निर्णय सहायता, और concentrated liquidity ऑपरेटर्स के लिए तेज़ रिव्यू।",
+      "eyebrow": "FAQ",
+      "item": {
+        "1": {
+          "answer": "नहीं। Stage 1 डिज़ाइन से read-only है। आप wallets कनेक्ट करते हैं ताकि positions मॉनिटर हों, performance समझ आए, और action signals मिलें, बिना प्रोडक्ट को execution power दिए।",
+          "question": "क्या {{siteName}} funds मूव करता है या positions rebalance करता है?"
+        },
+        "2": {
+          "answer": "Explorers और generic dashboards सिर्फ टुकड़े दिखाते हैं। {{siteName}} असली ऑपरेटर सवालों का जवाब देने के लिए बना है: किसे ध्यान चाहिए, क्या सच में पैसा बना रहा है, और action gas के लायक है या नहीं।",
+          "question": "सिर्फ explorer या generic analytics dashboard क्यों न इस्तेमाल करें?"
+        },
+        "3": {
+          "answer": "कोई भी sign up कर सकता है, लेकिन सबसे अच्छा fit उन active LPs के लिए है जिनके पास concentrated liquidity positions हैं और जिन्हें बेहतर monitoring, साफ performance visibility, और कम manual checking चाहिए।",
+          "question": "पहले वर्ज़न से सबसे ज़्यादा value किसे मिलती है?"
+        },
+        "4": {
+          "answer": "क्योंकि trust मायने रखता है। पहले आपको अपने positions और workflows समझने चाहिए। Execution और automation बाद में आ सकते हैं, जब monitoring, signals, और operator trust मजबूत हो जाएं।",
+          "question": "शुरुआत read-only से क्यों?"
+        }
+      },
+      "title": "पहला वर्ज़न एक ही काम पर फोकस है: LP management को कम noisy बनाना।"
+    },
+    "features": {
+      "body": "Stage 1 में सब कुछ एक ही व्यावहारिक वादे पर बना है: क्या ध्यान मांगता है यह जानो, क्या आप सच में जीत रहे हैं यह जानो, और तभी act करो जब economics समझदारी दिखाए।",
+      "card": {
+        "1": {
+          "body": "Edge proximity, breach status, और out of range बिताया समय ट्रैक करें, इससे पहले कि dead capital चुपचाप compound हो जाए।",
+          "title": "रेंज जोखिम दृश्यता"
+        },
+        "2": {
+          "body": "Fees, gas drag, inactive time, और net P&L को assets hold करने से तुलना में देखें, आधे-अधूरे metrics से अंदाज़ा लगाने के बजाय।",
+          "title": "वास्तविक नेट परफॉर्मेंस"
+        },
+        "3": {
+          "body": "कई wallets, pools, और chains में positions को एक ही operating layer से मॉनिटर करें, जो असली review workflows के लिए बना है।",
+          "title": "मल्टी-पोज़िशन मॉनिटरिंग"
+        },
+        "4": {
+          "body": "Gas-aware, action-ready signals पाएं ताकि noise पर react करना बंद हो और तभी action लें जब वह सच में justified हो।",
+          "title": "निर्णय-तैयार सिग्नल्स"
+        }
+      },
+      "eyebrow": "आपको वास्तव में क्या मिलता है",
+      "title": "हर active LP के चार मुख्य सवालों के लिए बनाया गया।"
+    },
+    "finalCta": {
+      "body": "अगर आप concentrated liquidity सक्रिय रूप से मैनेज करते हैं और positions मॉनिटर करने, true net performance समझने, और लगातार manual checking घटाने का साफ तरीका चाहते हैं, तो early access जॉइन करें।",
+      "button": {
+        "discoveryCall": "डिस्कवरी कॉल बुक करें",
+        "joinWaitlist": "Early access जॉइन करें"
+      },
+      "eyebrow": "Early access",
+      "title": "वही monitoring layer पाएं जो गंभीर LPs सच में चाहते थे।"
+    },
+    "header": {
+      "brand": "{{siteName}}",
+      "cta": {
+        "requestAccess": "एक्सेस मांगें"
+      },
+      "tagline": "Concentrated liquidity मॉनिटरिंग"
+    },
+    "hero": {
+      "cta": {
+        "primary": "Early access जॉइन करें",
+        "secondary": "देखें यह क्या हल करता है"
+      },
+      "eyebrow": "पहले read-only. Action के लिए बना, noise के लिए नहीं।",
+      "highlight": {
+        "1": {
+          "label": "लोग sign up क्यों करते हैं",
+          "value": "वे positions ढूंढें जिन्हें सच में ध्यान चाहिए।"
+        },
+        "2": {
+          "label": "वे टिके क्यों रहते हैं",
+          "value": "यह अंदाज़ा लगाना बंद करें कि fees, gas, और idle time के बाद भी आप जीत में हैं या नहीं।"
+        }
+      },
+      "panel": {
+        "decisionSignal": "कीमत upper bound के पास पहुंच रही है, लेकिन expected fee decay अभी भी rebalance को सही नहीं ठहराती। अगर gas घटे या कीमत 0.6% और move करे तो फिर जांचें।",
+        "label": "पोज़िशन कॉकपिट",
+        "metric": {
+          "actionSignal": {
+            "label": "Action signal",
+            "note": "अभी gas के लायक नहीं",
+            "value": "रुकें"
+          },
+          "feeVelocity": {
+            "label": "Fee velocity",
+            "note": "edge के पास धीमी",
+            "value": "$126/day"
+          },
+          "netPnl": {
+            "label": "नेट P&L",
+            "note": "vs hold: +1.1%",
+            "value": "+4.2%"
+          },
+          "outOfRange": {
+            "label": "Out of range",
+            "note": "पिछले 7 दिन",
+            "value": "3h 18m"
+          }
+        },
+        "pool": "ETH / USDC 0.05%",
+        "signalLabel": "Decision signal",
+        "status": "upper edge से 1.8% दूर"
+      },
+      "pill": {
+        "1": "डिफ़ॉल्ट रूप से read-only",
+        "2": "मल्टी-वॉलेट मॉनिटरिंग",
+        "3": "Gas-aware action signals"
+      },
+      "subtitle": "Wallets, pools, और chains में concentrated liquidity मॉनिटर करें। Range risk जल्दी पकड़ें, true net performance समझें, और जानें कि action लेना सच में कब gas के लायक है।",
+      "title": "Concentrated liquidity के लिए operating layer."
+    },
+    "nav": {
+      "access": "एक्सेस",
+      "faq": "FAQ",
+      "features": "फ़ीचर्स",
+      "problem": "समस्या",
+      "workflow": "यह कैसे काम करता है"
+    },
+    "problem": {
+      "body": "LP होना ऐसा लगना चाहिए जैसे पूंजी काम कर रही हो। लेकिन व्यवहार में यह अक्सर babysitting जैसा लगता है: range moves छूट जाना, लाभप्रदता साफ न होना, बहुत सारे tabs, और लगातार यह शक कि action gas के लायक भी है या नहीं।",
+      "card": {
+        "1": {
+          "body": "Positions धीरे-धीरे edge की तरफ जाती हैं, out of range हो जाती हैं, और अगर आप लगातार न देखें तो चुपचाप उपयोगी काम करना बंद कर देती हैं।",
+          "title": "रेंज मूव्स छूट जाना"
+        },
+        "2": {
+          "body": "अलग से देखने पर fees अच्छी लगती हैं, लेकिन gas, inactive time, और position management के बाद आप सच में आगे हैं या नहीं, यह समझना कठिन होता है।",
+          "title": "झूठी लाभप्रदता"
+        },
+        "3": {
+          "body": "Wallets, explorers, dashboards, pool views, और spreadsheets सब टुकड़े दिखाते हैं। इनमें से कोई भी एक operating surface जैसा महसूस नहीं होता।",
+          "title": "बिखरी हुई ट्रैकिंग"
+        },
+        "4": {
+          "body": "जब position अस्वस्थ लगती है तब भी असली सवाल यह होता है कि अभी छूना आर्थिक रूप से सही है या बस और gas जला देगा।",
+          "title": "Gas पर अंदाज़ा"
+        }
+      },
+      "eyebrow": "यह क्यों मौजूद है",
+      "title": "LPing को yield जैसा लगना चाहिए। बहुत बार यह ops जैसा लगता है।"
+    },
+    "trust": {
+      "body": "Stage 1 को जानबूझकर low-friction और भरोसेमंद बनाया गया है। न execution, न जादुई वादे, न नकली automation कहानी। बस एक साफ monitoring layer, जो गंभीर LPs को बेहतर फैसले लेने में मदद करे।",
+      "eyebrow": "यह प्रोडक्ट अपनाना सुरक्षित क्यों लगता है",
+      "point": {
+        "1": {
+          "body": "आप wallets को positions देखने के लिए कनेक्ट करते हैं, प्रोडक्ट को funds मूव करने की अनुमति देने के लिए नहीं।",
+          "title": "पहले read-only"
+        },
+        "2": {
+          "body": "प्रोडक्ट operator सवालों और traceable metrics के आसपास बना है, vanity dashboards या headline APR के आसपास नहीं।",
+          "title": "डिज़ाइन से पारदर्शी"
+        },
+        "3": {
+          "body": "Saved views, digests, और action signals routine checking घटाने के लिए बने हैं, न कि babysit करने के लिए एक और tab बनाने के लिए।",
+          "title": "Noise से ऊपर workflow"
+        }
+      },
+      "title": "वास्तविक LP workflows के लिए पर्याप्त गंभीर। जल्दी शुरू करने के लिए पर्याप्त सरल।"
+    },
+    "workflow": {
+      "body": "पहला अनुभव सरल लगना चाहिए: connect, scan, decide. न strategy theatre. न clutter. बस review loop चलाने का बेहतर तरीका जिसमें active LPs पहले से रहते हैं।",
+      "callout": {
+        "body": "लक्ष्य आपको ज़्यादा trade करने को कहना नहीं है। लक्ष्य यह है कि आप उन कुछ पलों को नोटिस करें जब कुछ करना सच में मायने रखता है।",
+        "label": "इसे उपयोगी क्या बनाता है"
+      },
+      "eyebrow": "यह कैसे काम करता है",
+      "step": {
+        "1": {
+          "body": "Concentrated liquidity के लिए इस्तेमाल किए जाने वाले wallets कनेक्ट करें और अपनी positions को एक साफ monitoring view में लाएं।",
+          "title": "सब कुछ एक जगह देखें"
+        },
+        "2": {
+          "body": "Edge proximity, out of range समय, fee velocity बदलाव, और true net performance देखें, बिना पांच tools जोड़ने के।",
+          "title": "जानें क्या बदला"
+        },
+        "3": {
+          "body": "Action signals और gas-aware context का उपयोग करें ताकि तय कर सकें अभी act करना है, इंतज़ार करना है, या noise को अनदेखा करना है।",
+          "title": "सिर्फ तब act करें जब यह वर्थ हो"
+        }
+      },
+      "title": "Active LPs के लिए बेहतर review loop."
+    }
+  },
+  "nav": {
+    "group": {
+      "blog": "ब्लॉग",
+      "homes": "होम्स",
+      "landing": "लैंडिंग",
+      "pages": "पेज"
+    },
+    "link": {
+      "about": "हमारे बारे में",
+      "article": "आर्टिकल",
+      "articleMdx": "आर्टिकल (MDX के साथ)",
+      "blogList": "ब्लॉग सूची",
+      "categoryPage": "कैटेगरी पेज",
+      "clickThrough": "क्लिक-थ्रू",
+      "contact": "संपर्क",
+      "featuresAnchor": "फ़ीचर्स (एंकर लिंक)",
+      "leadGeneration": "लीड जनरेशन",
+      "longFormSales": "लॉन्ग-फॉर्म सेल्स",
+      "mobileApp": "मोबाइल ऐप",
+      "personal": "पर्सनल",
+      "preLaunch": "जल्द आ रहा है या प्री-लॉन्च",
+      "pricing": "प्राइसिंग",
+      "privacyPolicy": "गोपनीयता नीति",
+      "productDetails": "प्रोडक्ट विवरण (या सर्विसेज)",
+      "saas": "SaaS",
+      "services": "सर्विसेज",
+      "startup": "स्टार्टअप",
+      "subscription": "सब्सक्रिप्शन",
+      "tagPage": "टैग पेज",
+      "terms": "शर्तें",
+      "widgets": "विजेट्स"
+    }
+  }
+}
