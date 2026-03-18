@@ -1,0 +1,76 @@
+name: CMS Pages PR to Main
+
+on:
+  push:
+    branches:
+      - cms/posts # branch configured for Pages CMS updates
+    paths:
+      - "landing/src/data/post/**/*.md"
+      - "landing/src/data/post/**/*.mdx"
+  workflow_dispatch:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: false
+
+permissions:
+  contents: read
+  pull-requests: write
+
+jobs:
+  cms-pages-pr:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout pushed ref for change detection
+        if: github.event_name == 'push'
+        uses: actions/checkout@v5
+        with:
+          fetch-depth: 20
+          persist-credentials: false
+
+      - name: Detect content-only changes
+        id: content-guard
+        if: github.event_name == 'push'
+        uses: step-security/paths-filter@6eee183b0d2fd101d3f8ee2935c127bca14c5625 # v3
+        with:
+          base: ${{ github.ref }}
+          predicate-quantifier: every
+          filters: |
+            allowed:
+              - "landing/src/data/post/**/*.{md,mdx}"
+            disallowed:
+              - "!landing/src/data/post/**/*.md"
+              - "!landing/src/data/post/**/*.mdx"
+
+      - name: Checkout trusted automation code
+        uses: actions/checkout@v5
+        if: |
+          github.event_name == 'workflow_dispatch' ||
+          (steps.content-guard.outputs.allowed == 'true' && steps.content-guard.outputs.disallowed != 'true')
+        with:
+          ref: main
+
+      - name: Create helper bot token
+        id: helper-bot-token
+        if: |
+          github.event_name == 'workflow_dispatch' ||
+          (steps.content-guard.outputs.allowed == 'true' && steps.content-guard.outputs.disallowed != 'true')
+        uses: ./.github/actions/create-helper-bot-token
+        with:
+          app-id: ${{ secrets.HELPER_BOT_ID }}
+          private-key: ${{ secrets.HELPER_BOT_KEY }}
+
+      - name: Create or update CMS pages PR to main
+        if: |
+          github.event_name == 'workflow_dispatch' ||
+          (steps.content-guard.outputs.allowed == 'true' && steps.content-guard.outputs.disallowed != 'true')
+        env:
+          GITHUB_TOKEN: ${{ steps.helper-bot-token.outputs.token }}
+          GITHUB_REPOSITORY: ${{ github.repository }}
+          SOURCE_BRANCH: cms/posts
+          TARGET_BRANCHES: main
+        run: bash scripts/github/sync-branch-prs/sync-branch-prs.sh
+
+      - name: No-op for disallowed push changes
+        if: github.event_name == 'push' && (steps.content-guard.outputs.allowed != 'true' || steps.content-guard.outputs.disallowed == 'true')
+        run: echo "Guard blocked this run because push changed files outside landing/src/data/post/*.md|*.mdx."

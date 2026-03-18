@@ -3,6 +3,7 @@
 ## Mandatory References
 
 - `.ai/style-guide.md`
+- `.ai/project-architecture.md`
 - `.ai/commit-message-policy.md`
 - `.ai/code-review-policy.md`
 

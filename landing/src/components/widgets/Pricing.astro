@@ -46,8 +46,8 @@ const {
                 {price && period && (
                   <div class="flex w-full max-w-sm flex-col justify-between rounded-lg border border-gray-200 bg-white px-6 py-8 text-center shadow backdrop-blur dark:border-gray-700 dark:bg-slate-900">
                     {hasRibbon && ribbonTitle && (
-                      <div class="absolute right-[-5px] top-[-5px] z-[1] h-[100px] w-[100px] overflow-hidden text-right 2xl:right-[-8px] 2xl:top-[-10px] rtl:left-[-8px] rtl:right-auto rtl:2xl:left-[-10px]">
-                        <span class="absolute right-[-21px] top-[19px] block w-full rotate-45 bg-green-700 text-center text-[10px] font-bold uppercase leading-5 text-white shadow-[0_3px_10px_-5px_rgba(0,0,0,0.3)] before:absolute before:left-0 before:top-full before:z-[-1] before:border-[3px] before:border-b-transparent before:border-l-green-800 before:border-r-transparent before:border-t-green-800 before:content-[''] after:absolute after:right-0 after:top-full after:z-[-1] after:border-[3px] after:border-b-transparent after:border-l-transparent after:border-r-green-800 after:border-t-green-800 after:content-[''] rtl:left-[-21px] rtl:right-auto rtl:-rotate-45">
+                      <div class="absolute right-[-5px] top-[-5px] z-[1] h-[100px] w-[100px] overflow-hidden text-right 2xl:right-[-8px] 2xl:top-[-10px] rtl:left-[-8px] rtl:right-auto rtl:text-left rtl:2xl:left-[-10px]">
+                        <span class="absolute right-[-21px] top-[19px] block w-full rotate-45 bg-green-700 text-center text-[10px] font-bold uppercase leading-5 text-white shadow-[var(--shadow-ribbon)] before:absolute before:left-0 before:top-full before:z-[-1] before:border-[3px] before:border-b-transparent before:border-l-green-800 before:border-r-transparent before:border-t-green-800 before:content-[''] after:absolute after:right-0 after:top-full after:z-[-1] after:border-[3px] after:border-b-transparent after:border-l-transparent after:border-r-green-800 after:border-t-green-800 after:content-[''] rtl:left-[-21px] rtl:right-auto rtl:-rotate-45 rtl:before:left-auto rtl:before:right-0 rtl:before:border-l-transparent rtl:before:border-r-green-800 rtl:after:right-auto rtl:after:left-0 rtl:after:border-l-green-800 rtl:after:border-r-transparent">
                           {ribbonTitle}
                         </span>
                       </div>
@@ -73,12 +73,12 @@ const {
                         </span>
                       </div>
                       {items && (
-                        <ul class="my-8 space-y-2 text-left md:my-10">
+                        <ul class="my-8 space-y-2 text-left md:my-10 rtl:text-right">
                           {items.map(
                             ({ description, icon }) =>
                               description && (
-                                <li class="mb-1.5 flex items-start space-x-3 leading-7">
-                                  <div class="mt-1 rounded-full bg-ui-primary">
+                                <li class="mb-1.5 flex items-start space-x-3 leading-7 rtl:space-x-reverse">
+                                  <div class="mt-1 rounded-full bg-primary">
                                     <Icon
                                       name={icon ? icon : "tabler:check"}
                                       class="h-5 w-5 p-1 font-bold text-white"

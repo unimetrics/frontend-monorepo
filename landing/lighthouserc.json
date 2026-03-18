@@ -1,0 +1,25 @@
+{
+  "ci": {
+    "assert": {
+      "assertions": {
+        "categories:accessibility": "off",
+        "categories:best-practices": "off",
+        "categories:performance": "off",
+        "categories:pwa": "off",
+        "categories:seo": "off",
+        "document-title": "error"
+      }
+    },
+    "collect": {
+      "numberOfRuns": 1,
+      "settings": {
+        "chromeFlags": "--headless --no-sandbox --disable-gpu --disable-dev-shm-usage"
+      },
+      "startServerCommand": "npm run start",
+      "startServerReadyPattern": "Local:",
+      "url": [
+        "http://localhost:3000/lend"
+      ]
+    }
+  }
+}

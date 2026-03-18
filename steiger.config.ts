@@ -1,6 +1,7 @@
 import fsd from "@feature-sliced/steiger-plugin";
 import { defineConfig } from "steiger";
 
+// TODO: gradually remove while migrating landing and mobile to fsd
 const legacyRules = {
   "fsd/ambiguous-slice-names": "off",
   "fsd/excessive-slicing": "off",
@@ -36,7 +37,7 @@ export default defineConfig([
       "**/public/**",
       "./api/**",
       "./cli/**",
-      "./ui/**",
+      "./design-tokens/**",
     ],
   },
   {

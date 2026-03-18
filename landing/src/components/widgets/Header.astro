@@ -7,6 +7,8 @@ import Button from "~/components/ui/Button.astro";
 
 import { getHomePermalink } from "~/utils/permalinks";
 import { trimSlash, getAsset } from "~/utils/permalinks";
+import { localizeHref } from "~/i18n/links";
+import { defaultLocale } from "~/i18n/routing";
 import type { CallToAction } from "~/types";
 
 interface Link {
@@ -20,9 +22,20 @@ interface MenuLink extends Link {
   links?: Array<MenuLink>;
 }
 
+interface LocaleLink {
+  href: string;
+  isCurrent: boolean;
+  label: string;
+  locale: string;
+}
+
 export interface Props {
   id?: string;
   links?: Array<MenuLink>;
+  localeLinks?: Array<LocaleLink>;
+  localeSwitcherAriaLabel?: string;
+  mainNavigationAriaLabel?: string;
+  rssAriaLabel?: string;
   actions?: Array<CallToAction>;
   isSticky?: boolean;
   isDark?: boolean;
@@ -30,11 +43,16 @@ export interface Props {
   showToggleTheme?: boolean;
   showRssFeed?: boolean;
   position?: string;
+  variant?: "default" | "landing";
 }
 
 const {
   id = "header",
   links = [],
+  localeLinks = [],
+  localeSwitcherAriaLabel = "Language switcher",
+  mainNavigationAriaLabel = "Main navigation",
+  rssAriaLabel = "RSS feed",
   actions = [],
   isSticky = false,
   isDark = false,
@@ -42,53 +60,77 @@ const {
   showToggleTheme = false,
   showRssFeed = false,
   position = "center",
+  variant = "default",
 } = Astro.props;
 
+const currentLocale = Astro.currentLocale ?? defaultLocale;
 const currentPath = `/${trimSlash(new URL(Astro.url).pathname)}`;
+const homeHref = localizeHref(currentLocale, getHomePermalink());
+const isLanding = variant === "landing";
 ---
 
 <header
   class:list={[
-    { sticky: isSticky, relative: !isSticky, dark: isDark },
-    "top-0 z-40 mx-auto w-full flex-none border-b border-gray-50/0 transition-[opacity] ease-in-out",
+    isLanding
+      ? "sticky top-0 z-40 mx-auto w-full flex-none border-b border-white/10 bg-[#061018]/70 backdrop-blur-xl"
+      : "top-0 z-40 mx-auto w-full flex-none border-b border-gray-50/0 transition-[opacity] ease-in-out",
+    !isLanding && { sticky: isSticky, relative: !isSticky, dark: isDark },
+    isLanding && { dark: isDark },
   ]}
-  {...isSticky ? { "data-aw-sticky-header": true } : {}}
+  {...!isLanding && isSticky ? { "data-aw-sticky-header": true } : {}}
   {...id ? { id } : {}}
 >
-  <div class="absolute inset-0"></div>
+  {!isLanding && <div class="absolute inset-0" />}
   <div
     class:list={[
-      "relative mx-auto w-full px-3 py-3 text-ui-text-default md:px-6",
-      {
+      isLanding
+        ? "mx-auto flex min-h-20 w-full max-w-7xl items-center justify-between gap-6 px-5 text-white sm:px-8 lg:px-10"
+        : "relative mx-auto w-full px-3 py-3 text-text-default md:px-6",
+      !isLanding && {
         "md:flex md:justify-between": position !== "center",
       },
-      {
+      !isLanding && {
         "md:grid md:grid-cols-3 md:items-center": position === "center",
       },
-      {
+      !isLanding && {
         "max-w-7xl": !isFullWidth,
       },
     ]}
   >
     <div
       class:list={[
-        { "mr-auto rtl:ml-auto rtl:mr-0": position === "right" },
-        "flex justify-between",
+        isLanding ? "flex items-center justify-between" : "flex justify-between",
+        !isLanding && { "mr-auto rtl:ml-auto rtl:mr-0": position === "right" },
       ]}
     >
-      <a class="flex items-center" href={getHomePermalink()}>
+      <a
+        class:list={["flex items-center", isLanding ? "text-white" : ""]}
+        href={homeHref}
+      >
         <Logo />
       </a>
-      <div class="flex items-center md:hidden">
-        <ToggleMenu />
-      </div>
+      {
+        !isLanding && (
+          <div class="flex items-center md:hidden">
+            <ToggleMenu />
+          </div>
+        )
+      }
     </div>
     <nav
-      class="hidden w-full items-center overflow-y-auto overflow-x-hidden text-ui-text-default md:mx-5 md:flex md:w-auto md:justify-self-center md:overflow-x-auto md:overflow-y-visible"
-      aria-label="Main navigation"
+      class:list={[
+        isLanding
+          ? "hidden items-center text-sm text-white/65 lg:flex"
+          : "hidden w-full items-center overflow-y-auto overflow-x-hidden text-text-default md:mx-5 md:flex md:w-auto md:justify-self-center md:overflow-x-auto md:overflow-y-visible",
+      ]}
+      aria-label={mainNavigationAriaLabel}
     >
       <ul
-        class="flex w-full flex-col text-xl font-medium tracking-[0.01rem] md:w-auto md:flex-row md:justify-center md:self-center md:text-[0.9375rem]"
+        class:list={[
+          isLanding
+            ? "flex items-center gap-7"
+            : "flex w-full flex-col text-xl font-medium tracking-[0.01rem] md:w-auto md:flex-row md:justify-center md:self-center md:text-[0.9375rem]",
+        ]}
       >
         {
           links.map(({ text, href, links }) => (
@@ -97,21 +139,37 @@ const currentPath = `/${trimSlash(new URL(Astro.url).pathname)}`;
                 <>
                   <button
                     type="button"
-                    class="hover:text-link flex items-center whitespace-nowrap px-4 py-3 dark:hover:text-white"
+                    class:list={[
+                      isLanding
+                        ? "flex items-center whitespace-nowrap transition hover:text-white"
+                        : "hover:text-link flex items-center whitespace-nowrap px-4 py-3 dark:hover:text-white",
+                    ]}
                   >
                     {text}{" "}
                     <Icon
                       name="tabler:chevron-down"
-                      class="ml-0.5 hidden h-3.5 w-3.5 md:inline rtl:ml-0 rtl:mr-0.5"
+                      class:list={[
+                        isLanding
+                          ? "ml-1 inline h-3.5 w-3.5 rtl:ml-0 rtl:mr-1"
+                          : "ml-0.5 hidden h-3.5 w-3.5 md:inline rtl:ml-0 rtl:mr-0.5",
+                      ]}
                     />
                   </button>
-                  <ul class="dropdown-menu dark:md:bg-dark rounded pl-4 font-medium drop-shadow-xl md:absolute md:hidden md:min-w-[200px] md:bg-white/90 md:pl-0 md:backdrop-blur-md">
+                  <ul
+                    class:list={[
+                      isLanding
+                        ? "dropdown-menu rounded-xl border border-white/10 bg-[#07131d] p-2 text-sm md:absolute md:hidden md:min-w-[220px]"
+                        : "dropdown-menu dark:md:bg-dark rounded pl-4 font-medium drop-shadow-xl md:absolute md:hidden md:min-w-[200px] md:bg-white/90 md:pl-0 md:backdrop-blur-md rtl:pl-0 rtl:pr-4 md:rtl:pr-0",
+                    ]}
+                  >
                     {links.map(({ text: text2, href: href2 }) => (
                       <li>
                         <a
                           class:list={[
-                            "hover:text-link whitespace-no-wrap block px-5 py-2 first:rounded-t last:rounded-b dark:hover:bg-gray-700 dark:hover:text-white md:hover:bg-gray-100",
-                            { "aw-link-active": href2 === currentPath },
+                            isLanding
+                              ? "block whitespace-nowrap rounded-lg px-4 py-2 text-white/75 transition hover:bg-white/10 hover:text-white"
+                              : "hover:text-link whitespace-no-wrap block px-5 py-2 first:rounded-t last:rounded-b dark:hover:bg-gray-700 dark:hover:text-white md:hover:bg-gray-100",
+                            !isLanding && { "aw-link-active": href2 === currentPath },
                           ]}
                           href={href2}
                         >
@@ -124,8 +182,10 @@ const currentPath = `/${trimSlash(new URL(Astro.url).pathname)}`;
               ) : (
                 <a
                   class:list={[
-                    "hover:text-link flex items-center whitespace-nowrap px-4 py-3 dark:hover:text-white",
-                    { "aw-link-active": href === currentPath },
+                    isLanding
+                      ? "flex items-center whitespace-nowrap transition hover:text-white"
+                      : "hover:text-link flex items-center whitespace-nowrap px-4 py-3 dark:hover:text-white",
+                    !isLanding && { "aw-link-active": href === currentPath },
                   ]}
                   href={href}
                 >
@@ -139,12 +199,56 @@ const currentPath = `/${trimSlash(new URL(Astro.url).pathname)}`;
     </nav>
     <div
       class:list={[
-        { "ml-auto rtl:ml-0 rtl:mr-auto": position === "left" },
-        "fixed bottom-0 left-0 hidden w-full items-center justify-end p-3 md:static md:mb-0 md:flex md:w-auto md:self-center md:justify-self-end md:p-0 rtl:left-auto rtl:right-0",
+        isLanding
+          ? "hidden items-center gap-3 sm:flex"
+          : "fixed bottom-0 left-0 hidden w-full items-center justify-end p-3 md:static md:mb-0 md:flex md:w-auto md:self-center md:justify-self-end md:p-0 rtl:left-auto rtl:right-0",
+        !isLanding && { "ml-auto rtl:ml-0 rtl:mr-auto": position === "left" },
       ]}
     >
-      <div class="flex w-full items-center justify-between md:w-auto">
+      <div
+        class:list={[
+          isLanding
+            ? "flex items-center gap-3"
+            : "flex w-full items-center justify-between md:w-auto",
+        ]}
+      >
         <div class="flex">
+          {
+            localeLinks.length > 0 && (
+              <nav
+                aria-label={localeSwitcherAriaLabel}
+                class:list={[
+                  isLanding
+                    ? "hidden sm:block"
+                    : "mr-1 hidden md:block rtl:mr-0 rtl:ml-1",
+                ]}
+              >
+                <ul class="flex items-center gap-1">
+                  {localeLinks.map(({ href, isCurrent, label, locale }) => (
+                    <li>
+                      <a
+                        href={href}
+                        hreflang={locale}
+                        aria-current={isCurrent ? "page" : undefined}
+                        class:list={[
+                          "inline-flex rounded-md px-2 py-1 text-xs font-semibold transition",
+                          isLanding
+                            ? isCurrent
+                              ? "bg-white/20 text-white"
+                              : "text-white/60 hover:bg-white/10 hover:text-white"
+                            : isCurrent
+                              ? "bg-gray-200 text-text-default dark:bg-gray-700 dark:text-white"
+                              : "text-text-muted hover:bg-gray-100 hover:text-text-default dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white",
+                        ]}
+                      >
+                        {label}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </nav>
+            )
+          }
           {
             showToggleTheme && (
               <ToggleTheme iconClass="w-6 h-6 md:w-5 md:h-5 md:inline-block" />
@@ -153,8 +257,8 @@ const currentPath = `/${trimSlash(new URL(Astro.url).pathname)}`;
           {
             showRssFeed && (
               <a
-                class="inline-flex items-center rounded-lg p-2.5 text-sm text-ui-text-muted hover:bg-gray-100 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-700"
-                aria-label="RSS Feed"
+                class="inline-flex items-center rounded-lg p-2.5 text-sm text-text-muted hover:bg-gray-100 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-700"
+                aria-label={rssAriaLabel}
                 href={getAsset("/rss.xml")}
               >
                 <Icon name="tabler:rss" class="h-5 w-5" />
@@ -164,11 +268,15 @@ const currentPath = `/${trimSlash(new URL(Astro.url).pathname)}`;
         </div>
         {
           actions?.length ? (
-            <span class="ml-4 rtl:ml-0 rtl:mr-4">
+            <span class:list={[isLanding ? "" : "ml-4 rtl:ml-0 rtl:mr-4"]}>
               {actions.map(btnProps => (
                 <Button
                   {...btnProps}
-                  class="px-5.5 ml-2 w-auto py-2.5 text-sm font-semibold shadow-none md:px-6"
+                  class={
+                    isLanding
+                      ? "ml-2 !inline-flex !min-h-12 !w-auto !items-center !justify-center !rounded-full !border-white/15 !bg-white/5 !px-5 !py-2.5 !text-sm !font-semibold !text-white !shadow-none transition duration-200 hover:!-translate-y-0.5 hover:!bg-white/10 rtl:ml-0 rtl:mr-2"
+                      : "px-5.5 ml-2 w-auto py-2.5 text-sm font-semibold shadow-none md:px-6 rtl:ml-0 rtl:mr-2"
+                  }
                 />
               ))}
             </span>

@@ -2,6 +2,9 @@ import type { ImageMetadata } from "astro";
 import type { HTMLAttributes } from "astro/types";
 
 import { getImage } from "astro:assets";
+import fromPairs from "lodash/fromPairs";
+import sortBy from "lodash/sortBy";
+import uniq from "lodash/uniq";
 import { parseUrl, transformUrl } from "unpic";
 
 export interface ImageProps extends Omit<HTMLAttributes<"img">, "src"> {
@@ -205,7 +208,9 @@ const getStyle = ({
     styleEntries.push(["max-width", "100%"], ["max-height", "100%"]);
   }
 
-  const styles = Object.fromEntries(styleEntries.filter(([, value]) => value));
+  const styles = fromPairs(
+    styleEntries.filter(([, value]) => value) as Array<[string, string]>
+  );
 
   return Object.entries(styles)
     .map(([key, value]) => `${key}: ${value};`)
@@ -377,7 +382,7 @@ export async function getImagesOptimized(
   }
 
   let breakpoints = getBreakpoints({ breakpoints: widths, layout: layout, width: width });
-  breakpoints = [...new Set(breakpoints)].sort((a, b) => a - b);
+  breakpoints = sortBy(uniq(breakpoints));
 
   const srcset = (
     await transform(

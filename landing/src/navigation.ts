@@ -1,192 +1,172 @@
-import { getAsset, getBlogPermalink, getPermalink } from "./utils/permalinks";
+import { getMessages, t } from "~/i18n";
+import { localizeHref } from "~/i18n/links";
+import { defaultLocale } from "~/i18n/routing";
+import { getAsset, getBlogPermalink, getPermalink } from "~/utils/permalinks";
 
-export const headerData = {
-  actions: [
-    {
-      href: "https://github.com/unimetrics/frontend-monorepo",
-      target: "_blank",
-      text: "Download",
-    },
-  ],
-  links: [
-    {
-      links: [
-        {
-          href: getPermalink("/homes/saas"),
-          text: "SaaS",
-        },
-        {
-          href: getPermalink("/homes/startup"),
-          text: "Startup",
-        },
-        {
-          href: getPermalink("/homes/mobile-app"),
-          text: "Mobile App",
-        },
-        {
-          href: getPermalink("/homes/personal"),
-          text: "Personal",
-        },
-      ],
-      text: "Homes",
-    },
-    {
-      links: [
-        {
-          href: getPermalink("/#features"),
-          text: "Features (Anchor Link)",
-        },
-        {
-          href: getPermalink("/services"),
-          text: "Services",
-        },
-        {
-          href: getPermalink("/pricing"),
-          text: "Pricing",
-        },
-        {
-          href: getPermalink("/about"),
-          text: "About us",
-        },
-        {
-          href: getPermalink("/contact"),
-          text: "Contact",
-        },
-        {
-          href: getPermalink("/terms"),
-          text: "Terms",
-        },
-        {
-          href: getPermalink("/privacy"),
-          text: "Privacy policy",
-        },
-      ],
-      text: "Pages",
-    },
-    {
-      links: [
-        {
-          href: getPermalink("/landing/lead-generation"),
-          text: "Lead Generation",
-        },
-        {
-          href: getPermalink("/landing/sales"),
-          text: "Long-form Sales",
-        },
-        {
-          href: getPermalink("/landing/click-through"),
-          text: "Click-Through",
-        },
-        {
-          href: getPermalink("/landing/product"),
-          text: "Product Details (or Services)",
-        },
-        {
-          href: getPermalink("/landing/pre-launch"),
-          text: "Coming Soon or Pre-Launch",
-        },
-        {
-          href: getPermalink("/landing/subscription"),
-          text: "Subscription",
-        },
-      ],
-      text: "Landing",
-    },
-    {
-      links: [
-        {
-          href: getBlogPermalink(),
-          text: "Blog List",
-        },
-        {
-          href: getPermalink("get-started-website-with-astro-tailwind-css", "post"),
-          text: "Article",
-        },
-        {
-          href: getPermalink("markdown-elements-demo-post", "post"),
-          text: "Article (with MDX)",
-        },
-        {
-          href: getPermalink("tutorials", "category"),
-          text: "Category Page",
-        },
-        {
-          href: getPermalink("astro", "tag"),
-          text: "Tag Page",
-        },
-      ],
-      text: "Blog",
-    },
-    {
-      href: "#",
-      text: "Widgets",
-    },
-  ],
+const getTranslator = (locale: string) => {
+  const messages = getMessages(locale);
+
+  return (key: string) => t(messages, key);
 };
 
-export const footerData = {
-  footNote: `
-    Made by <a class="text-blue-600 underline dark:text-ui-text-muted" href="https://github.com/unimetrics"> Arthelokyo</a> · All rights reserved.
-  `,
-  links: [
-    {
-      links: [
-        { href: "#", text: "Features" },
-        { href: "#", text: "Security" },
-        { href: "#", text: "Team" },
-        { href: "#", text: "Enterprise" },
-        { href: "#", text: "Customer stories" },
-        { href: "#", text: "Pricing" },
-        { href: "#", text: "Resources" },
-      ],
-      title: "Product",
-    },
-    {
-      links: [
-        { href: "#", text: "Developer API" },
-        { href: "#", text: "Partners" },
-        { href: "#", text: "Atom" },
-        { href: "#", text: "Electron" },
-        { href: "#", text: "Unimetrics Desktop" },
-      ],
-      title: "Platform",
-    },
-    {
-      links: [
-        { href: "#", text: "Docs" },
-        { href: "#", text: "Community Forum" },
-        { href: "#", text: "Professional Services" },
-        { href: "#", text: "Skills" },
-        { href: "#", text: "Status" },
-      ],
-      title: "Support",
-    },
-    {
-      links: [
-        { href: "#", text: "About" },
-        { href: "#", text: "Blog" },
-        { href: "#", text: "Careers" },
-        { href: "#", text: "Press" },
-        { href: "#", text: "Inclusion" },
-        { href: "#", text: "Social Impact" },
-        { href: "#", text: "Shop" },
-      ],
-      title: "Company",
-    },
-  ],
-  secondaryLinks: [
-    { href: getPermalink("/terms"), text: "Terms" },
-    { href: getPermalink("/privacy"), text: "Privacy Policy" },
-  ],
-  socialLinks: [
-    { ariaLabel: "X", href: "#", icon: "tabler:brand-x" },
-    { ariaLabel: "Instagram", href: "#", icon: "tabler:brand-instagram" },
-    { ariaLabel: "Facebook", href: "#", icon: "tabler:brand-facebook" },
-    { ariaLabel: "RSS", href: getAsset("/rss.xml"), icon: "tabler:rss" },
-    {
-      ariaLabel: "Github",
-      href: "https://github.com/unimetrics/frontend-monorepo",
-      icon: "tabler:brand-github",
-    },
-  ],
+const getLocalize = (locale: string) => (href: string) => localizeHref(locale, href);
+
+export const getHeaderData = (locale: string = defaultLocale) => {
+  const translate = getTranslator(locale);
+  const localize = getLocalize(locale);
+
+  return {
+    actions: [
+      {
+        href: "https://github.com/unimetrics/frontend-monorepo",
+        target: "_blank",
+        text: translate("header.action.download"),
+      },
+    ],
+    links: [
+      {
+        links: [
+          {
+            href: localize(getPermalink("/#features")),
+            text: translate("nav.link.featuresAnchor"),
+          },
+          {
+            href: localize(getPermalink("/services")),
+            text: translate("nav.link.services"),
+          },
+          {
+            href: localize(getPermalink("/pricing")),
+            text: translate("nav.link.pricing"),
+          },
+          {
+            href: localize(getPermalink("/about")),
+            text: translate("nav.link.about"),
+          },
+          {
+            href: localize(getPermalink("/contact")),
+            text: translate("nav.link.contact"),
+          },
+          {
+            href: localize(getPermalink("/terms")),
+            text: translate("nav.link.terms"),
+          },
+          {
+            href: localize(getPermalink("/privacy")),
+            text: translate("nav.link.privacyPolicy"),
+          },
+        ],
+        text: translate("nav.group.pages"),
+      },
+      {
+        links: [
+          {
+            href: localize(getBlogPermalink()),
+            text: translate("nav.link.blogList"),
+          },
+          {
+            href: localize(
+              getPermalink("get-started-website-with-astro-tailwind-css", "post")
+            ),
+            text: translate("nav.link.article"),
+          },
+          {
+            href: localize(getPermalink("markdown-elements-demo-post", "post")),
+            text: translate("nav.link.articleMdx"),
+          },
+          {
+            href: localize(getPermalink("tutorials", "category")),
+            text: translate("nav.link.categoryPage"),
+          },
+          {
+            href: localize(getPermalink("astro", "tag")),
+            text: translate("nav.link.tagPage"),
+          },
+        ],
+        text: translate("nav.group.blog"),
+      },
+      {
+        href: "#",
+        text: translate("nav.link.widgets"),
+      },
+    ],
+  };
+};
+
+export const getFooterData = (locale: string = defaultLocale) => {
+  const translate = getTranslator(locale);
+  const localize = getLocalize(locale);
+
+  return {
+    footNote: `
+      ${translate("footer.footnote.madeBy")} <a class="text-blue-600 underline dark:text-text-muted" href="https://github.com/unimetrics"> Arthelokyo</a> · ${translate("footer.footnote.rightsReserved")}
+    `,
+    links: [
+      {
+        links: [
+          { href: "#", text: translate("footer.link.features") },
+          { href: "#", text: translate("footer.link.security") },
+          { href: "#", text: translate("footer.link.team") },
+          { href: "#", text: translate("footer.link.enterprise") },
+          { href: "#", text: translate("footer.link.customerStories") },
+          { href: "#", text: translate("nav.link.pricing") },
+          { href: "#", text: translate("footer.link.resources") },
+        ],
+        title: translate("footer.group.product"),
+      },
+      {
+        links: [
+          { href: "#", text: translate("footer.link.developerApi") },
+          { href: "#", text: translate("footer.link.partners") },
+          { href: "#", text: translate("footer.link.atom") },
+          { href: "#", text: translate("footer.link.electron") },
+          { href: "#", text: translate("footer.link.unimetricsDesktop") },
+        ],
+        title: translate("footer.group.platform"),
+      },
+      {
+        links: [
+          { href: "#", text: translate("footer.link.docs") },
+          { href: "#", text: translate("footer.link.communityForum") },
+          { href: "#", text: translate("footer.link.professionalServices") },
+          { href: "#", text: translate("footer.link.skills") },
+          { href: "#", text: translate("footer.link.status") },
+        ],
+        title: translate("footer.group.support"),
+      },
+      {
+        links: [
+          { href: "#", text: translate("nav.link.about") },
+          { href: "#", text: translate("footer.link.blog") },
+          { href: "#", text: translate("footer.link.careers") },
+          { href: "#", text: translate("footer.link.press") },
+          { href: "#", text: translate("footer.link.inclusion") },
+          { href: "#", text: translate("footer.link.socialImpact") },
+          { href: "#", text: translate("footer.link.shop") },
+        ],
+        title: translate("footer.group.company"),
+      },
+    ],
+    secondaryLinks: [
+      { href: localize(getPermalink("/terms")), text: translate("nav.link.terms") },
+      {
+        href: localize(getPermalink("/privacy")),
+        text: translate("footer.link.privacyPolicy"),
+      },
+    ],
+    socialLinks: [
+      { ariaLabel: "X", href: "#", icon: "tabler:brand-x" },
+      { ariaLabel: "Instagram", href: "#", icon: "tabler:brand-instagram" },
+      { ariaLabel: "Facebook", href: "#", icon: "tabler:brand-facebook" },
+      {
+        ariaLabel: "RSS",
+        href: getAsset("/rss.xml"),
+        icon: "tabler:rss",
+      },
+      {
+        ariaLabel: "GitHub",
+        href: "https://github.com/unimetrics/frontend-monorepo",
+        icon: "tabler:brand-github",
+      },
+    ],
+  };
 };

@@ -1,0 +1,53 @@
+---
+import type { Messages } from "~/i18n";
+import { t } from "~/i18n";
+
+interface Props {
+  contactHref: string;
+  messages: Messages;
+}
+
+const { contactHref, messages } = Astro.props;
+---
+
+<section id="contact" class="pb-24 pt-6 sm:pb-28">
+  <div class="mx-auto w-full max-w-7xl px-5 sm:px-8 lg:px-10">
+    <div
+      data-reveal="cta-card"
+      class="rounded-[2.25rem] border border-amber-200/12 bg-[linear-gradient(180deg,rgba(216,185,122,0.14),rgba(216,185,122,0.06))] p-7 shadow-[var(--shadow-xl)] sm:p-10 lg:p-12"
+    >
+      <div class="grid gap-8 lg:grid-cols-[minmax(0,1fr)_auto] lg:items-center">
+        <div>
+          <div
+            class="inline-flex items-center gap-2 rounded-full border border-amber-200/15 bg-amber-200/10 px-4 py-2 text-[0.72rem] font-bold uppercase tracking-[0.22em] text-[#f5e2b5]"
+          >
+            {t(messages, "landing.finalCta.eyebrow")}
+          </div>
+          <h2
+            class="mt-6 max-w-[12ch] text-4xl font-semibold leading-tight tracking-[-0.04em] text-white sm:text-5xl"
+          >
+            {t(messages, "landing.finalCta.title")}
+          </h2>
+          <p class="mt-5 max-w-3xl text-base leading-8 text-white/82 sm:text-lg">
+            {t(messages, "landing.finalCta.body")}
+          </p>
+        </div>
+
+        <div class="flex flex-col gap-3 sm:flex-row lg:flex-col">
+          <a
+            href={contactHref}
+            class="inline-flex min-h-[3.25rem] items-center justify-center rounded-full bg-[#091019] px-6 text-sm font-semibold text-white transition duration-200 hover:-translate-y-0.5"
+          >
+            {t(messages, "landing.finalCta.button.joinWaitlist")}
+          </a>
+          <a
+            href={contactHref}
+            class="inline-flex min-h-[3.25rem] items-center justify-center rounded-full border border-white/15 bg-white/5 px-6 text-sm font-semibold text-white transition duration-200 hover:-translate-y-0.5 hover:bg-white/10"
+          >
+            {t(messages, "landing.finalCta.button.discoveryCall")}
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

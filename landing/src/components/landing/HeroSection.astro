@@ -1,0 +1,170 @@
+---
+import type { Messages } from "~/i18n";
+import { t } from "~/i18n";
+
+interface Props {
+  heroPills: string[];
+  messages: Messages;
+}
+
+const { heroPills, messages } = Astro.props;
+---
+
+<section class="relative overflow-hidden pb-20 pt-16 sm:pb-24 sm:pt-20 lg:pb-28 lg:pt-24">
+  <div
+    class="mx-auto grid w-full max-w-7xl gap-12 px-5 sm:px-8 lg:grid-cols-[minmax(0,1.08fr)_minmax(320px,0.92fr)] lg:items-center lg:px-10"
+  >
+    <div>
+      <div
+        data-reveal="badge"
+        class="inline-flex items-center gap-2 rounded-full border border-amber-200/15 bg-amber-200/10 px-4 py-2 text-[0.72rem] font-bold uppercase tracking-[0.22em] text-[#f5e2b5]"
+      >
+        {t(messages, "landing.hero.eyebrow")}
+      </div>
+
+      <h1
+        data-reveal="title"
+        class="mt-6 max-w-[10.5ch] text-5xl font-semibold leading-[0.94] tracking-[-0.05em] text-white sm:text-6xl lg:text-8xl"
+      >
+        {t(messages, "landing.hero.title")}
+      </h1>
+
+      <p
+        data-reveal="copy"
+        class="mt-6 max-w-3xl text-base leading-8 text-white/70 sm:text-lg lg:text-xl"
+      >
+        {t(messages, "landing.hero.subtitle")}
+      </p>
+
+      <div data-reveal="cta" class="mt-9 flex flex-col gap-3 sm:flex-row">
+        <a
+          href="#contact"
+          class="inline-flex min-h-[3.25rem] items-center justify-center rounded-full bg-gradient-to-b from-[#f2dfb5] to-[#d8b97a] px-6 text-sm font-semibold text-slate-950 shadow-[var(--shadow-glow)] transition duration-200 hover:-translate-y-0.5"
+        >
+          {t(messages, "landing.hero.cta.primary")}
+        </a>
+        <a
+          href="#features"
+          class="inline-flex min-h-[3.25rem] items-center justify-center rounded-full border border-white/12 bg-white/[0.03] px-6 text-sm font-semibold text-white transition duration-200 hover:-translate-y-0.5 hover:bg-white/[0.06]"
+        >
+          {t(messages, "landing.hero.cta.secondary")}
+        </a>
+      </div>
+
+      <div data-reveal="chips" class="mt-7 flex flex-wrap gap-3">
+        {
+          heroPills.map(pill => (
+            <span class="rounded-full border border-white/10 bg-white/[0.03] px-4 py-2 text-sm text-white/70">
+              {pill}
+            </span>
+          ))
+        }
+      </div>
+
+      <div data-reveal="metrics" class="mt-8 grid gap-3 sm:grid-cols-2 xl:max-w-3xl">
+        <div class="rounded-3xl border border-white/10 bg-white/[0.03] p-4">
+          <div class="text-[0.68rem] uppercase tracking-[0.18em] text-white/45">
+            {t(messages, "landing.hero.highlight.1.label")}
+          </div>
+          <div class="mt-2 text-lg font-semibold text-white">
+            {t(messages, "landing.hero.highlight.1.value")}
+          </div>
+        </div>
+        <div class="rounded-3xl border border-white/10 bg-white/[0.03] p-4">
+          <div class="text-[0.68rem] uppercase tracking-[0.18em] text-white/45">
+            {t(messages, "landing.hero.highlight.2.label")}
+          </div>
+          <div class="mt-2 text-lg font-semibold text-white">
+            {t(messages, "landing.hero.highlight.2.value")}
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div data-reveal="panel" class="relative">
+      <div
+        class="rounded-[2rem] border border-white/10 bg-gradient-to-b from-white/8 to-white/[0.02] p-4 shadow-[var(--shadow-xl)]"
+      >
+        <div
+          class="rounded-[1.7rem] border border-white/10 bg-[linear-gradient(180deg,rgba(11,22,34,0.84),rgba(8,15,23,0.92))] p-5 sm:p-6"
+        >
+          <div
+            class="flex items-start justify-between gap-4 border-b border-white/10 pb-5"
+          >
+            <div>
+              <div class="text-[0.7rem] uppercase tracking-[0.18em] text-white/45">
+                {t(messages, "landing.hero.panel.label")}
+              </div>
+              <div class="mt-2 text-xl font-semibold text-white">
+                {t(messages, "landing.hero.panel.pool")}
+              </div>
+            </div>
+            <div
+              class="rounded-full border border-amber-200/15 bg-amber-200/10 px-3 py-2 text-xs text-[#f4ddb0]"
+            >
+              {t(messages, "landing.hero.panel.status")}
+            </div>
+          </div>
+
+          <div class="mt-5 grid gap-3 sm:grid-cols-2">
+            <div class="rounded-3xl border border-white/10 bg-white/[0.03] p-4">
+              <div class="text-[0.68rem] uppercase tracking-[0.18em] text-white/45">
+                {t(messages, "landing.hero.panel.metric.netPnl.label")}
+              </div>
+              <div class="mt-2 text-3xl font-semibold text-white">
+                {t(messages, "landing.hero.panel.metric.netPnl.value")}
+              </div>
+              <div class="mt-1 text-sm text-white/50">
+                {t(messages, "landing.hero.panel.metric.netPnl.note")}
+              </div>
+            </div>
+            <div class="rounded-3xl border border-white/10 bg-white/[0.03] p-4">
+              <div class="text-[0.68rem] uppercase tracking-[0.18em] text-white/45">
+                {t(messages, "landing.hero.panel.metric.outOfRange.label")}
+              </div>
+              <div class="mt-2 text-3xl font-semibold text-white">
+                {t(messages, "landing.hero.panel.metric.outOfRange.value")}
+              </div>
+              <div class="mt-1 text-sm text-white/50">
+                {t(messages, "landing.hero.panel.metric.outOfRange.note")}
+              </div>
+            </div>
+            <div class="rounded-3xl border border-white/10 bg-white/[0.03] p-4">
+              <div class="text-[0.68rem] uppercase tracking-[0.18em] text-white/45">
+                {t(messages, "landing.hero.panel.metric.feeVelocity.label")}
+              </div>
+              <div class="mt-2 text-3xl font-semibold text-white">
+                {t(messages, "landing.hero.panel.metric.feeVelocity.value")}
+              </div>
+              <div class="mt-1 text-sm text-white/50">
+                {t(messages, "landing.hero.panel.metric.feeVelocity.note")}
+              </div>
+            </div>
+            <div class="rounded-3xl border border-white/10 bg-white/[0.03] p-4">
+              <div class="text-[0.68rem] uppercase tracking-[0.18em] text-white/45">
+                {t(messages, "landing.hero.panel.metric.actionSignal.label")}
+              </div>
+              <div class="mt-2 text-3xl font-semibold text-white">
+                {t(messages, "landing.hero.panel.metric.actionSignal.value")}
+              </div>
+              <div class="mt-1 text-sm text-white/50">
+                {t(messages, "landing.hero.panel.metric.actionSignal.note")}
+              </div>
+            </div>
+          </div>
+
+          <div
+            class="mt-5 rounded-3xl border border-emerald-200/15 bg-emerald-200/10 p-4"
+          >
+            <div class="text-sm font-semibold text-emerald-50">
+              {t(messages, "landing.hero.panel.signalLabel")}
+            </div>
+            <p class="mt-2 text-sm leading-7 text-emerald-50/80">
+              {t(messages, "landing.hero.panel.decisionSignal")}
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

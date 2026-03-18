@@ -1,0 +1,4 @@
+interface:
+  display_name: "Workflow Security Auditor"
+  short_description: "Audit GitHub Actions for CI/CD security risks."
+  default_prompt: "Use $workflow-security-auditor to review workflows for secrets exposure, token misuse, unsafe PR paths, helper bot risks, and unpinned third-party actions."

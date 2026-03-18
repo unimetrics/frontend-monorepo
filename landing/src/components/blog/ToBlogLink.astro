@@ -1,14 +1,19 @@
 ---
 import { Icon } from "astro-icon/components";
 import { getBlogPermalink } from "~/utils/permalinks";
-import { I18N } from "unimetrics:config";
 import Button from "~/components/ui/Button.astro";
+import { getMessages, t } from "~/i18n";
+import { localizeHref } from "~/i18n/links";
+import { defaultLocale, getLocaleDirection } from "~/i18n/routing";
 
-const { textDirection } = I18N;
+const locale = Astro.currentLocale ?? defaultLocale;
+const messages = getMessages(locale);
+const textDirection = getLocaleDirection(locale);
+const blogPermalink = localizeHref(locale, getBlogPermalink());
 ---
 
 <div class="mx-auto max-w-3xl px-6 pb-12 pt-8 sm:px-6 md:pb-20 md:pt-4">
-  <Button variant="tertiary" class="px-3 md:px-3" href={getBlogPermalink()}>
+  <Button variant="tertiary" class="px-3 md:px-3" href={blogPermalink}>
     {
       textDirection === "rtl" ? (
         <Icon
@@ -21,6 +26,7 @@ const { textDirection } = I18N;
           class="-ml-1.5 mr-1 h-5 w-5 rtl:-mr-1.5 rtl:ml-1"
         />
       )
-    } Back to Blog
+    }
+    {t(messages, "blog.backToBlog")}
   </Button>
 </div>

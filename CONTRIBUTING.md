@@ -29,7 +29,6 @@ Run:
 
 ```sh
 pnpm lint
-pnpm test
 pnpm build
 pnpm syncpack:check
 ```

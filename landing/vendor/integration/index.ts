@@ -6,7 +6,7 @@ import os from "node:os";
 import configBuilder, { type Config } from "./utils/configBuilder";
 import loadConfig from "./utils/loadConfig";
 
-const unimetricsIntegration = ({
+const astroWindIntegration = ({
   config: _themeConfig = "src/config.yaml",
 } = {}): AstroIntegration => {
   let cfg: AstroConfig;
@@ -118,15 +118,15 @@ const unimetricsIntegration = ({
         if (typeof _themeConfig === "string") {
           addWatchFile(new URL(_themeConfig, config.root));
 
-          buildLogger.info(`Unimetrics \`${_themeConfig}\` has been loaded.`);
+          buildLogger.info(`${SITE.name} \`${_themeConfig}\` has been loaded.`);
         } else {
-          buildLogger.info(`Unimetrics config has been loaded.`);
+          buildLogger.info(`${SITE.name} config has been loaded.`);
         }
       },
     },
 
-    name: "unimetrics-integration",
+    name: "astrowind-integration",
   };
 };
 
-export default unimetricsIntegration;
+export default astroWindIntegration;

@@ -4,10 +4,12 @@ Monorepo for Unimetrics client-facing products and shared packages:
 
 - `landing`: Astro marketing site
 - `app`: React + Vite web app
+- `charts`: shared charting contracts and utilities for web/mobile adapters
 - `mobile`: Expo React Native app
+- `docs`: Docusaurus documentation site
 - `api`: shared TypeScript API client/core package
 - `cli`: operations CLI (`lpdesk`)
-- `ui`: shared tokens and Tailwind preset
+- `design-tokens`: shared tokens and Tailwind preset
 
 ## Requirements
 
@@ -22,25 +24,26 @@ pnpm install
 pnpm dev
 ```
 
-`pnpm dev` starts the landing site (`@unimetrics/landing`).
+`pnpm dev` starts both `@unimetrics/design-tokens` and `@unimetrics/landing`.
 
 ## Run Specific Targets
 
 ```sh
 pnpm dev                              # landing (Astro)
 pnpm --filter @unimetrics/app dev     # web app (Vite)
-pnpm mobile                           # mobile (Expo)
-pnpm ios                              # Expo iOS
-pnpm android                          # Expo Android
-pnpm web:mobile                       # Expo web target
-pnpm cli:help                         # CLI usage
+pnpm --filter @unimetrics/docs start  # docs (Docusaurus)
+pnpm --filter @unimetrics/mobile dev  # mobile (Expo)
+pnpm --filter @unimetrics/mobile ios  # Expo iOS
+pnpm --filter @unimetrics/mobile android
+pnpm --filter @unimetrics/mobile web  # Expo web target
+pnpm --filter @unimetrics/cli start -- --help
+pnpm --filter @unimetrics/charts build
 ```
 
 ## Quality And Build
 
 ```sh
 pnpm lint
-pnpm test
 pnpm build
 pnpm syncpack:check
 ```

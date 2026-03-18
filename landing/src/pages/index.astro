@@ -1,414 +1,456 @@
 ---
-import Layout from "~/layouts/PageLayout.astro";
+import Layout from "~/layouts/Layout.astro";
+import Header from "~/components/widgets/Header.astro";
+import Footer from "~/components/widgets/Footer.astro";
 
-import Hero from "~/components/widgets/Hero.astro";
-import Note from "~/components/widgets/Note.astro";
-import Features from "~/components/widgets/Features.astro";
-import Features2 from "~/components/widgets/Features2.astro";
-import Steps from "~/components/widgets/Steps.astro";
-import Content from "~/components/widgets/Content.astro";
-import BlogLatestPosts from "~/components/widgets/BlogLatestPosts.astro";
-import FAQs from "~/components/widgets/FAQs.astro";
-import Stats from "~/components/widgets/Stats.astro";
-import CallToAction from "~/components/widgets/CallToAction.astro";
+import HeroSection from "~/components/landing/HeroSection.astro";
+import ProblemSection from "~/components/landing/ProblemSection.astro";
+import FeaturesSection from "~/components/landing/FeaturesSection.astro";
+import WorkflowSection from "~/components/landing/WorkflowSection.astro";
+import TrustSection from "~/components/landing/TrustSection.astro";
+import AudienceSection from "~/components/landing/AudienceSection.astro";
+import FaqSection from "~/components/landing/FaqSection.astro";
+import BlogSection from "~/components/landing/BlogSection.astro";
+import FinalCtaSection from "~/components/landing/FinalCtaSection.astro";
+
+import { getMessages, t } from "~/i18n";
+import { getLocaleSwitchLinks, localizeHref } from "~/i18n/links";
+import { defaultLocale } from "~/i18n/routing";
+import { getFooterData } from "~/navigation";
+import { getBlogPermalink } from "~/utils/permalinks";
+import { SITE } from "unimetrics:config";
+
+const locale = Astro.currentLocale ?? defaultLocale;
+const messages = getMessages(locale);
+const localeLinks = getLocaleSwitchLinks(locale, Astro.url.pathname);
+const footerData = getFooterData(locale);
 
 const metadata = {
-  title: "Unimetrics — Free template for creating websites with Astro + Tailwind CSS",
+  title: `${SITE.name} - ${t(messages, "landing.hero.title")}`,
+  description: t(messages, "landing.hero.subtitle"),
   ignoreTitleTemplate: true,
 };
+
+const heroPills = [1, 2, 3].map(index => t(messages, `landing.hero.pill.${index}`));
+
+const painCards = [1, 2, 3, 4].map(index => ({
+  title: t(messages, `landing.problem.card.${index}.title`),
+  text: t(messages, `landing.problem.card.${index}.body`),
+}));
+
+const featureCards = [1, 2, 3, 4].map(index => ({
+  title: t(messages, `landing.features.card.${index}.title`),
+  text: t(messages, `landing.features.card.${index}.body`),
+}));
+
+const workflowSteps = [1, 2, 3].map(index => ({
+  title: t(messages, `landing.workflow.step.${index}.title`),
+  text: t(messages, `landing.workflow.step.${index}.body`),
+}));
+
+const trustPoints = [1, 2, 3].map(index => ({
+  title: t(messages, `landing.trust.point.${index}.title`),
+  text: t(messages, `landing.trust.point.${index}.body`),
+}));
+
+const audienceCards = [1, 2, 3].map(index => ({
+  title: t(messages, `landing.audience.card.${index}.title`),
+  text: t(messages, `landing.audience.card.${index}.body`),
+}));
+
+const faqItems = [1, 2, 3, 4].map(index => ({
+  question: t(messages, `landing.faq.item.${index}.question`),
+  answer: t(messages, `landing.faq.item.${index}.answer`),
+}));
+
+const navLinks = [
+  { href: "#problem", text: t(messages, "landing.nav.problem") },
+  { href: "#features", text: t(messages, "landing.nav.features") },
+  { href: "#workflow", text: t(messages, "landing.nav.workflow") },
+  { href: "#faq", text: t(messages, "landing.nav.faq") },
+  {
+    href: localizeHref(locale, getBlogPermalink()),
+    text: t(messages, "footer.link.blog"),
+  },
+  { href: "#contact", text: t(messages, "landing.nav.access") },
+];
+
+const headerActions = [
+  { href: "#contact", text: t(messages, "landing.header.cta.requestAccess") },
+];
+
+const contactHref = "mailto:founders@example.com";
 ---
 
 <Layout metadata={metadata}>
-  <!-- Hero Widget ******************* -->
-
-  <Hero
-    actions={[
-      {
-        variant: "primary",
-        text: "Get template",
-        href: "https://github.com/unimetrics/frontend-monorepo",
-        target: "_blank",
-        icon: "tabler:download",
-      },
-      { text: "Learn more", href: "#features" },
-    ]}
-    image={{ src: "~/assets/images/hero-image.png", alt: "Unimetrics Hero Image" }}
+  <div
+    class="relative min-h-screen overflow-hidden bg-[radial-gradient(circle_at_12%_18%,rgba(216,185,122,0.12),transparent_28%),radial-gradient(circle_at_88%_22%,rgba(92,118,154,0.16),transparent_30%),radial-gradient(circle_at_52%_100%,rgba(53,80,112,0.22),transparent_36%),linear-gradient(180deg,#061018_0%,#07131d_52%,#050d15_100%)] text-white"
   >
-    <Fragment slot="title">
-      Free template for <span class="hidden xl:inline">creating websites with</span>
-      <span class="text-ui-accent dark:text-white"> Astro 5.0</span> + Tailwind CSS
-    </Fragment>
-
-    <Fragment slot="subtitle">
-      <span class="hidden sm:inline">
-        <span class="font-semibold">Unimetrics</span> is a free, customizable and production-ready
-        template for Astro 5.0 + Tailwind CSS.</span
+    <div class="pointer-events-none fixed inset-0 -z-10 overflow-hidden">
+      <div
+        data-parallax-speed="0.18"
+        class="absolute left-[-8rem] top-24 h-72 w-72 rounded-full bg-amber-300/10 blur-3xl"
       >
-      <span class="mb-1 block font-bold text-blue-600 sm:hidden"
-        >Unimetrics: Production-ready.</span
+      </div>
+      <div
+        data-parallax-speed="-0.12"
+        class="absolute right-[-4rem] top-16 h-80 w-80 rounded-full bg-slate-400/10 blur-3xl"
       >
-      Suitable for Startups, Small Business, SaaS websites, Professional Portfolios, Marketing
-      websites, Landing Pages & Blogs.
-    </Fragment>
-  </Hero>
-
-  <!-- Note Widget ******************* -->
-
-  <Note
-    title="Philosophy:"
-    description="Simplicity, Best Practices and High Performance"
-  />
-
-  <!-- Features Widget *************** -->
-
-  <Features
-    id="features"
-    tagline="Features"
-    title="What you get with Unimetrics"
-    subtitle="One of the most professional and comprehensive templates currently on the market. Most starred & forked Astro theme in 2022, 2023 and 2024."
-    items={[
-      {
-        title: "Astro + Tailwind CSS Integration",
-        description:
-          "A seamless integration between two great frameworks that offer high productivity, performance and versatility.",
-        icon: "tabler:brand-tailwind",
-      },
-      {
-        title: "Ready-to-use Components",
-        description:
-          "Widgets made with Tailwind CSS ready to be used in Marketing Websites, SaaS, Blogs, Personal Profiles, Small Business...",
-        icon: "tabler:components",
-      },
-      {
-        title: "Best Practices",
-        description:
-          "Creating secure, efficient, and user-friendly websites that deliver exceptional experiences and lasting value.",
-        icon: "tabler:list-check",
-      },
-      {
-        title: "Excellent Page Speed",
-        description:
-          "Having a good page speed impacts organic search ranking, improves user experience (UI/UX) and increase conversion rates.",
-        icon: "tabler:rocket",
-      },
-      {
-        title: "Search Engine Optimization (SEO)",
-        description:
-          "SEO lies in its ability to enhance a website's visibility, driving organic traffic and enabling it to reach a wider audience.",
-        icon: "tabler:arrows-right-left",
-      },
-      {
-        title: "Open to new ideas and contributions",
-        description:
-          "Embracing a culture that is open to new ideas and contributions is integral fostering innovation, collaboration, and a dynamic user experience.",
-        icon: "tabler:bulb",
-      },
-    ]}
-  />
-
-  <!-- Content Widget **************** -->
-
-  <Content
-    isReversed
-    tagline="Inside template"
-    title="Unimetrics's Blueprint: Fun Meets Functionality!"
-    items={[
-      {
-        title: "Built on top of Astro 5.0",
-        description:
-          "Benefiting from the performance and developer-friendly features of this modern static site generator.",
-      },
-      {
-        title: "Styled using Tailwind CSS",
-        description:
-          "Facilitating rapid design and consistent styling with this highly popular utility-first CSS framework.",
-      },
-      {
-        title: "Cross-browser compatibility",
-        description:
-          "Ensure your website looks and functions consistently across various web browsers, delivering a seamless experience to all users.",
-      },
-    ]}
-    image={{
-      src: "https://images.unsplash.com/photo-1519389950473-47ba0277781c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
-      alt: "Colorful Image",
-    }}
-  >
-    <Fragment slot="content">
-      <h3 class="mb-2 text-2xl font-bold tracking-tight dark:text-white sm:text-3xl">
-        Building on modern foundations
-      </h3>
-      Gain a competitive advantage by incorporating industry leading practices
-    </Fragment>
-
-    <Fragment slot="bg">
-      <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
-    </Fragment>
-  </Content>
-
-  <!-- Content Widget **************** -->
-
-  <Content
-    isAfterContent
-    items={[
-      {
-        title: "High level of customization",
-        description: `Tailor the template effortlessly to match your brand's identity and requirements, making your website distinct and saving you time.`,
-      },
-      {
-        title: "Multiple layout possibilities",
-        description:
-          "Explore various layout options to find the structure that best presents your content, enhancing user engagement and navigation.",
-      },
-      {
-        title: "Fully responsive design",
-        description:
-          "Ensure your website's optimal performance on various devices and screen sizes, providing a consistent and enjoyable user experience.",
-      },
-      {
-        title: "Integration of media",
-        description:
-          "Seamlessly incorporate images, videos, and multimedia elements that enhance your content and engage visitors effectively.",
-      },
-    ]}
-    image={{
-      src: "https://images.unsplash.com/photo-1600132806370-bf17e65e942f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2194&q=80",
-      alt: "Blueprint Image",
-    }}
-  >
-    <Fragment slot="content">Ensure your online presence truly represents you.</Fragment>
-
-    <Fragment slot="bg">
-      <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
-    </Fragment>
-  </Content>
-
-  <!-- Content Widget **************** -->
-
-  <Content
-    isReversed
-    isAfterContent
-    items={[
-      {
-        title: "Enhanced user engagement",
-        description:
-          "Captivate your audience with interactive elements, intuitive navigation, and visually appealing layouts, encouraging longer visits.",
-      },
-      {
-        title: "Continuous improvement",
-        description:
-          "Ensure your website stays aligned with the latest trends and technologies through regular updates and enhancements.",
-      },
-      {
-        title: "Time and resource efficiency",
-        description:
-          "Skip the time-consuming process of building a website from scratch and launch your online presence sooner with Unimetrics.",
-      },
-      {
-        title: "Community support",
-        description: `Join the growing Unimetrics community for insights, resources, and assistance, ensuring you're never alone on your web development journey.`,
-      },
-    ]}
-    image={{
-      src: "https://images.unsplash.com/photo-1611462985358-60d3498e0364?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
-      alt: "Astronauts Image",
-    }}
-  >
-    <Fragment slot="content">Designed to foster growth and success.</Fragment>
-
-    <Fragment slot="bg">
-      <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
-    </Fragment>
-  </Content>
-
-  <!-- Steps Widget ****************** -->
-
-  <Steps
-    title="Get your dream website up and running in no time with Unimetrics."
-    items={[
-      {
-        title: 'Step 1: <span class="font-medium">Download</span>',
-        description:
-          "Kickstart with GitHub! Either fork the Unimetrics template or simply click 'Use this template'. Your canvas awaits, ready for your digital masterpiece. In just a few clicks, you've already set the foundation.",
-        icon: "tabler:package",
-      },
-      {
-        title: 'Step 2: <span class="font-medium">Add content</span>',
-        description:
-          "Pour your vision into it. Add images, text, and all that jazz to breathe life into your digital space. Remember, it's the content that tells your story, so make it captivating.",
-        icon: "tabler:letter-case",
-      },
-      {
-        title: 'Step 3: <span class="font-medium">Customize styles</span>',
-        description:
-          "Give it your personal touch. Tailor colors, fonts, and layouts until it feels just right. Your unique flair, amplified by Unimetrics! Precision in design ensures a seamless user experience.",
-        icon: "tabler:paint",
-      },
-      {
-        title: "Ready!",
-        icon: "tabler:check",
-      },
-    ]}
-    image={{
-      src: "https://images.unsplash.com/photo-1616198814651-e71f960c3180?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=987&q=80",
-      alt: "Steps image",
-    }}
-  />
-
-  <!-- Features2 Widget ************** -->
-
-  <Features2
-    title="Most used widgets"
-    subtitle="Provides frequently used components for building websites using Tailwind CSS"
-    tagline="Components"
-    items={[
-      {
-        title: "Headers",
-        description:
-          "Ever tried driving without GPS? Boom! That's why websites need headers for direction.",
-        icon: "flat-color-icons:template",
-      },
-      {
-        title: "Heros",
-        description:
-          "Picture a superhero landing – epic, right? That's the job of a Hero section, making grand entrances!",
-        icon: "flat-color-icons:gallery",
-      },
-      {
-        title: "Features",
-        description:
-          "Where websites strut their stuff and show off superpowers. No holding back on the bragging rights here!",
-        icon: "flat-color-icons:approval",
-      },
-      {
-        title: "Content",
-        description:
-          "Dive into the meat and potatoes of a site; without it, you'd just be window shopping. Content is king.",
-        icon: "flat-color-icons:document",
-      },
-      {
-        title: "Call-to-Action",
-        description:
-          "That enthusiastic friend who's always urging, \"Do it! Do it!\"? Yeah, that's this button nudging you towards adventure.",
-        icon: "flat-color-icons:advertising",
-      },
-      {
-        title: "Pricing",
-        description:
-          "Behold the dessert menu of the website world. Tempting choices await, can you resist?",
-        icon: "flat-color-icons:currency-exchange",
-      },
-      {
-        title: "Testimonial",
-        description:
-          "Step into the gossip corner! Here, other visitors spill the beans and share the juicy details.",
-        icon: "flat-color-icons:voice-presentation",
-      },
-      {
-        title: "Contact",
-        description:
-          "Like a digital mailbox, but faster! Drop a line, ask a question, or send a virtual high-five. Ding! Message in.",
-        icon: "flat-color-icons:business-contact",
-      },
-      {
-        title: "Footers",
-        description:
-          "The footer's like the credits of a movie but sprinkled with easter eggs. Time to hunt!",
-        icon: "flat-color-icons:database",
-      },
-    ]}
-  >
-    <Fragment slot="bg">
-      <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
-    </Fragment>
-  </Features2>
-
-  <!-- HighlightedPosts Widget ******* -->
-
-  <BlogLatestPosts
-    title="Find out more content in our Blog"
-    information={`The blog is used to display Unimetrics documentation.
-                        Each new article will be an important step that you will need to know to be an expert in creating a website using Astro + Tailwind CSS.
-                        Astro is a very interesting technology. Thanks.
-                `}
-  />
-
-  <!-- FAQs Widget ******************* -->
-
-  <FAQs
-    title="Frequently Asked Questions"
-    subtitle="Dive into the following questions to gain insights into the powerful features that Unimetrics offers and how it can elevate your web development journey."
-    tagline="FAQs"
-    classes={{ container: "max-w-6xl" }}
-    items={[
-      {
-        title: "Why Unimetrics?",
-        description:
-          "Michael Knight a young loner on a crusade to champion the cause of the innocent. The helpless. The powerless in a world of criminals who operate above the law. Here he comes Here comes Speed Racer. He's a demon on wheels.",
-      },
-      {
-        title: "What do I need to start?",
-        description:
-          "Space, the final frontier. These are the voyages of the Starship Enterprise. Its five-year mission: to explore strange new worlds. Many say exploration is part of our destiny, but it’s actually our duty to future generations.",
-      },
-      {
-        title: "How to install the Astro + Tailwind CSS template?",
-        description:
-          "Well, the way they make shows is, they make one show. That show's called a pilot. Then they show that show to the people who make shows, and on the strength of that one show they decide if they're going to make more shows.",
-      },
-      {
-        title: "What's something that you don't understand?",
-        description:
-          "A flower in my garden, a mystery in my panties. Heart attack never stopped old Big Bear. I didn't even know we were calling him Big Bear.",
-      },
-      {
-        title: "What is something that you would like to try again?",
-        description:
-          "A business big enough that it could be listed on the NASDAQ goes belly up. Disappears! It ceases to exist without me. No, you clearly don't know who you're talking to, so let me clue you in.",
-      },
-      {
-        title:
-          "If you could only ask one question to each person you meet, what would that question be?",
-        description:
-          "This is not about revenge. This is about justice. A lot of things can change in twelve years, Admiral. Well, that's certainly good to know. About four years. I got tired of hearing how young I looked.",
-      },
-    ]}
-  />
-
-  <!-- Stats Widget ****************** -->
-
-  <Stats
-    stats={[
-      { title: "Downloads", amount: "132K" },
-      { title: "Stars", amount: "24.8K" },
-      { title: "Forks", amount: "10.3K" },
-      { title: "Users", amount: "48.4K" },
-    ]}
-  />
-
-  <!-- CallToAction Widget *********** -->
-
-  <CallToAction
-    actions={[
-      {
-        variant: "primary",
-        text: "Get template",
-        href: "https://github.com/unimetrics/frontend-monorepo",
-        target: "_blank",
-        icon: "tabler:download",
-      },
-    ]}
-  >
-    <Fragment slot="title">
-      Astro&nbsp;+&nbsp;<br class="block sm:hidden" /><span class="sm:whitespace-nowrap"
-        >Tailwind CSS</span
+      </div>
+      <div
+        data-parallax-speed="0.24"
+        class="absolute bottom-[-5rem] left-1/2 h-96 w-96 -translate-x-1/2 rounded-full bg-blue-400/10 blur-3xl"
       >
-    </Fragment>
+      </div>
+    </div>
 
-    <Fragment slot="subtitle">
-      Be very surprised by these huge fake numbers you are seeing on this page. <br
-        class="hidden md:inline"
-      />Don't waste more time! :P
-    </Fragment>
-  </CallToAction>
+    <Header
+      links={navLinks}
+      actions={headerActions}
+      localeLinks={localeLinks}
+      localeSwitcherAriaLabel={t(messages, "header.aria.languageSwitcher")}
+      mainNavigationAriaLabel={t(messages, "header.aria.mainNavigation")}
+      isDark
+      position="right"
+      variant="landing"
+    />
+
+    <main id="top">
+      <HeroSection messages={messages} heroPills={heroPills} />
+      <ProblemSection messages={messages} painCards={painCards} />
+      <FeaturesSection messages={messages} featureCards={featureCards} />
+      <WorkflowSection messages={messages} workflowSteps={workflowSteps} />
+      <TrustSection messages={messages} trustPoints={trustPoints} />
+      <AudienceSection messages={messages} audienceCards={audienceCards} />
+      <FaqSection messages={messages} faqItems={faqItems} />
+      <BlogSection messages={messages} />
+      <FinalCtaSection messages={messages} contactHref={contactHref} />
+    </main>
+
+    <div id="landing-footer" class="relative mt-4">
+      <Footer {...footerData} theme="dark" />
+    </div>
+  </div>
+
+  <script>
+    import { gsap, ScrollTrigger } from "~/utils/gsap";
+
+    type RevealAnimation = {
+      from: gsap.TweenVars;
+      to: gsap.TweenVars;
+    };
+
+    type RevealVariant =
+      | "badge"
+      | "callout"
+      | "card"
+      | "chips"
+      | "copy"
+      | "cta"
+      | "cta-card"
+      | "default"
+      | "metrics"
+      | "panel"
+      | "step"
+      | "title";
+
+    const getRevealAnimation = (element: HTMLElement, index: number): RevealAnimation => {
+      const variant = (element.dataset.reveal || "default") as RevealVariant;
+      const direction = index % 2 === 0 ? -1 : 1;
+      const baseTo: gsap.TweenVars = {
+        autoAlpha: 1,
+        clearProps: "opacity,transform,visibility,filter,clipPath,willChange",
+      };
+
+      switch (variant) {
+        case "badge": {
+          return {
+            from: {
+              autoAlpha: 0,
+              filter: "blur(8px)",
+              scale: 0.92,
+              y: 18,
+            },
+            to: {
+              ...baseTo,
+              duration: 0.65,
+              ease: "back.out(1.75)",
+              filter: "blur(0px)",
+              scale: 1,
+              y: 0,
+            },
+          };
+        }
+        case "callout": {
+          return {
+            from: { autoAlpha: 0, filter: "blur(10px)", scale: 0.94, y: 28 },
+            to: {
+              ...baseTo,
+              duration: 0.86,
+              ease: "expo.out",
+              filter: "blur(0px)",
+              scale: 1,
+              y: 0,
+            },
+          };
+        }
+        case "card": {
+          return {
+            from: {
+              autoAlpha: 0,
+              filter: "blur(9px)",
+              rotateX: -8,
+              scale: 0.96,
+              transformPerspective: 1000,
+              x: direction * 20,
+              y: 40,
+            },
+            to: {
+              ...baseTo,
+              duration: 0.88,
+              ease: "power3.out",
+              filter: "blur(0px)",
+              rotateX: 0,
+              scale: 1,
+              x: 0,
+              y: 0,
+            },
+          };
+        }
+        case "chips": {
+          return {
+            from: {
+              autoAlpha: 0,
+              filter: "blur(8px)",
+              rotateX: -14,
+              transformPerspective: 900,
+              y: 30,
+            },
+            to: {
+              ...baseTo,
+              duration: 0.78,
+              ease: "power3.out",
+              filter: "blur(0px)",
+              rotateX: 0,
+              y: 0,
+            },
+          };
+        }
+        case "copy": {
+          return {
+            from: { autoAlpha: 0, filter: "blur(8px)", y: 32 },
+            to: {
+              ...baseTo,
+              duration: 0.78,
+              ease: "power3.out",
+              filter: "blur(0px)",
+              y: 0,
+            },
+          };
+        }
+        case "cta": {
+          return {
+            from: { autoAlpha: 0, scale: 0.95, y: 26 },
+            to: {
+              ...baseTo,
+              duration: 0.74,
+              ease: "power3.out",
+              scale: 1,
+              y: 0,
+            },
+          };
+        }
+        case "cta-card": {
+          return {
+            from: { autoAlpha: 0, filter: "blur(14px)", scale: 0.94, y: 66 },
+            to: {
+              ...baseTo,
+              duration: 1.08,
+              ease: "power4.out",
+              filter: "blur(0px)",
+              scale: 1,
+              y: 0,
+            },
+          };
+        }
+        case "metrics": {
+          return {
+            from: { autoAlpha: 0, filter: "blur(9px)", scale: 0.96, y: 34 },
+            to: {
+              ...baseTo,
+              duration: 0.82,
+              ease: "power3.out",
+              filter: "blur(0px)",
+              scale: 1,
+              y: 0,
+            },
+          };
+        }
+        case "panel": {
+          return {
+            from: {
+              autoAlpha: 0,
+              filter: "blur(12px)",
+              rotateY: -10,
+              scale: 0.96,
+              transformPerspective: 1200,
+              x: 74,
+            },
+            to: {
+              ...baseTo,
+              duration: 1.05,
+              ease: "power4.out",
+              filter: "blur(0px)",
+              rotateY: 0,
+              scale: 1,
+              x: 0,
+            },
+          };
+        }
+        case "step": {
+          return {
+            from: {
+              autoAlpha: 0,
+              filter: "blur(9px)",
+              scale: 0.95,
+              x: direction * 38,
+              y: 24,
+            },
+            to: {
+              ...baseTo,
+              duration: 0.9,
+              ease: "power3.out",
+              filter: "blur(0px)",
+              scale: 1,
+              x: 0,
+              y: 0,
+            },
+          };
+        }
+        case "title": {
+          return {
+            from: {
+              autoAlpha: 0,
+              clipPath: "inset(0 0 100% 0)",
+              filter: "blur(10px)",
+              y: 64,
+            },
+            to: {
+              ...baseTo,
+              clipPath: "inset(0 0 0% 0)",
+              duration: 0.95,
+              ease: "power4.out",
+              filter: "blur(0px)",
+              y: 0,
+            },
+          };
+        }
+        default: {
+          return {
+            from: { autoAlpha: 0, filter: "blur(8px)", y: 26 },
+            to: {
+              ...baseTo,
+              duration: 0.76,
+              ease: "power2.out",
+              filter: "blur(0px)",
+              y: 0,
+            },
+          };
+        }
+      }
+    };
+
+    const clearRevealStyles = (element: HTMLElement) => {
+      element.style.removeProperty("opacity");
+      element.style.removeProperty("transform");
+      element.style.removeProperty("visibility");
+      element.style.removeProperty("filter");
+      element.style.removeProperty("clip-path");
+      element.style.removeProperty("will-change");
+    };
+
+    let revealContext: gsap.Context | undefined;
+
+    const setupRevealAnimations = () => {
+      revealContext?.revert();
+      revealContext = undefined;
+
+      const revealItems = gsap.utils.toArray<HTMLElement>("[data-reveal]");
+      const parallaxItems = gsap.utils.toArray<HTMLElement>("[data-parallax-speed]");
+      if (revealItems.length === 0 && parallaxItems.length === 0) {
+        return;
+      }
+
+      const prefersReducedMotion = globalThis.matchMedia(
+        "(prefers-reduced-motion: reduce)"
+      ).matches;
+
+      if (prefersReducedMotion) {
+        for (const item of revealItems) {
+          clearRevealStyles(item);
+        }
+        return;
+      }
+
+      revealContext = gsap.context(() => {
+        for (const [index, item] of revealItems.entries()) {
+          const animation = getRevealAnimation(item, index);
+          gsap.set(item, {
+            ...animation.from,
+            willChange: "opacity, transform, filter",
+          });
+
+          ScrollTrigger.create({
+            once: true,
+            onEnter: () => {
+              gsap.to(item, animation.to);
+            },
+            start: "top 87%",
+            trigger: item,
+          });
+        }
+
+        for (const item of parallaxItems) {
+          const speed = Number.parseFloat(item.dataset.parallaxSpeed ?? "0");
+          if (!Number.isFinite(speed) || speed === 0) {
+            continue;
+          }
+
+          gsap.to(item, {
+            ease: "none",
+            scrollTrigger: {
+              end: "bottom bottom",
+              scrub: 0.8,
+              start: "top top",
+              trigger: document.body,
+            },
+            yPercent: speed * 100,
+          });
+        }
+      }, document.body);
+    };
+
+    const setupState = globalThis as typeof globalThis & {
+      __unimetricsLandingRevealInitialized__?: boolean;
+    };
+
+    if (!setupState.__unimetricsLandingRevealInitialized__) {
+      document.addEventListener("astro:after-swap", setupRevealAnimations);
+      document.addEventListener("astro:before-swap", () => {
+        revealContext?.revert();
+        revealContext = undefined;
+      });
+      setupState.__unimetricsLandingRevealInitialized__ = true;
+    }
+
+    setupRevealAnimations();
+  </script>
+
+  <style>
+    #landing-footer footer {
+      border-color: rgba(255, 255, 255, 0.1);
+      background: rgba(4, 11, 18, 0.72);
+      backdrop-filter: blur(10px);
+    }
+  </style>
 </Layout>

@@ -18,6 +18,10 @@
   description: "Changes related to the web app package"
   color: "0052cc"
 
+- name: charts
+  description: "Changes related to the charts package"
+  color: "f9d0c4"
+
 - name: cli
   description: "Changes related to the CLI package"
   color: "6f42c1"
@@ -30,8 +34,12 @@
   description: "Changes related to the mobile app package"
   color: "0e8a16"
 
-- name: ui
-  description: "Changes related to the UI package"
+- name: docs
+  description: "Changes related to the docs package"
+  color: "5319e7"
+
+- name: design-tokens
+  description: "Changes related to the design-tokens package"
   color: "1fb6ff"
 
 - name: stale

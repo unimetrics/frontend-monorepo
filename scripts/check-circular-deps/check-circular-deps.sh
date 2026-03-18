@@ -27,6 +27,11 @@ run_madge "app" \
   --ts-config app/tsconfig.app.json \
   app/src
 
+run_madge "charts" \
+  --extensions ts \
+  --ts-config charts/tsconfig.json \
+  charts/src
+
 run_madge "cli" \
   --extensions ts \
   --ts-config cli/tsconfig.json \
@@ -45,6 +50,14 @@ run_madge "mobile" \
   mobile/src \
   mobile/index.ts
 
-run_madge "ui" \
+run_madge "docs" \
+  --extensions ts,tsx,js,mjs,cjs \
+  --ts-config docs/tsconfig.json \
+  docs/src \
+  docs/docusaurus.config.ts \
+  docs/sidebars.ts
+
+run_madge "design-tokens" \
   --extensions ts,js,mjs,cjs \
-  ui/scripts/build-tokens/build-tokens.ts
+  design-tokens/scripts \
+  design-tokens/adapters

@@ -1,0 +1,30 @@
+---
+import { SITE } from "unimetrics:config";
+
+import type { Messages } from "~/i18n";
+import { t } from "~/i18n";
+import BlogLatestPosts from "~/components/widgets/BlogLatestPosts.astro";
+
+interface Props {
+  messages: Messages;
+}
+
+const { messages } = Astro.props;
+const siteName = SITE.name;
+const siteNamePossessive = siteName.endsWith("s") ? `${siteName}'` : `${siteName}'s`;
+---
+
+<BlogLatestPosts
+  id="blog"
+  isDark
+  title={`Stay informed with ${siteNamePossessive} blog`}
+  linkText={t(messages, "nav.link.blogList")}
+  information={`Explore our collection of articles, guides, and tutorials on LP operations, DeFi analytics, and using ${siteName} effectively.`}
+>
+  <Fragment slot="bg">
+    <div
+      class="absolute inset-0 bg-[linear-gradient(180deg,rgba(255,255,255,0.03),rgba(255,255,255,0.01))]"
+    >
+    </div>
+  </Fragment>
+</BlogLatestPosts>

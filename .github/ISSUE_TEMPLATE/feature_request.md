@@ -21,9 +21,10 @@ Which part is affected?
 - `app`
 - `landing`
 - `mobile`
+- `docs`
 - `api`
 - `cli`
-- `ui`
+- `design-tokens`
 - `tooling/ci`
 
 ## Alternatives Considered (optional)

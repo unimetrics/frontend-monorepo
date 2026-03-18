@@ -1,0 +1,293 @@
+{
+  "blog": {
+    "backToBlog": "Volver al blog"
+  },
+  "footer": {
+    "footnote": {
+      "madeBy": "Hecho por",
+      "rightsReserved": "Todos los derechos reservados."
+    },
+    "group": {
+      "company": "Empresa",
+      "platform": "Plataforma",
+      "product": "Producto",
+      "support": "Soporte"
+    },
+    "link": {
+      "atom": "Atom",
+      "blog": "Blog",
+      "careers": "Carreras",
+      "communityForum": "Foro de la comunidad",
+      "customerStories": "Historias de clientes",
+      "developerApi": "API para desarrolladores",
+      "docs": "Documentación",
+      "electron": "Electron",
+      "enterprise": "Empresarial",
+      "features": "Funciones",
+      "inclusion": "Inclusión",
+      "partners": "Socios",
+      "press": "Prensa",
+      "privacyPolicy": "Política de privacidad",
+      "professionalServices": "Servicios profesionales",
+      "resources": "Recursos",
+      "security": "Seguridad",
+      "shop": "Tienda",
+      "skills": "Habilidades",
+      "socialImpact": "Impacto social",
+      "status": "Estado",
+      "team": "Equipo",
+      "unimetricsDesktop": "{{siteName}} Desktop"
+    }
+  },
+  "header": {
+    "action": {
+      "download": "Descargar"
+    },
+    "aria": {
+      "languageSwitcher": "Selector de idioma",
+      "mainNavigation": "Navegación principal",
+      "rssFeed": "Canal RSS"
+    }
+  },
+  "landing": {
+    "audience": {
+      "body": "La cuña inicial es clara: LPs serios que gestionan liquidez concentrada de forma activa. La mayor oportunidad de negocio llega después, cuando la misma capa de monitoreo e inteligencia respalda operaciones profesionales de liquidez.",
+      "card": {
+        "1": {
+          "body": "You manage your own ranges, watch gas, and do not want to miss edge moves or dead capital.",
+          "title": "Active retail LPs"
+        },
+        "2": {
+          "body": "You run multiple positions, wallets, or chains and need one place to scan, prioritize, and review.",
+          "title": "Power users"
+        },
+        "3": {
+          "body": "You need a monitoring layer that feels disciplined and extensible before you ever think about automation.",
+          "title": "Emerging desks and treasuries"
+        }
+      },
+      "eyebrow": "Para quién es",
+      "title": "Empieza con minoristas activos. Expándete a fondos y tesorerías."
+    },
+    "faq": {
+      "body": "The product is intentionally focused for stage 1: read-only monitoring, decision support, and faster reviews for concentrated liquidity operators.",
+      "eyebrow": "FAQ",
+      "item": {
+        "1": {
+          "answer": "No. Stage 1 is read-only by design. You connect wallets to monitor positions, understand performance, and receive action signals without giving the product execution power.",
+          "question": "Does {{siteName}} move funds or rebalance positions?"
+        },
+        "2": {
+          "answer": "Explorers and generic dashboards show fragments. {{siteName}} is built to answer the actual operator questions: what needs attention, what is really making money, and whether action is worth the gas.",
+          "question": "Why not just use an explorer or a generic analytics dashboard?"
+        },
+        "3": {
+          "answer": "Anyone can sign up, but the strongest fit is active LPs with concentrated liquidity positions who want better monitoring, cleaner performance visibility, and less manual checking.",
+          "question": "Who gets the most value from the first version?"
+        },
+        "4": {
+          "answer": "Because trust matters. You should be able to understand your positions and workflows first. Execution and automation can come later, once monitoring, signals, and operator trust are solid.",
+          "question": "Why start read-only?"
+        }
+      },
+      "title": "The first version is focused on one job: making LP management less noisy."
+    },
+    "features": {
+      "body": "Everything in stage 1 is built around the same practical promise: know what needs attention, know whether you are actually winning, and act only when the economics make sense.",
+      "card": {
+        "1": {
+          "body": "Track edge proximity, breach status, and time spent out of range before dead capital quietly compounds.",
+          "title": "Range risk visibility"
+        },
+        "2": {
+          "body": "See fees, gas drag, inactive time, and net P&L versus simply holding the assets instead of guessing from half-truth metrics.",
+          "title": "True net performance"
+        },
+        "3": {
+          "body": "Monitor many positions across wallets, pools, and chains from one operating layer designed for real review workflows.",
+          "title": "Multi-position monitoring"
+        },
+        "4": {
+          "body": "Get gas-aware, action-ready signals so you stop reacting to noise and start acting when it is actually justified.",
+          "title": "Decision-ready signals"
+        }
+      },
+      "eyebrow": "What you actually get",
+      "title": "Built for the four questions every active LP asks."
+    },
+    "finalCta": {
+      "body": "Únete a la lista de espera para obtener acceso temprano, compartir tus flujos de trabajo y ayudar a dar forma a la capa de monitoreo que LPs serios, mesas de liquidez y operadores de tesorería realmente necesitan.",
+      "button": {
+        "discoveryCall": "Reservar una llamada de descubrimiento",
+        "joinWaitlist": "Unirse a la lista de espera"
+      },
+      "eyebrow": "Acceso temprano",
+      "title": "Construye tu ventaja operativa LP antes de automatizarla."
+    },
+    "header": {
+      "brand": "{{siteName}}",
+      "cta": {
+        "requestAccess": "Solicitar acceso"
+      },
+      "tagline": "Monitoreo de liquidez de nivel institucional"
+    },
+    "hero": {
+      "cta": {
+        "primary": "Unirse al acceso temprano",
+        "secondary": "Ver hoja de ruta del producto"
+      },
+      "eyebrow": "Primero minorista. Listo para mesas por diseño.",
+      "highlight": {
+        "1": {
+          "label": "Why people sign up",
+          "value": "Find the positions that actually need attention."
+        },
+        "2": {
+          "label": "Why they stay",
+          "value": "Stop guessing whether fees, gas, and idle time still add up to a win."
+        }
+      },
+      "panel": {
+        "decisionSignal": "El precio se acerca al límite superior, pero la caída esperada de comisiones aún no justifica un rebalanceo. Vuelve a revisar si baja el gas o si el precio se mueve otro 0,6%.",
+        "label": "Cabina de posición",
+        "metric": {
+          "actionSignal": {
+            "label": "Señal de acción",
+            "note": "aún no vale el gas",
+            "value": "Esperar"
+          },
+          "feeVelocity": {
+            "label": "Velocidad de comisiones",
+            "note": "disminuyendo cerca del borde",
+            "value": "$126/día"
+          },
+          "netPnl": {
+            "label": "P&L neto",
+            "note": "vs hold: +1,1%",
+            "value": "+4,2%"
+          },
+          "outOfRange": {
+            "label": "Fuera de rango",
+            "note": "últimos 7 días",
+            "value": "3h 18m"
+          }
+        },
+        "pool": "ETH / USDC 0,05%",
+        "signalLabel": "Decision signal",
+        "status": "1,8% del borde superior"
+      },
+      "pill": {
+        "1": "Read-only by default",
+        "2": "Multi-wallet monitoring",
+        "3": "Gas-aware action signals"
+      },
+      "subtitle": "Monitorea posiciones en billeteras, pools y cadenas. Entiende el rendimiento neto real, detecta temprano el riesgo de rango y sabe cuándo una acción está realmente justificada. Construido primero para LPs minoristas serios, con una hoja de ruta hacia fondos, tesorerías y mesas profesionales.",
+      "title": "La capa operativa para liquidez concentrada."
+    },
+    "nav": {
+      "access": "Acceso",
+      "faq": "FAQ",
+      "features": "Funciones",
+      "problem": "Problem",
+      "workflow": "How it works"
+    },
+    "problem": {
+      "body": "Being an LP is supposed to feel like capital at work. In practice it often feels like babysitting: missed range moves, unclear profitability, too many tabs, and constant second-guessing about whether action is even worth the gas.",
+      "card": {
+        "1": {
+          "body": "Positions drift toward the edge, go out of range, and quietly stop doing useful work unless you keep checking them.",
+          "title": "Missed range moves"
+        },
+        "2": {
+          "body": "Fees look good in isolation, but it is hard to tell whether you are actually ahead after gas, inactive time, and position management.",
+          "title": "Fake profitability"
+        },
+        "3": {
+          "body": "Wallets, explorers, dashboards, pool views, and spreadsheets all show fragments. None of them feel like one operating surface.",
+          "title": "Fragmented tracking"
+        },
+        "4": {
+          "body": "Even when a position looks unhealthy, the real question is whether touching it now makes economic sense or just burns more gas.",
+          "title": "Gas guesswork"
+        }
+      },
+      "eyebrow": "Why this exists",
+      "title": "LPing should feel like yield. Too often it feels like ops."
+    },
+    "trust": {
+      "body": "Stage 1 is intentionally designed to be low-friction and easy to trust. No execution, no magic promises, no fake automation story. Just a clean monitoring layer built to help serious LPs make better calls.",
+      "eyebrow": "Why the product feels safe to adopt",
+      "point": {
+        "1": {
+          "body": "You connect wallets to observe positions, not to give the product permission to move funds.",
+          "title": "Read-only first"
+        },
+        "2": {
+          "body": "The product is built around operator questions and traceable metrics, not vanity dashboards or headline APR.",
+          "title": "Transparent by design"
+        },
+        "3": {
+          "body": "Saved views, digests, and action signals are made to reduce routine checking instead of creating another tab to babysit.",
+          "title": "Workflow over noise"
+        }
+      },
+      "title": "Serious enough for real LP workflows. Simple enough to start using fast."
+    },
+    "workflow": {
+      "body": "The first experience should feel simple: connect, scan, decide. No strategy theatre. No clutter. Just a better way to run the review loop that active LPs already live in.",
+      "callout": {
+        "body": "The goal is not to tell you to trade more. The goal is to help you notice the few moments when doing something actually matters.",
+        "label": "What makes this useful"
+      },
+      "eyebrow": "How it works",
+      "step": {
+        "1": {
+          "body": "Connect the wallets you use for concentrated liquidity and pull your positions into one clean monitoring view.",
+          "title": "See everything in one place"
+        },
+        "2": {
+          "body": "Spot edge proximity, time out of range, fee velocity changes, and true net performance without stitching together five tools.",
+          "title": "Know what changed"
+        },
+        "3": {
+          "body": "Use action signals and gas-aware context to decide whether to act now, wait, or ignore the noise.",
+          "title": "Act only when it is worth it"
+        }
+      },
+      "title": "A better review loop for active LPs."
+    }
+  },
+  "nav": {
+    "group": {
+      "blog": "Blog",
+      "homes": "Homes",
+      "landing": "Landing",
+      "pages": "Páginas"
+    },
+    "link": {
+      "about": "Sobre nosotros",
+      "article": "Artículo",
+      "articleMdx": "Artículo (con MDX)",
+      "blogList": "Lista de blog",
+      "categoryPage": "Página de categoría",
+      "clickThrough": "Click-Through",
+      "contact": "Contacto",
+      "featuresAnchor": "Funciones (enlace ancla)",
+      "leadGeneration": "Generación de leads",
+      "longFormSales": "Ventas de formato largo",
+      "mobileApp": "Aplicación móvil",
+      "personal": "Personal",
+      "preLaunch": "Próximamente o pre-lanzamiento",
+      "pricing": "Precios",
+      "privacyPolicy": "Política de privacidad",
+      "productDetails": "Detalles del producto (o servicios)",
+      "saas": "SaaS",
+      "services": "Servicios",
+      "startup": "Startup",
+      "subscription": "Suscripción",
+      "tagPage": "Página de etiqueta",
+      "terms": "Términos",
+      "widgets": "Widgets"
+    }
+  }
+}

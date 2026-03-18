@@ -1,0 +1,293 @@
+{
+  "blog": {
+    "backToBlog": "返回部落格"
+  },
+  "footer": {
+    "footnote": {
+      "madeBy": "製作方",
+      "rightsReserved": "版權所有。"
+    },
+    "group": {
+      "company": "公司",
+      "platform": "平台",
+      "product": "產品",
+      "support": "支援"
+    },
+    "link": {
+      "atom": "Atom",
+      "blog": "部落格",
+      "careers": "徵才",
+      "communityForum": "社群論壇",
+      "customerStories": "客戶案例",
+      "developerApi": "開發者 API",
+      "docs": "文件",
+      "electron": "Electron",
+      "enterprise": "企業版",
+      "features": "功能",
+      "inclusion": "共融",
+      "partners": "合作夥伴",
+      "press": "媒體",
+      "privacyPolicy": "隱私政策",
+      "professionalServices": "專業服務",
+      "resources": "資源",
+      "security": "安全",
+      "shop": "商店",
+      "skills": "技能",
+      "socialImpact": "社會影響",
+      "status": "狀態",
+      "team": "團隊",
+      "unimetricsDesktop": "{{siteName}} Desktop"
+    }
+  },
+  "header": {
+    "action": {
+      "download": "下載"
+    },
+    "aria": {
+      "languageSwitcher": "語言切換器",
+      "mainNavigation": "主要導覽",
+      "rssFeed": "RSS 訂閱"
+    }
+  },
+  "landing": {
+    "audience": {
+      "body": "初始切入點很明確：主動管理集中流動性的專業 LP。更大的商業機會在後續出現，當同一層監控與智慧能力可支援專業流動性營運。",
+      "card": {
+        "1": {
+          "body": "You manage your own ranges, watch gas, and do not want to miss edge moves or dead capital.",
+          "title": "Active retail LPs"
+        },
+        "2": {
+          "body": "You run multiple positions, wallets, or chains and need one place to scan, prioritize, and review.",
+          "title": "Power users"
+        },
+        "3": {
+          "body": "You need a monitoring layer that feels disciplined and extensible before you ever think about automation.",
+          "title": "Emerging desks and treasuries"
+        }
+      },
+      "eyebrow": "適用對象",
+      "title": "先從活躍零售開始，再擴展到基金與金庫。"
+    },
+    "faq": {
+      "body": "The product is intentionally focused for stage 1: read-only monitoring, decision support, and faster reviews for concentrated liquidity operators.",
+      "eyebrow": "FAQ",
+      "item": {
+        "1": {
+          "answer": "No. Stage 1 is read-only by design. You connect wallets to monitor positions, understand performance, and receive action signals without giving the product execution power.",
+          "question": "Does {{siteName}} move funds or rebalance positions?"
+        },
+        "2": {
+          "answer": "Explorers and generic dashboards show fragments. {{siteName}} is built to answer the actual operator questions: what needs attention, what is really making money, and whether action is worth the gas.",
+          "question": "Why not just use an explorer or a generic analytics dashboard?"
+        },
+        "3": {
+          "answer": "Anyone can sign up, but the strongest fit is active LPs with concentrated liquidity positions who want better monitoring, cleaner performance visibility, and less manual checking.",
+          "question": "Who gets the most value from the first version?"
+        },
+        "4": {
+          "answer": "Because trust matters. You should be able to understand your positions and workflows first. Execution and automation can come later, once monitoring, signals, and operator trust are solid.",
+          "question": "Why start read-only?"
+        }
+      },
+      "title": "The first version is focused on one job: making LP management less noisy."
+    },
+    "features": {
+      "body": "Everything in stage 1 is built around the same practical promise: know what needs attention, know whether you are actually winning, and act only when the economics make sense.",
+      "card": {
+        "1": {
+          "body": "Track edge proximity, breach status, and time spent out of range before dead capital quietly compounds.",
+          "title": "Range risk visibility"
+        },
+        "2": {
+          "body": "See fees, gas drag, inactive time, and net P&L versus simply holding the assets instead of guessing from half-truth metrics.",
+          "title": "True net performance"
+        },
+        "3": {
+          "body": "Monitor many positions across wallets, pools, and chains from one operating layer designed for real review workflows.",
+          "title": "Multi-position monitoring"
+        },
+        "4": {
+          "body": "Get gas-aware, action-ready signals so you stop reacting to noise and start acting when it is actually justified.",
+          "title": "Decision-ready signals"
+        }
+      },
+      "eyebrow": "What you actually get",
+      "title": "Built for the four questions every active LP asks."
+    },
+    "finalCta": {
+      "body": "加入候補名單以取得早期存取、分享你的工作流程，並一起打造專業 LP、流動性交易台與金庫營運者真正需要的監控層。",
+      "button": {
+        "discoveryCall": "預約探索會議",
+        "joinWaitlist": "加入候補名單"
+      },
+      "eyebrow": "早期存取",
+      "title": "在自動化之前，先建立你的 LP 營運優勢。"
+    },
+    "header": {
+      "brand": "{{siteName}}",
+      "cta": {
+        "requestAccess": "申請存取"
+      },
+      "tagline": "機構級流動性監控"
+    },
+    "hero": {
+      "cta": {
+        "primary": "加入早期存取",
+        "secondary": "查看產品路線圖"
+      },
+      "eyebrow": "先做零售，設計上可延伸至交易台。",
+      "highlight": {
+        "1": {
+          "label": "Why people sign up",
+          "value": "Find the positions that actually need attention."
+        },
+        "2": {
+          "label": "Why they stay",
+          "value": "Stop guessing whether fees, gas, and idle time still add up to a win."
+        }
+      },
+      "panel": {
+        "decisionSignal": "價格正在接近上邊界，但預期手續費衰減仍不足以支持再平衡。若 Gas 下滑或價格再移動 0.6%，請重新檢查。",
+        "label": "部位駕駛艙",
+        "metric": {
+          "actionSignal": {
+            "label": "行動訊號",
+            "note": "目前不值得付 Gas",
+            "value": "等待"
+          },
+          "feeVelocity": {
+            "label": "手續費速度",
+            "note": "接近邊界時放緩",
+            "value": "$126/天"
+          },
+          "netPnl": {
+            "label": "淨 P&L",
+            "note": "相對持有：+1.1%",
+            "value": "+4.2%"
+          },
+          "outOfRange": {
+            "label": "離開區間",
+            "note": "最近 7 天",
+            "value": "3小時18分"
+          }
+        },
+        "pool": "ETH / USDC 0.05%",
+        "signalLabel": "Decision signal",
+        "status": "距上邊界 1.8%"
+      },
+      "pill": {
+        "1": "Read-only by default",
+        "2": "Multi-wallet monitoring",
+        "3": "Gas-aware action signals"
+      },
+      "subtitle": "跨錢包、池子與鏈監控部位。理解真實淨績效、提早發現區間風險，並知道何時採取行動才真正合理。先為嚴肅零售 LP 打造，並規劃延伸至基金、金庫與專業交易台。",
+      "title": "集中流動性的營運層。"
+    },
+    "nav": {
+      "access": "存取",
+      "faq": "FAQ",
+      "features": "功能",
+      "problem": "Problem",
+      "workflow": "How it works"
+    },
+    "problem": {
+      "body": "Being an LP is supposed to feel like capital at work. In practice it often feels like babysitting: missed range moves, unclear profitability, too many tabs, and constant second-guessing about whether action is even worth the gas.",
+      "card": {
+        "1": {
+          "body": "Positions drift toward the edge, go out of range, and quietly stop doing useful work unless you keep checking them.",
+          "title": "Missed range moves"
+        },
+        "2": {
+          "body": "Fees look good in isolation, but it is hard to tell whether you are actually ahead after gas, inactive time, and position management.",
+          "title": "Fake profitability"
+        },
+        "3": {
+          "body": "Wallets, explorers, dashboards, pool views, and spreadsheets all show fragments. None of them feel like one operating surface.",
+          "title": "Fragmented tracking"
+        },
+        "4": {
+          "body": "Even when a position looks unhealthy, the real question is whether touching it now makes economic sense or just burns more gas.",
+          "title": "Gas guesswork"
+        }
+      },
+      "eyebrow": "Why this exists",
+      "title": "LPing should feel like yield. Too often it feels like ops."
+    },
+    "trust": {
+      "body": "Stage 1 is intentionally designed to be low-friction and easy to trust. No execution, no magic promises, no fake automation story. Just a clean monitoring layer built to help serious LPs make better calls.",
+      "eyebrow": "Why the product feels safe to adopt",
+      "point": {
+        "1": {
+          "body": "You connect wallets to observe positions, not to give the product permission to move funds.",
+          "title": "Read-only first"
+        },
+        "2": {
+          "body": "The product is built around operator questions and traceable metrics, not vanity dashboards or headline APR.",
+          "title": "Transparent by design"
+        },
+        "3": {
+          "body": "Saved views, digests, and action signals are made to reduce routine checking instead of creating another tab to babysit.",
+          "title": "Workflow over noise"
+        }
+      },
+      "title": "Serious enough for real LP workflows. Simple enough to start using fast."
+    },
+    "workflow": {
+      "body": "The first experience should feel simple: connect, scan, decide. No strategy theatre. No clutter. Just a better way to run the review loop that active LPs already live in.",
+      "callout": {
+        "body": "The goal is not to tell you to trade more. The goal is to help you notice the few moments when doing something actually matters.",
+        "label": "What makes this useful"
+      },
+      "eyebrow": "How it works",
+      "step": {
+        "1": {
+          "body": "Connect the wallets you use for concentrated liquidity and pull your positions into one clean monitoring view.",
+          "title": "See everything in one place"
+        },
+        "2": {
+          "body": "Spot edge proximity, time out of range, fee velocity changes, and true net performance without stitching together five tools.",
+          "title": "Know what changed"
+        },
+        "3": {
+          "body": "Use action signals and gas-aware context to decide whether to act now, wait, or ignore the noise.",
+          "title": "Act only when it is worth it"
+        }
+      },
+      "title": "A better review loop for active LPs."
+    }
+  },
+  "nav": {
+    "group": {
+      "blog": "部落格",
+      "homes": "首頁",
+      "landing": "著陸頁",
+      "pages": "頁面"
+    },
+    "link": {
+      "about": "關於我們",
+      "article": "文章",
+      "articleMdx": "文章（含 MDX）",
+      "blogList": "部落格列表",
+      "categoryPage": "分類頁",
+      "clickThrough": "點擊導流頁",
+      "contact": "聯絡",
+      "featuresAnchor": "功能（錨點連結）",
+      "leadGeneration": "名單蒐集",
+      "longFormSales": "長文銷售頁",
+      "mobileApp": "行動應用",
+      "personal": "個人",
+      "preLaunch": "即將上線或預發布",
+      "pricing": "定價",
+      "privacyPolicy": "隱私政策",
+      "productDetails": "產品詳情（或服務）",
+      "saas": "SaaS",
+      "services": "服務",
+      "startup": "新創",
+      "subscription": "訂閱",
+      "tagPage": "標籤頁",
+      "terms": "條款",
+      "widgets": "元件"
+    }
+  }
+}

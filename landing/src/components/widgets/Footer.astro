@@ -2,6 +2,8 @@
 import { Icon } from "astro-icon/components";
 import { SITE } from "unimetrics:config";
 import { getHomePermalink } from "~/utils/permalinks";
+import { localizeHref } from "~/i18n/links";
+import { defaultLocale } from "~/i18n/routing";
 
 interface Link {
   text?: string;
@@ -30,6 +32,8 @@ const {
   footNote = "",
   theme = "light",
 } = Astro.props;
+const currentLocale = Astro.currentLocale ?? defaultLocale;
+const homeHref = localizeHref(currentLocale, getHomePermalink());
 ---
 
 <footer
@@ -45,17 +49,15 @@ const {
     <div class="grid grid-cols-12 gap-4 gap-y-8 py-8 sm:gap-8 md:py-12">
       <div class="col-span-12 lg:col-span-4">
         <div class="mb-2">
-          <a class="inline-block text-xl font-bold" href={getHomePermalink()}
-            >{SITE?.name}</a
-          >
+          <a class="inline-block text-xl font-bold" href={homeHref}>{SITE?.name}</a>
         </div>
-        <div class="flex gap-1 text-sm text-ui-text-muted">
+        <div class="flex gap-1 text-sm text-text-muted">
           {
             secondaryLinks.map(({ text, href }, index) => (
               <>
                 {index !== 0 ? " · " : ""}
                 <a
-                  class="text-ui-text-muted transition duration-150 ease-in-out hover:text-gray-700 hover:underline dark:text-gray-400"
+                  class="text-text-muted transition duration-150 ease-in-out hover:text-gray-700 hover:underline dark:text-gray-400"
                   href={href}
                   set:html={text}
                 />
@@ -73,7 +75,7 @@ const {
                 {links.map(({ text, href, ariaLabel }) => (
                   <li class="mb-2">
                     <a
-                      class="text-ui-text-muted transition duration-150 ease-in-out hover:text-gray-700 hover:underline dark:text-gray-400"
+                      class="text-text-muted transition duration-150 ease-in-out hover:text-gray-700 hover:underline dark:text-gray-400"
                       href={href}
                       aria-label={ariaLabel}
                     >
@@ -94,7 +96,7 @@ const {
             {socialLinks.map(({ ariaLabel, href, text, icon }) => (
               <li>
                 <a
-                  class="inline-flex items-center rounded-lg p-2.5 text-sm text-ui-text-muted hover:bg-gray-100 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-700"
+                  class="inline-flex items-center rounded-lg p-2.5 text-sm text-text-muted hover:bg-gray-100 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-700"
                   aria-label={ariaLabel}
                   href={href}
                 >
@@ -109,7 +111,7 @@ const {
         )
       }
 
-      <div class="mr-4 text-sm dark:text-ui-text-muted">
+      <div class="mr-4 text-sm dark:text-text-muted rtl:mr-0 rtl:ml-4">
         <Fragment set:html={footNote} />
       </div>
     </div>

@@ -7,14 +7,22 @@ For pull request preparation and PR-specific rules, also follow `.ai/pr-instruct
 ## Stack and Tooling
 
 - Use `pnpm` (not npm/yarn) for dependency and script commands.
-- Respect workspace boundaries (`api`, `app`, `cli`, `landing`, `mobile`, `ui`).
+- Respect workspace boundaries (`api`, `app`, `charts`, `cli`, `landing`, `mobile`, `docs`, `design-tokens`).
 - Use TypeScript/ESM conventions already used in each package.
+- Follow existing patterns for imports, exports, and module structure in each package.
+
+## File names conventions
+
+- Use `kebab-case` for file and directory names.
+- Use `PascalCase` for React component files and their default exports.
+- Readme file always should be named `README.md` and located in the root of the package or subdirectory if it is a readme for that subdirectory.
 
 ## Framework-Specific Guides
 
 - React (`app`): `./style-guide/react.md`
 - Astro (`landing`): `./style-guide/astro.md`
 - Expo React Native (`mobile`): `./style-guide/expo-react-native.md`
+- Docusaurus (`docs`): `./style-guide/docusaurus.md`
 
 ## Scripts Organization
 
@@ -31,7 +39,10 @@ For pull request preparation and PR-specific rules, also follow `.ai/pr-instruct
 - Prioritize correctness and explicit behavior over clever shortcuts.
 - Preserve existing project structure and naming patterns.
 - Add comments only when logic is non-obvious.
+- Prefer existing abstractions first: use platform APIs, shared internal utilities, and already-installed package helpers before writing custom duplicate logic.
+- Do not re-implement behavior that already exists in a maintained abstraction unless there is a clear functional or performance reason.
 - Avoid introducing new dependencies unless clearly needed.
+- For any styling work, use only design tokens defined in `design-tokens/tokens` (via generated `@unimetrics/design-tokens` token outputs). Do not invent new ad-hoc color tokens or hardcoded palette values unless explicitly requested and added to `design-tokens/tokens` first.
 - For Web3 values, use `bigint` and decimal-safe helpers. Never use JS floating-point math for on-chain amounts.
 - Keep chain-specific constants (chain IDs, addresses, explorers) centralized per network.
 - Treat indexer/3rd-party API data as eventually consistent; on critical flows, prefer direct chain confirmation.
@@ -49,3 +60,4 @@ For pull request preparation and PR-specific rules, also follow `.ai/pr-instruct
 - Do not weaken security or validation logic without explicit reason.
 - Avoid destructive operations in scripts and migrations.
 - Keep backward compatibility for public interfaces unless intentionally changed.
+- Avoid JS/TS bugs and common vulns

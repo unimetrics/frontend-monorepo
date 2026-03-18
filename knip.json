@@ -1,20 +1,28 @@
 {
   "ignoreDependencies": [
+    "@lhci/cli",
+    "@playwright/test",
+    "@wuba/react-native-echarts",
     "@iconify-json/flat-color-icons",
     "@iconify-json/tabler",
     "@types/mdx",
-    "prettier-plugin-astro",
-    "sharp",
-    "@babel/core",
     "@feature-sliced/steiger-plugin",
     "@lavamoat/preinstall-always-fail",
-    "madge"
+    "echarts",
+    "echarts-for-react",
+    "madge",
+    "react-dom",
+    "react-native-gesture-handler",
+    "react-native-safe-area-context",
+    "react-native-svg",
+    "react-native-web",
+    "sharp"
   ],
   "ignoreFiles": [
     "cli/bin/lpdesk.ts",
+    "docs/src/css/custom.css",
     "landing/src/layouts/MarkdownLayout.astro",
     "landing/src/data/post/astrowind-template-in-depth.mdx",
-    "landing/src/data/post/markdown-elements-demo-post.mdx",
     "mobile/metro.config.js",
     "steiger.config.ts"
   ],

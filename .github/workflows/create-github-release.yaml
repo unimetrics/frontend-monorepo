@@ -22,8 +22,18 @@ jobs:
       startsWith(github.event.pull_request.head.ref, 'changeset-release/')
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
+      - name: Checkout merged commit with full history
         uses: actions/checkout@v5
+        with:
+          ref: ${{ github.event.pull_request.merge_commit_sha }}
+          fetch-depth: 0
+
+      - name: Create helper bot token
+        id: helper-bot-token
+        uses: ./.github/actions/create-helper-bot-token
+        with:
+          app-id: ${{ secrets.HELPER_BOT_ID }}
+          private-key: ${{ secrets.HELPER_BOT_KEY }}
 
       - name: Prepare release metadata
         id: metadata
@@ -34,6 +44,7 @@ jobs:
           PR_TITLE: ${{ github.event.pull_request.title }}
           PR_BODY: ${{ github.event.pull_request.body }}
           PR_URL: ${{ github.event.pull_request.html_url }}
+          VERSION_FILE: package.json
         run: |
           set -euo pipefail
           while IFS= read -r line; do
@@ -41,7 +52,7 @@ jobs:
           done < <(bash scripts/github/create-release-metadata/create-release-metadata.sh)
 
       - name: Create GitHub release
-        uses: softprops/action-gh-release@v2
+        uses: softprops/action-gh-release@a06a81a03ee405af7f2048a818ed3f03bbf83c7b # v2
         with:
           allow_updates: true
           tag_name: ${{ steps.metadata.outputs.tag_name }}
@@ -51,3 +62,4 @@ jobs:
           draft: false
           prerelease: false
           generate_release_notes: false
+          token: ${{ steps.helper-bot-token.outputs.token }}

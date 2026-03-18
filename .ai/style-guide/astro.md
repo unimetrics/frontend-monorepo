@@ -47,8 +47,7 @@ For PR process and merge rules, also follow `../pr-instructions.md`.
 
 ## Styling
 
-- Use existing Tailwind and project utilities consistently.
-- Keep design tokens and shared style primitives centralized.
+- Use Tailwind utilities with shared tokens.
 - Avoid page-level one-off style drift unless intentionally scoped.
 - Prefer predictable class structure over ad-hoc utility accumulation.
 

@@ -1,5 +1,5 @@
 ---
-"@unimetrics/ui": patch
+"@unimetrics/design-tokens": patch
 ---
 
 start using tokens json

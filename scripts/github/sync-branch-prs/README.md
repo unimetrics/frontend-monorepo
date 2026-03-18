@@ -27,7 +27,7 @@ bash scripts/github/sync-branch-prs/sync-branch-prs.sh
   - `GITHUB_TOKEN` (used by `gh` auth, must have permission to create pull requests)
 - Optional env:
   - `SOURCE_BRANCH` (default: `main`)
-  - `TARGET_BRANCHES` space-separated list (default: `test dev`)
+  - `TARGET_BRANCHES` list (space-, comma-, or newline-separated; default: `test dev`)
 
 ## Output
 

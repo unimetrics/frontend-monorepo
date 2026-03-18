@@ -2,6 +2,8 @@
 import { Icon } from "astro-icon/components";
 import { getPermalink } from "~/utils/permalinks";
 import Button from "~/components/ui/Button.astro";
+import { localizeHref } from "~/i18n/links";
+import { defaultLocale, getLocaleDirection } from "~/i18n/routing";
 
 export interface Props {
   prevUrl?: string;
@@ -16,28 +18,40 @@ const {
   prevText = "Newer posts",
   nextText = "Older posts",
 } = Astro.props;
+const locale = Astro.currentLocale ?? defaultLocale;
+const textDirection = getLocaleDirection(locale);
 ---
 
 {
   (prevUrl || nextUrl) && (
     <div class="container flex">
-      <div class="container mx-auto flex flex-row justify-between">
+      <div class="container mx-auto flex flex-row justify-between rtl:flex-row-reverse">
         <Button
           variant="tertiary"
-          class={`mr-2 px-3 md:px-3 ${!prevUrl ? "invisible" : ""}`}
-          href={getPermalink(prevUrl)}
+          class={`mr-2 px-3 md:px-3 rtl:mr-0 rtl:ml-2 ${!prevUrl ? "invisible" : ""}`}
+          href={localizeHref(locale, getPermalink(prevUrl))}
         >
-          <Icon name="tabler:chevron-left" class="h-6 w-6" />
-          <p class="ml-2">{prevText}</p>
+          <Icon
+            name={
+              textDirection === "rtl" ? "tabler:chevron-right" : "tabler:chevron-left"
+            }
+            class="h-6 w-6"
+          />
+          <p class="ml-2 rtl:ml-0 rtl:mr-2">{prevText}</p>
         </Button>
 
         <Button
           variant="tertiary"
           class={`px-3 md:px-3 ${!nextUrl ? "invisible" : ""}`}
-          href={getPermalink(nextUrl)}
+          href={localizeHref(locale, getPermalink(nextUrl))}
         >
-          <span class="mr-2">{nextText}</span>
-          <Icon name="tabler:chevron-right" class="h-6 w-6" />
+          <span class="mr-2 rtl:mr-0 rtl:ml-2">{nextText}</span>
+          <Icon
+            name={
+              textDirection === "rtl" ? "tabler:chevron-left" : "tabler:chevron-right"
+            }
+            class="h-6 w-6"
+          />
         </Button>
       </div>
     </div>

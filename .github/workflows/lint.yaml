@@ -2,6 +2,9 @@ name: Lint
 
 on:
   pull_request:
+  merge_group:
+    types:
+      - checks_requested
   push:
     branches:
       - dev
@@ -46,15 +49,18 @@ jobs:
             .
             api
             app
+            charts
             cli
+            docs
             landing
             mobile
-            ui
+            design-tokens
           APPROVED_LICENSES: |
             Apache-2.0
             BSD-2-Clause
             BSD-3-Clause
             CC0-1.0
+            Custom: https://gsap.com/standard-license.
             ISC
             MIT
             MPL-2.0

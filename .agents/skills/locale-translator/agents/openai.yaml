@@ -1,0 +1,4 @@
+interface:
+  display_name: "Workspace Locale Translator"
+  short_description: "Translate locale files from detected source locale with strict key parity."
+  default_prompt: "Use $locale-translator to auto-detect locale files in the current workspace, choose a source locale (prefer en), translate into other locales, and validate key parity."

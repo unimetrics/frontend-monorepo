@@ -6,6 +6,8 @@ import type { ImageMetadata } from "astro";
 import Layout from "~/layouts/PageLayout.astro";
 import SinglePost from "~/components/blog/SinglePost.astro";
 import ToBlogLink from "~/components/blog/ToBlogLink.astro";
+import { localizeHref } from "~/i18n/links";
+import { defaultLocale } from "~/i18n/routing";
 
 import { getCanonical, getPermalink } from "~/utils/permalinks";
 import { getStaticPathsBlogPost, blogPostRobots } from "~/utils/blog";
@@ -22,8 +24,10 @@ export const getStaticPaths = (async () => {
 type Props = InferGetStaticPropsType<typeof getStaticPaths>;
 
 const { post } = Astro.props as Props;
+const locale = Astro.currentLocale ?? defaultLocale;
 
-const url = getCanonical(getPermalink(post.permalink, "post"));
+const permalink = localizeHref(locale, getPermalink(post.permalink, "post"));
+const url = getCanonical(permalink);
 const image = (await findImage(post.image)) as ImageMetadata | string | undefined;
 
 const metadata = merge(

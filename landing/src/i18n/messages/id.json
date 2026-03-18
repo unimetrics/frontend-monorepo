@@ -1,0 +1,293 @@
+{
+  "blog": {
+    "backToBlog": "Kembali ke Blog"
+  },
+  "footer": {
+    "footnote": {
+      "madeBy": "Dibuat oleh",
+      "rightsReserved": "Semua hak dilindungi."
+    },
+    "group": {
+      "company": "Perusahaan",
+      "platform": "Platform",
+      "product": "Produk",
+      "support": "Dukungan"
+    },
+    "link": {
+      "atom": "Atom",
+      "blog": "Blog",
+      "careers": "Karier",
+      "communityForum": "Forum Komunitas",
+      "customerStories": "Cerita pelanggan",
+      "developerApi": "API Pengembang",
+      "docs": "Dokumentasi",
+      "electron": "Electron",
+      "enterprise": "Enterprise",
+      "features": "Fitur",
+      "inclusion": "Inklusi",
+      "partners": "Mitra",
+      "press": "Pers",
+      "privacyPolicy": "Kebijakan Privasi",
+      "professionalServices": "Layanan Profesional",
+      "resources": "Sumber daya",
+      "security": "Keamanan",
+      "shop": "Toko",
+      "skills": "Keahlian",
+      "socialImpact": "Dampak sosial",
+      "status": "Status",
+      "team": "Tim",
+      "unimetricsDesktop": "{{siteName}} Desktop"
+    }
+  },
+  "header": {
+    "action": {
+      "download": "Unduh"
+    },
+    "aria": {
+      "languageSwitcher": "Pengalih bahasa",
+      "mainNavigation": "Navigasi utama",
+      "rssFeed": "Feed RSS"
+    }
+  },
+  "landing": {
+    "audience": {
+      "body": "Wedge awalnya jelas: LP serius yang aktif mengelola likuiditas terkonsentrasi. Peluang bisnis yang lebih besar datang kemudian, saat lapisan monitoring dan intelijen yang sama mendukung operasi likuiditas profesional.",
+      "card": {
+        "1": {
+          "body": "You manage your own ranges, watch gas, and do not want to miss edge moves or dead capital.",
+          "title": "Active retail LPs"
+        },
+        "2": {
+          "body": "You run multiple positions, wallets, or chains and need one place to scan, prioritize, and review.",
+          "title": "Power users"
+        },
+        "3": {
+          "body": "You need a monitoring layer that feels disciplined and extensible before you ever think about automation.",
+          "title": "Emerging desks and treasuries"
+        }
+      },
+      "eyebrow": "Untuk siapa",
+      "title": "Mulai dari ritel aktif. Perluas ke dana dan treasury."
+    },
+    "faq": {
+      "body": "The product is intentionally focused for stage 1: read-only monitoring, decision support, and faster reviews for concentrated liquidity operators.",
+      "eyebrow": "FAQ",
+      "item": {
+        "1": {
+          "answer": "No. Stage 1 is read-only by design. You connect wallets to monitor positions, understand performance, and receive action signals without giving the product execution power.",
+          "question": "Does {{siteName}} move funds or rebalance positions?"
+        },
+        "2": {
+          "answer": "Explorers and generic dashboards show fragments. {{siteName}} is built to answer the actual operator questions: what needs attention, what is really making money, and whether action is worth the gas.",
+          "question": "Why not just use an explorer or a generic analytics dashboard?"
+        },
+        "3": {
+          "answer": "Anyone can sign up, but the strongest fit is active LPs with concentrated liquidity positions who want better monitoring, cleaner performance visibility, and less manual checking.",
+          "question": "Who gets the most value from the first version?"
+        },
+        "4": {
+          "answer": "Because trust matters. You should be able to understand your positions and workflows first. Execution and automation can come later, once monitoring, signals, and operator trust are solid.",
+          "question": "Why start read-only?"
+        }
+      },
+      "title": "The first version is focused on one job: making LP management less noisy."
+    },
+    "features": {
+      "body": "Everything in stage 1 is built around the same practical promise: know what needs attention, know whether you are actually winning, and act only when the economics make sense.",
+      "card": {
+        "1": {
+          "body": "Track edge proximity, breach status, and time spent out of range before dead capital quietly compounds.",
+          "title": "Range risk visibility"
+        },
+        "2": {
+          "body": "See fees, gas drag, inactive time, and net P&L versus simply holding the assets instead of guessing from half-truth metrics.",
+          "title": "True net performance"
+        },
+        "3": {
+          "body": "Monitor many positions across wallets, pools, and chains from one operating layer designed for real review workflows.",
+          "title": "Multi-position monitoring"
+        },
+        "4": {
+          "body": "Get gas-aware, action-ready signals so you stop reacting to noise and start acting when it is actually justified.",
+          "title": "Decision-ready signals"
+        }
+      },
+      "eyebrow": "What you actually get",
+      "title": "Built for the four questions every active LP asks."
+    },
+    "finalCta": {
+      "body": "Gabung daftar tunggu untuk mendapatkan akses awal, berbagi workflow Anda, dan membantu membentuk lapisan monitoring yang benar-benar dibutuhkan LP serius, desk likuiditas, dan operator treasury.",
+      "button": {
+        "discoveryCall": "Jadwalkan panggilan discovery",
+        "joinWaitlist": "Gabung daftar tunggu"
+      },
+      "eyebrow": "Akses awal",
+      "title": "Bangun keunggulan operasi LP Anda sebelum mengotomatiskannya."
+    },
+    "header": {
+      "brand": "{{siteName}}",
+      "cta": {
+        "requestAccess": "Minta akses"
+      },
+      "tagline": "Monitoring likuiditas kelas institusional"
+    },
+    "hero": {
+      "cta": {
+        "primary": "Gabung akses awal",
+        "secondary": "Lihat roadmap produk"
+      },
+      "eyebrow": "Ritel dulu. Siap desk sejak desain.",
+      "highlight": {
+        "1": {
+          "label": "Why people sign up",
+          "value": "Find the positions that actually need attention."
+        },
+        "2": {
+          "label": "Why they stay",
+          "value": "Stop guessing whether fees, gas, and idle time still add up to a win."
+        }
+      },
+      "panel": {
+        "decisionSignal": "Harga mendekati batas atas, tetapi penurunan fee yang diperkirakan masih belum membenarkan rebalance. Cek lagi jika gas turun atau harga bergerak 0,6% lagi.",
+        "label": "Kokpit posisi",
+        "metric": {
+          "actionSignal": {
+            "label": "Sinyal aksi",
+            "note": "belum sepadan dengan gas",
+            "value": "Tunggu"
+          },
+          "feeVelocity": {
+            "label": "Kecepatan fee",
+            "note": "melambat dekat batas",
+            "value": "$126/hari"
+          },
+          "netPnl": {
+            "label": "P&L bersih",
+            "note": "vs hold: +1,1%",
+            "value": "+4,2%"
+          },
+          "outOfRange": {
+            "label": "Di luar range",
+            "note": "7 hari terakhir",
+            "value": "3j 18m"
+          }
+        },
+        "pool": "ETH / USDC 0,05%",
+        "signalLabel": "Decision signal",
+        "status": "1,8% dari batas atas"
+      },
+      "pill": {
+        "1": "Read-only by default",
+        "2": "Multi-wallet monitoring",
+        "3": "Gas-aware action signals"
+      },
+      "subtitle": "Pantau posisi di berbagai wallet, pool, dan chain. Pahami performa bersih nyata, deteksi risiko range lebih awal, dan tahu kapan tindakan benar-benar layak. Dibangun pertama untuk LP ritel serius, dengan roadmap menuju dana, treasury, dan desk profesional.",
+      "title": "Lapisan operasi untuk likuiditas terkonsentrasi."
+    },
+    "nav": {
+      "access": "Akses",
+      "faq": "FAQ",
+      "features": "Fitur",
+      "problem": "Problem",
+      "workflow": "How it works"
+    },
+    "problem": {
+      "body": "Being an LP is supposed to feel like capital at work. In practice it often feels like babysitting: missed range moves, unclear profitability, too many tabs, and constant second-guessing about whether action is even worth the gas.",
+      "card": {
+        "1": {
+          "body": "Positions drift toward the edge, go out of range, and quietly stop doing useful work unless you keep checking them.",
+          "title": "Missed range moves"
+        },
+        "2": {
+          "body": "Fees look good in isolation, but it is hard to tell whether you are actually ahead after gas, inactive time, and position management.",
+          "title": "Fake profitability"
+        },
+        "3": {
+          "body": "Wallets, explorers, dashboards, pool views, and spreadsheets all show fragments. None of them feel like one operating surface.",
+          "title": "Fragmented tracking"
+        },
+        "4": {
+          "body": "Even when a position looks unhealthy, the real question is whether touching it now makes economic sense or just burns more gas.",
+          "title": "Gas guesswork"
+        }
+      },
+      "eyebrow": "Why this exists",
+      "title": "LPing should feel like yield. Too often it feels like ops."
+    },
+    "trust": {
+      "body": "Stage 1 is intentionally designed to be low-friction and easy to trust. No execution, no magic promises, no fake automation story. Just a clean monitoring layer built to help serious LPs make better calls.",
+      "eyebrow": "Why the product feels safe to adopt",
+      "point": {
+        "1": {
+          "body": "You connect wallets to observe positions, not to give the product permission to move funds.",
+          "title": "Read-only first"
+        },
+        "2": {
+          "body": "The product is built around operator questions and traceable metrics, not vanity dashboards or headline APR.",
+          "title": "Transparent by design"
+        },
+        "3": {
+          "body": "Saved views, digests, and action signals are made to reduce routine checking instead of creating another tab to babysit.",
+          "title": "Workflow over noise"
+        }
+      },
+      "title": "Serious enough for real LP workflows. Simple enough to start using fast."
+    },
+    "workflow": {
+      "body": "The first experience should feel simple: connect, scan, decide. No strategy theatre. No clutter. Just a better way to run the review loop that active LPs already live in.",
+      "callout": {
+        "body": "The goal is not to tell you to trade more. The goal is to help you notice the few moments when doing something actually matters.",
+        "label": "What makes this useful"
+      },
+      "eyebrow": "How it works",
+      "step": {
+        "1": {
+          "body": "Connect the wallets you use for concentrated liquidity and pull your positions into one clean monitoring view.",
+          "title": "See everything in one place"
+        },
+        "2": {
+          "body": "Spot edge proximity, time out of range, fee velocity changes, and true net performance without stitching together five tools.",
+          "title": "Know what changed"
+        },
+        "3": {
+          "body": "Use action signals and gas-aware context to decide whether to act now, wait, or ignore the noise.",
+          "title": "Act only when it is worth it"
+        }
+      },
+      "title": "A better review loop for active LPs."
+    }
+  },
+  "nav": {
+    "group": {
+      "blog": "Blog",
+      "homes": "Homes",
+      "landing": "Landing",
+      "pages": "Halaman"
+    },
+    "link": {
+      "about": "Tentang kami",
+      "article": "Artikel",
+      "articleMdx": "Artikel (dengan MDX)",
+      "blogList": "Daftar Blog",
+      "categoryPage": "Halaman Kategori",
+      "clickThrough": "Click-Through",
+      "contact": "Kontak",
+      "featuresAnchor": "Fitur (tautan anchor)",
+      "leadGeneration": "Lead Generation",
+      "longFormSales": "Penjualan long-form",
+      "mobileApp": "Aplikasi Seluler",
+      "personal": "Personal",
+      "preLaunch": "Segera Hadir atau Pra-Peluncuran",
+      "pricing": "Harga",
+      "privacyPolicy": "Kebijakan privasi",
+      "productDetails": "Detail Produk (atau Layanan)",
+      "saas": "SaaS",
+      "services": "Layanan",
+      "startup": "Startup",
+      "subscription": "Langganan",
+      "tagPage": "Halaman Tag",
+      "terms": "Ketentuan",
+      "widgets": "Widget"
+    }
+  }
+}
