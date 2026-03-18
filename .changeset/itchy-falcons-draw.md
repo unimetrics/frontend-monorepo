@@ -1,5 +1,5 @@
 ---
-"@unimetrics/ui": patch
+"@unimetrics/design-tokens": patch
 ---
 
 change color scheme

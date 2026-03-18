@@ -5,6 +5,7 @@ This folder contains framework-specific implementation guides for this monorepo:
 - `react.md` for `app` (React + Vite + Tailwind + PWA)
 - `astro.md` for `landing` (Astro static site + islands)
 - `expo-react-native.md` for `mobile` (Expo + React Native)
+- `docusaurus.md` for `docs` (Docusaurus docs site + MDX)
 
 Use these with:
 

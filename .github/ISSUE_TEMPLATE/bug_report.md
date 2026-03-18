@@ -25,7 +25,7 @@ Which part is affected?
 - `docs`
 - `api`
 - `cli`
-- `ui`
+- `design-tokens`
 - `tooling/ci`
 
 ## Steps to Reproduce

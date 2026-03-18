@@ -1,5 +1,5 @@
 ---
-"@unimetrics/ui": patch
+"@unimetrics/design-tokens": patch
 ---
 
 remove generated json token files from codebase and add sigle file to sync with figma

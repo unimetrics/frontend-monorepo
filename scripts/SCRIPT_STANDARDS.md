@@ -11,7 +11,7 @@ These rules are mandatory for scripts in this repository.
 ## Location And Paths
 
 1. Put common scripts in `scripts` folder.
-2. Project-specific scripts should go in the relevant package (for example, `ui/scripts` for UI-related scripts).
+2. Project-specific scripts should go in the relevant package, for example `my-workspace/scripts`.
 3. Resolve repository root first, then use root-relative paths.
 4. Avoid fragile path hopping patterns like `cd "$(dirname "$0")/../../.."`.
 5. If a script path changes, update all callsites (`package.json`, workflows/actions, and workflow path filters) in the same change.

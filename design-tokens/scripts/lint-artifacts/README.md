@@ -2,14 +2,14 @@
 
 ## Why
 
-The script basically checks if generated css files (exported by ui package) are in sync with design tokens json by building it and checking git state.
+The script checks if generated CSS files (exported by the design-tokens package) are in sync with design token JSON sources by building and checking git state.
 
 ## What
 
 Checks git diff state for generated token outputs:
 
-- `ui/tokens.css`
-- `ui/theme.css`
+- `design-tokens/tokens.css`
+- `design-tokens/theme.css`
 
 Fails when any of these files are modified after token build.
 
@@ -18,14 +18,14 @@ Fails when any of these files are modified after token build.
 Direct script run:
 
 ```bash
-tsx ui/scripts/lint-artifacts/lint-artifacts.ts
+tsx design-tokens/scripts/lint-artifacts/lint-artifacts.ts
 ```
 
 ## Inputs
 
 - Git working tree state for:
-  - `ui/tokens.css`
-  - `ui/theme.css`
+  - `design-tokens/tokens.css`
+  - `design-tokens/theme.css`
 
 ## Output
 

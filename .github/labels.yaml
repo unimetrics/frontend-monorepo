@@ -38,8 +38,8 @@
   description: "Changes related to the docs package"
   color: "5319e7"
 
-- name: ui
-  description: "Changes related to the UI package"
+- name: design-tokens
+  description: "Changes related to the design-tokens package"
   color: "1fb6ff"
 
 - name: stale

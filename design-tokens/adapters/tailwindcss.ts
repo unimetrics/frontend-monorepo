@@ -44,6 +44,6 @@ export const buildTailwindCssAdapter = async (
   ).buildAllPlatforms();
 
   console.info(
-    `[ui/tokens] updated ${path.relative(context.uiRoot, context.themeCssPath)}`
+    `[design-tokens] updated ${path.relative(context.workspaceRoot, context.themeCssPath)}`
   );
 };

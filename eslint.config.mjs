@@ -20,7 +20,7 @@ const chartsTsFiles = ["charts/**/*.{ts,mts,cts,tsx}"];
 const cliTsFiles = ["cli/**/*.{ts,mts,cts,tsx}"];
 const landingTsFiles = ["landing/**/*.{ts,mts,cts,tsx}"];
 const mobileTsFiles = ["mobile/**/*.{ts,mts,cts,tsx}"];
-const uiTsFiles = ["ui/**/*.{ts,mts,cts,tsx}"];
+const designTokensTsFiles = ["design-tokens/**/*.{ts,mts,cts,tsx}"];
 const scriptsTsFiles = [
   "scripts/**/*.{ts,mts,cts}",
   "*/scripts/**/*.{ts,mts,cts}",
@@ -33,12 +33,14 @@ const allTsFiles = [
   ...cliTsFiles,
   ...landingTsFiles,
   ...mobileTsFiles,
-  ...uiTsFiles,
+  ...designTokensTsFiles,
   ...scriptsTsFiles,
 ];
 
 const rootJsFiles = ["*.{js,mjs,cjs}"];
-const workspaceJsFiles = ["{api,app,charts,cli,landing,mobile,ui}/**/*.{js,mjs,cjs,jsx}"];
+const workspaceJsFiles = [
+  "{api,app,charts,cli,landing,mobile,design-tokens}/**/*.{js,mjs,cjs,jsx}",
+];
 const allJsFiles = [...rootJsFiles, ...workspaceJsFiles];
 
 const astroFiles = ["landing/**/*.astro"];

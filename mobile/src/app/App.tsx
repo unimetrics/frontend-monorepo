@@ -8,7 +8,7 @@ export default function App() {
         Unimetrics Mobile
       </Text>
       <Text className="text-text-default mt-3 text-center text-base">
-        Design tokens from @unimetrics/ui are active in this workspace.
+        Design tokens from @unimetrics/design-tokens are active in this workspace.
       </Text>
     </View>
   );

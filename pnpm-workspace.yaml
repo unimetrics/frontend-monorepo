@@ -6,7 +6,7 @@ packages:
   - docs
   - landing
   - mobile
-  - ui
+  - design-tokens
 catalog:
   "@types/node": 25.3.5
   "@types/react": 19.2.14

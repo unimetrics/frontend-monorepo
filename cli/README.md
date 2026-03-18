@@ -3,5 +3,5 @@
 </div>
 <br />
 <div align="center">
-  This is a package that contains ui design system tokens for the Unimetrics frontend monorepo.
+  This is a package that contains the lpdesk operations CLI for the Unimetrics frontend monorepo.
 </div>

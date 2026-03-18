@@ -9,7 +9,7 @@ Monorepo for Unimetrics client-facing products and shared packages:
 - `docs`: Docusaurus documentation site
 - `api`: shared TypeScript API client/core package
 - `cli`: operations CLI (`lpdesk`)
-- `ui`: shared tokens and Tailwind preset
+- `design-tokens`: shared tokens and Tailwind preset
 
 ## Requirements
 
@@ -24,7 +24,7 @@ pnpm install
 pnpm dev
 ```
 
-`pnpm dev` starts the landing site (`@unimetrics/landing`).
+`pnpm dev` starts both `@unimetrics/design-tokens` and `@unimetrics/landing`.
 
 ## Run Specific Targets
 

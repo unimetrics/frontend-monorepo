@@ -14,7 +14,7 @@
   },
   "dependencies": {
     "@expo/metro-config": "54.0.14",
-    "@unimetrics/ui": "workspace:*",
+    "@unimetrics/design-tokens": "workspace:*",
     "@wuba/react-native-echarts": "3.0.1",
     "echarts": "6.0.0",
     "expo": "54.0.33",
