@@ -1,0 +1,293 @@
+{
+  "blog": {
+    "backToBlog": "Bumalik sa Blog"
+  },
+  "footer": {
+    "footnote": {
+      "madeBy": "Ginawa ng",
+      "rightsReserved": "Lahat ng karapatan ay nakalaan."
+    },
+    "group": {
+      "company": "Kumpanya",
+      "platform": "Platform",
+      "product": "Produkto",
+      "support": "Suporta"
+    },
+    "link": {
+      "atom": "Atom",
+      "blog": "Blog",
+      "careers": "Careers",
+      "communityForum": "Forum ng Komunidad",
+      "customerStories": "Mga kuwento ng customer",
+      "developerApi": "Developer API",
+      "docs": "Docs",
+      "electron": "Electron",
+      "enterprise": "Enterprise",
+      "features": "Mga Feature",
+      "inclusion": "Inclusion",
+      "partners": "Mga Partner",
+      "press": "Press",
+      "privacyPolicy": "Patakaran sa Privacy",
+      "professionalServices": "Mga Serbisyong Propesyonal",
+      "resources": "Mga Resource",
+      "security": "Seguridad",
+      "shop": "Shop",
+      "skills": "Skills",
+      "socialImpact": "Epektong Panlipunan",
+      "status": "Status",
+      "team": "Koponan",
+      "unimetricsDesktop": "{{siteName}} Desktop"
+    }
+  },
+  "header": {
+    "action": {
+      "download": "I-download"
+    },
+    "aria": {
+      "languageSwitcher": "Tagapili ng wika",
+      "mainNavigation": "Pangunahing navigation",
+      "rssFeed": "RSS feed"
+    }
+  },
+  "landing": {
+    "audience": {
+      "body": "Ang unang bersyon ay ginawa para sa mga taong ramdam na ang operational pain ng pag-manage ng concentrated liquidity. Nagsisimula ito sa mga active LP at power users, tapos natural na lumalawak sa seryosong workflow para sa mas malalaking operator.",
+      "card": {
+        "1": {
+          "body": "Ikaw ang nagma-manage ng sarili mong ranges, binabantayan ang gas, at ayaw mong ma-miss ang edge moves o dead capital.",
+          "title": "Mga active retail LP"
+        },
+        "2": {
+          "body": "Marami kang positions, wallets, o chains, at kailangan mo ng iisang lugar para mag-scan, mag-prioritize, at mag-review.",
+          "title": "Mga power user"
+        },
+        "3": {
+          "body": "Kailangan mo ng monitoring layer na disiplinado at extensible bago ka pa mag-isip tungkol sa automation.",
+          "title": "Lumalagong desks at treasuries"
+        }
+      },
+      "eyebrow": "Para kanino ito ginawa",
+      "title": "Ginawa para sa seryosong LP, hindi sa mga pantasya ng passive yield."
+    },
+    "faq": {
+      "body": "Sadyang naka-focus ang product para sa Stage 1: read-only monitoring, decision support, at mas mabilis na review para sa concentrated liquidity operators.",
+      "eyebrow": "FAQ",
+      "item": {
+        "1": {
+          "answer": "Hindi. Read-only ang Stage 1 by design. Ikokonekta mo ang wallets para i-monitor ang positions, maintindihan ang performance, at makatanggap ng action signals nang hindi binibigyan ang product ng execution power.",
+          "question": "Ginagalaw ba ng {{siteName}} ang funds o nire-rebalance ang positions?"
+        },
+        "2": {
+          "answer": "Nagpapakita lang ng pira-pirasong data ang explorers at generic dashboards. Ang {{siteName}} ay ginawa para sagutin ang totoong tanong ng operator: ano ang kailangan ng atensyon, ano talaga ang kumikita, at sulit ba ang aksyon sa gas.",
+          "question": "Bakit hindi na lang gumamit ng explorer o generic analytics dashboard?"
+        },
+        "3": {
+          "answer": "Puwedeng mag-sign up ang kahit sino, pero pinakamalakas ang fit para sa mga active LP na may concentrated liquidity positions na gusto ng mas maayos na monitoring, mas malinis na visibility sa performance, at mas kaunting manual checking.",
+          "question": "Sino ang pinakakinabang sa unang bersyon?"
+        },
+        "4": {
+          "answer": "Dahil mahalaga ang tiwala. Dapat mong maintindihan muna ang positions at workflows mo. Puwedeng sumunod ang execution at automation kapag matatag na ang monitoring, signals, at tiwala ng operator.",
+          "question": "Bakit read-only ang simula?"
+        }
+      },
+      "title": "Ang unang bersyon ay nakatuon sa isang trabaho: bawasan ang ingay sa LP management."
+    },
+    "features": {
+      "body": "Lahat sa Stage 1 ay nakasentro sa iisang praktikal na pangako: alamin kung ano ang kailangan ng atensyon, alamin kung panalo ka talaga, at kumilos lang kapag may saysay sa economics.",
+      "card": {
+        "1": {
+          "body": "Subaybayan ang edge proximity, breach status, at oras na out of range bago tahimik na lumobo ang dead capital.",
+          "title": "Visibility sa range risk"
+        },
+        "2": {
+          "body": "Makita ang fees, gas drag, inactive time, at net P&L kumpara sa simpleng pag-hold ng assets sa halip na manghula mula sa kalahating metrics.",
+          "title": "Tunay na net performance"
+        },
+        "3": {
+          "body": "I-monitor ang maraming positions sa iba't ibang wallets, pools, at chains mula sa iisang operating layer na ginawa para sa totoong review workflows.",
+          "title": "Monitoring ng maraming position"
+        },
+        "4": {
+          "body": "Tumanggap ng gas-aware, action-ready signals para tumigil sa pag-react sa ingay at kumilos lang kapag talagang justified.",
+          "title": "Decision-ready signals"
+        }
+      },
+      "eyebrow": "Ano talaga ang makukuha mo",
+      "title": "Ginawa para sa apat na tanong na laging tanong ng active LP."
+    },
+    "finalCta": {
+      "body": "Sumali sa early access kung active mong mina-manage ang concentrated liquidity at gusto mo ng mas malinaw na paraan para i-monitor ang positions, maintindihan ang true net performance, at bawasan ang tuloy-tuloy na manual checking.",
+      "button": {
+        "discoveryCall": "Mag-book ng discovery call",
+        "joinWaitlist": "Sumali sa early access"
+      },
+      "eyebrow": "Early access",
+      "title": "Kunin ang monitoring layer na talagang gusto ng seryosong LP."
+    },
+    "header": {
+      "brand": "{{siteName}}",
+      "cta": {
+        "requestAccess": "Humiling ng access"
+      },
+      "tagline": "Monitoring ng concentrated liquidity"
+    },
+    "hero": {
+      "cta": {
+        "primary": "Sumali sa early access",
+        "secondary": "Tingnan kung anong nilulutas nito"
+      },
+      "eyebrow": "Read-only muna. Ginawa para sa aksyon, hindi ingay.",
+      "highlight": {
+        "1": {
+          "label": "Bakit sila nag-sign up",
+          "value": "Hanapin ang mga position na talagang nangangailangan ng atensyon."
+        },
+        "2": {
+          "label": "Bakit sila nananatili",
+          "value": "Tigilan ang paghuhula kung panalo pa rin ba pagkatapos ng fees, gas, at idle time."
+        }
+      },
+      "panel": {
+        "decisionSignal": "Papalapit na ang presyo sa upper bound, pero ang inaasahang paghina ng fee ay hindi pa rin sapat para mag-rebalance. Suriin ulit kung bumaba ang gas o gumalaw pa ang presyo ng 0.6%.",
+        "label": "Position cockpit",
+        "metric": {
+          "actionSignal": {
+            "label": "Action signal",
+            "note": "hindi pa sulit sa gas",
+            "value": "Maghintay"
+          },
+          "feeVelocity": {
+            "label": "Fee velocity",
+            "note": "bumabagal malapit sa edge",
+            "value": "$126/araw"
+          },
+          "netPnl": {
+            "label": "Net P&L",
+            "note": "vs hold: +1.1%",
+            "value": "+4.2%"
+          },
+          "outOfRange": {
+            "label": "Out of range",
+            "note": "huling 7 araw",
+            "value": "3h 18m"
+          }
+        },
+        "pool": "ETH / USDC 0.05%",
+        "signalLabel": "Decision signal",
+        "status": "1.8% mula sa upper edge"
+      },
+      "pill": {
+        "1": "Read-only bilang default",
+        "2": "Monitoring ng maraming wallet",
+        "3": "Gas-aware na action signals"
+      },
+      "subtitle": "I-monitor ang concentrated liquidity sa iba't ibang wallets, pools, at chains. Mahuli nang mas maaga ang range risk, maintindihan ang tunay na net performance, at malaman kung kailan talagang sulit kumilos base sa gas.",
+      "title": "Ang operating layer para sa concentrated liquidity."
+    },
+    "nav": {
+      "access": "Access",
+      "faq": "FAQ",
+      "features": "Features",
+      "problem": "Problema",
+      "workflow": "Paano ito gumagana"
+    },
+    "problem": {
+      "body": "Dapat pakiramdam ng pagiging LP ay parang capital na nagtatrabaho. Sa praktika, madalas itong parang babysitting: napapalampas ang range moves, hindi malinaw ang profitability, sobrang daming tabs, at tuloy-tuloy na pagdududa kung sulit ba talaga ang aksyon sa gas.",
+      "card": {
+        "1": {
+          "body": "Unti-unting lumilihis ang positions papunta sa edge, nagiging out of range, at tahimik na tumitigil sa kapaki-pakinabang na trabaho kung hindi mo sila binabantayan.",
+          "title": "Napalampas na range moves"
+        },
+        "2": {
+          "body": "Mukhang maganda ang fees kapag hiwalay tiningnan, pero mahirap malaman kung lamang ka pa talaga pagkatapos ng gas, inactive time, at position management.",
+          "title": "Pekeng profitability"
+        },
+        "3": {
+          "body": "Iba't ibang fragments lang ang ipinapakita ng wallets, explorers, dashboards, pool views, at spreadsheets. Wala sa mga ito ang pakiramdam na iisang operating surface.",
+          "title": "Pira-pirasong tracking"
+        },
+        "4": {
+          "body": "Kahit mukhang hindi healthy ang position, ang tunay na tanong ay kung may saysay ba itong galawin ngayon o magsusunog lang ng mas maraming gas.",
+          "title": "Hula sa gas"
+        }
+      },
+      "eyebrow": "Bakit ito umiiral",
+      "title": "Dapat parang yield ang LPing. Madalas para itong ops."
+    },
+    "trust": {
+      "body": "Sadyang dinisenyo ang Stage 1 para low-friction at madaling pagkatiwalaan. Walang execution, walang magic promises, walang pekeng automation story. Isang malinis na monitoring layer lang na ginawa para tulungan ang seryosong LP na gumawa ng mas magagandang desisyon.",
+      "eyebrow": "Bakit ligtas itong gamitin",
+      "point": {
+        "1": {
+          "body": "Ikinokonekta mo ang wallets para obserbahan ang positions, hindi para bigyan ang product ng pahintulot na galawin ang funds.",
+          "title": "Read-only muna"
+        },
+        "2": {
+          "body": "Ang product ay nakasentro sa tanong ng operator at traceable metrics, hindi sa vanity dashboards o headline APR.",
+          "title": "Transparent by design"
+        },
+        "3": {
+          "body": "Ginawa ang saved views, digests, at action signals para bawasan ang routine checking sa halip na gumawa ng panibagong tab na babantayan.",
+          "title": "Workflow bago ingay"
+        }
+      },
+      "title": "Sapat ang seryoso para sa totoong LP workflows. Sapat ang simple para makapagsimula agad."
+    },
+    "workflow": {
+      "body": "Dapat simple ang unang experience: connect, scan, decide. Walang strategy theatre. Walang clutter. Mas mahusay lang na paraan para patakbuhin ang review loop na araw-araw nang ginagawa ng active LPs.",
+      "callout": {
+        "body": "Hindi layunin na sabihan kang mag-trade nang mas madalas. Layunin nitong tulungan kang mapansin ang iilang sandali na talagang mahalaga ang paggawa ng aksyon.",
+        "label": "Ano ang nagpapagamit dito"
+      },
+      "eyebrow": "Paano ito gumagana",
+      "step": {
+        "1": {
+          "body": "Ikonekta ang mga wallet na gamit mo para sa concentrated liquidity at ilagay ang positions mo sa isang malinis na monitoring view.",
+          "title": "Makita ang lahat sa iisang lugar"
+        },
+        "2": {
+          "body": "Makita ang edge proximity, oras na out of range, mga pagbabago sa fee velocity, at tunay na net performance nang hindi pinagdurugtong ang limang tools.",
+          "title": "Alamin kung ano ang nagbago"
+        },
+        "3": {
+          "body": "Gamitin ang action signals at gas-aware na context para magpasya kung kikilos na ngayon, maghihintay, o papansinin lang ang ingay.",
+          "title": "Kumilos lang kapag sulit"
+        }
+      },
+      "title": "Mas mahusay na review loop para sa active LPs."
+    }
+  },
+  "nav": {
+    "group": {
+      "blog": "Blog",
+      "homes": "Homes",
+      "landing": "Landing",
+      "pages": "Mga Pahina"
+    },
+    "link": {
+      "about": "Tungkol sa amin",
+      "article": "Artikulo",
+      "articleMdx": "Artikulo (may MDX)",
+      "blogList": "Listahan ng Blog",
+      "categoryPage": "Pahina ng Kategorya",
+      "clickThrough": "Click-Through",
+      "contact": "Makipag-ugnayan",
+      "featuresAnchor": "Mga Feature (Anchor Link)",
+      "leadGeneration": "Lead Generation",
+      "longFormSales": "Long-form Sales",
+      "mobileApp": "Mobile App",
+      "personal": "Personal",
+      "preLaunch": "Malapit na o Pre-Launch",
+      "pricing": "Presyo",
+      "privacyPolicy": "Patakaran sa privacy",
+      "productDetails": "Detalye ng Produkto (o Mga Serbisyo)",
+      "saas": "SaaS",
+      "services": "Mga Serbisyo",
+      "startup": "Startup",
+      "subscription": "Subscription",
+      "tagPage": "Pahina ng Tag",
+      "terms": "Mga Tuntunin",
+      "widgets": "Widgets"
+    }
+  }
+}
