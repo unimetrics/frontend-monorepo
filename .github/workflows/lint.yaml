@@ -54,7 +54,7 @@ jobs:
             docs
             landing
             mobile
-            ui
+            design-tokens
           APPROVED_LICENSES: |
             Apache-2.0
             BSD-2-Clause

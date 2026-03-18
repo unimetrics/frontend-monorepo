@@ -67,10 +67,10 @@ docs:
       - any-glob-to-any-file:
           - "docs/**"
 
-ui:
+design-tokens:
   - changed-files:
       - any-glob-to-any-file:
-          - "ui/**"
+          - "design-tokens/**"
 
 eslint:
   - changed-files:

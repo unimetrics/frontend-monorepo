@@ -85,7 +85,7 @@ export const buildRawCssAdapter = async (context: BuildTokensContext): Promise<v
 
     await fs.writeFile(context.tokensCssPath, tokensCss, "utf8");
     console.info(
-      `[ui/tokens] updated ${path.relative(context.uiRoot, context.tokensCssPath)}`
+      `[design-tokens] updated ${path.relative(context.workspaceRoot, context.tokensCssPath)}`
     );
   } finally {
     await fs.rm(context.generatedRoot, { force: true, recursive: true });

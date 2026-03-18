@@ -7,7 +7,7 @@ For pull request preparation and PR-specific rules, also follow `.ai/pr-instruct
 ## Stack and Tooling
 
 - Use `pnpm` (not npm/yarn) for dependency and script commands.
-- Respect workspace boundaries (`api`, `app`, `charts`, `cli`, `landing`, `mobile`, `docs`, `ui`).
+- Respect workspace boundaries (`api`, `app`, `charts`, `cli`, `landing`, `mobile`, `docs`, `design-tokens`).
 - Use TypeScript/ESM conventions already used in each package.
 - Follow existing patterns for imports, exports, and module structure in each package.
 
@@ -22,6 +22,7 @@ For pull request preparation and PR-specific rules, also follow `.ai/pr-instruct
 - React (`app`): `./style-guide/react.md`
 - Astro (`landing`): `./style-guide/astro.md`
 - Expo React Native (`mobile`): `./style-guide/expo-react-native.md`
+- Docusaurus (`docs`): `./style-guide/docusaurus.md`
 
 ## Scripts Organization
 
@@ -41,7 +42,7 @@ For pull request preparation and PR-specific rules, also follow `.ai/pr-instruct
 - Prefer existing abstractions first: use platform APIs, shared internal utilities, and already-installed package helpers before writing custom duplicate logic.
 - Do not re-implement behavior that already exists in a maintained abstraction unless there is a clear functional or performance reason.
 - Avoid introducing new dependencies unless clearly needed.
-- For any styling work, use only design tokens defined in `ui/tokens` (via generated `@unimetrics/ui` token outputs). Do not invent new ad-hoc color tokens or hardcoded palette values unless explicitly requested and added to `ui/tokens` first.
+- For any styling work, use only design tokens defined in `design-tokens/tokens` (via generated `@unimetrics/design-tokens` token outputs). Do not invent new ad-hoc color tokens or hardcoded palette values unless explicitly requested and added to `design-tokens/tokens` first.
 - For Web3 values, use `bigint` and decimal-safe helpers. Never use JS floating-point math for on-chain amounts.
 - Keep chain-specific constants (chain IDs, addresses, explorers) centralized per network.
 - Treat indexer/3rd-party API data as eventually consistent; on critical flows, prefer direct chain confirmation.

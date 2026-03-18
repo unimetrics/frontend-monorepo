@@ -12,9 +12,9 @@ import {
 
 const scriptPath = fileURLToPath(import.meta.url);
 const scriptDir = path.dirname(scriptPath);
-const uiRoot = path.resolve(scriptDir, "../..");
+const workspaceRoot = path.resolve(scriptDir, "../..");
 
-const tokensRoot = path.join(uiRoot, "tokens");
+const tokensRoot = path.join(workspaceRoot, "tokens");
 const themesRoot = path.join(tokensRoot, "themes");
 const generatedRoot = path.join(tokensRoot, "generated");
 
@@ -23,8 +23,8 @@ const semanticPath = path.join(tokensRoot, "semantic.json");
 const lightThemePath = path.join(themesRoot, "light.json");
 const darkThemePath = path.join(themesRoot, "dark.json");
 
-const tokensCssPath = path.join(uiRoot, "tokens.css");
-const themeCssPath = path.join(uiRoot, "theme.css");
+const tokensCssPath = path.join(workspaceRoot, "tokens.css");
+const themeCssPath = path.join(workspaceRoot, "theme.css");
 
 register(StyleDictionary);
 registerRawCssAdapter();
@@ -39,7 +39,7 @@ const buildCssArtifacts = async (): Promise<void> => {
     semanticPath,
     themeCssPath,
     tokensCssPath,
-    uiRoot,
+    workspaceRoot,
   };
 
   await buildRawCssAdapter(context);
@@ -48,9 +48,9 @@ const buildCssArtifacts = async (): Promise<void> => {
 
 try {
   await buildCssArtifacts();
-  console.info("[ui/tokens] build complete");
+  console.info("[design-tokens] build complete");
 } catch (error: unknown) {
   const message = error instanceof Error ? error.message : String(error);
-  console.error(`[ui/tokens] ${message}`);
+  console.error(`[design-tokens] ${message}`);
   process.exitCode = 1;
 }

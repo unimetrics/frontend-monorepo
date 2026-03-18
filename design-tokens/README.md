@@ -1,9 +1,9 @@
 <div align="center">
-  <h1 style="margin: 0; padding: 0;">@unimetrics/ui</h1>
+  <h1 style="margin: 0; padding: 0;">@unimetrics/design-tokens</h1>
 </div>
 <br />
 <div align="center">
-  This is a package that contains ui design system tokens for the Unimetrics frontend monorepo.
+  This is a package that contains design system tokens for the Unimetrics frontend monorepo.
 </div>
 
 ## Table of Contents
@@ -15,7 +15,7 @@
 
 ## Description
 
-The `@unimetrics/ui` package is a collection of design tokens that define the visual style of the Unimetrics frontend applications. These tokens include colors, typography, spacing, and other design elements that can be used across all frontend projects.
+The `@unimetrics/design-tokens` package is a collection of design tokens that define the visual style of the Unimetrics frontend applications. These tokens include colors, typography, spacing, and other design elements that can be used across all frontend projects.
 
 Tokens are defined and configured in [Tokens Studio](https://github.com/tokens-studio) format.
 The source JSON layout is:
@@ -28,7 +28,7 @@ The source JSON layout is:
 From these sources, the build step generates `tokens.css` and `theme.css` for frontend consumption.
 
 This approach allows us to maintain a _single source of truth_ for our design system, making it easier to update and manage our visual style across all projects.
-We don't include design tokens in the React ui-kit because we try to keep the system flexible and _avoid tight coupling_ between its parts. By separating the design tokens into their own package, we can ensure that they can be used across all frontend projects without being tied to a specific implementation or framework.
+We don't include design tokens in the React UI kit because we try to keep the system flexible and _avoid tight coupling_ between its parts. By separating the design tokens into their own package, we can ensure that they can be used across all frontend projects without being tied to a specific implementation or framework.
 
 ## Usage
 
@@ -37,8 +37,8 @@ As it was said, the project assumes that the consumer projects are utilizing tai
 ```css
 /* Example of using generated css variables in another package */
 @import "tailwindcss";
-@import "@unimetrics/ui/theme.css";
-@import "@unimetrics/ui/tokens.css";
+@import "@unimetrics/design-tokens/theme.css";
+@import "@unimetrics/design-tokens/tokens.css";
 
 /* Your styles here */
 ```

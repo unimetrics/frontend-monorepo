@@ -13,7 +13,7 @@ export type BuildTokensContext = {
   semanticPath: string;
   themeCssPath: string;
   tokensCssPath: string;
-  uiRoot: string;
+  workspaceRoot: string;
 };
 
 export type ThemeFormatOptions = {
@@ -97,10 +97,10 @@ export const makeDictionary = (
     },
     platforms: {
       css: {
-        buildPath: `${context.uiRoot}/`,
+        buildPath: `${context.workspaceRoot}/`,
         files: [
           {
-            destination: path.relative(context.uiRoot, destination),
+            destination: path.relative(context.workspaceRoot, destination),
             format,
             options,
           },

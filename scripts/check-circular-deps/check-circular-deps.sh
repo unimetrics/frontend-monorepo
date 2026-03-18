@@ -57,6 +57,7 @@ run_madge "docs" \
   docs/docusaurus.config.ts \
   docs/sidebars.ts
 
-run_madge "ui" \
+run_madge "design-tokens" \
   --extensions ts,js,mjs,cjs \
-  ui/scripts/build-tokens/build-tokens.ts
+  design-tokens/scripts \
+  design-tokens/adapters

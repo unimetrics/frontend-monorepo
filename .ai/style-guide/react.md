@@ -75,8 +75,7 @@ For PR process and merge rules, also follow `../pr-instructions.md`.
 
 ## Styling and Design System
 
-- Use Tailwind utilities with shared tokens from `@unimetrics/ui` by default.
-- Do not invent new ad-hoc color/shadow tokens in app code; add tokens in `ui/tokens` first, regenerate outputs, then consume them.
+- Use Tailwind utilities with shared tokens.
 - Prefer semantic utility groups over long unstructured class strings.
 - Extract repeated class patterns into local helpers/components.
 - Respect spacing, typography, and color consistency.

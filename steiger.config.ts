@@ -37,7 +37,7 @@ export default defineConfig([
       "**/public/**",
       "./api/**",
       "./cli/**",
-      "./ui/**",
+      "./design-tokens/**",
     ],
   },
   {

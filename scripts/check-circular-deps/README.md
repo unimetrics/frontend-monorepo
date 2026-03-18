@@ -2,7 +2,7 @@
 
 ## What
 
-Runs `madge --circular` for applicable workspaces (`api`, `app`, `charts`, `cli`, `landing`, `mobile`, `docs`, `ui`).
+Runs `madge --circular` for applicable workspaces (`api`, `app`, `charts`, `cli`, `landing`, `mobile`, `docs`, `design-tokens`).
 
 ## Why
 

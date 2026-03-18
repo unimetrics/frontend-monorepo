@@ -1,6 +1,6 @@
 @import "tailwindcss";
-@import "@unimetrics/ui/theme.css";
-@import "@unimetrics/ui/tokens.css";
+@import "@unimetrics/design-tokens/theme.css";
+@import "@unimetrics/design-tokens/tokens.css";
 
 @plugin "@tailwindcss/typography";
 

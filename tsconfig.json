@@ -15,6 +15,6 @@
     { "path": "./cli/tsconfig.json" },
     { "path": "./landing/tsconfig.json" },
     { "path": "./mobile/tsconfig.json" },
-    { "path": "./ui/tsconfig.json" }],
+    { "path": "./design-tokens/tsconfig.json" }],
   "$schema": "https://json.schemastore.org/tsconfig"
 }
