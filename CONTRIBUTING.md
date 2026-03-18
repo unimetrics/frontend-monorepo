@@ -2,7 +2,7 @@
 
 Thanks for contributing to the Unimetrics frontend monorepo.
 
-Architecture guidelines: [FSD.md](./FSD.md)
+Architecture guidelines: we use FSD; see [README: FSD Architecture](./README.md#fsd-architecture).
 
 ## Setup
 

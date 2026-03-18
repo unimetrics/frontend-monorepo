@@ -11,7 +11,7 @@ Use these with:
 
 - `../style-guide.md` for repository-wide rules
 - `../pr-instructions.md` for pull request process and merge rules
-- `../../FSD.md` for Feature-Sliced Design boundaries
+- `../../README.md#fsd-architecture` for Feature-Sliced Design boundaries
 
 If guidance conflicts, follow this precedence:
 

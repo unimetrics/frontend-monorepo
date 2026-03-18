@@ -12,7 +12,7 @@ For PR process and merge rules, also follow `../pr-instructions.md`.
 
 ## Architecture and Boundaries
 
-- Follow FSD boundaries as currently enforced for `mobile/src`.
+- Follow FSD boundaries from `../../README.md#fsd-architecture` as currently enforced for `mobile/src`.
 - Keep screen composition separate from domain logic.
 - Keep shared cross-platform utilities in reusable modules.
 - Keep platform-specific logic explicit and isolated.
@@ -110,7 +110,7 @@ For PR process and merge rules, also follow `../pr-instructions.md`.
 
 ## PR Checklist (Expo)
 
-- FSD boundaries respected.
+- FSD boundaries respected (see `../../README.md#fsd-architecture`).
 - Types and route params are explicit.
 - Loading/error/offline states handled.
 - Accessibility basics validated.

@@ -12,7 +12,7 @@ For PR process and merge rules, also follow `../pr-instructions.md`.
 
 ## Architecture and Boundaries
 
-- Follow FSD import and layer boundaries from `FSD.md`.
+- Follow FSD import and layer boundaries from `../../README.md#fsd-architecture`.
 - Import from slice public APIs (`index.ts`), not deep internals.
 - Keep page orchestration in `pages/` and high-level providers in `app/`.
 - Keep domain-agnostic utilities in `shared/`.

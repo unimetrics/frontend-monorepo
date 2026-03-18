@@ -1,15 +1,8 @@
 # Unimetrics Frontend Monorepo
 
-Monorepo for Unimetrics client-facing products and shared packages:
+Monorepo for Unimetrics client-facing products and shared packages.
 
-- `landing`: Astro marketing site
-- `app`: React + Vite web app
-- `charts`: shared charting contracts and utilities for web/mobile adapters
-- `mobile`: Expo React Native app
-- `docs`: Docusaurus documentation site
-- `api`: shared TypeScript API client/core package
-- `cli`: operations CLI (`lpdesk`)
-- `design-tokens`: shared tokens and Tailwind preset
+Workspace definitions are sourced from [pnpm-workspace.yaml](./pnpm-workspace.yaml). Avoid maintaining manual workspace lists in docs.
 
 ## Requirements
 
@@ -24,20 +17,19 @@ pnpm install
 pnpm dev
 ```
 
-`pnpm dev` starts both `@unimetrics/design-tokens` and `@unimetrics/landing`.
+`pnpm dev` runs the root `dev` script from `package.json`.
+
+Current workspace/package list:
+
+```sh
+pnpm list -r --depth=-1 --json
+```
 
 ## Run Specific Targets
 
 ```sh
-pnpm dev                              # landing (Astro)
-pnpm --filter @unimetrics/app dev     # web app (Vite)
-pnpm --filter @unimetrics/docs start  # docs (Docusaurus)
-pnpm --filter @unimetrics/mobile dev  # mobile (Expo)
-pnpm --filter @unimetrics/mobile ios  # Expo iOS
-pnpm --filter @unimetrics/mobile android
-pnpm --filter @unimetrics/mobile web  # Expo web target
-pnpm --filter @unimetrics/cli start -- --help
-pnpm --filter @unimetrics/charts build
+pnpm --filter <workspace-package-name> <script>
+pnpm --filter <workspace-package-name> run <script>
 ```
 
 ## Quality And Build
@@ -58,9 +50,41 @@ pnpm changeset:version
 
 See [RELEASING.md](./RELEASING.md) for branch flow and release process.
 
+## FSD Architecture
+
+This repository uses Feature-Sliced Design (FSD) conventions with `steiger`.
+
+### Scope
+
+- FSD scopes are defined by the root `lint:fsd` command and `steiger.config.ts`.
+- Workspace membership is defined in `pnpm-workspace.yaml`; do not duplicate that list in docs.
+- Workspaces not wired into `lint:fsd` are intentionally out of FSD checks.
+
+### Target Layer Order
+
+From highest to lowest responsibility:
+
+1. `app`
+2. `pages`
+3. `widgets`
+4. `features`
+5. `entities`
+6. `shared`
+
+### Required Practices
+
+- Import only from public APIs (`index.ts`) of slices.
+- Keep `shared` for reusable, domain-agnostic code.
+- Keep page-level orchestration in `pages`/`app`, not in `shared`.
+- Avoid direct deep imports into sibling slices.
+
+### Check Commands
+
+- `pnpm lint:fsd` runs Steiger checks on configured UI package scopes.
+
 ## Collaboration Docs
 
 - [CONTRIBUTING.md](./CONTRIBUTING.md)
-- [FSD.md](./FSD.md)
+- [FSD Architecture (this README)](./README.md#fsd-architecture)
 - [SECURITY.md](./SECURITY.md)
 - [CODE_OF_CONDUCT.md](./CODE_OF_CONDUCT.md)

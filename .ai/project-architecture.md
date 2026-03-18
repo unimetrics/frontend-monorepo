@@ -18,24 +18,18 @@ This document is for AI agents working in this repository. It is optimized for f
 
 - Package manager: `pnpm@10.11.0`
 - Node engine: `>=24 <25` (root and all workspaces)
-- Workspaces (`pnpm-workspace.yaml`): `api`, `app`, `charts`, `cli`, `landing`, `mobile`, `design-tokens`, `docs`
+- Workspaces are defined in `pnpm-workspace.yaml` (source of truth)
+- Runtime workspace listing: `pnpm list -r --depth=-1 --json`
 - Primary build CI runs root `pnpm build` and `pnpm lh:check`
 - Primary lint CI runs root lint pipeline from `.github/actions/lint/action.yaml`
 
 Use `package.json`, workspace manifests, and workflow files as canonical runtime truth over stale README text.
 
-## 3. Workspace Map
+## 3. Workspace Discovery
 
-| Workspace       | Package                     | Purpose                                               | Key Sources                                                                                    | Main Commands                                                           |
-| --------------- | --------------------------- | ----------------------------------------------------- | ---------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------- |
-| `api`           | `@unimetrics/api`           | Shared typed API core, handlers, clients, transports  | `api/src/core`, `api/src/handlers`, `api/src/clients`, `api/src/transports`                    | `pnpm --filter @unimetrics/api build`                                   |
-| `app`           | `@unimetrics/app`           | Web app (React + Vite + PWA)                          | `app/src/app`, `app/src/pages`, `app/src/shared`                                               | `pnpm --filter @unimetrics/app dev`, `build`, `lint`                    |
-| `charts`        | `@unimetrics/charts`        | Shared chart models, formatters, validation, adapters | `charts/src/models`, `charts/src/formatters`, `charts/src/transforms`, `charts/src/validation` | `pnpm --filter @unimetrics/charts lint`, `build`                        |
-| `cli`           | `@unimetrics/cli`           | `lpdesk` CLI using shared API contracts               | `cli/bin/lpdesk.ts`, `cli/src/cli.ts`                                                          | `pnpm --filter @unimetrics/cli start -- --help`, `build`                |
-| `landing`       | `@unimetrics/landing`       | Marketing site (Astro, i18n, blog)                    | `landing/src/pages`, `landing/src/components`, `landing/src/data/post`, `landing/src/i18n`     | `pnpm --filter @unimetrics/landing dev`, `build`, `lint`, `lint:i18n`   |
-| `mobile`        | `@unimetrics/mobile`        | Expo React Native app                                 | `mobile/src/app`, `mobile/index.ts`, `mobile/app.json`                                         | `pnpm --filter @unimetrics/mobile dev`, `ios`, `android`, `web`, `lint` |
-| `design-tokens` | `@unimetrics/design-tokens` | Design tokens and adapters                            | `design-tokens/tokens`, `design-tokens/scripts/build-tokens`, `design-tokens/adapters`         | `pnpm --filter @unimetrics/design-tokens build`, `dev`, `lint`          |
-| `docs`          | `@unimetrics/docs`          | Docusaurus docs app                                   | `docs/docs`, `docs/blog`, `docs/src`, `docs/docusaurus.config.ts`                              | `pnpm --filter @unimetrics/docs start`, `build`, `typecheck`            |
+- Use `pnpm-workspace.yaml` as the canonical workspace set.
+- Use `pnpm list -r --depth=-1 --json` when you need the current workspace/package names and paths.
+- For workspace-specific commands and behavior, inspect each workspace `package.json` directly.
 
 ## 4. Current Dependency Graph
 
@@ -100,8 +94,8 @@ pnpm dev               # runs design-tokens dev + landing dev in parallel
 pnpm build             # builds design-tokens, then landing (not full monorepo build)
 pnpm lint              # recursive lint scripts where present
 pnpm lint:eslint       # root eslint across repo patterns
-pnpm lint:circular     # madge circular checks for api/app/charts/cli/landing/mobile/docs/design-tokens
-pnpm lint:fsd          # steiger checks app/landing/mobile
+pnpm lint:circular     # madge circular checks for workspaces discovered from pnpm
+pnpm lint:fsd          # steiger checks for configured UI workspace scopes
 pnpm lint:i18n         # recursive i18n lint where present
 pnpm format            # prettier --check
 pnpm syncpack:check    # dependency range/version consistency
@@ -112,46 +106,26 @@ pnpm changeset:version
 
 Important coverage notes:
 
-- Root `pnpm build` does not build `api`, `app`, `charts`, `cli`, `mobile`, or `docs`.
+- Root `pnpm build` runs only what is wired in the root `build` script.
 - Root has no `test` script.
-- Workspace `test` scripts currently print placeholder text in `api`, `app`, `charts`, `cli`, and `mobile`.
+- Workspace `test` script behavior should be verified from each workspace `package.json`.
 
-## 7. Workspace Command Matrix
+## 7. Workspace Command Discovery
 
 ```bash
-pnpm --filter @unimetrics/api build
-pnpm --filter @unimetrics/app dev
-pnpm --filter @unimetrics/app build
-pnpm --filter @unimetrics/app lint
-pnpm --filter @unimetrics/charts lint
-pnpm --filter @unimetrics/charts build
-pnpm --filter @unimetrics/cli start -- --help
-pnpm --filter @unimetrics/cli build
-pnpm --filter @unimetrics/landing dev
-pnpm --filter @unimetrics/landing build
-pnpm --filter @unimetrics/landing lint
-pnpm --filter @unimetrics/landing lint:i18n
-pnpm --filter @unimetrics/mobile dev
-pnpm --filter @unimetrics/mobile ios
-pnpm --filter @unimetrics/mobile android
-pnpm --filter @unimetrics/mobile web
-pnpm --filter @unimetrics/mobile lint
-pnpm --filter @unimetrics/design-tokens dev
-pnpm --filter @unimetrics/design-tokens build
-pnpm --filter @unimetrics/design-tokens lint
-pnpm --filter @unimetrics/docs start
-pnpm --filter @unimetrics/docs build
-pnpm --filter @unimetrics/docs typecheck
+pnpm list -r --depth=-1 --json
+pnpm --filter <workspace-package-name> <script>
+pnpm --filter <workspace-package-name> run <script>
 ```
 
 ## 8. Architecture Constraints
 
 1. FSD boundaries:
 
+- canonical FSD guidance is in `README.md#fsd-architecture`
 - target layers: `app -> pages -> widgets -> features -> entities -> shared`
-- strict checks mainly for `app`
-- `landing` and `mobile` use temporary relaxed Steiger rules
-- `api`, `charts`, `cli`, `design-tokens` are excluded from FSD checks
+- strict/relaxed scopes are defined by `pnpm lint:fsd` and `steiger.config.ts`
+- workspaces not wired into that lint flow are out of FSD scope by default
 
 2. Script standards:
 
