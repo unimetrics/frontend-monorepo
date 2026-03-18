@@ -7,7 +7,7 @@ export default function App() {
       <SafeAreaView style={styles.container}>
         <View style={styles.content}>
           <Text style={styles.title}>
-            Welcome to Unimetrics Mobile!
+            Welcome to Unimetrics Mobile!!!
           </Text>
         </View>
       </SafeAreaView>
