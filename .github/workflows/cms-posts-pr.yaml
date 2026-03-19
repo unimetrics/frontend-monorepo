@@ -3,7 +3,8 @@ name: CMS Pages PR to Main
 on:
   push:
     branches:
-      - cms/posts # branch configured for Pages CMS updates
+      - cms/posts # branch configured for Pages CMS updates.
+      # We cannot allow direct pushes to main for security reasons.
     paths:
       - "landing/src/data/post/**/*.md"
       - "landing/src/data/post/**/*.mdx"
@@ -20,57 +21,108 @@ permissions:
 jobs:
   cms-pages-pr:
     runs-on: ubuntu-latest
+    env:
+      CMS_POSTS_SOURCE_BRANCH: ${{ vars.CMS_POSTS_SOURCE_BRANCH || 'cms/posts' }}
+      CMS_POSTS_TARGET_BRANCHES: ${{ vars.CMS_POSTS_TARGET_BRANCHES || 'main' }}
     steps:
-      - name: Checkout pushed ref for change detection
-        if: github.event_name == 'push'
-        uses: actions/checkout@v5
-        with:
-          fetch-depth: 20
-          persist-credentials: false
-
-      - name: Detect content-only changes
-        id: content-guard
-        if: github.event_name == 'push'
-        uses: step-security/paths-filter@6eee183b0d2fd101d3f8ee2935c127bca14c5625 # v3
-        with:
-          base: ${{ github.ref }}
-          predicate-quantifier: every
-          filters: |
-            allowed:
-              - "landing/src/data/post/**/*.{md,mdx}"
-            disallowed:
-              - "!landing/src/data/post/**/*.md"
-              - "!landing/src/data/post/**/*.mdx"
-
       - name: Checkout trusted automation code
         uses: actions/checkout@v5
-        if: |
-          github.event_name == 'workflow_dispatch' ||
-          (steps.content-guard.outputs.allowed == 'true' && steps.content-guard.outputs.disallowed != 'true')
         with:
           ref: main
+          fetch-depth: 0
+          persist-credentials: false
+
+      - name: Guard full branch diff (source -> targets) to content-only files
+        id: content-guard
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          source_branch="${CMS_POSTS_SOURCE_BRANCH}"
+          target_branches="${CMS_POSTS_TARGET_BRANCHES}"
+
+          if [[ -z "${source_branch}" ]]; then
+            echo "CMS_POSTS_SOURCE_BRANCH cannot be empty." >&2
+            exit 1
+          fi
+
+          if [[ -z "${target_branches}" ]]; then
+            echo "CMS_POSTS_TARGET_BRANCHES cannot be empty." >&2
+            exit 1
+          fi
+
+          normalized_targets="${target_branches//$'\n'/ }"
+          normalized_targets="${normalized_targets//,/ }"
+          read -r -a target_list <<<"${normalized_targets}"
+
+          if [[ "${#target_list[@]}" -eq 0 ]]; then
+            echo "CMS_POSTS_TARGET_BRANCHES did not contain any valid branch names." >&2
+            exit 1
+          fi
+
+          if ! git fetch origin "${source_branch}" --depth=0; then
+            echo "Source branch '${source_branch}' does not exist on origin or could not be fetched." >&2
+            exit 1
+          fi
+
+          allowed_regex='^landing/src/data/post/.*\.(md|mdx)$'
+          failed=0
+
+          for target_branch in "${target_list[@]}"; do
+            if [[ -z "${target_branch}" ]]; then
+              continue
+            fi
+
+            if [[ "${target_branch}" == "${source_branch}" ]]; then
+              echo "Skipping target '${target_branch}': same as source."
+              continue
+            fi
+
+            if ! git fetch origin "${target_branch}" --depth=0; then
+              echo "Target branch '${target_branch}' does not exist on origin or could not be fetched." >&2
+              failed=1
+              continue
+            fi
+
+            mapfile -t changed_files < <(
+              git diff --name-only "origin/${target_branch}...origin/${source_branch}"
+            )
+
+            disallowed_files=()
+            for file in "${changed_files[@]}"; do
+              if [[ ! "${file}" =~ ${allowed_regex} ]]; then
+                disallowed_files+=("${file}")
+              fi
+            done
+
+            if [[ "${#disallowed_files[@]}" -gt 0 ]]; then
+              failed=1
+              echo "Disallowed changes detected for ${source_branch} -> ${target_branch}:" >&2
+              printf ' - %s\n' "${disallowed_files[@]}" >&2
+            fi
+          done
+
+          if [[ "${failed}" -ne 0 ]]; then
+            echo "Guard failed: source branch contains changes outside landing/src/data/post/*.md|*.mdx for at least one target branch." >&2
+            exit 1
+          fi
+
+          echo "allowed=true" >> "${GITHUB_OUTPUT}"
+          echo "Guard passed: full branch diff is content-only."
 
       - name: Create helper bot token
         id: helper-bot-token
-        if: |
-          github.event_name == 'workflow_dispatch' ||
-          (steps.content-guard.outputs.allowed == 'true' && steps.content-guard.outputs.disallowed != 'true')
+        if: steps.content-guard.outputs.allowed == 'true'
         uses: ./.github/actions/create-helper-bot-token
         with:
           app-id: ${{ secrets.HELPER_BOT_ID }}
           private-key: ${{ secrets.HELPER_BOT_KEY }}
 
       - name: Create or update CMS pages PR to main
-        if: |
-          github.event_name == 'workflow_dispatch' ||
-          (steps.content-guard.outputs.allowed == 'true' && steps.content-guard.outputs.disallowed != 'true')
+        if: steps.content-guard.outputs.allowed == 'true'
         env:
           GITHUB_TOKEN: ${{ steps.helper-bot-token.outputs.token }}
           GITHUB_REPOSITORY: ${{ github.repository }}
-          SOURCE_BRANCH: cms/posts
-          TARGET_BRANCHES: main
+          SOURCE_BRANCH: ${{ env.CMS_POSTS_SOURCE_BRANCH }}
+          TARGET_BRANCHES: ${{ env.CMS_POSTS_TARGET_BRANCHES }}
         run: bash scripts/github/sync-branch-prs/sync-branch-prs.sh
-
-      - name: No-op for disallowed push changes
-        if: github.event_name == 'push' && (steps.content-guard.outputs.allowed != 'true' || steps.content-guard.outputs.disallowed == 'true')
-        run: echo "Guard blocked this run because push changed files outside landing/src/data/post/*.md|*.mdx."

@@ -2,7 +2,7 @@
 
 ## What
 
-Runs `madge --circular` for applicable workspaces (`api`, `app`, `charts`, `cli`, `landing`, `mobile`, `docs`, `design-tokens`).
+Runs `madge --circular` for workspaces discovered dynamically from `pnpm list -r --depth=-1 --json`.
 
 ## Why
 
@@ -19,7 +19,8 @@ bash scripts/check-circular-deps/check-circular-deps.sh
 ## Inputs
 
 - No arguments.
-- Uses workspace source paths and each workspace TypeScript config.
+- Uses workspace paths from `pnpm` workspace resolution.
+- Auto-detects TypeScript config (`tsconfig.app.json` or `tsconfig.json`) and source targets inside each workspace.
 
 ## Output
 

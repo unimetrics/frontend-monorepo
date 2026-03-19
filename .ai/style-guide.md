@@ -7,7 +7,7 @@ For pull request preparation and PR-specific rules, also follow `.ai/pr-instruct
 ## Stack and Tooling
 
 - Use `pnpm` (not npm/yarn) for dependency and script commands.
-- Respect workspace boundaries (`api`, `app`, `charts`, `cli`, `landing`, `mobile`, `docs`, `design-tokens`).
+- Respect workspace boundaries defined in `pnpm-workspace.yaml`.
 - Use TypeScript/ESM conventions already used in each package.
 - Follow existing patterns for imports, exports, and module structure in each package.
 
@@ -54,10 +54,13 @@ For pull request preparation and PR-specific rules, also follow `.ai/pr-instruct
 - Include explicit slippage/deadline controls for swap/quote execution flows.
 - Handle transaction replacement/cancellation and confirmation depth explicitly.
 - Never log or persist private keys, seed phrases, raw signing payloads, or sensitive wallet/session data.
+- For any new Web3 interaction, consider potential failure modes and edge cases (network errors, user rejections, chain reorgs) and handle them gracefully.
+- For any new Web3 dependency, evaluate maintenance status, security history, and compatibility with our supported chains and environments.
 
 ## Safety
 
 - Do not weaken security or validation logic without explicit reason.
 - Avoid destructive operations in scripts and migrations.
 - Keep backward compatibility for public interfaces unless intentionally changed.
-- Avoid JS/TS bugs and common vulns
+- Avoid JS/TS bugs and common vulnerabilities (infinite loops, unhandled promises, unsafe eval, etc.).
+- For any new logic, consider potential edge cases and failure modes, and handle them gracefully.
