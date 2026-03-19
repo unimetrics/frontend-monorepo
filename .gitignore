@@ -51,6 +51,10 @@ next-env.d.ts
 .DS_Store
 *.pem
 
+# local/project Codex skills (experimental)
+.agents/skills/
+skills-lock.json
+
 # vscode
 .vscode/*
 !.vscode/extensions.json

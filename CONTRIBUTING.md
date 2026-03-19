@@ -17,6 +17,12 @@ pnpm install
 - Use Bash (`.sh`) or TypeScript (`.ts`) only for automation scripts.
 - Run TypeScript scripts with `tsx`.
 
+## Local Skills (Experimental)
+
+- `.agents/skills/` is ignored by default so developers can add local/project skills manually or via `npx skills add ...` without polluting `git status`.
+- If a skill is required for the whole team and is project-specific, commit it with force from `.agents/skills/` (for example, `git add -f .agents/skills/<skill>/`).
+- `skills-lock.json` is currently ignored because lock support is experimental; this policy may be revisited later.
+
 ## Branch and Commits
 
 - Create feature branches from `dev`
