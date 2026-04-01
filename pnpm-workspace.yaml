@@ -8,19 +8,19 @@ packages:
   - mobile
   - design-tokens
 catalog:
-  "@types/node": 25.3.5
+  "@types/node": 25.5.0
   "@types/react": 19.2.14
   "@types/react-dom": 19.2.3
   commander: 14.0.3
   react: 19.2.4
   react-dom: 19.2.4
   react-native: 0.84.1
-  tailwindcss: 4.2.1
+  tailwindcss: 4.2.2
   typescript: 5.9.3
   zod: 3.25.76
   lodash: 4.17.23
-  "@types/lodash": 4.17.23
-  "@lingual/i18n-check": 0.8.19
+  "@types/lodash": 4.17.24
+  "@lingual/i18n-check": 0.9.3
 overrides:
   cli@<1.0.0: ">=1.0.0"
   lodash@>=4.0.0 <=4.17.22: ">=4.17.23"
