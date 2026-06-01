@@ -27,20 +27,20 @@
     ]
   },
   "dependencies": {
-    "@docusaurus/core": "3.9.2",
-    "@docusaurus/preset-classic": "3.9.2",
+    "@docusaurus/core": "3.10.1",
+    "@docusaurus/preset-classic": "3.10.1",
     "@mdx-js/react": "3.1.1",
     "clsx": "2.1.1",
-    "echarts": "6.0.0",
+    "echarts": "6.1.0",
     "echarts-for-react": "3.0.6",
     "prism-react-renderer": "2.4.1",
     "react": "catalog:",
     "react-dom": "catalog:"
   },
   "devDependencies": {
-    "@docusaurus/module-type-aliases": "3.9.2",
-    "@docusaurus/tsconfig": "3.9.2",
-    "@docusaurus/types": "3.9.2",
+    "@docusaurus/module-type-aliases": "3.10.1",
+    "@docusaurus/tsconfig": "3.10.1",
+    "@docusaurus/types": "3.10.1",
     "typescript": "catalog:"
   },
   "engines": {

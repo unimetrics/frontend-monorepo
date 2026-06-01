@@ -17,7 +17,7 @@
     "@tokens-studio/sd-transforms": "2.0.3",
     "@types/lodash": "catalog:",
     "lodash": "catalog:",
-    "style-dictionary": "5.3.3"
+    "style-dictionary": "5.4.2"
   },
   "peerDependencies": {
     "tailwindcss": "catalog:"
